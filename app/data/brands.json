@@ -1,0 +1,35 @@
+[
+  {
+    "name": "TTime",
+    "slug": "ttime",
+    "price_monthly": 69,
+    "price_retail": 199,
+    "protocol": "Oral enclomiphene daily — dosing determined at consultation",
+    "labs_required": "Baseline bloodwork required before start",
+    "delivery": "Mail-order pharmacy, ships nationwide",
+    "affiliate_link": "https://ttime.men/",
+    "notes": "Telemedicine-based. Ongoing provider support included with subscription."
+  },
+  {
+    "name": "Maximus Tribe",
+    "slug": "maximus-tribe",
+    "price_monthly": 129,
+    "price_retail": 279,
+    "protocol": "12.5 mg oral enclomiphene daily",
+    "labs_required": "At-home lab kit shipped with first order",
+    "delivery": "Direct mail, ships to all 50 states",
+    "affiliate_link": "https://maximustribe.com",
+    "notes": "Includes app-based progress tracking and community access."
+  },
+  {
+    "name": "Hone Health",
+    "slug": "hone-health",
+    "price_monthly": 149,
+    "price_retail": 329,
+    "protocol": "Variable oral enclomiphene; dosing set by prescribing physician",
+    "labs_required": "Full hormone panel plus metabolic workup",
+    "delivery": "Specialty pharmacy, 2–5 business days after approval",
+    "affiliate_link": "https://honehealth.com",
+    "notes": "Broad evaluation covers multiple hormone markers."
+  }
+]
