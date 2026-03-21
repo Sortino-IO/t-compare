@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${brand.name} — Enclomiphene Provider Details`,
-    description: `View protocol, pricing, lab requirements, and delivery details for ${brand.name}. Monthly price starting at $${brand.price_monthly}.`,
+    description: `Browse protocol, pricing, and delivery details for ${brand.name}. Monthly pricing from $${brand.price_monthly}.`,
   };
 }
 
@@ -40,7 +40,7 @@ export default async function BrandPage({ params }: Props) {
 
   const details: { label: string; value: string }[] = [
     { label: "Protocol", value: brand.protocol },
-    { label: "Labs required", value: brand.labs_required },
+    { label: "Labs", value: brand.labs_required },
     { label: "Delivery", value: brand.delivery },
     { label: "Notes", value: brand.notes },
   ];
@@ -48,7 +48,7 @@ export default async function BrandPage({ params }: Props) {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-[#a8a29e] mb-12 flex-wrap">
+      <nav className="flex items-center gap-2 text-sm text-[#b5b0a8] mb-14 flex-wrap">
         <Link href="/" className="hover:text-[#1c1917] transition-colors">
           Home
         </Link>
@@ -70,17 +70,17 @@ export default async function BrandPage({ params }: Props) {
         <span className="text-[#78716c]">{brand.name}</span>
       </nav>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_340px] items-start">
-        {/* Left column — details */}
+      <div className="grid gap-10 lg:grid-cols-[1fr_320px] items-start">
+        {/* Left column */}
         <div>
-          <p className="text-xs font-medium tracking-[0.15em] text-[#a8a29e] uppercase mb-3">
-            Enclomiphene Provider
+          <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-4">
+            Informational Comparison · Enclomiphene Provider
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-5xl font-semibold text-[#1c1917] leading-tight mb-8">
+          <h1 className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl font-semibold text-[#1c1917] leading-tight mb-10">
             {brand.name}
           </h1>
 
-          {/* Detail rows */}
+          {/* Detail card */}
           <div className="rounded-2xl bg-white border border-[#e3dfd6] overflow-hidden shadow-sm mb-8">
             {details.map((item, i) => (
               <div
@@ -89,7 +89,7 @@ export default async function BrandPage({ params }: Props) {
                   i < details.length - 1 ? "border-b border-[#f0ece4]" : ""
                 }`}
               >
-                <span className="text-xs font-semibold text-[#a8a29e] uppercase tracking-wide sm:w-32 shrink-0 pt-0.5">
+                <span className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] sm:w-28 shrink-0 pt-0.5">
                   {item.label}
                 </span>
                 <span className="text-sm text-[#44403c] leading-relaxed">
@@ -104,7 +104,7 @@ export default async function BrandPage({ params }: Props) {
             href={brand.affiliate_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-xl bg-[#2a6e47] px-7 py-3.5 text-sm font-medium text-white hover:bg-[#22593a] transition-colors shadow-sm"
+            className="inline-flex items-center gap-3 rounded-xl bg-[#2a6e47] px-8 py-4 text-sm font-semibold text-white hover:bg-[#22593a] transition-colors shadow-sm"
           >
             Visit {brand.name}
             <svg
@@ -114,7 +114,7 @@ export default async function BrandPage({ params }: Props) {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
@@ -124,43 +124,45 @@ export default async function BrandPage({ params }: Props) {
               <line x1="10" y1="14" x2="21" y2="3" />
             </svg>
           </a>
-          <p className="mt-3 text-xs text-[#a8a29e]">
-            External link. No affiliation with {brand.name}.
+          <p className="mt-3 text-xs text-[#b5b0a8]">
+            External link — this site has no affiliation with {brand.name}.
           </p>
         </div>
 
-        {/* Right column — pricing card */}
+        {/* Right column — pricing */}
         <div className="flex flex-col gap-4">
           {/* Price card */}
           <div className="rounded-2xl bg-white border border-[#e3dfd6] p-7 shadow-sm">
-            <p className="text-xs font-medium tracking-[0.12em] text-[#a8a29e] uppercase mb-4">
-              Starting from
+            <p className="text-[11px] font-semibold tracking-[0.2em] text-[#b5b0a8] uppercase mb-5">
+              Monthly pricing
             </p>
-            <div className="flex items-baseline gap-1 mb-1 flex-wrap">
-              <span className="text-base text-[#78716c]">From</span>
+            <div className="flex items-baseline gap-1 flex-wrap mb-3">
+              <span className="text-sm text-[#78716c]">From</span>
               <span className="font-[family-name:var(--font-playfair)] text-5xl font-semibold text-[#2a6e47] tabular-nums leading-none">
                 ${brand.price_monthly}
               </span>
               <span className="text-base text-[#78716c]">/mo</span>
             </div>
-            <div className="flex items-center gap-2 mt-2">
-              <span className="text-sm text-[#a8a29e] line-through tabular-nums">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-[#b5b0a8] line-through tabular-nums">
                 ${brand.price_retail}/mo
               </span>
-              <span className="text-xs font-semibold text-[#2a6e47] bg-[#eaf3ee] px-2 py-0.5 rounded-full">
+              <span className="text-xs font-semibold text-[#2a6e47] bg-[#eaf3ee] px-2.5 py-0.5 rounded-full">
                 {savingsPct}% off
               </span>
             </div>
           </div>
 
-          {/* Savings card */}
+          {/* Price comparison card */}
           <div className="rounded-2xl bg-[#eaf3ee] border border-[#c6e0d0] p-7">
-            <p className="text-xs font-medium tracking-[0.12em] text-[#4a9970] uppercase mb-5">
-              Estimated savings
+            <p className="text-[11px] font-semibold tracking-[0.2em] text-[#4a9970] uppercase mb-5">
+              Price comparison
             </p>
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-[#44403c]">Standard price</span>
+                <span className="text-sm text-[#44403c]">
+                  Indicative retail
+                </span>
                 <span className="text-sm text-[#78716c] line-through tabular-nums">
                   ${brand.price_retail}/mo
                 </span>
@@ -175,14 +177,14 @@ export default async function BrandPage({ params }: Props) {
               </div>
               <div className="border-t border-[#b8d9c6] pt-3 flex items-center justify-between">
                 <span className="text-sm font-semibold text-[#1c1917]">
-                  Monthly savings
+                  Monthly difference
                 </span>
                 <span className="text-sm font-semibold text-[#2a6e47] tabular-nums">
                   ${savings}/mo
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-[#44403c]">Annual savings</span>
+                <span className="text-sm text-[#44403c]">Annual difference</span>
                 <span className="text-sm font-semibold text-[#2a6e47] tabular-nums">
                   ${annualSavings}/yr
                 </span>
@@ -192,15 +194,17 @@ export default async function BrandPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="mt-14 pt-10 border-t border-[#e3dfd6] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      {/* Footer row */}
+      <div className="mt-14 pt-8 border-t border-[#e3dfd6] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <Link
           href="/testosterone/enclomiphene"
           className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors"
         >
-          ← Back to all enclomiphene providers
+          ← Back to provider comparison
         </Link>
-        <p className="text-xs text-[#a8a29e] sm:text-right max-w-sm">
-          Pricing is indicative and may vary based on consultation and dosage.
+        <p className="text-xs text-[#b5b0a8] sm:text-right max-w-sm leading-relaxed">
+          Pricing is indicative and may vary based on consultation, dosage, and
+          location.
         </p>
       </div>
     </div>
