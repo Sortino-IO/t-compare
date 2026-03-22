@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import Link from "next/link";
 import AskAssistant from "./components/AskAssistant";
+import MobileNav from "./components/MobileNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -60,8 +61,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col">
-        {/* Header */}
-        <header className="border-b border-[#e3dfd6] bg-[#f5f3ee]">
+        {/* Header — relative so the mobile dropdown can use absolute top-full */}
+        <header className="relative border-b border-[#e3dfd6] bg-[#f5f3ee]">
           <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
             <Link
               href="/"
@@ -69,7 +70,9 @@ export default function RootLayout({
             >
               CompareT
             </Link>
-            <nav className="flex items-center gap-6">
+
+            {/* Desktop nav — hidden on mobile */}
+            <nav className="hidden sm:flex items-center gap-6">
               <Link href="/" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
                 Home
               </Link>
@@ -80,6 +83,9 @@ export default function RootLayout({
                 About
               </Link>
             </nav>
+
+            {/* Mobile nav — hamburger + dropdown, hidden on sm+ */}
+            <MobileNav />
           </div>
         </header>
 

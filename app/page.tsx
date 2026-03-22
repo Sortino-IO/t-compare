@@ -52,16 +52,16 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
 
-      <div className="mx-auto max-w-5xl px-6 py-10 sm:py-20">
+      <div className="mx-auto max-w-5xl px-6 py-8 sm:py-20">
         {/* Hero */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
-          <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+          <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-3 sm:mb-4">
             Informational Comparison
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-5xl lg:text-6xl font-semibold text-[#1c1917] leading-[1.1] tracking-tight mb-4 sm:mb-5">
+          <h1 className="font-[family-name:var(--font-playfair)] text-[1.9rem] sm:text-5xl lg:text-6xl font-semibold text-[#1c1917] leading-[1.1] tracking-tight mb-3 sm:mb-5">
             Compare Testosterone Providers
           </h1>
-          <p className="text-base sm:text-lg text-[#78716c] leading-relaxed max-w-xl mx-auto">
+          <p className="text-sm sm:text-lg text-[#78716c] leading-relaxed max-w-xl mx-auto">
             Browse pricing and program details across testosterone-related
             providers in one place. Sorted by monthly cost.
           </p>
@@ -88,12 +88,12 @@ export default function HomePage() {
         </p>
 
         {/* Trust section */}
-        <div className="mt-16 sm:mt-24 pt-16 sm:pt-20 border-t border-[#e3dfd6] text-center">
+        <div className="mt-10 sm:mt-24 pt-10 sm:pt-20 border-t border-[#e3dfd6] text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1c1917] leading-[1.05] tracking-tight mb-6 sm:mb-8">
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-5xl lg:text-6xl font-bold text-[#1c1917] leading-[1.05] tracking-tight mb-5 sm:mb-8">
               Built to make comparison easier.
             </h2>
-            <p className="text-lg sm:text-xl text-[#78716c] leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl text-[#78716c] leading-relaxed max-w-2xl mx-auto">
               CompareT brings publicly available information about
               testosterone-related providers into one place, so you can review
               pricing, onboarding style, and program differences more clearly

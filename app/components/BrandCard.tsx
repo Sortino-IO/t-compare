@@ -21,34 +21,35 @@ export default function BrandCard({ brand, highlight = false }: BrandCardProps) 
         className="flex items-stretch"
       >
         {/* LEFT — name + labels */}
-        <div className="flex flex-col justify-center gap-2 px-5 sm:px-6 py-4 sm:py-5 flex-1 min-w-0 border-r border-[#ede9e0]">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="inline-flex items-center rounded-full bg-[#f5f3ee] border border-[#e3dfd6] px-2.5 py-0.5 text-[11px] font-semibold text-[#a8a29e] tracking-wide uppercase">
+        <div className="flex flex-col justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 sm:py-5 flex-1 min-w-0 border-r border-[#ede9e0]">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="inline-flex items-center rounded-full bg-[#f5f3ee] border border-[#e3dfd6] px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-[11px] font-semibold text-[#a8a29e] tracking-wide uppercase">
               {brand.shortLabel}
             </span>
             {highlight && (
-              <span className="inline-flex items-center rounded-full bg-[#d4eddf] border border-[#8fbc9e] px-2.5 py-0.5 text-[11px] font-semibold text-[#2a6e47] tracking-wide uppercase">
-                Lowest starting price
+              <span className="inline-flex items-center rounded-full bg-[#d4eddf] border border-[#8fbc9e] px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-[11px] font-semibold text-[#2a6e47] tracking-wide uppercase">
+                <span className="sm:hidden">Lowest price</span>
+                <span className="hidden sm:inline">Lowest starting price</span>
               </span>
             )}
           </div>
 
-          <h3 className="font-[family-name:var(--font-playfair)] text-[1.35rem] sm:text-[1.6rem] font-bold text-[#1c1917] leading-snug group-hover:text-[#2a6e47] transition-colors">
+          <h3 className="font-[family-name:var(--font-playfair)] text-[1.2rem] sm:text-[1.6rem] font-bold text-[#1c1917] leading-snug group-hover:text-[#2a6e47] transition-colors">
             {brand.name}
           </h3>
 
-          <p className="text-sm text-[#a8a29e]">{brand.shortDescription}</p>
+          <p className="text-xs sm:text-sm text-[#a8a29e]">{brand.shortDescription}</p>
         </div>
 
         {/* RIGHT — price */}
-        <div className="flex flex-col items-end justify-center gap-0.5 px-4 sm:px-7 py-4 sm:py-5 shrink-0 w-[36%] sm:w-[30%] min-w-[130px]">
-          <span className="text-[10px] sm:text-[11px] font-semibold text-[#6daa87] tracking-widest uppercase">
+        <div className="flex flex-col items-end justify-center gap-0.5 px-3 sm:px-7 py-3.5 sm:py-5 shrink-0 w-[34%] sm:w-[30%] min-w-[100px] sm:min-w-[130px]">
+          <span className="text-[9px] sm:text-[11px] font-semibold text-[#6daa87] tracking-widest uppercase">
             From
           </span>
-          <span className="font-[family-name:var(--font-playfair)] text-[1.9rem] sm:text-[2.6rem] font-bold text-[#2a6e47] tabular-nums leading-none">
+          <span className="font-[family-name:var(--font-playfair)] text-[1.6rem] sm:text-[2.6rem] font-bold text-[#2a6e47] tabular-nums leading-none">
             ${brand.priceFromMonthly}
           </span>
-          <span className="text-xs sm:text-sm text-[#a8a29e]">/mo</span>
+          <span className="text-[11px] sm:text-sm text-[#a8a29e]">/mo</span>
         </div>
       </Link>
 
