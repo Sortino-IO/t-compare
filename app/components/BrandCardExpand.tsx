@@ -25,10 +25,10 @@ export default function BrandCardExpand({ slug, why, highlight }: BrandCardExpan
   return (
     <>
       {/* Footer bar */}
-      <div className={`flex items-center justify-between px-6 py-3 border-t ${footerBg}`}>
+      <div className={`flex items-center justify-between px-6 py-2.5 border-t ${footerBg}`}>
         <button
           onClick={() => setOpen((v) => !v)}
-          className="flex items-center gap-1.5 text-xs font-medium text-[#78716c] hover:text-[#2a6e47] transition-colors"
+          className="flex items-center gap-1.5 text-xs font-medium text-[#78716c] hover:text-[#2a6e47] transition-colors py-2 pr-4 -my-2"
           aria-expanded={open}
         >
           Why this provider?
@@ -46,7 +46,7 @@ export default function BrandCardExpand({ slug, why, highlight }: BrandCardExpan
 
         <Link
           href={`/testosterone/enclomiphene/${slug}`}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-[#2a6e47] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#22593a] transition-colors"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-[#2a6e47] px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#22593a] transition-colors"
         >
           View details
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
