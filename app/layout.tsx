@@ -79,6 +79,9 @@ export default function RootLayout({
               <Link href="/testosterone/enclomiphene" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
                 T Providers
               </Link>
+              <Link href="/blog" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
+                Blog
+              </Link>
               <Link href="/about" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
                 About
               </Link>
