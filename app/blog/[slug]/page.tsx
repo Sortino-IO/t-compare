@@ -7,6 +7,12 @@ import { getAllSlugs, getPostBySlug } from "../../lib/blog";
 
 const BASE_URL = "https://comparet.com";
 
+function absoluteImageUrl(src: string): string {
+  if (src.startsWith("https://") || src.startsWith("http://")) return src;
+  const path = src.startsWith("/") ? src : `/${src}`;
+  return `${BASE_URL}${path}`;
+}
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -24,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const pageUrl = `${BASE_URL}/blog/${post.slug}`;
+  const featuredAbsolute = absoluteImageUrl(post.featuredImage);
 
   return {
     title: {
@@ -38,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.publishedAt,
       images: [
         {
-          url: post.featuredImage,
+          url: featuredAbsolute,
           width: 1200,
           height: 630,
           alt: post.featuredImageAlt,
@@ -48,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       title: post.seoTitle,
       description: post.seoDescription,
-      images: [post.featuredImage],
+      images: [featuredAbsolute],
     },
   };
 }
@@ -79,7 +86,7 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.seoDescription,
     datePublished: post.publishedAt,
     url: pageUrl,
-    image: post.featuredImage,
+    image: absoluteImageUrl(post.featuredImage),
     author: {
       "@type": "Organization",
       name: "CompareT",
