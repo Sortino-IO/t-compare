@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import Link from "next/link";
 import AskAssistant from "./components/AskAssistant";
+import GoogleTagManager from "./components/GoogleTagManager";
 import MobileNav from "./components/MobileNav";
 import "./globals.css";
 
@@ -18,6 +19,16 @@ const playfair = Playfair_Display({
 });
 
 const BASE_URL = "https://comparet.com";
+
+function siteVerification(): Metadata["verification"] | undefined {
+  const google = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+  const bing = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION?.trim();
+  if (!google && !bing) return undefined;
+  return {
+    ...(google ? { google } : {}),
+    ...(bing ? { other: { "msvalidate.01": bing } } : {}),
+  };
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -51,6 +62,7 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
+  verification: siteVerification(),
 };
 
 export default function RootLayout({
@@ -61,6 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col">
+        <GoogleTagManager />
         {/* Header — relative so the mobile dropdown can use absolute top-full */}
         <header className="relative border-b border-[#e3dfd6] bg-[#f5f3ee]">
           <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
