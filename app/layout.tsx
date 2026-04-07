@@ -79,12 +79,12 @@ export default function RootLayout({
           <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
             <Link
               href="/"
-              className="flex shrink-0 items-center rounded-md bg-[#0a0a0a] px-2 py-1.5 ring-1 ring-[#1c1917]/15 transition-opacity hover:opacity-90"
+              className="flex shrink-0 items-center py-1 transition-opacity hover:opacity-85"
               aria-label="T-Compare home"
             >
               <Image
                 src="/logo.png"
-                alt=""
+                alt="T-Compare"
                 width={200}
                 height={44}
                 className="h-9 w-auto max-h-9 sm:h-10 sm:max-h-10"
