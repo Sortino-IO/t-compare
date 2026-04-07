@@ -3,17 +3,17 @@ import { getAllBrands } from "./lib/brands";
 import BrandCard from "./components/BrandCard";
 
 export const metadata: Metadata = {
-  title: "Compare Testosterone & Enclomiphene Providers | CompareT",
+  title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
   description:
     "Compare testosterone-related providers and enclomiphene programs. Browse pricing, onboarding, and provider differences in one place.",
   openGraph: {
-    title: "Compare Testosterone & Enclomiphene Providers | CompareT",
+    title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
     description:
       "Compare testosterone-related providers and enclomiphene programs. Browse pricing, onboarding, and provider differences in one place.",
     url: "https://comparet.com",
   },
   twitter: {
-    title: "Compare Testosterone & Enclomiphene Providers | CompareT",
+    title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
     description:
       "Compare testosterone-related providers and enclomiphene programs. Browse pricing, onboarding, and provider differences in one place.",
   },
@@ -22,16 +22,16 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "CompareT",
+  name: "T-Compare",
   url: "https://comparet.com",
   description:
-    "CompareT is an informational website that helps users browse and compare testosterone-related providers and programs.",
+    "T-Compare is an informational website that helps users browse and compare testosterone-related providers and programs.",
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "CompareT",
+  name: "T-Compare",
   url: "https://comparet.com",
   description:
     "Browse and compare testosterone-related providers and enclomiphene programs in one place.",
@@ -94,7 +94,7 @@ export default function HomePage() {
               Built to make comparison easier.
             </h2>
             <p className="text-base sm:text-xl text-[#78716c] leading-relaxed max-w-2xl mx-auto">
-              CompareT brings publicly available information about
+              T-Compare brings publicly available information about
               testosterone-related providers into one place, so you can review
               pricing, onboarding style, and program differences more clearly
               before verifying directly with each provider.

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for CompareT.",
+  description: "Privacy Policy for T-Compare.",
 };
 
 export default function PrivacyPage() {
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
           {[
             {
               heading: "Information we collect",
-              body: "CompareT is a static informational website. We do not collect personal information, require account registration, or store user data. We may use analytics tools to understand aggregate traffic patterns (e.g. page views).",
+              body: "T-Compare is a static informational website. We do not collect personal information, require account registration, or store user data. We may use analytics tools to understand aggregate traffic patterns (e.g. page views).",
             },
             {
               heading: "Cookies",

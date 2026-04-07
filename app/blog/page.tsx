@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   description:
     "In-depth guides on enclomiphene, TRT, testosterone symptoms, fertility, online men’s health, costs, and how to compare providers responsibly.",
   openGraph: {
-    title: "Men’s Health & Testosterone Education Blog | CompareT",
+    title: "Men’s Health & Testosterone Education Blog | T-Compare",
     description:
       "In-depth guides on enclomiphene, TRT, testosterone symptoms, fertility, online men’s health, costs, and how to compare providers responsibly.",
     url: `${BASE_URL}/blog`,
   },
   twitter: {
-    title: "Men’s Health & Testosterone Education Blog | CompareT",
+    title: "Men’s Health & Testosterone Education Blog | T-Compare",
     description:
       "In-depth guides on enclomiphene, TRT, testosterone symptoms, fertility, online men’s health, costs, and how to compare providers responsibly.",
   },
@@ -45,14 +45,14 @@ export default async function BlogArchivePage({ searchParams }: Props) {
 
       <div className="mb-10 max-w-2xl">
         <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e]">
-          CompareT
+          T-Compare
         </p>
         <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-semibold leading-tight text-[#1c1917] sm:text-5xl">
           Blog
         </h1>
         <p className="mt-4 text-base leading-relaxed text-[#78716c] sm:text-lg">
           Evidence-style education on enclomiphene and TRT, testosterone symptoms,
-          fertility, telehealth access, therapy costs, and how to use CompareT
+          fertility, telehealth access, therapy costs, and how to use T-Compare
           comparisons without replacing medical advice.
         </p>
         <p className="mt-2 text-sm text-[#b5b0a8]">{total} articles</p>

@@ -119,12 +119,12 @@ export default function AskAssistant() {
           className="fixed bottom-[4.5rem] right-4 sm:right-6 z-50 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-2xl bg-white border border-[#e3dfd6] shadow-2xl overflow-hidden"
           role="dialog"
           aria-modal="true"
-          aria-label="Ask CompareT"
+          aria-label="Ask T-Compare"
         >
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-[#f0ece4]">
             <span className="font-[family-name:var(--font-playfair)] text-base font-semibold text-[#1c1917]">
-              Ask CompareT
+              Ask T-Compare
             </span>
             <button
               onClick={() => { setOpen(false); setSelected(null); }}
@@ -207,12 +207,12 @@ export default function AskAssistant() {
         onClick={handleToggle}
         className="fixed bottom-5 right-4 sm:right-6 z-50 flex items-center gap-1.5 rounded-full bg-[#2a6e47] px-3 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-semibold text-white shadow-lg hover:bg-[#22593a] transition-colors"
         aria-expanded={open}
-        aria-label="Ask CompareT"
+        aria-label="Ask T-Compare"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
-        <span className="hidden sm:inline">Ask CompareT</span>
+        <span className="hidden sm:inline">Ask T-Compare</span>
         <span className="sm:hidden">Ask</span>
       </button>
     </>

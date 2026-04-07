@@ -33,13 +33,13 @@ function siteVerification(): Metadata["verification"] | undefined {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "CompareT — Testosterone Provider Comparison",
-    template: "%s | CompareT",
+    default: "T-Compare — Testosterone Provider Comparison",
+    template: "%s | T-Compare",
   },
   description:
     "Browse and compare testosterone-related providers and programs in one place. An independent, informational reference.",
   openGraph: {
-    siteName: "CompareT",
+    siteName: "T-Compare",
     type: "website",
     locale: "en_US",
     url: BASE_URL,
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "CompareT — Compare Testosterone Providers",
+        alt: "T-Compare — Compare Testosterone Providers",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@comparet",
+    site: "@tcompare",
     images: ["/opengraph-image.png"],
   },
   robots: {
@@ -81,7 +81,7 @@ export default function RootLayout({
               href="/"
               className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#1c1917] hover:text-[#2a6e47] transition-colors tracking-tight"
             >
-              CompareT
+              T-Compare
             </Link>
 
             {/* Desktop nav — hidden on mobile */}
@@ -113,7 +113,7 @@ export default function RootLayout({
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
               <div>
                 <span className="font-[family-name:var(--font-playfair)] text-base font-bold text-[#1c1917]">
-                  CompareT
+                  T-Compare
                 </span>
                 <p className="mt-1.5 text-xs text-[#a8a29e] leading-relaxed max-w-xs">
                   Informational comparison of testosterone-related providers.

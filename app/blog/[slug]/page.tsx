@@ -89,11 +89,11 @@ export default async function BlogPostPage({ params }: Props) {
     image: absoluteImageUrl(post.featuredImage),
     author: {
       "@type": "Organization",
-      name: "CompareT",
+      name: "T-Compare",
     },
     publisher: {
       "@type": "Organization",
-      name: "CompareT",
+      name: "T-Compare",
       url: BASE_URL,
     },
   };

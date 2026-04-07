@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "This website is for informational purposes only and does not provide medical advice, diagnosis, or treatment.",
   openGraph: {
-    title: "Disclaimer | CompareT",
+    title: "Disclaimer | T-Compare",
     url: "https://comparet.com/disclaimer",
   },
 };
@@ -18,7 +18,7 @@ const sections = [
   },
   {
     heading: "No endorsements",
-    body: "CompareT does not endorse or recommend any specific provider, product, or treatment. Listings are presented for informational comparison purposes only.",
+    body: "T-Compare does not endorse or recommend any specific provider, product, or treatment. Listings are presented for informational comparison purposes only.",
   },
   {
     heading: "Accuracy of information",

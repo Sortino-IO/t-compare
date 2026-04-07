@@ -4,11 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "CompareT is an informational website that helps users browse publicly available information about testosterone-related providers and programs.",
+    "T-Compare is an informational website that helps users browse publicly available information about testosterone-related providers and programs.",
   openGraph: {
-    title: "About | CompareT",
+    title: "About | T-Compare",
     description:
-      "CompareT is an informational website that helps users browse publicly available information about testosterone-related providers and programs.",
+      "T-Compare is an informational website that helps users browse publicly available information about testosterone-related providers and programs.",
     url: "https://comparet.com/about",
   },
 };
@@ -27,16 +27,16 @@ export default function AboutPage() {
           About
         </p>
         <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl font-semibold text-[#1c1917] leading-tight mb-10">
-          About CompareT
+          About T-Compare
         </h1>
 
         <div className="rounded-2xl bg-white border border-[#e3dfd6] overflow-hidden shadow-sm">
           <div className="px-7 py-6 border-b border-[#f0ece4]">
             <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-3">
-              What is CompareT?
+              What is T-Compare?
             </p>
             <p className="text-sm text-[#44403c] leading-relaxed">
-              CompareT is an informational website that helps users browse
+              T-Compare is an informational website that helps users browse
               publicly available information about testosterone-related providers
               and programs in one place.
             </p>
@@ -66,7 +66,7 @@ export default function AboutPage() {
               Independence
             </p>
             <p className="text-sm text-[#44403c] leading-relaxed">
-              CompareT is independent and does not endorse or recommend any
+              T-Compare is independent and does not endorse or recommend any
               specific provider, product, or treatment. Some links may be
               affiliate links, which are clearly disclosed on relevant pages.
             </p>

@@ -6,17 +6,17 @@ import BrandCard from "../../components/BrandCard";
 const PAGE_URL = "https://comparet.com/testosterone/enclomiphene";
 
 export const metadata: Metadata = {
-  title: "Testosterone & Enclomiphene Providers Comparison | CompareT",
+  title: "Testosterone & Enclomiphene Providers Comparison | T-Compare",
   description:
     "Browse and compare testosterone-related providers and enclomiphene programs by pricing, onboarding, and structure.",
   openGraph: {
-    title: "Testosterone & Enclomiphene Providers Comparison | CompareT",
+    title: "Testosterone & Enclomiphene Providers Comparison | T-Compare",
     description:
       "Browse and compare testosterone-related providers and enclomiphene programs by pricing, onboarding, and structure.",
     url: PAGE_URL,
   },
   twitter: {
-    title: "Testosterone & Enclomiphene Providers Comparison | CompareT",
+    title: "Testosterone & Enclomiphene Providers Comparison | T-Compare",
     description:
       "Browse and compare testosterone-related providers and enclomiphene programs by pricing, onboarding, and structure.",
   },

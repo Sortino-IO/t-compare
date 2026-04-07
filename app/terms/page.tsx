@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
-  description: "Terms of Use for CompareT.",
+  description: "Terms of Use for T-Compare.",
 };
 
 export default function TermsPage() {
@@ -32,11 +32,11 @@ export default function TermsPage() {
           {[
             {
               heading: "Acceptance of terms",
-              body: "By accessing or using CompareT, you agree to be bound by these Terms of Use. If you do not agree, please do not use this site.",
+              body: "By accessing or using T-Compare, you agree to be bound by these Terms of Use. If you do not agree, please do not use this site.",
             },
             {
               heading: "Informational use only",
-              body: "CompareT provides informational content only. Nothing on this site constitutes medical, legal, or financial advice. Use of this site does not create any professional relationship.",
+              body: "T-Compare provides informational content only. Nothing on this site constitutes medical, legal, or financial advice. Use of this site does not create any professional relationship.",
             },
             {
               heading: "Accuracy of content",
@@ -44,11 +44,11 @@ export default function TermsPage() {
             },
             {
               heading: "Intellectual property",
-              body: "All content on this site is the property of CompareT unless otherwise noted. You may not reproduce, distribute, or create derivative works without prior written permission.",
+              body: "All content on this site is the property of T-Compare unless otherwise noted. You may not reproduce, distribute, or create derivative works without prior written permission.",
             },
             {
               heading: "Limitation of liability",
-              body: "To the fullest extent permitted by law, CompareT shall not be liable for any direct, indirect, incidental, or consequential damages arising from use of this site or reliance on any information provided.",
+              body: "To the fullest extent permitted by law, T-Compare shall not be liable for any direct, indirect, incidental, or consequential damages arising from use of this site or reliance on any information provided.",
             },
             {
               heading: "External links",
