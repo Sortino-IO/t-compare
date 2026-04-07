@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import BlogContent from "../../components/BlogContent";
 import { getAllSlugs, getPostBySlug } from "../../lib/blog";
 
-const BASE_URL = "https://comparet.com";
+const BASE_URL = "https://t-compare.com";
 
 function absoluteImageUrl(src: string): string {
   if (src.startsWith("https://") || src.startsWith("http://")) return src;

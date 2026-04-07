@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAllBrands, getBrandBySlug } from "../../../lib/brands";
 
-const BASE_URL = "https://comparet.com";
+const BASE_URL = "https://t-compare.com";
 
 type Props = {
   params: Promise<{ brand: string }>;

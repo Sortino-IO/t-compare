@@ -81,7 +81,7 @@ export default function Image() {
               fontFamily: "sans-serif",
             }}
           >
-            comparet.com
+            t-compare.com
           </p>
           <div
             style={{ width: "40px", height: "2px", background: "#e3dfd6" }}

@@ -4,7 +4,7 @@ import BlogCard from "../components/BlogCard";
 import BlogPagination from "../components/BlogPagination";
 import { getPostsPage } from "../lib/blog";
 
-const BASE_URL = "https://comparet.com";
+const BASE_URL = "https://t-compare.com";
 
 export const metadata: Metadata = {
   title: "Men’s Health & Testosterone Education Blog",

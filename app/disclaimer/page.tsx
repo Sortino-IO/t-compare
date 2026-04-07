@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "This website is for informational purposes only and does not provide medical advice, diagnosis, or treatment.",
   openGraph: {
     title: "Disclaimer | T-Compare",
-    url: "https://comparet.com/disclaimer",
+    url: "https://t-compare.com/disclaimer",
   },
 };
 

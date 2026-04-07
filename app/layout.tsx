@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
   weight: ["400", "600", "700"],
 });
 
-const BASE_URL = "https://comparet.com";
+const BASE_URL = "https://t-compare.com";
 
 function siteVerification(): Metadata["verification"] | undefined {
   const google = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();

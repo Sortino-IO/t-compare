@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "About | T-Compare",
     description:
       "T-Compare is an informational website that helps users browse publicly available information about testosterone-related providers and programs.",
-    url: "https://comparet.com/about",
+    url: "https://t-compare.com/about",
   },
 };
 
