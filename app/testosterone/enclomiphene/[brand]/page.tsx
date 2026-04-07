@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAllBrands, getBrandBySlug } from "../../../lib/brands";
-
-const BASE_URL = "https://t-compare.com";
+import { SITE_URL } from "../../../lib/site";
 
 type Props = {
   params: Promise<{ brand: string }>;
@@ -19,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!brand) return { title: "Provider not found" };
 
-  const pageUrl = `${BASE_URL}/testosterone/enclomiphene/${brand.slug}`;
+  const pageUrl = `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`;
 
   return {
     title: brand.seoTitle,
@@ -42,14 +41,14 @@ export default async function BrandPage({ params }: Props) {
 
   if (!brand) notFound();
 
-  const pageUrl = `${BASE_URL}/testosterone/enclomiphene/${brand.slug}`;
+  const pageUrl = `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home",        item: BASE_URL },
-      { "@type": "ListItem", position: 2, name: "T Providers", item: `${BASE_URL}/testosterone/enclomiphene` },
+      { "@type": "ListItem", position: 1, name: "Home",        item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "T Providers", item: `${SITE_URL}/testosterone/enclomiphene` },
       { "@type": "ListItem", position: 3, name: brand.name,    item: pageUrl },
     ],
   };

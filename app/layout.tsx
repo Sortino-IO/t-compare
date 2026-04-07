@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import AskAssistant from "./components/AskAssistant";
 import GoogleTagManager from "./components/GoogleTagManager";
 import MobileNav from "./components/MobileNav";
+import { SITE_URL } from "./lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,8 +20,6 @@ const playfair = Playfair_Display({
   weight: ["400", "600", "700"],
 });
 
-const BASE_URL = "https://t-compare.com";
-
 function siteVerification(): Metadata["verification"] | undefined {
   const google = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
   const bing = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION?.trim();
@@ -31,7 +31,7 @@ function siteVerification(): Metadata["verification"] | undefined {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "T-Compare — Testosterone Provider Comparison",
     template: "%s | T-Compare",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "T-Compare",
     type: "website",
     locale: "en_US",
-    url: BASE_URL,
+    url: SITE_URL,
     images: [
       {
         url: "/opengraph-image.png",
@@ -79,9 +79,17 @@ export default function RootLayout({
           <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
             <Link
               href="/"
-              className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#1c1917] hover:text-[#2a6e47] transition-colors tracking-tight"
+              className="flex shrink-0 items-center rounded-md bg-[#0a0a0a] px-2 py-1.5 ring-1 ring-[#1c1917]/15 transition-opacity hover:opacity-90"
+              aria-label="T-Compare home"
             >
-              T-Compare
+              <Image
+                src="/logo.png"
+                alt=""
+                width={200}
+                height={44}
+                className="h-9 w-auto max-h-9 sm:h-10 sm:max-h-10"
+                priority
+              />
             </Link>
 
             {/* Desktop nav — hidden on mobile */}

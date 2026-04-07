@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllBrands } from "../../lib/brands";
 import BrandCard from "../../components/BrandCard";
+import { SITE_URL } from "../../lib/site";
 
-const PAGE_URL = "https://t-compare.com/testosterone/enclomiphene";
+const PAGE_URL = `${SITE_URL}/testosterone/enclomiphene`;
 
 export const metadata: Metadata = {
   title: "Testosterone & Enclomiphene Providers Comparison | T-Compare",
@@ -30,7 +31,7 @@ export default function EnclomiphenePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://t-compare.com" },
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "T Providers", item: PAGE_URL },
     ],
   };
@@ -45,7 +46,7 @@ export default function EnclomiphenePage() {
       "@type": "ListItem",
       position: i + 1,
       name: b.name,
-      url: `https://t-compare.com/testosterone/enclomiphene/${b.slug}`,
+      url: `${SITE_URL}/testosterone/enclomiphene/${b.slug}`,
     })),
   };
 

@@ -3,8 +3,7 @@ import Link from "next/link";
 import BlogCard from "../components/BlogCard";
 import BlogPagination from "../components/BlogPagination";
 import { getPostsPage } from "../lib/blog";
-
-const BASE_URL = "https://t-compare.com";
+import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Men’s Health & Testosterone Education Blog",
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
     title: "Men’s Health & Testosterone Education Blog | T-Compare",
     description:
       "In-depth guides on enclomiphene, TRT, testosterone symptoms, fertility, online men’s health, costs, and how to compare providers responsibly.",
-    url: `${BASE_URL}/blog`,
+    url: `${SITE_URL}/blog`,
   },
   twitter: {
     title: "Men’s Health & Testosterone Education Blog | T-Compare",

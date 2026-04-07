@@ -4,13 +4,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import BlogContent from "../../components/BlogContent";
 import { getAllSlugs, getPostBySlug } from "../../lib/blog";
-
-const BASE_URL = "https://t-compare.com";
+import { SITE_URL } from "../../lib/site";
 
 function absoluteImageUrl(src: string): string {
   if (src.startsWith("https://") || src.startsWith("http://")) return src;
   const path = src.startsWith("/") ? src : `/${src}`;
-  return `${BASE_URL}${path}`;
+  return `${SITE_URL}${path}`;
 }
 
 type Props = {
@@ -29,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Article not found" };
   }
 
-  const pageUrl = `${BASE_URL}/blog/${post.slug}`;
+  const pageUrl = `${SITE_URL}/blog/${post.slug}`;
   const featuredAbsolute = absoluteImageUrl(post.featuredImage);
 
   return {
@@ -78,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound();
 
-  const pageUrl = `${BASE_URL}/blog/${post.slug}`;
+  const pageUrl = `${SITE_URL}/blog/${post.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -94,7 +93,7 @@ export default async function BlogPostPage({ params }: Props) {
     publisher: {
       "@type": "Organization",
       name: "T-Compare",
-      url: BASE_URL,
+      url: SITE_URL,
     },
   };
 

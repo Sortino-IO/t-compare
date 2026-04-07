@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllBrands } from "./lib/brands";
 import BrandCard from "./components/BrandCard";
+import { SITE_URL } from "./lib/site";
 
 export const metadata: Metadata = {
   title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
     description:
       "Compare testosterone-related providers and enclomiphene programs. Browse pricing, onboarding, and provider differences in one place.",
-    url: "https://t-compare.com",
+    url: SITE_URL,
   },
   twitter: {
     title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
@@ -23,7 +24,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "T-Compare",
-  url: "https://t-compare.com",
+  url: SITE_URL,
   description:
     "T-Compare is an informational website that helps users browse and compare testosterone-related providers and programs.",
 };
@@ -32,7 +33,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "T-Compare",
-  url: "https://t-compare.com",
+  url: SITE_URL,
   description:
     "Browse and compare testosterone-related providers and enclomiphene programs in one place.",
 };

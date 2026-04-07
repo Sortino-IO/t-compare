@@ -1,4 +1,7 @@
 import { ImageResponse } from "next/og";
+import { SITE_URL } from "./lib/site";
+
+const siteHost = new URL(SITE_URL).host;
 
 export const alt = "T-Compare — Compare Testosterone Providers";
 export const size = { width: 1200, height: 630 };
@@ -81,7 +84,7 @@ export default function Image() {
               fontFamily: "sans-serif",
             }}
           >
-            t-compare.com
+            {siteHost}
           </p>
           <div
             style={{ width: "40px", height: "2px", background: "#e3dfd6" }}

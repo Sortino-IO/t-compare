@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     title: "About | T-Compare",
     description:
       "T-Compare is an informational website that helps users browse publicly available information about testosterone-related providers and programs.",
-    url: "https://t-compare.com/about",
+    url: `${SITE_URL}/about`,
   },
 };
 
