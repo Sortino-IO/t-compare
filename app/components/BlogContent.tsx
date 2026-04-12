@@ -5,12 +5,26 @@ import type { BlogBlock, ParagraphSegment } from "../lib/blog";
 import { withTtimeAffiliateParams } from "../lib/affiliate-links";
 import BlogComparisonBanner from "./BlogComparisonBanner";
 
+function isExternalHref(href: string): boolean {
+  return href.startsWith("https://") || href.startsWith("http://");
+}
+
 function RichParagraph({ segments }: { segments: ParagraphSegment[] }) {
   return (
     <p className="mb-6 text-base leading-relaxed text-[#44403c] sm:text-lg last:mb-0">
       {segments.map((seg, j) =>
         seg.type === "text" ? (
           <span key={j}>{seg.text}</span>
+        ) : isExternalHref(seg.href) ? (
+          <a
+            key={j}
+            href={withTtimeAffiliateParams(seg.href)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-[#2a6e47] underline decoration-[#2a6e47]/30 underline-offset-2 transition-colors hover:text-[#1c1917] hover:decoration-[#1c1917]/40"
+          >
+            {seg.label}
+          </a>
         ) : (
           <Link
             key={j}
@@ -84,6 +98,24 @@ function renderBlock(block: BlogBlock, i: number, ctx: RenderCtx) {
     );
   }
 
+  if (block.type === "disclaimer") {
+    return (
+      <aside
+        key={i}
+        className="mt-14 border-t border-[#e3dfd6] pt-6 text-[11px] leading-relaxed text-[#a8a29e] sm:text-xs"
+      >
+        <p className="mb-2 font-semibold uppercase tracking-[0.12em] text-[#b5b0a8]">
+          Disclaimer
+        </p>
+        {block.paragraphs.map((para, di) => (
+          <p key={di} className={di < block.paragraphs.length - 1 ? "mb-3" : "mb-0"}>
+            {para}
+          </p>
+        ))}
+      </aside>
+    );
+  }
+
   if (block.type === "image") {
     return (
       <figure key={i} className="my-10 sm:my-12">
@@ -108,25 +140,48 @@ function renderBlock(block: BlogBlock, i: number, ctx: RenderCtx) {
   return null;
 }
 
+/** Index before which the mid CTA is inserted. Avoids placing the banner right after a section heading. */
+function findMidBannerInsertIndex(blocks: BlogBlock[]): number {
+  const disclaimerIdx = blocks.findIndex((b) => b.type === "disclaimer");
+  const end = disclaimerIdx === -1 ? blocks.length : disclaimerIdx;
+  if (end <= 2) return -1;
+
+  let mid = Math.ceil(end / 2);
+  while (mid < end && blocks[mid - 1]?.type === "heading") {
+    mid += 1;
+  }
+  if (mid >= end) {
+    mid = Math.ceil(end / 2);
+    while (mid > 1 && blocks[mid - 1]?.type === "heading") {
+      mid -= 1;
+    }
+  }
+  if (mid <= 0 || mid >= end) return -1;
+  if (blocks[mid - 1]?.type === "heading") return -1;
+  return mid;
+}
+
 export default function BlogContent({ blocks }: { blocks: BlogBlock[] }) {
   const ctx: RenderCtx = { seenFirstH2: false };
   const n = blocks.length;
-
-  /** Insert mid-banner before this index (after blocks [0..mid-1]). Skip when only one block — one CTA at end is enough. */
-  const mid =
-    n <= 1 ? -1 : Math.ceil(n / 2);
+  const mid = findMidBannerInsertIndex(blocks);
 
   const nodes: ReactNode[] = [];
+  let endBannerPlaced = false;
 
   for (let i = 0; i < n; i++) {
     if (mid !== -1 && i === mid) {
       nodes.push(<BlogComparisonBanner key={`compare-mid-${i}`} />);
     }
+    if (blocks[i].type === "disclaimer" && !endBannerPlaced) {
+      nodes.push(<BlogComparisonBanner key="compare-end" variant="end" />);
+      endBannerPlaced = true;
+    }
     const el = renderBlock(blocks[i], i, ctx);
     if (el !== null) nodes.push(el);
   }
 
-  if (n > 0) {
+  if (n > 0 && !endBannerPlaced) {
     nodes.push(<BlogComparisonBanner key="compare-end" variant="end" />);
   }
 

@@ -9,7 +9,8 @@ export type BlogBlock =
   | { type: "paragraph"; segments: ParagraphSegment[] }
   | { type: "heading"; text: string; level?: 2 | 3 }
   | { type: "bulletList"; items: string[] }
-  | { type: "image"; src: string; alt: string; caption?: string };
+  | { type: "image"; src: string; alt: string; caption?: string }
+  | { type: "disclaimer"; paragraphs: string[] };
 
 export interface BlogPost {
   title: string;

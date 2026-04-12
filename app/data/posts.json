@@ -1,29 +1,38 @@
 [
   {
-    "title": "How TTime Cut Enclomiphene Costs for American Men",
+    "title": "How T·TIME Cut Enclomiphene Costs in Half for American Men",
     "slug": "how-ttime-cut-enclomiphene-costs",
-    "excerpt": "TTime shares how it approaches enclomiphene pricing and telehealth access in the U.S.—an edited Q&A. Informational only; verify details with the provider or your clinician.",
+    "excerpt": "While enclomiphene draws attention across the U.S., T·TIME describes a simpler path to treatment and lower pricing than many comparable services—in their own words, below. Informational only; verify details with T·TIME or your clinician.",
     "featuredImage": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=630&fit=crop&auto=format&q=85",
-    "featuredImageAlt": "Telehealth and men’s health access",
+    "featuredImageAlt": "Telehealth access and men’s health programs",
     "publishedAt": "2026-04-06",
-    "seoTitle": "How TTime Approaches Enclomiphene Pricing | T-Compare",
-    "seoDescription": "Q&A on TTime’s stated approach to enclomiphene access and pricing in the U.S. Educational interview content—not medical advice. Compare providers on T-Compare.",
+    "seoTitle": "How T·TIME Cut Enclomiphene Costs | Interview | T-Compare",
+    "seoDescription": "Q&A with T·TIME on enclomiphene pricing and access in the U.S. Educational interview; not medical advice. Links to ttime.men and T-Compare listings.",
     "content": [
       {
         "type": "paragraph",
-        "text": "While enclomiphene is drawing attention across the U.S., TTime says it offers a simpler, more accessible path to treatment—and pricing that undercuts many comparable services. We spoke with the team to understand how they describe their model. (You can review TTime next to other programs on T-Compare anytime.)"
+        "text": "While enclomiphene is making waves across the U.S., one company is standing out by offering a simpler, more accessible path to treatment. That company is T·TIME, which has managed to price enclomiphene therapy significantly lower than many comparable services. We spoke with them to understand how they pulled it off."
       },
       {
         "type": "paragraph",
         "segments": [
           {
             "type": "text",
-            "text": "For a side-by-side view of structure and pricing, see our "
+            "text": "Official program website: "
+          },
+          {
+            "type": "link",
+            "href": "https://ttime.men/",
+            "label": "ttime.men"
+          },
+          {
+            "type": "text",
+            "text": ". On T-Compare you can also open the "
           },
           {
             "type": "link",
             "href": "/testosterone/enclomiphene/ttime",
-            "label": "TTime provider page"
+            "label": "T·TIME provider listing"
           },
           {
             "type": "text",
@@ -32,7 +41,7 @@
           {
             "type": "link",
             "href": "/testosterone/enclomiphene",
-            "label": "enclomiphene comparison table"
+            "label": "enclomiphene comparison"
           },
           {
             "type": "text",
@@ -41,8 +50,14 @@
         ]
       },
       {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200&h=675&fit=crop&auto=format&q=85",
+        "alt": "Prescription medication — context for enclomiphene discussions",
+        "caption": "Educational image; not an endorsement of any specific product."
+      },
+      {
         "type": "heading",
-        "text": "In one sentence, what is TTime focused on?",
+        "text": "Can either of you give me a one-sentence statement regarding your company?",
         "level": 2
       },
       {
@@ -51,7 +66,7 @@
       },
       {
         "type": "heading",
-        "text": "What are you offering—and why did you enter this space?",
+        "text": "So what exactly are you offering, and why did you decide to get into this space?",
         "level": 2
       },
       {
@@ -60,20 +75,29 @@
       },
       {
         "type": "paragraph",
-        "text": "There are other companies offering similar treatments, but in most cases the process is long and complicated, and enclomiphene is just one of many products they sell."
+        "text": "There are other companies offering similar treatments, but in most cases, the process is long and complicated, and enclomiphene is just one of many products they sell."
       },
       {
         "type": "paragraph",
-        "text": "At TTime, we saw an opportunity—both from personal experience and from people around us—to simplify the process and significantly reduce costs. Unlike many competitors, we focus on one thing only: delivering this treatment in the most efficient and accessible way possible."
+        "text": "At T·TIME, we saw an opportunity, both from personal experience and from people around us, to simplify the process and significantly reduce costs. Unlike our competitors, we focus on one thing only: delivering this treatment in the most efficient and accessible way possible."
+      },
+      {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=675&fit=crop&auto=format&q=85",
+        "alt": "Training and recovery — often discussed alongside testosterone and lifestyle"
       },
       {
         "type": "heading",
-        "text": "Where does TTime rank on pricing?",
+        "text": "Where does T·TIME rank on the market in terms of pricing?",
         "level": 2
       },
       {
         "type": "paragraph",
-        "text": "It’s among the lowest-priced options currently available for men looking to support their testosterone levels, depending on individual needs. We offer significantly lower pricing than many competitors providing similar treatments."
+        "text": "It’s among the lowest-priced options currently available for men looking to support their testosterone levels, depending on individual needs."
+      },
+      {
+        "type": "paragraph",
+        "text": "We offer significantly lower pricing than many competitors providing similar treatments."
       },
       {
         "type": "paragraph",
@@ -81,7 +105,7 @@
       },
       {
         "type": "heading",
-        "text": "How did you reach this level of cost-effectiveness?",
+        "text": "How did you achieve that level of cost-effectiveness compared to other companies?",
         "level": 2
       },
       {
@@ -90,7 +114,7 @@
       },
       {
         "type": "paragraph",
-        "text": "There is still a medical screening process in place, but it’s designed to be fast and efficient—not something that delays access. If a patient is ultimately not approved, they receive a full refund."
+        "text": "There is still a medical screening process in place, but it’s designed to be fast and efficient, not something that delays access. If a patient is ultimately not approved, they receive a full refund."
       },
       {
         "type": "paragraph",
@@ -98,41 +122,52 @@
       },
       {
         "type": "paragraph",
-        "text": "A growing base of returning customers already receives treatment delivered directly to their door every three months—a model we’ve found to be both cost-effective and convenient."
+        "text": "A growing base of returning customers already receives their treatment delivered directly to their door every three months, a model we’ve found to be both cost-effective and convenient."
+      },
+      {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=675&fit=crop&auto=format&q=85",
+        "alt": "Planning costs and follow-ups for online men’s health programs"
       },
       {
         "type": "heading",
-        "text": "What do you see ahead for TTime?",
+        "text": "Lastly, what do you see for the future of T·TIME?",
         "level": 2
       },
       {
         "type": "paragraph",
-        "text": "We plan to stay focused on doing one thing exceptionally well: improving access to this treatment and continuing to streamline the process even further."
+        "text": "We plan to stay focused on doing one thing exceptionally well, improving access to this treatment and continuing to streamline the process even further."
       },
       {
         "type": "paragraph",
         "text": "This market is growing rapidly, and more people are looking for a reliable and trustworthy way to access enclomiphene. We intend to be there for them."
       },
       {
-        "type": "heading",
-        "text": "Disclaimer",
-        "level": 2
+        "type": "paragraph",
+        "segments": [
+          {
+            "type": "text",
+            "text": "For current program details, visit "
+          },
+          {
+            "type": "link",
+            "href": "https://ttime.men/",
+            "label": "ttime.men"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
       },
       {
-        "type": "paragraph",
-        "text": "TTime is a telehealth platform that connects patients with licensed physicians who evaluate eligibility for treatment based on individual medical history. Prescriptions are issued at the sole discretion of the physician, and not all patients are approved."
-      },
-      {
-        "type": "paragraph",
-        "text": "The treatment offered through the platform typically involves enclomiphene citrate, a selective estrogen receptor modulator (SERM). This is not testosterone replacement therapy. Enclomiphene is used in an attempt to stimulate the body’s own testosterone production rather than replace it."
-      },
-      {
-        "type": "paragraph",
-        "text": "The medication is compounded by licensed pharmacies and is not approved by the U.S. Food and Drug Administration. As with any medical treatment, outcomes and side effects can vary, and patients are advised to consult a qualified healthcare provider for personalized medical guidance."
-      },
-      {
-        "type": "paragraph",
-        "text": "TTime states that it does not provide direct medical advice and operates as a facilitator between patients, physicians, and pharmacies. Payment is typically required before physician review, and refunds are issued if a prescription is not approved. Once medication is prescribed and shipped, orders are generally non-refundable."
+        "type": "disclaimer",
+        "paragraphs": [
+          "T·TIME is a telehealth platform that connects patients with licensed physicians who evaluate eligibility for treatment based on individual medical history. Prescriptions are issued at the sole discretion of the physician, and not all patients are approved.",
+          "The treatment offered through the platform typically involves enclomiphene citrate, a selective estrogen receptor modulator (SERM). This is not testosterone therapy. Enclomiphene is used in an attempt to stimulate the body’s own testosterone production rather than replace it.",
+          "The medication is compounded by licensed pharmacies and is not approved by the U.S. Food and Drug Administration. As with any medical treatment, outcomes and side effects can vary, and patients are advised to consult a qualified healthcare provider for personalized medical guidance.",
+          "T·TIME states that it does not provide direct medical advice and operates as a facilitator between patients, physicians, and pharmacies. Payment is typically required before physician review, and refunds are issued if a prescription is not approved. Once medication is prescribed and shipped, orders are generally non-refundable."
+        ]
       }
     ]
   },
