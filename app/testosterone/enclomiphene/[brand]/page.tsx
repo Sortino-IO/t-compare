@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { withTtimeAffiliateParams } from "../../../lib/affiliate-links";
 import { getAllBrands, getBrandBySlug } from "../../../lib/brands";
 import { SITE_URL } from "../../../lib/site";
 
@@ -160,7 +161,7 @@ export default async function BrandPage({ params }: Props) {
 
             {/* CTA */}
             <a
-              href={brand.affiliateUrl}
+              href={withTtimeAffiliateParams(brand.affiliateUrl)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-xl bg-[#2a6e47] px-8 py-4 text-sm font-semibold text-white hover:bg-[#22593a] transition-colors shadow-sm"
@@ -192,7 +193,7 @@ export default async function BrandPage({ params }: Props) {
                 {brand.sourceUrls.map((url) => (
                   <a
                     key={url}
-                    href={url}
+                    href={withTtimeAffiliateParams(url)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs text-[#78716c] hover:text-[#2a6e47] hover:underline transition-colors break-all"
