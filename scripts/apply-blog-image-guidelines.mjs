@@ -1,6 +1,9 @@
 /**
  * Rewrites Unsplash photo IDs in app/data/posts.json to match docs/blog-image-guidelines.md
  * (no money-as-hero, generic office/laptop, couple/fertility stock, landscapes, etc.).
+ *
+ * Targets use only IDs verified to resolve on images.unsplash.com (wrong suffix → 404;
+ * e.g. photo-1582719478250-c89cae4dc85b is hospitality stock, not a clipboard).
  * Run: node scripts/apply-blog-image-guidelines.mjs
  */
 import fs from "fs";
@@ -12,13 +15,13 @@ const postsPath = path.join(__dirname, "../app/data/posts.json");
 
 /** [fromPhotoIdPrefix, toPhotoIdPrefix] — replaces path segment after /photo- */
 const ID_REPLACEMENTS = [
-  ["photo-1563013544-824ae1b704d3", "photo-1582719478250-c89cae4dc85b"],
-  ["photo-1631217868264-e5b90bb7e133", "photo-1579684385127-1ef15d5081de"],
+  ["photo-1563013544-824ae1b704d3", "photo-1584308666744-24d5c474f2ae"],
+  ["photo-1631217868264-e5b90bb7e133", "photo-1579154204601-01588f351e67"],
   ["photo-1454165804606-c3d57bc86b40", "photo-1571019613454-1cb2f99b2d8b"],
   ["photo-1551650975-87deedd944c3", "photo-1579154204601-01588f351e67"],
   ["photo-1532938911079-1b06ac7ceec7", "photo-1579154204601-01588f351e67"],
-  ["photo-1622253692010-333f2da6031d", "photo-1579684385127-1ef15d5081de"],
-  ["photo-1522337360788-8b13dee7a37e", "photo-1582719478250-c89cae4dc85b"],
+  ["photo-1622253692010-333f2da6031d", "photo-1579154204601-01588f351e67"],
+  ["photo-1522337360788-8b13dee7a37e", "photo-1584308666744-24d5c474f2ae"],
   ["photo-1573497019940-1c28c88b4f3e", "photo-1571019613454-1cb2f99b2d8b"],
   ["photo-1529156069898-49953e39b3ac", "photo-1505751172876-fa1923c5c528"],
   ["photo-1461896836934-ffe607ba8211", "photo-1571019613454-1cb2f99b2d8b"],
@@ -26,7 +29,8 @@ const ID_REPLACEMENTS = [
 ];
 
 const TELEHEALTH_ID = "photo-1576091160399-112ba8d25d1d";
-const TELEHEALTH_REPLACE = "photo-1579684385127-1ef15d5081de";
+/** Labs — safe replacement when telehealth hero is duplicated outside the online-care article */
+const TELEHEALTH_REPLACE = "photo-1579154204601-01588f351e67";
 const ONLINE_SLUG = "online-treatment-mens-health";
 
 function rewriteUrl(url, slug) {
