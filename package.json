@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:blog-images": "node scripts/validate-blog-images.mjs"
   },
   "dependencies": {
     "next": "16.2.0",
