@@ -28,6 +28,8 @@ export const BANNED_UNSPLASH_PHOTO_IDS = new Set([
   "photo-1597892653980-3cec697283fe",
   // Hospitality — guidelines: avoid as filler
   "photo-1582719478250-c89cae4dc85b",
+  // Readable non-English text on clothing (editorial: keep stock language-neutral)
+  "photo-1626624156750-f20ecfce6f8b",
 ]);
 
 /** Any ID that must never appear in posts.json Unsplash URLs */
