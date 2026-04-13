@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, startTransition } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -16,9 +16,11 @@ export default function MobileNav() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Close when navigating
+  // Close when navigating (e.g. browser back/forward); defer so we don’t sync-setState in the effect body
   useEffect(() => {
-    setOpen(false);
+    startTransition(() => {
+      setOpen(false);
+    });
   }, [pathname]);
 
   // Close on outside tap / click
