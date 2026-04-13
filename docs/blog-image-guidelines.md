@@ -26,6 +26,9 @@ Use these rules for **every** `featuredImage`, inline `image` `src`, and any fut
 - **Women-focused** marketing or lifestyle stock where women are the main subject.
 - **Pregnancy / female fertility** visuals.
 - **Female-presenting** people as hero/primary subjects for these posts (this site’s educational scope here is men’s hormone health).
+- **Surgery / operating room / “scrubs in an OR”** as the main subject — these articles are not surgical care; OR imagery misleads unless the copy is explicitly about a surgical topic (it isn’t here).
+- **Stethoscope** as the primary visual shorthand for “medicine” — overused, clichéd stock; avoid heroes where the stethoscope is the main subject.
+- **Fake-looking “doctor holding a clipboard, smiling straight at the camera”** — generic healthcare-ad tropes; looks like performance marketing, not men’s hormone education.
 
 If a candidate image could fit both an “allowed” and a “banned” reading (e.g. “fit woman running”), **discard it** and pick a clearer option.
 
