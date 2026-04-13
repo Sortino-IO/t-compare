@@ -9,6 +9,7 @@
     "lint": "eslint",
     "check:blog-images": "node scripts/validate-blog-images.mjs",
     "check:blog-image-cap": "node scripts/validate-blog-image-cap.mjs",
+    "check:blog-image-per-post": "node scripts/validate-blog-image-per-post.mjs",
     "dedupe:blog-images": "node scripts/dedupe-blog-images.mjs",
     "align:blog-images-unsplash": "node scripts/apply-blog-image-guidelines.mjs"
   },

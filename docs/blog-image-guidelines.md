@@ -46,4 +46,8 @@ Run `npm run check:blog-images` to ensure there are no broken **local** `/blog/.
 
 For **Unsplash** links, paste the full `https://images.unsplash.com/photo-…` URL in a browser or use `curl -I`: the image must return **HTTP 200**. A wrong photo suffix returns **404** (broken hero). Also open the uncropped image on unsplash.com once—stock that looks like a **hotel room**, **invoice**, or **generic laptop** should be rejected even if the ID was copy-pasted from an old list.
 
-**Site-wide reuse:** the same Unsplash `photo-…` ID should appear **at most twice** across all featured and inline images (run `npm run check:blog-image-cap`). After bulk edits, run `npm run dedupe:blog-images` if needed, then spot-check `alt` text still matches the photo.
+**Site-wide reuse:** the same Unsplash `photo-…` ID should appear **at most twice** across all featured and inline images (run `npm run check:blog-image-cap`).
+
+**Per-article reuse:** the same `photo-…` ID must **not** appear twice in **one** article (featured + inline combined). Run `npm run check:blog-image-per-post`.
+
+After bulk edits, run `npm run dedupe:blog-images` if needed, then spot-check `alt` text still matches the photo.

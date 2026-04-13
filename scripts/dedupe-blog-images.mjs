@@ -1,5 +1,7 @@
 /**
- * Ensures each Unsplash photo-* ID appears at most MAX_USES times across featured + inline images.
+ * Ensures:
+ * - Each Unsplash photo-* ID appears at most MAX_USES_GLOBAL times site-wide.
+ * - Within a single post, the same photo-* ID never appears twice (featured + inline).
  * Preserves w= / h= query params from each original URL.
  *
  * Run: node scripts/dedupe-blog-images.mjs
@@ -11,14 +13,8 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const postsPath = path.join(__dirname, "../app/data/posts.json");
 
-/** No single stock image more than this many times site-wide */
-const MAX_USES = 2;
+const MAX_USES_GLOBAL = 2;
 
-/**
- * Ordered pool of full photo id segments (photo-TIMESTAMP-hash).
- * Sized so len(pool) * MAX_USES >= total image refs (~71).
- * Curated for men’s hormone health editorial use; verify on unsplash.com if changing.
- */
 /** Known-broken Unsplash segments — always substitute from pool */
 const BROKEN_IDS = new Set(["photo-1476480862126-207bf8fa9edc"]);
 
@@ -64,6 +60,7 @@ const PHOTO_IDS_POOL = [
   "photo-1769702247711-5f554fcfc103",
 ];
 
+/** Global counts across all posts */
 const usage = new Map();
 
 function extractPhotoId(url) {
@@ -81,34 +78,47 @@ function buildUrl(photoId, w, h) {
   return `https://images.unsplash.com/${photoId}?w=${w}&h=${h}&fit=crop&auto=format&q=85`;
 }
 
-function pickReplacement() {
+function canUse(id, seenPost) {
+  if (seenPost.has(id)) return false;
+  if ((usage.get(id) || 0) >= MAX_USES_GLOBAL) return false;
+  return true;
+}
+
+function commit(id, seenPost) {
+  usage.set(id, (usage.get(id) || 0) + 1);
+  seenPost.add(id);
+}
+
+function pickAny(seenPost) {
   for (const id of PHOTO_IDS_POOL) {
-    if ((usage.get(id) || 0) < MAX_USES) {
-      usage.set(id, (usage.get(id) || 0) + 1);
+    if (canUse(id, seenPost)) {
+      commit(id, seenPost);
       return id;
     }
   }
   throw new Error(
-    "dedupe-blog-images: pool exhausted — add more PHOTO_IDS_POOL entries or raise MAX_USES.",
+    "dedupe-blog-images: pool exhausted — add more PHOTO_IDS_POOL entries or raise MAX_USES_GLOBAL.",
   );
 }
 
-function assignUrl(url) {
+function assignUrl(url, seenPost) {
   if (!url || !url.includes("images.unsplash.com")) return url;
   const pid = extractPhotoId(url);
   if (!pid) return url;
   const { w, h } = extractDims(url);
+
   if (BROKEN_IDS.has(pid)) {
-    const rep = pickReplacement();
-    return buildUrl(rep, w, h);
+    const id = pickAny(seenPost);
+    return buildUrl(id, w, h);
   }
-  const n = usage.get(pid) || 0;
-  if (n < MAX_USES) {
-    usage.set(pid, n + 1);
+
+  if (canUse(pid, seenPost)) {
+    commit(pid, seenPost);
     return buildUrl(pid, w, h);
   }
-  const rep = pickReplacement();
-  return buildUrl(rep, w, h);
+
+  const id = pickAny(seenPost);
+  return buildUrl(id, w, h);
 }
 
 for (const id of PHOTO_IDS_POOL) usage.set(id, usage.get(id) || 0);
@@ -116,15 +126,21 @@ for (const id of PHOTO_IDS_POOL) usage.set(id, usage.get(id) || 0);
 const posts = JSON.parse(fs.readFileSync(postsPath, "utf8"));
 
 for (const post of posts) {
+  const seenPost = new Set();
   if (post.featuredImage) {
-    post.featuredImage = assignUrl(post.featuredImage);
+    post.featuredImage = assignUrl(post.featuredImage, seenPost);
   }
   for (const block of post.content ?? []) {
     if (block.type === "image" && block.src) {
-      block.src = assignUrl(block.src);
+      block.src = assignUrl(block.src, seenPost);
     }
   }
 }
 
 fs.writeFileSync(postsPath, JSON.stringify(posts, null, 2) + "\n");
-console.log("Deduped Unsplash IDs (max", MAX_USES, "each):", postsPath);
+console.log(
+  "Deduped Unsplash IDs (max",
+  MAX_USES_GLOBAL,
+  "each site-wide; at most one per post):",
+  postsPath,
+);
