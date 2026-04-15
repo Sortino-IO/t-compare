@@ -12,7 +12,8 @@
     "check:blog-image-banned": "node scripts/validate-blog-image-banned.mjs",
     "check:blog-image-cap": "node scripts/validate-blog-image-cap.mjs",
     "check:blog-image-per-post": "node scripts/validate-blog-image-per-post.mjs",
-    "check:blog-images:all": "npm run check:blog-images && npm run check:blog-image-banned && npm run check:blog-image-cap && npm run check:blog-image-per-post",
+    "check:blog-image-unsplash-http": "node scripts/validate-blog-images-unsplash-http.mjs",
+    "check:blog-images:all": "npm run check:blog-images && npm run check:blog-image-banned && npm run check:blog-image-cap && npm run check:blog-image-per-post && npm run check:blog-image-unsplash-http",
     "dedupe:blog-images": "node scripts/dedupe-blog-images.mjs",
     "align:blog-images-unsplash": "node scripts/apply-blog-image-guidelines.mjs"
   },
