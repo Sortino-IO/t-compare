@@ -52,6 +52,19 @@ export const blogBatch14 = [
         text: "If you have diagnosed hypogonadism, diet complements—but does not usually replace—decisions about whether medication is appropriate.",
       },
       {
+        type: "heading",
+        text: "Evidence snapshot: weight loss and testosterone endpoints",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "A systematic review and meta-analysis of trials in men reported that weight loss—whether from calorie restriction or bariatric surgery—was associated with increases in total testosterone on average, with larger mean gains after bariatric surgery than after low-calorie diet alone in pooled comparisons (European Journal of Endocrinology; PMID 23482592). Those population averages do not predict your timeline; they justify why cardiometabolic improvement and androgen labs are discussed together in clinic.",
+      },
+      {
+        type: "paragraph",
+        text: "Separately, randomized trials in obese men with low testosterone have examined whether adding testosterone to a weight-loss program changes body composition versus diet alone—useful for understanding research directions, not for choosing supplements without a prescription (examples include work summarized in International Journal of Obesity; PMID 28028318, related trial registration NCT01616732).",
+      },
+      {
         type: "disclaimer",
         paragraphs: [
           "Educational content only; not personalized nutrition or medical advice.",
@@ -167,9 +180,13 @@ export const blogBatch14 = [
         text: "T-Compare’s independent listing for Hims currently shows a starting price of about $99 per month derived from publicly available program marketing—use that figure as an anchor, not a guaranteed invoice. Hims has advertised multi-month plans (commonly discussed in 3-, 5-, and 10-month horizons on its testosterone pages), which means the lowest monthly rate is often tied to longer upfront commitment rather than month-to-month flexibility.",
       },
       {
+        type: "paragraph",
+        text: "Hims’ own consumer pages (including Good Health by Hims pricing explainers and hims.com/testosterone) have published plan-dependent monthly equivalents when paying upfront: about $199/month on a three-month plan, about $139/month on a five-month plan, and about $99/month on a 10-month plan for enclomiphene-based Testosterone Rx, with an initial at-home lab kit commonly listed around $94 and language that the kit fee may be credited toward treatment if you are eligible. Third-party summaries repeat these figures, but your invoice is authoritative—verify at checkout.",
+      },
+      {
         type: "bulletList",
         items: [
-          "Baseline row for comparisons: ~$99/mo starting framing vs T-Compare’s other enclomiphene listings (for example ~$69/mo TTime, ~$108/mo Maximus Tribe, ~$149/mo Hone Health)—all subject to change.",
+          "Baseline row for comparisons: ~$99/mo starting framing vs T-Compare’s other enclomiphene listings (for example ~$69/mo TTime, ~$100/mo Maximus Tribe snapshot, ~$149/mo Hone Health)—all subject to change.",
           "Add-ons that commonly move the true monthly cost: at-home or local lab panels, repeat labs, shipping, taxes, and any non-medication services billed separately.",
           "Promotions: seasonal discounts can temporarily invert the ranking—rebuild the spreadsheet at purchase time.",
         ],
@@ -262,7 +279,7 @@ export const blogBatch14 = [
     title: "Maximus Tribe Testosterone: What to Know Before Signing Up",
     slug: "maximus-tribe-testosterone-before-signing-up",
     excerpt:
-      "Maximus Tribe testosterone-related programs are listed as enclomiphene-forward telehealth with mid-pack pricing on T-Compare. Here is what to verify in the signup funnel and what “testosterone program” means in their category.",
+      "Maximus Tribe runs multiple testosterone-related protocols (enclomiphene-only, oral testosterone bundles, and more). Here is how to read their public pricing, what annual billing does to the monthly number, and a pre-signup checklist grounded in first-party pages and trial citations—not forum rumors.",
     featuredImage:
       "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
@@ -270,11 +287,42 @@ export const blogBatch14 = [
     publishedAt: "2026-04-27",
     seoTitle: "Maximus Tribe Testosterone Program: What to Check | T-Compare",
     seoDescription:
-      "Maximus Tribe testosterone: pricing snapshot (~$108/mo from public sources), structured onboarding notes, and checklist before you sign. Educational; verify on maximustribe.com.",
+      "Maximus Tribe testosterone protocols: enclomiphene-only vs bundles, public ~$49.99 intro / ~$99.99/mo annual framing, labs, and signup checklist. Educational; verify on maximustribe.com.",
     content: [
       {
         type: "paragraph",
-        text: 'Searches for “maximus tribe testosterone” usually mean: Is this program legitimate, what does it cost, and how does onboarding work? Maximus Tribe is catalogued here as an enclomiphene-category provider with a higher advertised starting monthly price than some competitors but lower than others—use T-Compare’s table for relative positioning, not a final bill.',
+        text: 'Searches for “maximus tribe testosterone” usually mean two things at once: whether Maximus is a legitimate telehealth operator with licensed prescribing, and which protocol matches your goal—pure SERM stimulation versus combinations that add exogenous testosterone. This article separates those questions, then gives pricing anchors taken from Maximus’ own catalog pages (rounded here for readability) plus what still requires checkout confirmation.',
+      },
+      {
+        type: "heading",
+        text: "What Maximus actually lists (protocols, not one SKU)",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "On its public testosterone pages, Maximus advertises an enclomiphene-only track positioned for men who want pituitary–testis signaling rather than classic exogenous TRT, and separate tracks that combine enclomiphene with oral testosterone for men whose clinicians deem combination therapy appropriate. Those are different medication classes with different monitoring implications—treat the names as a map to ask your prescriber about, not interchangeable products.",
+      },
+      {
+        type: "heading",
+        text: "Pricing anchors from Maximus first-party pages (verify before paying)",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "As of our last review of Maximus consumer pages, enclomiphene-only was advertised at about $49.99 for the first month with promotional copy, then about $99.99 per month when committing to an annual plan (month-to-month tiers, when shown, are higher—exact spreads change). A separate oral testosterone plus enclomiphene bundle was advertised around $99.99 for the first month and about $199.99 per month thereafter on an annual-style commitment. At-home testosterone testing is commonly listed near the three-digit range (often about $99.99 in catalog-style listings). Independent roundups sometimes echo those figures but can lag—use Maximus checkout as the source of truth.",
+      },
+      {
+        type: "paragraph",
+        text: "T-Compare’s comparison table uses a rounded monthly snapshot for catalog consistency; your effective cost may differ if you choose month-to-month billing, bundles, or promotions.",
+      },
+      {
+        type: "heading",
+        text: "Evidence language you will see on Maximus pages",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "Marketing pages may cite “up to ~2×” total testosterone movement in monitored clients—those are selective marketing statistics, not peer-reviewed guarantees. For mechanistic grounding, enclomiphene development literature in secondary hypogonadism (for example industry-sponsored trials registered on ClinicalTrials.gov and published in peer-reviewed journals) remains the correct place to anchor expectations, alongside your own labs.",
       },
       {
         type: "heading",
@@ -284,9 +332,10 @@ export const blogBatch14 = [
       {
         type: "bulletList",
         items: [
-          "Confirm what the monthly price includes (medication only vs labs, follow-ups, shipping).",
-          "Ask how dosage changes are handled and whether repeat labs are mandatory.",
-          "Understand refund or rejection policies if the clinician does not prescribe.",
+          "Confirm whether you are enrolling in enclomiphene-only versus a combination protocol—monitoring and risk discussions differ.",
+          "Ask what the monthly price includes (medication, shipping, messaging) and what is billed separately (labs, add-ons).",
+          "Clarify annual versus month-to-month commitment, cancellation windows, and what happens if you are not prescribed.",
+          "Ask how dose titration and repeat labs are timed if symptoms or hematologic markers shift.",
         ],
       },
       {
@@ -299,11 +348,20 @@ export const blogBatch14 = [
           {
             type: "link",
             href: "/testosterone/enclomiphene/maximus-tribe",
-            label: "Maximus Tribe listing",
+            label: "Maximus Tribe listing on T-Compare",
           },
           {
             type: "text",
-            text: " for the latest fields we track.",
+            text: ", then confirm every figure on ",
+          },
+          {
+            type: "link",
+            href: "https://www.maximustribe.com",
+            label: "maximustribe.com",
+          },
+          {
+            type: "text",
+            text: " before you pay.",
           },
         ],
       },
@@ -311,7 +369,7 @@ export const blogBatch14 = [
         type: "disclaimer",
         paragraphs: [
           "Educational overview only; not an endorsement.",
-          "Verify every material term on the provider’s official website.",
+          "Pricing tiers and promotions change; verify on the official site.",
         ],
       },
     ],
@@ -320,7 +378,7 @@ export const blogBatch14 = [
     title: "TTime Enclomiphene: Program Overview and Review",
     slug: "ttime-enclomiphene-program-overview-review",
     excerpt:
-      "TTime enclomiphene is positioned as a lower starting monthly price among listed U.S. telehealth options. This overview ties public listing data to interview context already on T-Compare—without repeating unverifiable claims.",
+      "TTime enclomiphene is listed at the lowest public monthly anchor among T-Compare’s U.S. enclomiphene providers (~$69/mo). This overview explains what that number does and does not include, how “faster start” maps to process, and how to cross-check claims with the T·TIME interview and your clinician.",
     featuredImage:
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
@@ -328,18 +386,36 @@ export const blogBatch14 = [
     publishedAt: "2026-04-26",
     seoTitle: "TTime Enclomiphene: Overview & Listing Notes | T-Compare",
     seoDescription:
-      "TTime enclomiphene: ~$69/mo public starting price, faster-start onboarding label, and links to provider page plus T·TIME interview. Educational comparison; not medical advice.",
+      "TTime enclomiphene: ~$69/mo listing anchor, faster-start onboarding, what to verify at ttime.men, and links to provider page plus T·TIME interview. Educational; not medical advice.",
     content: [
       {
         type: "paragraph",
-        text: 'Readers typing “ttime enclomiphene” want pricing certainty and process clarity. T-Compare lists TTime near the low end of monthly pricing among enclomiphene providers and notes a “faster start” onboarding style—interpret both as orientation, not a promise of eligibility.',
+        text: 'Readers typing “ttime enclomiphene” want three things: a credible monthly price, a clear description of onboarding, and an honest sense of whether the program category fits their labs. T-Compare’s independent snapshot places TTime at about $69 per month as the published starting anchor—the lowest among the brands we list in the enclomiphene category—alongside a “faster start” onboarding label that describes marketing positioning, not medical urgency.',
+      },
+      {
+        type: "heading",
+        text: "What the listing number means in practice",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "A monthly anchor is not a guaranteed quote. It may exclude first-time labs, shipping, state-specific consult fees, or promotional windows. Before you subscribe, export a line-item estimate from the official site: medication, labs, shipping, and any membership—then compare that 90-day total to other providers using the same template.",
+      },
+      {
+        type: "heading",
+        text: "Review without fake testimonials",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "T-Compare does not fabricate star ratings or mine unverified forum posts. The useful “review” layer here is structural: TTime markets a streamlined funnel relative to some peers, compounded enclomiphene still requires clinician judgment, and outcomes depend on baseline diagnosis—not brand name.",
       },
       {
         type: "paragraph",
         segments: [
           {
             type: "text",
-            text: "Jump to the ",
+            text: "Open the ",
           },
           {
             type: "link",
@@ -348,16 +424,7 @@ export const blogBatch14 = [
           },
           {
             type: "text",
-            text: " for structured fields, then read the on-site interview for how the company describes its operating model.",
-          },
-        ],
-      },
-      {
-        type: "paragraph",
-        segments: [
-          {
-            type: "text",
-            text: "For first-party context, see ",
+            text: " for comparison fields, then read ",
           },
           {
             type: "link",
@@ -366,7 +433,7 @@ export const blogBatch14 = [
           },
           {
             type: "text",
-            text: ".",
+            text: " for how the company frames cost structure in its own words.",
           },
         ],
       },
@@ -383,7 +450,7 @@ export const blogBatch14 = [
     title: "Hims vs. Hone Health for Testosterone: Which Is Better?",
     slug: "hims-vs-hone-health-testosterone-comparison",
     excerpt:
-      "Hims vs Hone Health is not a moral contest—it is a comparison of advertised starting prices, onboarding style, and what “better” should mean for your labs and goals. Here is a framework using T-Compare data.",
+      "Hims vs Hone Health is a category mismatch unless you hold therapy type constant: Hims’ public flagship is enclomiphene-first Testosterone Rx; Hone historically markets a broader TRT + adjunct menu with separate membership and medication lines. Here is a numbers-first framework with Hims-sourced plan ladders and T-Compare anchors for Hone.",
     featuredImage:
       "https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
@@ -391,11 +458,29 @@ export const blogBatch14 = [
     publishedAt: "2026-04-25",
     seoTitle: "Hims vs Hone Health for Testosterone: Compare Framework | T-Compare",
     seoDescription:
-      "Hims vs hone health: price spread (~$99 vs ~$149/mo from listings), what to hold constant when comparing, and why “best” depends on eligibility and follow-up—not branding.",
+      "Hims vs Hone Health: enclomiphene plans (~$99–$199/mo by term per Hims pages) vs Hone membership + meds (~$149+ list). Fair comparison checklist and links. Educational only.",
     content: [
       {
         type: "paragraph",
-        text: "Public listings on T-Compare currently place Hims with a lower advertised starting monthly price than Hone Health, while Hone Health is positioned as a physician-guided program at a higher entry price. That gap can shrink or invert with promotions, plan length, or bundled labs—verify before purchase.",
+        text: "“Which is better” is only answerable after you name the therapy class. T-Compare’s public snapshots place Hims near a ~$99/month advertised entry for enclomiphene-based Testosterone Rx (longer prepay terms) and Hone Health near ~$149/month as a listed starting anchor for its premium-style membership framing—different SKUs, different inclusions.",
+      },
+      {
+        type: "heading",
+        text: "Hims: plan ladder numbers worth writing down",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "Hims’ own blog and testosterone landing pages have published rounded monthly equivalents for enclomiphene when paying upfront: about $199/month on three-month plans, about $139/month on five-month plans, and about $99/month on 10-month plans, plus an initial at-home lab kit commonly listed around $94 with conditional credit language. Treat those as marketing-disclosed anchors, not promises available in every state or every patient.",
+      },
+      {
+        type: "heading",
+        text: "Hone Health: why the monthly math is noisier",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "Hone publicly discusses membership tiers separate from per-medication pricing; effective monthly totals therefore depend on whether you need premium lab cadence, which drug class you use (for example clomiphene vs injectable testosterone), and whether promotional discounts apply. Third-party comparisons (including Hims-authored versus articles) have cited combined membership-plus-medication figures in the ~$170–$190/month range for certain configurations—use them only as orientation, then rebuild from honehealth.com checkout.",
       },
       {
         type: "heading",
@@ -405,9 +490,9 @@ export const blogBatch14 = [
       {
         type: "bulletList",
         items: [
-          "Match plan length (3 vs 10 month prepay changes effective monthly cost).",
-          "Include lab fees and repeat monitoring in the same spreadsheet row.",
-          "Weight shipping cadence and whether messaging access is billed separately.",
+          "Hold therapy type constant: enclomiphene versus exogenous testosterone versus combination protocols are different clinical bets.",
+          "Match plan length—three-month versus 10-month prepay changes effective monthly cost more than brand logos.",
+          "Include lab fees, repeat monitoring, and messaging in the same spreadsheet row; exclude nothing that your state requires.",
         ],
       },
       {
@@ -433,15 +518,15 @@ export const blogBatch14 = [
           },
           {
             type: "text",
-            text: " listings in two tabs and align the same questions for both clinicians.",
+            text: " on T-Compare in parallel tabs, ask each clinician the same eight questions, and record answers in writing.",
           },
         ],
       },
       {
         type: "disclaimer",
         paragraphs: [
-          "No universal “winner”—only a better fit for a specific patient after evaluation.",
-          "Information may change; confirm on official sites.",
+          "No universal winner—only a better fit after individualized evaluation.",
+          "Third-party price tables age quickly; confirm on official sites.",
         ],
       },
     ],
@@ -450,7 +535,7 @@ export const blogBatch14 = [
     title: "Online Testosterone Clinics Compared: 2026 Guide",
     slug: "online-testosterone-clinics-compared-2026-guide",
     excerpt:
-      "Online testosterone clinics in 2026 mainly differ by medication class (SERM vs TRT), bundled labs, and transparent pricing. This guide updates a 2024-style search intent with current regulatory talking points and a comparison table mindset.",
+      "Online testosterone clinics in 2026 differ by medication class (oral enclomiphene vs injections/gels), whether labs are bundled, and how pricing is disclosed. This guide gives a 2026 checklist, example price anchors from T-Compare’s public table, and citations for compounded-drug framing.",
     featuredImage:
       "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
@@ -458,11 +543,20 @@ export const blogBatch14 = [
     publishedAt: "2026-04-24",
     seoTitle: "Online Testosterone Clinics Compared (2026) | T-Compare",
     seoDescription:
-      "Online testosterone clinics: how to compare SERMs like enclomiphene vs TRT, what to ask about compounded drugs, labs, and follow-ups—updated framing for 2026 searches.",
+      "Online testosterone clinics 2026: SERM vs TRT, compounded disclosure, lab cadence, and price anchors (~$69–$149/mo list snapshot). Checklist + T-Compare links. Educational only.",
     content: [
       {
         type: "paragraph",
         text: 'The query “online testosterone clinics” spans two different medical conversations: stimulating your own production (oral SERMs such as enclomiphene in some programs) versus replacing testosterone exogenously (injections, gels). The “right” category depends on diagnosis, fertility goals, hematocrit risk, and clinician judgment—this guide helps you sort questions, not pick a drug from SEO.',
+      },
+      {
+        type: "heading",
+        text: "Quick numeric orientation (T-Compare snapshot, not a checkout quote)",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "As an independent catalog snapshot, T-Compare currently lists enclomiphene-forward monthly anchors roughly spanning about $69/month (TTime) through about $149/month (Hone Health), with Hims near ~$99/month and Maximus near ~$100/month depending on protocol and commitment. Use those figures to shortlist spreadsheets, then replace them with live quotes.",
       },
       {
         type: "heading",
@@ -472,10 +566,20 @@ export const blogBatch14 = [
       {
         type: "bulletList",
         items: [
-          "Clear statement of whether the product is compounded and how quality is documented.",
-          "Explicit lab requirements baseline and on follow-up.",
-          "Refund/rejection language before you pay for a bundled package.",
+          "Clear statement of whether the product is compounded and how the pharmacy relationship is disclosed (FDA does not evaluate compounded drugs identically to mass-manufactured approvals).",
+          "Explicit lab requirements at baseline and on follow-up, including what happens if values fall outside protocol.",
+          "Refund or rejection language before you pay for a bundled package; asynchronous versus video-state rules.",
+          "Written follow-up pathway for blood pressure, hematocrit, mood, or fertility changes—testosterone-adjacent care is longitudinal.",
         ],
+      },
+      {
+        type: "heading",
+        text: "How to use comparison content without SEO mistakes",
+        level: 2,
+      },
+      {
+        type: "paragraph",
+        text: "Search engines reward specificity—your care plan should too. Build a table with columns for therapy class, monthly prepay structure, lab cadence, messaging access, and state eligibility. Rank brands only after those cells are filled from official sites, not after reading a headline.",
       },
       {
         type: "paragraph",
@@ -487,7 +591,7 @@ export const blogBatch14 = [
           },
           {
             type: "text",
-            text: " for a structured starting point, then confirm details on each official domain.",
+            text: ", then open each official domain in its own tab and verify pricing and inclusion lists line by line.",
           },
         ],
       },
@@ -525,7 +629,11 @@ export const blogBatch14 = [
       },
       {
         type: "paragraph",
-        text: "Peer-reviewed development work on enclomiphene in secondary hypogonadism has reported increases in testosterone endpoints versus baseline in study populations, with designs that differ by dose and comparator (for example phase II work comparing enclomiphene with topical testosterone in eligible men). Those are population-level statistics—not a forecast of your symptoms timeline.",
+        text: "Hims’ own testosterone education pages cite registrational-style enclomiphene literature—for example randomized work in dozens to low hundreds of men with secondary hypogonadism followed for weeks to months, reporting testosterone shifts versus baseline and comparing arms such as enclomiphene versus topical testosterone in defined inclusion criteria (see primary publications linked from Hims and ClinicalTrials.gov listings such as NCT01270841 for study context). Those are population-level statistics—not a forecast of your symptoms timeline.",
+      },
+      {
+        type: "paragraph",
+        text: "Peer-reviewed development programs also report timelines like early hormone movement within several weeks in selected designs; your prescriber interprets whether those endpoints map to your symptoms and lab schedule.",
       },
       {
         type: "heading",
@@ -567,7 +675,7 @@ export const blogBatch14 = [
     title: "Choosing Between TTime, Hims, and Hone Health: A Comparison",
     slug: "choosing-ttime-hims-hone-health-comparison",
     excerpt:
-      "Testosterone provider comparison should start with listed monthly anchors ($69 vs $99 vs $149 on T-Compare) and then layer labs, onboarding speed, and your clinical goals—fertility, symptoms, and monitoring burden.",
+      "Side-by-side framework for TTime vs Hims vs Hone: T-Compare anchors (~$69 / ~$99 / ~$149 per month), Hims plan-ladder context ($99–$199 by term on public pages), onboarding labels, and the eight questions that should appear on every comparison spreadsheet.",
     featuredImage:
       "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
@@ -575,11 +683,26 @@ export const blogBatch14 = [
     publishedAt: "2026-04-22",
     seoTitle: "TTime vs Hims vs Hone Health: Comparison Framework | T-Compare",
     seoDescription:
-      "Testosterone provider comparison across TTime, Hims, and Hone Health using public pricing snapshots, onboarding notes, and what to verify before subscribing. Informational only.",
+      "TTime vs Hims vs Hone: price anchors, Hims multi-month plan ladder, onboarding notes, and verification checklist before subscribing. Informational only.",
     content: [
       {
         type: "paragraph",
-        text: 'The intent behind “testosterone provider comparison” is practical: rank options by total cost of ownership, not headline rate alone. On T-Compare’s current snapshot, TTime lists the lowest starting monthly figure among these three, Hims sits mid-range, and Hone Health lists the highest—exact dollars can change with promotions or prepayment plans.',
+        text: 'The intent behind “testosterone provider comparison” is practical: rank options by total cost of ownership, not headline rate alone. On T-Compare’s current snapshot, TTime lists the lowest starting monthly figure (~$69/month), Hims lists a mid-range anchor (~$99/month) that can rise to roughly $139–$199/month on shorter prepaid terms per Hims’ own pages, and Hone Health lists the highest catalog anchor (~$149/month) with additional medication-specific lines—exact dollars change with promotions.',
+      },
+      {
+        type: "heading",
+        text: "Same-row spreadsheet (copy into Notes before you pay)",
+        level: 2,
+      },
+      {
+        type: "bulletList",
+        items: [
+          "Monthly medication line item after discounts",
+          "Baseline and repeat lab costs (kits, phlebotomy, shipping)",
+          "Plan length (3 vs 5 vs 10 months) and cancellation policy",
+          "Messaging or visit fees, shipping cadence, state restrictions",
+          "Therapy class: enclomiphene-only versus future TRT pathways discussed on that site",
+        ],
       },
       {
         type: "heading",
@@ -590,8 +713,8 @@ export const blogBatch14 = [
         type: "bulletList",
         items: [
           "Onboarding: faster-start vs standard labels describe marketing emphasis, not medical urgency.",
-          "Labs: frequency and inclusion drive hidden cost.",
-          "Clinical goals: fertility-aware SERMs vs future TRT pathways—only a clinician can map this to you.",
+          "Labs: frequency and inclusion drive hidden cost more than brand reputation.",
+          "Clinical goals: fertility-aware SERMs versus exogenous testosterone—only a clinician can map this to you.",
         ],
       },
       {
@@ -604,11 +727,11 @@ export const blogBatch14 = [
           {
             type: "link",
             href: "/testosterone/enclomiphene",
-            label: "the full enclomiphene comparison",
+            label: "the full enclomiphene comparison table",
           },
           {
             type: "text",
-            text: " table, then open each brand page in a new tab with the same question list.",
+            text: ", then open each brand page in a new tab with the same question list so answers stay comparable.",
           },
         ],
       },

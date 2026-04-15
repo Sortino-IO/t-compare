@@ -67,7 +67,7 @@ posts[idx] = {
     {
       type: "bulletList",
       items: [
-        "Baseline row for comparisons: ~$99/mo starting framing vs T-Compare’s other enclomiphene listings (for example ~$69/mo TTime, ~$108/mo Maximus Tribe, ~$149/mo Hone Health)—all subject to change.",
+        "Baseline row for comparisons: ~$99/mo starting framing vs T-Compare’s other enclomiphene listings (for example ~$69/mo TTime, ~$100/mo Maximus Tribe snapshot, ~$149/mo Hone Health)—all subject to change.",
         "Add-ons that commonly move the true monthly cost: at-home or local lab panels, repeat labs, shipping, taxes, and any non-medication services billed separately.",
         "Promotions: seasonal discounts can temporarily invert the ranking—rebuild the spreadsheet at purchase time.",
       ],
