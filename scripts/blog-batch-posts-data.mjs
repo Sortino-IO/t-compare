@@ -6,9 +6,9 @@ export const batchPosts = [
     excerpt:
       "If you searched “low testosterone ruined my marriage,” you are not alone in feeling strain—but the evidence is more nuanced than a single hormone label. Here is what research links to relationship distress, and what structured next steps look like.",
     featuredImage:
-      "https://images.unsplash.com/photo-1526506118085-60ce8714f553?w=1200&h=630&fit=crop&auto=format&q=85",
+      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Couple walking outdoors together — relationship context for discussing intimacy and health",
+      "Friends talking together outdoors — social support when stress affects relationships and health",
     publishedAt: "2026-04-14",
     seoTitle:
       "Low Testosterone Ruined My Marriage? Evidence & Next Steps | T-Compare",
@@ -91,9 +91,9 @@ export const batchPosts = [
     excerpt:
       "Enclomiphene cost depends on what is bundled: clinician visits, labs, medication, shipping, and follow-up. Here is a checklist to compare online programs without mistaking a teaser rate for total cost.",
     featuredImage:
-      "https://images.unsplash.com/photo-1518611012112-496528d12384?w=1200&h=630&fit=crop&auto=format&q=85",
+      "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Athletic training space — budgeting time and cost for men’s health programs",
+      "Outdoor cycling — investing effort in long-term men’s health planning and program costs",
     publishedAt: "2026-04-13",
     seoTitle: "Enclomiphene Cost: Compare Online Provider Fees | T-Compare",
     seoDescription:
@@ -240,9 +240,9 @@ export const batchPosts = [
     excerpt:
       "Association is clear in many cohorts; causation is harder to prove. Here is what interventional studies on CPAP suggest about testosterone changes—and why ‘treat the apnea first’ still matters even when hormones barely budge.",
     featuredImage:
-      "https://images.unsplash.com/photo-1540497077202-7e8b7ae6b437?w=1200&h=630&fit=crop&auto=format&q=85",
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Restful bedroom light — sleep quality as a lever for energy and hormone evaluation",
+      "Yoga studio floor — breath, stress, and sleep quality as levers in hormone evaluation",
     publishedAt: "2026-04-11",
     seoTitle:
       "Can Sleep Apnea Cause Low Testosterone? Research Summary | T-Compare",
@@ -365,9 +365,9 @@ export const batchPosts = [
     excerpt:
       "Enclomiphene fertility discussions center on preserving spermatogenesis compared with exogenous testosterone. Here is trial language, not marketing: what randomized data showed in secondary hypogonadism, and what still requires clinician judgment.",
     featuredImage:
-      "https://images.unsplash.com/photo-1571019613448-94352d8b998c?w=1200&h=630&fit=crop&auto=format&q=85",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Man doing push-up — training and family-planning goals often intersect in hormone conversations",
+      "Adult man portrait — discussing fertility trade-offs and hormone therapy with a clinician",
     publishedAt: "2026-04-09",
     seoTitle: "Enclomiphene Fertility vs TRT: Trial Context | T-Compare",
     seoDescription:
@@ -428,9 +428,9 @@ export const batchPosts = [
     excerpt:
       "Enclomiphene prescription access via telehealth follows a familiar arc: intake, clinician review, labs, informed consent, and pharmacy routing. Expectations should include verification steps—not instant guarantees.",
     featuredImage:
-      "https://images.unsplash.com/photo-1551632810-6195e391dde2?w=1200&h=630&fit=crop&auto=format&q=85",
+      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Outdoor walk on a hillside — steady routines while coordinating telehealth and labs",
+      "Professionals collaborating in an office — telehealth coordination and follow-up planning",
     publishedAt: "2026-04-08",
     seoTitle: "Enclomiphene Prescription Online: What to Expect | T-Compare",
     seoDescription:
@@ -497,9 +497,9 @@ export const batchPosts = [
     excerpt:
       "Enclomiphene side effects in published trials look like a typical oral hormone-modulating profile: GI symptoms, headache, hot flushes, and lab shifts that require monitoring. Here is how to read the evidence without panic—or false certainty.",
     featuredImage:
-      "https://images.unsplash.com/photo-1576678924944-23451ea153e4?w=1200&h=630&fit=crop&auto=format&q=85",
+      "https://images.unsplash.com/photo-1631119701947-11d4fd05a8de?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Blood collection tubes — monitoring labs alongside medication effects",
+      "Prescription medication on a neutral surface — monitoring labs alongside medication effects",
     publishedAt: "2026-04-07",
     seoTitle: "Enclomiphene Side Effects: Trial & Safety Context | T-Compare",
     seoDescription:
