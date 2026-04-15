@@ -1,26 +1,18 @@
 import type { MetadataRoute } from "next";
 import { getAllBrands } from "./lib/brands";
 import { getAllPosts } from "./lib/blog";
+import { discoverStaticAppRoutes } from "./lib/sitemap-routes";
 import { SITE_URL } from "./lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = [
-    "",
-    "/about",
-    "/blog",
-    "/disclaimer",
-    "/privacy",
-    "/terms",
-    "/testosterone",
-    "/testosterone/enclomiphene",
-  ];
-
-  const staticEntries: MetadataRoute.Sitemap = staticPaths.map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
-    changeFrequency: path === "" ? "weekly" : "weekly",
-    priority: path === "" ? 1 : 0.85,
-  }));
+  const staticEntries: MetadataRoute.Sitemap = discoverStaticAppRoutes().map(
+    ({ pathname, lastModified }) => ({
+      url: `${SITE_URL}${pathname}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: pathname === "" ? 1 : 0.85,
+    }),
+  );
 
   const blogEntries: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
