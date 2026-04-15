@@ -26,11 +26,19 @@ export interface BlogPost {
 
 export const BLOG_POSTS_PER_PAGE = 4;
 
+/** Always listed first on /blog (chronological sort applies to all other posts). */
+const PINNED_FIRST_SLUG = "how-ttime-cut-enclomiphene-costs";
+
 export function getAllPosts(): BlogPost[] {
-  return [...(postsData as BlogPost[])].sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  const all = [...(postsData as BlogPost[])];
+  const pinned = all.find((p) => p.slug === PINNED_FIRST_SLUG);
+  const rest = all
+    .filter((p) => p.slug !== PINNED_FIRST_SLUG)
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
+  return pinned ? [pinned, ...rest] : rest;
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
