@@ -6,6 +6,11 @@ export interface BrandWhy {
   positioning: string;
 }
 
+export interface BrandFaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface Brand {
   slug: string;
   name: string;
@@ -23,6 +28,9 @@ export interface Brand {
   seoTitle: string;
   seoDescription: string;
   why: BrandWhy;
+  /** Short paragraphs shown under the primary CTA; written for clarity and brand-name discovery in search. */
+  ctaBelowParagraphs: string[];
+  faqItems: BrandFaqItem[];
 }
 
 export function getAllBrands(): Brand[] {

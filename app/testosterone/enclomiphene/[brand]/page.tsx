@@ -70,6 +70,22 @@ export default async function BrandPage({ params }: Props) {
     day: "numeric",
   });
 
+  const faqPageSchema =
+    brand.faqItems.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: brand.faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
       {/* JSON-LD */}
@@ -81,6 +97,12 @@ export default async function BrandPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
+      {faqPageSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
+        />
+      ) : null}
 
       <div className="mx-auto max-w-5xl px-6 py-10 sm:py-16">
         {/* Breadcrumb */}
@@ -176,6 +198,68 @@ export default async function BrandPage({ params }: Props) {
             <p className="mt-3 text-xs text-[#b5b0a8]">
               Prices shown are the same as going direct.
             </p>
+
+            {brand.ctaBelowParagraphs.length > 0 ? (
+              <section
+                className="mt-8 max-w-2xl"
+                aria-labelledby={`about-${brand.slug}`}
+              >
+                <h2
+                  id={`about-${brand.slug}`}
+                  className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-4"
+                >
+                  About {brand.name}
+                </h2>
+                <div className="flex flex-col gap-4 text-sm text-[#57534e] leading-relaxed">
+                  {brand.ctaBelowParagraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {brand.faqItems.length > 0 ? (
+              <section
+                className="mt-10 max-w-2xl"
+                aria-labelledby={`faq-${brand.slug}`}
+              >
+                <h2
+                  id={`faq-${brand.slug}`}
+                  className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-5"
+                >
+                  Frequently asked questions
+                </h2>
+                <div className="flex flex-col gap-3">
+                  {brand.faqItems.map((item, i) => (
+                    <details
+                      key={i}
+                      className="group rounded-xl border border-[#e3dfd6] bg-white px-4 py-1 shadow-sm open:pb-3"
+                    >
+                      <summary className="cursor-pointer list-none py-3 text-sm font-medium text-[#44403c] pr-6 relative select-none">
+                        {item.question}
+                        <span
+                          className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#b5b0a8] transition-transform group-open:rotate-180"
+                          aria-hidden
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path
+                              d="M6 9l6 6 6-6"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
+                      </summary>
+                      <p className="text-sm text-[#57534e] leading-relaxed pb-1 border-t border-[#f0ece4] pt-3">
+                        {item.answer}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            ) : null}
 
             {/* Sources — collapsed */}
             <details className="mt-8 group">

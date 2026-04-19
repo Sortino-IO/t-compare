@@ -23,7 +23,33 @@
       "onboarding": "Faster start process",
       "pricing": "Monthly subscription",
       "positioning": "Designed for quicker access to an enclomiphene program"
-    }
+    },
+    "ctaBelowParagraphs": [
+      "People searching for TTime (T·TIME) are usually comparing oral enclomiphene programs that emphasize physician oversight and a simpler path to getting started. This T-Compare listing summarizes publicly available positioning for TTime so you can compare monthly cost and onboarding style before you visit the official site.",
+      "TTime markets itself as a men’s hormone telehealth option focused on enclomiphene rather than traditional testosterone replacement in many cases. Use the TTime website to confirm current pricing, eligibility, and what is included in your state—details change and should always be verified with the provider."
+    ],
+    "faqItems": [
+      {
+        "question": "What is TTime (T·TIME) in the context of enclomiphene?",
+        "answer": "TTime is a men’s telehealth brand that offers prescription-based hormone programs that commonly feature enclomiphene as an alternative pathway to some forms of testosterone care. Exact offerings, medications, and monitoring depend on your evaluation and the provider’s clinical judgment—confirm what TTime currently lists on ttime.men."
+      },
+      {
+        "question": "How is TTime different from traditional TRT?",
+        "answer": "Many programs position enclomiphene as supporting your body’s own testosterone production through a different mechanism than exogenous testosterone, but suitability depends on labs, symptoms, and medical history. TTime’s materials emphasize an injection-free oral option for some patients; your clinician decides what is appropriate."
+      },
+      {
+        "question": "Where should I verify TTime pricing and what is included?",
+        "answer": "Use the official TTime website after you click through from this page. Membership-style programs often bundle consultation, labs, and medication differently, and published numbers can change. Treat any third-party summary—including T-Compare—as a starting point, not a quote."
+      },
+      {
+        "question": "Does TTime serve patients in every U.S. state?",
+        "answer": "Telehealth brands frequently expand coverage over time. Availability, prescribing rules, and pharmacy partners can vary by state. Check TTime’s current service area and policies during signup rather than relying on a static comparison page."
+      },
+      {
+        "question": "Is this page medical advice about TTime?",
+        "answer": "No. T-Compare provides educational comparison information. Decisions about hormones require a licensed clinician, appropriate testing, and discussion of risks and benefits."
+      }
+    ]
   },
   {
     "slug": "hims",
@@ -49,7 +75,33 @@
       "onboarding": "Structured onboarding process",
       "pricing": "Monthly subscription with plan options",
       "positioning": "Program includes provider evaluation before starting treatment"
-    }
+    },
+    "ctaBelowParagraphs": [
+      "Hims is one of the most searched men’s telehealth brands, and many users look specifically for Hims enclomiphene or Hims testosterone options when comparing monthly cost and onboarding. This page explains how Hims is represented in our comparison dataset so you can line up price anchors and process labels with other providers.",
+      "If you are researching “Hims” for hormone care, confirm plan length, what labs and follow-ups are bundled, and whether enclomiphene or another protocol is offered in your situation—Hims publishes details on its own site and they supersede any summary here."
+    ],
+    "faqItems": [
+      {
+        "question": "What does Hims offer for testosterone or enclomiphene care?",
+        "answer": "Hims operates a telehealth platform where licensed clinicians may evaluate men for hormone-related treatments, including enclomiphene in appropriate cases. The exact medication, monitoring cadence, and bundled services depend on your state, labs, and the provider’s assessment—review Hims’ current testosterone/enclomiphene pages for authoritative detail."
+      },
+      {
+        "question": "How does Hims onboarding usually work?",
+        "answer": "Most Hims hormone flows start with an online intake, followed by lab testing and a provider consultation when indicated. Timelines and requirements can vary. Use Hims’ official flow to see what applies to you."
+      },
+      {
+        "question": "Why do Hims monthly prices differ between plan lengths?",
+        "answer": "Subscription brands often price longer commitments at a lower effective monthly rate than shorter plans. The tradeoff is flexibility versus total commitment. Verify the plan options and cancellation terms directly on Hims before you subscribe."
+      },
+      {
+        "question": "How do I compare Hims with other brands fairly?",
+        "answer": "Compare total monthly cost, what labs and follow-up visits are included, medication format, and how often you must re-test. A lower headline price is not automatically cheaper if add-ons differ. T-Compare lists a simplified snapshot; your checkout experience on Hims is the source of truth."
+      },
+      {
+        "question": "Is enclomiphene through Hims the same as compounded enclomiphene everywhere?",
+        "answer": "Enclomiphene may be supplied through different pharmacy arrangements depending on the program. Ask your clinician and read pharmacy disclosures on the provider site if you need specifics about formulation and sourcing."
+      }
+    ]
   },
   {
     "slug": "maximus-tribe",
@@ -75,7 +127,33 @@
       "onboarding": "Standard onboarding process",
       "pricing": "Monthly subscription",
       "positioning": "More structured program approach"
-    }
+    },
+    "ctaBelowParagraphs": [
+      "Maximus Tribe is frequently researched alongside other enclomiphene-first telehealth clinics, and people often pair the brand name with terms like “King Protocol” or oral testosterone when they compare options. This T-Compare page helps you place Maximus Tribe’s listed starting price and onboarding style in context with other brands before you visit Maximus Tribe directly.",
+      "For the most accurate read on Maximus Tribe—protocol details, add-ons, coaching, and current membership tiers—use the official Maximus Tribe website. Program names and bundles evolve, and your clinician should interpret whether a structured protocol fits your labs and goals."
+    ],
+    "faqItems": [
+      {
+        "question": "What is Maximus Tribe known for in men’s hormone care?",
+        "answer": "Maximus Tribe markets structured men’s hormone programs that prominently feature enclomiphene in many materials, sometimes bundled with additional coaching or protocol elements depending on tier. Positioning can change—confirm what Maximus Tribe currently advertises and what your clinician recommends."
+      },
+      {
+        "question": "How does Maximus Tribe compare to exogenous testosterone therapy?",
+        "answer": "Enclomiphene-based programs are often framed around stimulating endogenous testosterone production rather than supplying testosterone directly, but individual responses and eligibility vary. Discuss mechanisms, monitoring, and alternatives with a qualified provider rather than assuming a one-size-fits-all answer."
+      },
+      {
+        "question": "Where should I verify Maximus Tribe pricing?",
+        "answer": "Use maximustribe.com for current tiers, promotions, and what each tier includes. Comparison sites may lag or round numbers; treat the provider checkout as definitive."
+      },
+      {
+        "question": "Who is typically not a fit for enclomiphene programs?",
+        "answer": "Eligibility depends on diagnosis, lab patterns, fertility goals, contraindications, and state regulations. Some presentations of low testosterone relate to primary testicular issues where different approaches are considered. Only a clinician who reviews your history can say what applies to you."
+      },
+      {
+        "question": "Does Maximus Tribe offer support beyond medication shipping?",
+        "answer": "Many brands add education, check-ins, or optional services. Availability varies by program. Review Maximus Tribe’s site for what is included in your selected plan."
+      }
+    ]
   },
   {
     "slug": "hone-health",
@@ -101,6 +179,248 @@
       "onboarding": "Standard onboarding process",
       "pricing": "Monthly subscription",
       "positioning": "Physician-guided program"
-    }
+    },
+    "ctaBelowParagraphs": [
+      "Hone Health is a broad men’s and women’s telehealth brand; many searchers land on Hone Health when comparing at-home labs, membership pricing, and physician-guided testosterone programs. This listing focuses on how Hone Health appears in our enclomiphene-oriented provider comparison—use it to align the brand name with the price anchor and onboarding label we track.",
+      "Because Hone Health bundles membership, labs, and medication options in ways that can shift by region and plan, always confirm membership fees, required follow-up testing, and medication costs on honehealth.com rather than relying on any third-party summary alone."
+    ],
+    "faqItems": [
+      {
+        "question": "What does Hone Health offer for low testosterone or hormone care?",
+        "answer": "Hone Health provides telehealth access to licensed clinicians and related services that may include testosterone therapies and other medications depending on evaluation. Whether enclomiphene, testosterone, or another approach is appropriate is a medical decision—see Hone Health’s current service descriptions for what they offer in your area."
+      },
+      {
+        "question": "How does Hone Health membership usually work?",
+        "answer": "Hone Health commonly uses a membership model that covers ongoing access to care and may include scheduled follow-ups and lab cadence depending on your treatment plan. Exact fees and inclusions change; review Hone Health’s help center and pricing pages for authoritative numbers."
+      },
+      {
+        "question": "Why are there separate charges for labs and medication on some telehealth platforms?",
+        "answer": "Programs may bill an initial assessment, follow-up labs, and medications separately so patients can see what each component costs. Compare the all-in monthly cost you would realistically pay over the first three months, not just the first line item."
+      },
+      {
+        "question": "Can women use Hone Health while I’m researching men’s testosterone pages?",
+        "answer": "Hone Health markets services across genders for different conditions. If you are comparing men’s hormone programs, filter for the men’s testosterone or related pathways inside their site so you are not reading unrelated offerings."
+      },
+      {
+        "question": "How should I prepare questions for a Hone Health clinician?",
+        "answer": "Bring your symptoms timeline, prior labs if available, fertility goals, and a list of medications and supplements. Ask about monitoring frequency, side effects to watch for, and what milestones trigger plan changes."
+      }
+    ]
+  },
+  {
+    "slug": "joi-blokes",
+    "name": "Joi + Blokes",
+    "category": "enclomiphene",
+    "priceFromMonthly": 99,
+    "priceLabel": "From $99/mo",
+    "onboardingType": "standard",
+    "shortLabel": "Enclomiphene program",
+    "shortDescription": "Standard onboarding process",
+    "overview": "Joi + Blokes offers a men’s telehealth pathway with enclomiphene positioned as an oral alternative to some traditional testosterone approaches, with clinician oversight and follow-up labs on a subscription cadence.",
+    "notes": [
+      "Public pricing summaries often cite a starting monthly anchor; verify current membership, labs, and medication costs on joiandblokes.com.",
+      "Program details may vary based on consultation, eligibility, and location.",
+      "Users should verify all details directly with the provider before making decisions."
+    ],
+    "affiliateUrl": "https://joiandblokes.com/enclomiphene/",
+    "sourceUrls": [
+      "https://joiandblokes.com/enclomiphene/"
+    ],
+    "lastReviewed": "2026-04-19",
+    "seoTitle": "Joi + Blokes Enclomiphene & Testosterone Program | T-Compare",
+    "seoDescription": "Compare pricing, onboarding, and details for Joi + Blokes enclomiphene and men’s hormone telehealth.",
+    "why": {
+      "onboarding": "Standard onboarding process",
+      "pricing": "Monthly subscription",
+      "positioning": "Consumer telehealth with enclomiphene-focused men’s pathway"
+    },
+    "ctaBelowParagraphs": [
+      "Searchers pairing “Blokes” or “Joi and Blokes” with enclomiphene are usually comparing affordable telehealth options that bundle visits, labs, and medication. This T-Compare entry uses a common public starting anchor so you can situate Joi + Blokes next to other listed brands before you confirm details on the official site.",
+      "Joi + Blokes operates under the Joi + Blokes / Blokes umbrella for men’s hormone health. Pricing and included services can change—use their enclomiphene page for the United States service area and current offers."
+    ],
+    "faqItems": [
+      {
+        "question": "What is Joi + Blokes for enclomiphene?",
+        "answer": "Joi + Blokes is a men’s telehealth brand that markets enclomiphene as part of hormone optimization under licensed clinicians. The exact protocol, lab cadence, and bundled fees depend on your evaluation and region—confirm the live terms on joiandblokes.com."
+      },
+      {
+        "question": "How does Joi + Blokes pricing usually work?",
+        "answer": "Many programs quote a monthly-style subscription that may include medication, clinician access, and periodic labs. Third-party summaries often cite a floor price; your checkout total can differ based on dosing, add-ons, and promotions. Treat T-Compare’s anchor as non-binding."
+      },
+      {
+        "question": "Is Joi + Blokes the same everywhere in the United States?",
+        "answer": "Telehealth brands must follow state licensing and pharmacy rules. Coverage and prescribing options can vary. Check Joi + Blokes’ current eligibility and shipping information during signup."
+      },
+      {
+        "question": "Can I compare Joi + Blokes with Hims or TTime on price alone?",
+        "answer": "Not safely. Compare total first‑quarter cost—including labs, shipping, and required follow-ups—not only the headline monthly rate. Different brands bundle services differently."
+      },
+      {
+        "question": "Is this page medical advice about Joi + Blokes?",
+        "answer": "No. T-Compare summarizes publicly available positioning for comparison. Hormone treatment decisions belong between you and a licensed clinician."
+      }
+    ]
+  },
+  {
+    "slug": "petermd",
+    "name": "PeterMD",
+    "category": "enclomiphene",
+    "priceFromMonthly": 139,
+    "priceLabel": "From ~$139/mo",
+    "onboardingType": "standard",
+    "shortLabel": "Enclomiphene program",
+    "shortDescription": "Structured onboarding process",
+    "overview": "PeterMD lists enclomiphene as an oral TRT alternative with subscription billing, bundled physician access, and separate baseline lab costs in many published breakdowns.",
+    "notes": [
+      "PeterMD often prices enclomiphene on a bimonthly subscription; the effective monthly anchor is approximate until you confirm at checkout.",
+      "Initial blood work is commonly billed separately from subscription pricing; confirm current lab fees and state availability on getpetermd.com.",
+      "Users should verify all details directly with the provider before making decisions."
+    ],
+    "affiliateUrl": "https://getpetermd.com/enclomiphene/",
+    "sourceUrls": [
+      "https://getpetermd.com/enclomiphene/"
+    ],
+    "lastReviewed": "2026-04-19",
+    "seoTitle": "PeterMD Enclomiphene Program | T-Compare",
+    "seoDescription": "Compare PeterMD enclomiphene pricing context, onboarding, and notes versus other U.S. telehealth providers.",
+    "why": {
+      "onboarding": "Structured onboarding process",
+      "pricing": "Bimonthly subscription (effective monthly estimate)",
+      "positioning": "Oral enclomiphene pathway with separate lab costs in many cases"
+    },
+    "ctaBelowParagraphs": [
+      "PeterMD is a frequently searched DTC men’s health brand; people comparing “PeterMD enclomiphene” want clarity on whether pricing is per month or per shipment cycle and what labs cost upfront. Our listing uses a rounded monthly equivalent of the published bimonthly subscription where available, plus a reminder that baseline labs are often extra.",
+      "PeterMD publishes state exclusions and commitment terms that change over time. If you are evaluating PeterMD across states, read their current service map and cancellation policy on the official site—not from comparison pages alone."
+    ],
+    "faqItems": [
+      {
+        "question": "Why does PeterMD show a bimonthly price instead of monthly?",
+        "answer": "Some brands bill on a multi-week or multi-month cycle for fulfillment and pharmacy alignment. Divide the subscription cycle by its length to compare with other brands’ monthly anchors, then add any separate lab or shipping fees."
+      },
+      {
+        "question": "Are labs included in the PeterMD enclomiphene subscription?",
+        "answer": "Public breakdowns often list baseline labs as a separate charge from the medication subscription. Confirm the current lab package and whether follow-up labs are required on a schedule."
+      },
+      {
+        "question": "Does PeterMD serve every U.S. state?",
+        "answer": "Many telehealth brands exclude specific states. PeterMD has historically listed exclusions; verify the up-to-date list on getpetermd.com before assuming eligibility."
+      },
+      {
+        "question": "How should I compare PeterMD with a $99/month brand?",
+        "answer": "Compare all-in cost over the first 90 days: intake, labs, medication, and any membership fees. A higher subscription rate with inclusive labs can be cheaper than a lower rate with expensive à la carte testing."
+      },
+      {
+        "question": "Is enclomiphene through PeterMD appropriate for everyone with low testosterone?",
+        "answer": "Enclomiphene is generally discussed for secondary hypogonadism and individual suitability; primary hypogonadism and other cases may need different options. Only a clinician who reviews your labs and history can decide."
+      }
+    ]
+  },
+  {
+    "slug": "defy-medical",
+    "name": "Defy Medical",
+    "category": "enclomiphene",
+    "priceFromMonthly": 180,
+    "priceLabel": "From ~$180/mo",
+    "onboardingType": "standard",
+    "shortLabel": "Enclomiphene program",
+    "shortDescription": "Physician-led onboarding",
+    "overview": "Defy Medical is a physician-led specialty clinic that offers enclomiphene as a stand-alone or combination protocol with deeper lab monitoring than typical mass-market telehealth.",
+    "notes": [
+      "Third-party comparisons often cite a wide monthly range (~$180–$450) depending on monitoring intensity and medications; we use the lower end as a “from” anchor—confirm your scenario with Defy.",
+      "Program details may vary based on consultation, eligibility, and location.",
+      "Users should verify all details directly with the provider before making decisions."
+    ],
+    "affiliateUrl": "https://www.defymedical.com/",
+    "sourceUrls": [
+      "https://www.defymedical.com/"
+    ],
+    "lastReviewed": "2026-04-19",
+    "seoTitle": "Defy Medical Enclomiphene & Hormone Program | T-Compare",
+    "seoDescription": "Compare Defy Medical’s specialist telehealth model and enclomiphene pricing context with other providers.",
+    "why": {
+      "onboarding": "Physician-led onboarding",
+      "pricing": "Monthly program (range varies by case complexity)",
+      "positioning": "Specialty hormone clinic with comprehensive monitoring options"
+    },
+    "ctaBelowParagraphs": [
+      "Defy Medical is a long-standing name in U.S. men’s hormone telehealth, and searchers often pair “Defy Medical” with enclomiphene when they want more clinician continuity than async-only apps. This page uses a conservative “from” monthly anchor derived from common third-party ranges; complex cases can exceed it.",
+      "Use defymedical.com to confirm what enclomiphene protocols include today, how follow-up labs are scheduled, and whether your state is served. Specialist clinics emphasize individualized plans rather than a single SKU price."
+    ],
+    "faqItems": [
+      {
+        "question": "What makes Defy Medical different from consumer telehealth brands?",
+        "answer": "Defy Medical markets a physician-led model with broader panels and follow-up depth for patients who may have prior treatment history or comorbidities. That depth often translates to higher monthly cost than streamlined apps. Suitability is individual."
+      },
+      {
+        "question": "Why is Defy Medical’s monthly cost listed as a range?",
+        "answer": "Monitoring frequency, medications, and add-on services change total spend. Comparison guides often quote wide bands. Use Defy’s intake process for a personalized quote rather than a static comparison table alone."
+      },
+      {
+        "question": "Does Defy Medical prescribe enclomiphene without testosterone?",
+        "answer": "Specialty clinics may offer enclomiphene alone or as part of combination protocols depending on your labs and goals. Ask your clinician directly about the options and monitoring plan."
+      },
+      {
+        "question": "Is Defy Medical a good fit if I only want the cheapest price?",
+        "answer": "Not necessarily. If your case is straightforward secondary hypogonadism, lower-cost telehealth options may suffice. Defy is often considered when you want deeper monitoring or have complex history—your clinician can help weigh cost versus depth."
+      },
+      {
+        "question": "How do I verify Defy Medical coverage in my state?",
+        "answer": "Check Defy Medical’s current service area and licensing disclosures on their official site. Telehealth rules evolve; do not rely on stale forum posts."
+      }
+    ]
+  },
+  {
+    "slug": "concierge-md",
+    "name": "ConciergeMD",
+    "category": "enclomiphene",
+    "priceFromMonthly": 199,
+    "priceLabel": "From $199/mo",
+    "onboardingType": "standard",
+    "shortLabel": "Enclomiphene program",
+    "shortDescription": "Structured onboarding process",
+    "overview": "ConciergeMD advertises an online enclomiphene program with bundled consultation, lab testing, and home delivery in a monthly subscription format on its public pages.",
+    "notes": [
+      "Public pricing summaries often cite a $199/month figure for the enclomiphene program; confirm what is bundled (labs, shipping, messaging) on conciergemdla.com.",
+      "Program details may vary based on consultation, eligibility, and location.",
+      "Users should verify all details directly with the provider before making decisions."
+    ],
+    "affiliateUrl": "https://conciergemdla.com/testosterone-therapy/enclomiphene/",
+    "sourceUrls": [
+      "https://conciergemdla.com/testosterone-therapy/enclomiphene/"
+    ],
+    "lastReviewed": "2026-04-19",
+    "seoTitle": "ConciergeMD Enclomiphene Program | T-Compare",
+    "seoDescription": "Compare ConciergeMD enclomiphene subscription pricing and onboarding with other U.S. telehealth providers.",
+    "why": {
+      "onboarding": "Structured onboarding process",
+      "pricing": "Monthly subscription",
+      "positioning": "All-in style monthly program in public marketing materials"
+    },
+    "ctaBelowParagraphs": [
+      "People searching “ConciergeMD enclomiphene” want a single monthly number that includes clinician evaluation and ongoing access. Our listing reflects a commonly cited public anchor for that program; always confirm the checkout breakdown for labs, refills, and shipping.",
+      "ConciergeMD operates as a Los Angeles–associated telehealth brand with nationwide positioning in many materials—verify current state coverage, pharmacy partners, and cancellation terms on the official enclomiphene page."
+    ],
+    "faqItems": [
+      {
+        "question": "What does ConciergeMD include for $199/month in public materials?",
+        "answer": "Marketing pages often describe a monthly subscription that bundles consultation, lab testing, and medication delivery. Exact inclusions and promotional pricing change—read the current terms on conciergemdla.com rather than assuming a third-party summary is complete."
+      },
+      {
+        "question": "How does ConciergeMD compare to Hims or Maximus on price?",
+        "answer": "It may sit higher or lower depending on whether you are comparing headline rates or all-in lab costs. Build a 90-day budget for each brand you consider, including required follow-up labs."
+      },
+      {
+        "question": "Is ConciergeMD only for California patients?",
+        "answer": "Brands may be headquartered in one state while serving patients elsewhere under telehealth rules. Confirm your eligibility at signup based on your state of residence."
+      },
+      {
+        "question": "Can I switch from another enclomiphene provider to ConciergeMD?",
+        "answer": "Switching providers should involve a new evaluation, labs as appropriate, and continuity of care with a licensed clinician. Do not assume a prior prescription transfers automatically."
+      },
+      {
+        "question": "Where should I report side effects or questions about my prescription?",
+        "answer": "Contact your prescribing clinician or the pharmacy listed on your medication through ConciergeMD’s official support channels—not T-Compare."
+      }
+    ]
   }
 ]
