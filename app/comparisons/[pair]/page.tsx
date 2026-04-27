@@ -123,7 +123,6 @@ export default async function ComparisonPairPage({ params }: PageProps) {
         </ul>
       ),
     },
-    { label: "Last reviewed", left: a.lastReviewed, right: b.lastReviewed },
   ];
 
   return (
