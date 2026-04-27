@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "T Providers", href: "/testosterone/enclomiphene" },
+  { label: "השוואות", href: "/comparisons" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
 ];
