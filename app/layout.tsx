@@ -101,7 +101,7 @@ export default function RootLayout({
                 T Providers
               </Link>
               <Link href="/comparisons" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
-                השוואות
+                Comparisons
               </Link>
               <Link href="/blog" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
                 Blog
