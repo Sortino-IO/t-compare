@@ -10,6 +10,21 @@ function Cell({ children }: { children: React.ReactNode }) {
   return <div className="text-sm text-[#1c1917] leading-relaxed">{children}</div>;
 }
 
+function ProviderName({
+  name,
+  href,
+}: {
+  name: string;
+  href?: string;
+}) {
+  if (!href) return <div className="font-semibold text-[#1c1917]">{name}</div>;
+  return (
+    <Link href={href} className="font-semibold text-[#1c1917] hover:underline">
+      {name}
+    </Link>
+  );
+}
+
 export default function ComparisonTable(props: {
   leftName: string;
   leftHref?: string;
@@ -21,25 +36,54 @@ export default function ComparisonTable(props: {
 
   return (
     <div className="mt-6 overflow-hidden rounded-2xl border border-[#e3dfd6] bg-white">
-      <div className="grid grid-cols-1 sm:grid-cols-[220px_1fr_1fr]">
-        <div className="hidden sm:block border-b border-[#e3dfd6] bg-[#fbfaf7]" />
+      {/* Mobile layout: each row is a compact card with provider labels */}
+      <div className="sm:hidden">
         <div className="border-b border-[#e3dfd6] bg-[#fbfaf7] p-4">
-          {leftHref ? (
-            <Link href={leftHref} className="font-semibold text-[#1c1917] hover:underline">
-              {leftName}
-            </Link>
-          ) : (
-            <div className="font-semibold text-[#1c1917]">{leftName}</div>
-          )}
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <ProviderName name={leftName} href={leftHref} />
+            </div>
+            <div>
+              <ProviderName name={rightName} href={rightHref} />
+            </div>
+          </div>
+        </div>
+
+        {rows.map((row) => (
+          <section key={row.label} className="border-b border-[#ede9e0] p-4">
+            <div className="text-xs font-semibold uppercase tracking-wide text-[#78716c]">
+              {row.label}
+            </div>
+            <div className="mt-3 grid grid-cols-1 gap-3">
+              <div className="rounded-xl border border-[#ede9e0] bg-white p-3">
+                <div className="text-[11px] font-semibold text-[#78716c] uppercase tracking-wide">
+                  {leftName}
+                </div>
+                <div className="mt-1.5">
+                  <Cell>{row.left}</Cell>
+                </div>
+              </div>
+              <div className="rounded-xl border border-[#ede9e0] bg-white p-3">
+                <div className="text-[11px] font-semibold text-[#78716c] uppercase tracking-wide">
+                  {rightName}
+                </div>
+                <div className="mt-1.5">
+                  <Cell>{row.right}</Cell>
+                </div>
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {/* Desktop/tablet layout */}
+      <div className="hidden sm:grid grid-cols-[220px_1fr_1fr]">
+        <div className="border-b border-[#e3dfd6] bg-[#fbfaf7]" />
+        <div className="border-b border-[#e3dfd6] bg-[#fbfaf7] p-4">
+          <ProviderName name={leftName} href={leftHref} />
         </div>
         <div className="border-b border-[#e3dfd6] bg-[#fbfaf7] p-4">
-          {rightHref ? (
-            <Link href={rightHref} className="font-semibold text-[#1c1917] hover:underline">
-              {rightName}
-            </Link>
-          ) : (
-            <div className="font-semibold text-[#1c1917]">{rightName}</div>
-          )}
+          <ProviderName name={rightName} href={rightHref} />
         </div>
 
         {rows.map((row) => (
