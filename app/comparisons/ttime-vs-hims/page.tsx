@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ComparisonTable, { type ComparisonRow } from "../../components/ComparisonTable";
+import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 
 export const metadata: Metadata = {
   title: "TTime vs Hims",
@@ -110,11 +111,44 @@ export default function TtimeVsHimsPage() {
         />
 
         <div className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6">
+          <h2 className="text-lg font-semibold text-[#1c1917]">Objective summary</h2>
+          <div className="mt-3 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">The pricing headline</div>
+              <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                TTime frames cost as <strong>$2.3/day</strong> on a 90‑day plan, while Hims frames it
+                as <strong>$99/month</strong> starting on a 10‑month plan. The “cheapest” option can
+                flip once you compare the same time horizon and add any required testing.
+              </p>
+            </div>
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">What to model (90‑day total)</div>
+              <ul className="mt-2 list-disc pl-5 text-sm text-[#57534e] space-y-1.5">
+                <li>Upfront labs / test kit cost (and whether follow‑ups are included)</li>
+                <li>Shipping fees (if any) and refill cadence</li>
+                <li>What counts as “included” support (messaging, follow‑ups, dose changes)</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">A practical decision rule</div>
+              <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                If you want to minimize commitment, compare Hims’ shortest plan to a single 90‑day
+                cycle. If you’re comfortable committing longer to reduce the monthly rate, compare
+                <strong> 12 months vs 12 months</strong> (not month‑one promos).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6">
           <h2 className="text-lg font-semibold text-[#1c1917]">Sources</h2>
           <ul className="mt-3 space-y-2 text-sm text-[#57534e]">
             <li>
               TTime homepage:{" "}
-              <a className="text-[#2a6e47] hover:underline" href={sources.ttimeHome}>
+              <a
+                className="text-[#2a6e47] hover:underline"
+                href={withTtimeAffiliateParams(sources.ttimeHome)}
+              >
                 {sources.ttimeHome}
               </a>
             </li>

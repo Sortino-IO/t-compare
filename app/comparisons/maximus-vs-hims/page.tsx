@@ -123,6 +123,34 @@ export default function MaximusVsHimsPage() {
         />
 
         <div className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6">
+          <h2 className="text-lg font-semibold text-[#1c1917]">Objective summary</h2>
+          <div className="mt-3 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">Same “$99” headline, different meaning</div>
+              <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Both brands advertise a ~$99 starting point, but the context differs: Maximus references
+                annual commitment and “after first month”, while Hims ties the $99/month rate to a 10‑month plan.
+              </p>
+            </div>
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">What to compare next</div>
+              <ul className="mt-2 list-disc pl-5 text-sm text-[#57534e] space-y-1.5">
+                <li>Plan length you’re willing to commit to (3 vs 10 vs 12 months)</li>
+                <li>Testing requirements and whether follow‑up testing is included</li>
+                <li>Whether care is mostly async messaging vs scheduled visits</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">Avoid the common trap</div>
+              <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Don’t compare “best case” pricing on one site to “shortest commitment” pricing on another.
+                Pick a horizon (90 days or 12 months) and price both with the same assumptions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6">
           <h2 className="text-lg font-semibold text-[#1c1917]">Sources</h2>
           <ul className="mt-3 space-y-2 text-sm text-[#57534e]">
             <li>

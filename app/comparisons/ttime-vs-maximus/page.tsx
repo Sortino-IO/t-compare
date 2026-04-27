@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ComparisonTable, { type ComparisonRow } from "../../components/ComparisonTable";
+import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 
 export const metadata: Metadata = {
   title: "TTime vs Maximus",
@@ -104,11 +105,44 @@ export default function TtimeVsMaximusPage() {
         />
 
         <div className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6">
+          <h2 className="text-lg font-semibold text-[#1c1917]">Objective summary</h2>
+          <div className="mt-3 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">Different pricing frames</div>
+              <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                TTime markets a <strong>90‑day plan</strong> and shows cost per day. Maximus markets
+                an enclomiphene price that references <strong>annual commitment</strong> and “after the
+                first month”. Put both on the same timeline before comparing.
+              </p>
+            </div>
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">What’s most likely to change</div>
+              <ul className="mt-2 list-disc pl-5 text-sm text-[#57534e] space-y-1.5">
+                <li>Promos (“first month” discounts) and commitment terms</li>
+                <li>Required labs and how often they’re repeated</li>
+                <li>What “monitoring” includes (messaging, follow‑ups, dose adjustments)</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
+              <div className="text-sm font-semibold text-[#1c1917]">How to decide quickly</div>
+              <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                If you prefer a quarterly cadence, compare a single 90‑day cycle to the first 90 days
+                of the alternative. If you’re evaluating longer‑term membership, compare <strong>12 months</strong>{" "}
+                including any required follow‑up testing.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6">
           <h2 className="text-lg font-semibold text-[#1c1917]">Sources</h2>
           <ul className="mt-3 space-y-2 text-sm text-[#57534e]">
             <li>
               TTime homepage:{" "}
-              <a className="text-[#2a6e47] hover:underline" href={sources.ttimeHome}>
+              <a
+                className="text-[#2a6e47] hover:underline"
+                href={withTtimeAffiliateParams(sources.ttimeHome)}
+              >
                 {sources.ttimeHome}
               </a>
             </li>
