@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const lastB = new Date(b.lastReviewed);
       const lastModified = lastA > lastB ? lastA : lastB;
       comparisonEntries.push({
-        url: `${SITE_URL}/comparisons/${slugs[0]}-vs-${slugs[1]}`,
+        url: `${SITE_URL}/compare/${slugs[0]}-vs-${slugs[1]}`,
         lastModified,
         changeFrequency: "weekly",
         priority: 0.78,

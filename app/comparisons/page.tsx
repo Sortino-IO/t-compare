@@ -18,7 +18,7 @@ function allPairs() {
       const b = brands[j]!;
       out.push({
         title: `${a.name} vs ${b.name}`,
-        href: `/comparisons/${[a.slug, b.slug].sort().join("-vs-")}`,
+        href: `/compare/${[a.slug, b.slug].sort().join("-vs-")}`,
         description: `Compare ${a.name} and ${b.name} side-by-side.`,
       });
     }
