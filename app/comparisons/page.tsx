@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllBrands } from "../lib/brands";
 
 export const metadata: Metadata = {
   title: "Comparisons",
@@ -7,25 +8,25 @@ export const metadata: Metadata = {
     "Side-by-side comparisons of testosterone-related providers using publicly available information and cited sources.",
 };
 
-const COMPARISON_PAGES = [
-  {
-    title: "TTime vs Hims",
-    href: "/comparisons/ttime-vs-hims",
-    description: "Pricing and onboarding comparison for enclomiphene-focused programs.",
-  },
-  {
-    title: "Maximus vs Hims",
-    href: "/comparisons/maximus-vs-hims",
-    description: "Compare enclomiphene program pricing structure and published program details.",
-  },
-  {
-    title: "TTime vs Maximus",
-    href: "/comparisons/ttime-vs-maximus",
-    description: "Compare 90-day vs subscription pricing models and what’s included.",
-  },
-];
+function allPairs() {
+  const brands = getAllBrands();
+  const out: { title: string; href: string; description: string }[] = [];
+  for (let i = 0; i < brands.length; i++) {
+    for (let j = i + 1; j < brands.length; j++) {
+      const a = brands[i]!;
+      const b = brands[j]!;
+      out.push({
+        title: `${a.name} vs ${b.name}`,
+        href: `/comparisons/${[a.slug, b.slug].sort().join("-vs-")}`,
+        description: `Compare ${a.name} and ${b.name} side-by-side.`,
+      });
+    }
+  }
+  return out;
+}
 
 export default function ComparisonsIndexPage() {
+  const pairs = allPairs();
   return (
     <div className="bg-[#f5f3ee]">
       <div className="mx-auto max-w-5xl px-6 py-12">
@@ -79,7 +80,7 @@ export default function ComparisonsIndexPage() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {COMPARISON_PAGES.map((p) => (
+          {pairs.map((p) => (
             <Link
               key={p.href}
               href={p.href}
