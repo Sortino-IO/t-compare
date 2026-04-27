@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllBrands } from "../lib/brands";
+import ComparisonPairsGrid from "../components/ComparisonPairsGrid";
 
 export const metadata: Metadata = {
   title: "Comparisons",
@@ -79,19 +80,7 @@ export default function ComparisonsIndexPage() {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {pairs.map((p) => (
-            <a
-              key={p.href}
-              href={p.href}
-              className="block rounded-2xl border border-[#e3dfd6] bg-white p-5 hover:border-[#c6c0b4] transition-colors cursor-pointer"
-            >
-              <div className="text-lg font-semibold text-[#1c1917]">{p.title}</div>
-              <div className="mt-1.5 text-sm text-[#78716c] leading-relaxed">{p.description}</div>
-              <div className="mt-4 text-sm font-medium text-[#2a6e47]">View comparison →</div>
-            </a>
-          ))}
-        </div>
+        <ComparisonPairsGrid pairs={pairs} />
       </div>
     </div>
   );
