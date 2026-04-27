@@ -81,15 +81,15 @@ export default function ComparisonsIndexPage() {
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {pairs.map((p) => (
-            <Link
+            <a
               key={p.href}
               href={p.href}
-              className="rounded-2xl border border-[#e3dfd6] bg-white p-5 hover:border-[#c6c0b4] transition-colors"
+              className="block rounded-2xl border border-[#e3dfd6] bg-white p-5 hover:border-[#c6c0b4] transition-colors cursor-pointer"
             >
               <div className="text-lg font-semibold text-[#1c1917]">{p.title}</div>
               <div className="mt-1.5 text-sm text-[#78716c] leading-relaxed">{p.description}</div>
               <div className="mt-4 text-sm font-medium text-[#2a6e47]">View comparison →</div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
