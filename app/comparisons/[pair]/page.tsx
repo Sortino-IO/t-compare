@@ -6,6 +6,7 @@ import { getAllBrands, getBrandBySlug, type Brand } from "../../lib/brands";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 
 type Params = { pair: string };
+type PageProps = { params: Params | Promise<Params> };
 
 function parsePair(pair: unknown): { left: string; right: string } | null {
   if (typeof pair !== "string") return null;
@@ -34,8 +35,9 @@ export function generateStaticParams(): Params[] {
   return out;
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
-  const parsed = parsePair(params.pair);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const p = await Promise.resolve(params);
+  const parsed = parsePair(p.pair);
   if (!parsed) {
     return { title: "Comparison", description: "Provider comparison." };
   }
@@ -65,13 +67,14 @@ function sourceList(brand: Brand) {
   return urls;
 }
 
-export default function ComparisonPairPage({ params }: { params: Params }) {
-  const parsed = parsePair(params.pair);
+export default async function ComparisonPairPage({ params }: PageProps) {
+  const p = await Promise.resolve(params);
+  const parsed = parsePair(p.pair);
   if (!parsed) redirect("/comparisons");
 
   const canonical = canonicalPair(parsed.left, parsed.right);
   const canonicalPairSlug = `${canonical.left}-vs-${canonical.right}`;
-  if (canonicalPairSlug !== params.pair) {
+  if (canonicalPairSlug !== p.pair) {
     redirect(`/comparisons/${canonicalPairSlug}`);
   }
 
