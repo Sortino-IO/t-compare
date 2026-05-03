@@ -131,43 +131,68 @@ export default function RootLayout({
         {/* Footer */}
         <footer className="border-t border-[#e3dfd6] bg-[#f5f3ee] mt-auto">
           <div className="mx-auto max-w-5xl px-6 py-10">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-              <div>
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+              <div className="lg:col-span-2">
                 <span className="font-[family-name:var(--font-playfair)] text-base font-bold text-[#1c1917]">
                   T-Compare
                 </span>
-                <p className="mt-1.5 text-xs text-[#a8a29e] leading-relaxed max-w-xs">
-                  Informational comparison of testosterone-related providers.
-                  Not medical advice.
+                <p className="mt-1.5 text-xs text-[#a8a29e] leading-relaxed max-w-md">
+                  Independent, informational comparisons of testosterone-related telehealth programs.
+                  Not medical advice—always confirm eligibility, pricing, and inclusions with the provider.
                 </p>
               </div>
-              <nav className="flex flex-wrap gap-x-6 gap-y-2">
-                {[
-                  { label: "About",          href: "/about" },
-                  { label: "Disclaimer",     href: "/disclaimer" },
-                  { label: "Privacy Policy", href: "/privacy" },
-                  { label: "Terms",          href: "/terms" },
-                ].map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-xs text-[#a8a29e] hover:text-[#1c1917] transition-colors"
-                  >
-                    {link.label}
+
+              <div>
+                <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#b5b0a8]">
+                  Explore
+                </div>
+                <nav className="mt-3 flex flex-col gap-2 text-sm">
+                  <Link href="/" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    Home
                   </Link>
-                ))}
-              </nav>
+                  <Link href="/testosterone/enclomiphene" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    Enclomiphene providers
+                  </Link>
+                  <Link href="/testosterone" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    Testosterone topics
+                  </Link>
+                  <Link href="/comparisons" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    Comparisons index
+                  </Link>
+                  <Link href="/blog" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    Blog
+                  </Link>
+                  <Link href="/about" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    About
+                  </Link>
+                </nav>
+              </div>
+
+              <div>
+                <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#b5b0a8]">
+                  Legal & policies
+                </div>
+                <nav className="mt-3 flex flex-col gap-2 text-sm">
+                  <Link href="/disclaimer" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    Disclaimer
+                  </Link>
+                  <Link href="/privacy" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    Privacy Policy
+                  </Link>
+                  <Link href="/terms" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    Terms
+                  </Link>
+                </nav>
+              </div>
             </div>
 
-            <p className="mt-6 text-xs text-[#b5b0a8] leading-relaxed">
-              Information is based on publicly available sources and may change
-              over time.
+            <p className="mt-10 text-xs text-[#b5b0a8] leading-relaxed">
+              Information is based on publicly available sources and may change over time.
             </p>
             <p className="mt-4 pt-6 border-t border-[#e3dfd6] text-xs text-[#b5b0a8] leading-relaxed">
-              This site is for informational purposes only and does not
-              constitute medical advice, diagnosis, or treatment. Always consult
-              a qualified healthcare provider. Prices shown are approximate and
-              subject to change.
+              This site is for informational purposes only and does not constitute medical advice,
+              diagnosis, or treatment. Always consult a qualified healthcare provider. Prices shown are
+              approximate and subject to change.
             </p>
           </div>
         </footer>

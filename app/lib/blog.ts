@@ -63,3 +63,15 @@ export function getPostsPage(page: number): {
   const posts = all.slice(start, start + BLOG_POSTS_PER_PAGE);
   return { posts, totalPages, total, currentPage };
 }
+
+/** Related articles by recency (pinned ordering does not apply here). */
+export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
+  const all = postsData as BlogPost[];
+  return all
+    .filter((p) => p.slug !== slug)
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
+    .slice(0, Math.max(1, limit));
+}

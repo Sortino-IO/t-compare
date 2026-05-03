@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { BlogBlock, ParagraphSegment } from "../lib/blog";
+import { createLinkifyCounters, linkifyPlainText, type LinkifyCounters } from "../lib/blog-linkify";
 import { withTtimeAffiliateParams } from "../lib/affiliate-links";
 import BlogComparisonBanner from "./BlogComparisonBanner";
 
@@ -9,9 +10,9 @@ function isExternalHref(href: string): boolean {
   return href.startsWith("https://") || href.startsWith("http://");
 }
 
-function RichParagraph({ segments }: { segments: ParagraphSegment[] }) {
+function InlineSegments({ segments }: { segments: ParagraphSegment[] }) {
   return (
-    <p className="mb-6 text-base leading-relaxed text-[#44403c] sm:text-lg last:mb-0">
+    <>
       {segments.map((seg, j) =>
         seg.type === "text" ? (
           <span key={j}>{seg.text}</span>
@@ -35,11 +36,19 @@ function RichParagraph({ segments }: { segments: ParagraphSegment[] }) {
           </Link>
         )
       )}
+    </>
+  );
+}
+
+function RichParagraph({ segments }: { segments: ParagraphSegment[] }) {
+  return (
+    <p className="mb-6 text-base leading-relaxed text-[#44403c] sm:text-lg last:mb-0">
+      <InlineSegments segments={segments} />
     </p>
   );
 }
 
-type RenderCtx = { seenFirstH2: boolean };
+type RenderCtx = { seenFirstH2: boolean; linkify: LinkifyCounters };
 
 function renderBlock(block: BlogBlock, i: number, ctx: RenderCtx) {
   if (block.type === "paragraph") {
@@ -47,14 +56,8 @@ function renderBlock(block: BlogBlock, i: number, ctx: RenderCtx) {
       return <RichParagraph key={i} segments={block.segments} />;
     }
     if ("text" in block && block.text) {
-      return (
-        <p
-          key={i}
-          className="mb-6 text-base leading-relaxed text-[#44403c] sm:text-lg last:mb-0"
-        >
-          {block.text}
-        </p>
-      );
+      const segments = linkifyPlainText(block.text, ctx.linkify);
+      return <RichParagraph key={i} segments={segments} />;
     }
     return null;
   }
@@ -92,7 +95,9 @@ function renderBlock(block: BlogBlock, i: number, ctx: RenderCtx) {
         className="mb-6 list-disc space-y-2.5 pl-6 text-base leading-relaxed text-[#44403c] marker:text-[#2a6e47] sm:text-lg"
       >
         {block.items.map((item, li) => (
-          <li key={li}>{item}</li>
+          <li key={li}>
+            <InlineSegments segments={linkifyPlainText(item, ctx.linkify)} />
+          </li>
         ))}
       </ul>
     );
@@ -162,7 +167,7 @@ function findMidBannerInsertIndex(blocks: BlogBlock[]): number {
 }
 
 export default function BlogContent({ blocks }: { blocks: BlogBlock[] }) {
-  const ctx: RenderCtx = { seenFirstH2: false };
+  const ctx: RenderCtx = { seenFirstH2: false, linkify: createLinkifyCounters() };
   const n = blocks.length;
   const mid = findMidBannerInsertIndex(blocks);
 

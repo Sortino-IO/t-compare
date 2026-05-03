@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import ComparisonTable, { type ComparisonRow } from "../../components/ComparisonTable";
 import { getAllBrands, getBrandBySlug, type Brand } from "../../lib/brands";
+import { getPairComparisonExtras } from "../../lib/pair-comparison-extras";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 
 type Params = { pair: string };
@@ -81,6 +82,8 @@ export default async function ComparePairPage({ params }: PageProps) {
 
   const [a, b] = [leftBrand, rightBrand].sort(byName);
 
+  const pairExtras = getPairComparisonExtras(canonicalPairSlug);
+
   const rows: ComparisonRow[] = [
     {
       label: "Starting price (snapshot)",
@@ -120,6 +123,7 @@ export default async function ComparePairPage({ params }: PageProps) {
         </ul>
       ),
     },
+    ...(pairExtras?.rows ?? []),
   ];
 
   return (
@@ -221,6 +225,27 @@ export default async function ComparePairPage({ params }: PageProps) {
           <p className="mt-4 text-xs text-[#78716c] leading-relaxed">
             Not medical advice. Pricing, availability, and inclusions vary by state and can change over time.
           </p>
+
+          {pairExtras?.extraSources?.length ? (
+            <div className="mt-8 border-t border-[#ede9e0] pt-6">
+              <h3 className="text-sm font-semibold text-[#1c1917]">Additional references (pair-specific)</h3>
+              <ul className="mt-3 space-y-2 text-sm text-[#57534e]">
+                {pairExtras.extraSources.map((s) => (
+                  <li key={s.href}>
+                    <span className="text-[#78716c]">{s.label}: </span>
+                    <a
+                      className="text-[#2a6e47] hover:underline break-all"
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {s.href}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

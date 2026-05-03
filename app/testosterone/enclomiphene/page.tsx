@@ -111,10 +111,12 @@ export default function EnclomiphenePage() {
           <span className="text-xs text-[#b5b0a8]">Price low → high</span>
         </div>
 
-        {/* Provider cards */}
+        {/* Provider cards (sorted low → high; first row = lowest published anchor in our dataset) */}
         <div className="flex flex-col gap-3">
           {brands.map((brand, i) => (
-            <BrandCard key={brand.slug} brand={brand} highlight={i === 0} />
+            <div key={brand.slug} id={i === 0 ? "lowest-price-provider" : undefined} className="scroll-mt-28">
+              <BrandCard brand={brand} highlight={i === 0} />
+            </div>
           ))}
         </div>
 

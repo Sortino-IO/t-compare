@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllBrands } from "../lib/brands";
 
 export const metadata: Metadata = {
   title: "Testosterone Treatment Categories",
@@ -7,18 +8,23 @@ export const metadata: Metadata = {
     "Browse informational comparisons of testosterone-related treatment categories including enclomiphene and more.",
 };
 
-const categories = [
-  {
-    name: "Enclomiphene",
-    slug: "enclomiphene",
-    description:
-      "A selective estrogen receptor modulator (SERM) that stimulates the body's own testosterone production without direct hormone replacement.",
-    providerCount: 5,
-    priceFrom: 79,
-  },
-];
-
 export default function TestosteronePage() {
+  const encloBrands = getAllBrands().filter((b) => b.category === "enclomiphene");
+  const providerCount = encloBrands.length;
+  /** Same ordering as /testosterone/enclomiphene (low → high). */
+  const priceFrom = encloBrands.length ? encloBrands[0]!.priceFromMonthly : 0;
+
+  const categories = [
+    {
+      name: "Enclomiphene",
+      slug: "enclomiphene",
+      description:
+        "A selective estrogen receptor modulator (SERM) that stimulates the body's own testosterone production without direct hormone replacement.",
+      providerCount,
+      priceFrom,
+    },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
       {/* Breadcrumb */}

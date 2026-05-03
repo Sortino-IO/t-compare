@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BlogArticleTrust from "../../components/BlogArticleTrust";
 import BlogContent from "../../components/BlogContent";
-import { getAllSlugs, getPostBySlug } from "../../lib/blog";
+import BlogPostRelated from "../../components/BlogPostRelated";
+import { getAllSlugs, getPostBySlug, getRelatedPosts } from "../../lib/blog";
 import { SITE_URL } from "../../lib/site";
 
 function absoluteImageUrl(src: string): string {
@@ -76,6 +78,8 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug);
 
   if (!post) notFound();
+
+  const related = getRelatedPosts(post.slug, 3);
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
   const jsonLd = {
@@ -150,6 +154,11 @@ export default async function BlogPostPage({ params }: Props) {
 
         <div className="mx-auto max-w-5xl px-6">
           <BlogContent blocks={post.content} />
+        </div>
+
+        <div className="mx-auto max-w-5xl px-6">
+          <BlogArticleTrust />
+          <BlogPostRelated posts={related} />
         </div>
 
         <div className="mx-auto mt-16 max-w-3xl border-t border-[#e3dfd6] px-6 pt-10 text-center">
