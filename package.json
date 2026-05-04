@@ -16,7 +16,9 @@
     "check:blog-images:all": "npm run check:blog-images && npm run check:blog-image-banned && npm run check:blog-image-cap && npm run check:blog-image-per-post && npm run check:blog-image-unsplash-http",
     "dedupe:blog-images": "node scripts/dedupe-blog-images.mjs",
     "align:blog-images-unsplash": "node scripts/apply-blog-image-guidelines.mjs",
-    "sync:blog14": "node scripts/sync-blog14-to-posts.mjs"
+    "sync:blog14": "node scripts/sync-blog14-to-posts.mjs",
+    "export:blog14": "node scripts/export-blog14-from-posts.mjs",
+    "apply:blog-standards": "node scripts/apply-blog-content-standards.mjs"
   },
   "dependencies": {
     "next": "16.2.0",

@@ -4,9 +4,9 @@ import { getAllBrands } from "../lib/brands";
 import ComparisonPairsGrid from "../components/ComparisonPairsGrid";
 
 export const metadata: Metadata = {
-  title: "Comparisons",
+  title: "Comparisons | T-Compare",
   description:
-    "Side-by-side comparisons of testosterone-related providers using publicly available information and cited sources.",
+    "TRT and enclomiphene telehealth comparisons: use 90-day all-in cost, lab cadence, and plan length. Confirm pricing on official sites, not forum screenshots.",
 };
 
 function allPairs() {
@@ -65,7 +65,7 @@ export default function ComparisonsIndexPage() {
             <ul className="mt-3 list-disc pl-5 text-sm text-[#57534e] space-y-2">
               <li>What does “starting at” assume (commitment, promos, dose)?</li>
               <li>Are labs included or billed separately (and how often)?</li>
-              <li>What happens if you need a dose change-does the pricing reset?</li>
+              <li>What happens if you need a dose change: does the pricing reset?</li>
               <li>Is a live visit required, or is care primarily async messaging?</li>
             </ul>
           </div>
@@ -81,6 +81,73 @@ export default function ComparisonsIndexPage() {
         </div>
 
         <ComparisonPairsGrid pairs={pairs} />
+
+        <section className="mt-12 rounded-2xl border border-[#e3dfd6] bg-white p-6 sm:p-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)]">
+            FAQ
+          </h2>
+          <p className="mt-2 text-sm text-[#57534e] max-w-3xl leading-relaxed">
+            Short answers to how people actually search when comparing online hormone programs. Not medical advice;
+            follow your clinician’s plan.
+          </p>
+          <dl className="mt-6 space-y-6">
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                Is the cheapest monthly price always the cheapest total cost?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Often no. Many plans front-load labs, kits, or memberships. Compare the same window (for example 90
+                days or 12 months) and include shipping, required retesting, and whether messaging visits count as
+                extras.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                Why do two brands feel incomparable even when both mention testosterone?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Therapy class differs: oral enclomiphene pathways versus injections or gels target different goals,
+                risks, and monitoring. Holding therapy type constant makes comparisons honest.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                Where should I verify pricing and eligibility?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                On each provider’s official checkout flow for your state today. Third-party tables age quickly; rely on
+                primary sources before you pay.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                Common misconception: is telehealth always async-only care?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Not always. Some states or protocols require synchronous visits for certain prescriptions or escalations.
+                Read each program’s intake rules rather than assuming text-only care forever.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                What should I ask about labs before I subscribe?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Ask which panels are required at baseline, what triggers follow-up testing, and whether phlebotomy is
+                in-network with your insurance when that matters to you.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                How does T-Compare stay useful if prices change?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                We link to official pages so you can re-check details. Use comparison pages to structure questions,
+                then confirm numbers on the provider site the day you enroll.
+              </dd>
+            </div>
+          </dl>
+        </section>
       </div>
     </div>
   );

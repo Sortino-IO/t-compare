@@ -50,9 +50,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : `${canonical.left} vs ${canonical.right}`;
 
   return {
-    title,
+    title: `${title} | T-Compare`.slice(0, 60),
     description:
-      "Side-by-side comparison based on publicly available information. Verify pricing, inclusions, and eligibility directly with each provider.",
+      "Side-by-side TRT and enclomiphene snapshots: price framing, onboarding, and provider notes. Re-verify totals, labs, and state rules on each site before you pay.",
   };
 }
 
@@ -247,6 +247,61 @@ export default async function ComparePairPage({ params }: PageProps) {
             </div>
           ) : null}
         </div>
+
+        <section className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6 sm:p-8">
+          <h2 className="text-lg font-semibold text-[#1c1917]">FAQ</h2>
+          <p className="mt-2 text-sm text-[#57534e] max-w-3xl leading-relaxed">
+            Quick answers for comparing {a.name} and {b.name}. Educational only; confirm your own eligibility and
+            pricing on official sites.
+          </p>
+          <dl className="mt-6 space-y-6">
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                Does this page pick a “winner” between {a.name} and {b.name}?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                No. It summarizes publicly framed pricing and onboarding language so you can ask sharper questions.
+                Outcomes depend on diagnosis, monitoring, and adherence—not logos.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                What is the biggest mistake when comparing monthly prices?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Ignoring plan length and lab cadence. Normalize both brands to the same time horizon (for example 90
+                days) and include shipping, kits, and repeat labs when advertised separately.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                Where should I verify the numbers?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Use each provider’s official checkout or FAQ pages for your state on the day you enroll. This snapshot
+                can drift when promotions or regulations change.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                Common misconception: if two brands list testosterone, are they the same therapy?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Not necessarily. Enclomiphene-first programs and injectable TRT carry different monitoring expectations
+                and risks. Your clinician helps match therapy class to labs and goals.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-[#1c1917]">
+                What should I ask before paying?
+              </dt>
+              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
+                Ask what is included if your dose changes, what labs repeat and when, and how urgent symptoms are
+                triaged after hours.
+              </dd>
+            </div>
+          </dl>
+        </section>
       </div>
     </div>
   );
