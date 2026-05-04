@@ -55,7 +55,7 @@ export default function BrandCardExpand({ slug, why, highlight }: BrandCardExpan
         </Link>
       </div>
 
-      {/* Expandable panel — smooth height via grid trick */}
+      {/* Expandable panel - smooth height via grid trick */}
       <div
         className={`grid transition-[grid-template-rows] duration-200 ease-out ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
       >

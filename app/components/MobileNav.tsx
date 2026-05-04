@@ -94,7 +94,7 @@ export default function MobileNav() {
         )}
       </button>
 
-      {/* Dropdown — absolutely positioned below the header (header must be relative) */}
+      {/* Dropdown - absolutely positioned below the header (header must be relative) */}
       {open && (
         <div
           id="mobile-menu"

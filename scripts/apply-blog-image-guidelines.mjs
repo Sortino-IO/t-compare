@@ -14,7 +14,7 @@ import { FORBIDDEN_UNSPLASH_PHOTO_IDS } from "./blog-image-banned-ids.mjs";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const postsPath = path.join(__dirname, "../app/data/posts.json");
 
-/** [fromPhotoIdPrefix, toPhotoIdPrefix] — replaces path segment after /photo- */
+/** [fromPhotoIdPrefix, toPhotoIdPrefix] - replaces path segment after /photo- */
 const ID_REPLACEMENTS = [
   ["photo-1563013544-824ae1b704d3", "photo-1584308666744-24d5c474f2ae"],
   ["photo-1631217868264-e5b90bb7e133", "photo-1577401132921-cb39bb0adcff"],
@@ -30,7 +30,7 @@ const ID_REPLACEMENTS = [
 ];
 
 const TELEHEALTH_ID = "photo-1729280860113-82372b7afad6";
-/** Meds/lab context — replacement when the telehealth-adjacent hero is duplicated outside the online-care article */
+/** Meds/lab context - replacement when the telehealth-adjacent hero is duplicated outside the online-care article */
 const TELEHEALTH_REPLACE = "photo-1577401132921-cb39bb0adcff";
 const ONLINE_SLUG = "online-treatment-mens-health";
 

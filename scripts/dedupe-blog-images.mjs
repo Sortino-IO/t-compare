@@ -106,7 +106,7 @@ function pickAny(seenPost) {
     }
   }
   throw new Error(
-    "dedupe-blog-images: pool exhausted — add more PHOTO_IDS_POOL entries or raise MAX_USES_GLOBAL.",
+    "dedupe-blog-images: pool exhausted - add more PHOTO_IDS_POOL entries or raise MAX_USES_GLOBAL.",
   );
 }
 

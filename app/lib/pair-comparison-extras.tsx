@@ -4,7 +4,7 @@ import { withTtimeAffiliateParams } from "./affiliate-links";
 export type PairComparisonExtras = {
   /** Appended after the default snapshot rows (columns follow alphabetical provider name order). */
   rows: ComparisonRow[];
-  /** Shown under Sources — educational / verification links beyond each brand’s primary URLs. */
+  /** Shown under Sources - educational / verification links beyond each brand’s primary URLs. */
   extraSources?: { label: string; href: string }[];
 };
 

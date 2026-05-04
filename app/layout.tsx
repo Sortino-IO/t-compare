@@ -33,7 +33,7 @@ function siteVerification(): Metadata["verification"] | undefined {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "T-Compare — Testosterone Provider Comparison",
+    default: "T-Compare - Testosterone Provider Comparison",
     template: "%s | T-Compare",
   },
   description:
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "T-Compare — Compare Testosterone Providers",
+        alt: "T-Compare - Compare Testosterone Providers",
       },
     ],
   },
@@ -84,7 +84,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col">
         <GoogleTagManager />
-        {/* Header — relative so the mobile dropdown can use absolute top-full */}
+        {/* Header - relative so the mobile dropdown can use absolute top-full */}
         <header className="relative border-b border-[#e3dfd6] bg-[#f5f3ee]">
           <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
             <Link
@@ -102,7 +102,7 @@ export default function RootLayout({
               />
             </Link>
 
-            {/* Desktop nav — hidden on mobile */}
+            {/* Desktop nav - hidden on mobile */}
             <nav className="hidden sm:flex items-center gap-6">
               <Link href="/" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
                 Home
@@ -121,7 +121,7 @@ export default function RootLayout({
               </Link>
             </nav>
 
-            {/* Mobile nav — hamburger + dropdown, hidden on sm+ */}
+            {/* Mobile nav - hamburger + dropdown, hidden on sm+ */}
             <MobileNav />
           </div>
         </header>
@@ -138,7 +138,7 @@ export default function RootLayout({
                 </span>
                 <p className="mt-1.5 text-xs text-[#a8a29e] leading-relaxed max-w-md">
                   Independent, informational comparisons of testosterone-related telehealth programs.
-                  Not medical advice—always confirm eligibility, pricing, and inclusions with the provider.
+                  Not medical advice-always confirm eligibility, pricing, and inclusions with the provider.
                 </p>
               </div>
 

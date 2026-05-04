@@ -21,7 +21,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Card highlight pulse — triggered by AskAssistant scroll */
+/* Card highlight pulse - triggered by AskAssistant scroll */
 @keyframes cardPulse {
   0%   { outline: 2px solid transparent; outline-offset: 3px; }
   25%  { outline: 2px solid #2a6e47;     outline-offset: 3px; }

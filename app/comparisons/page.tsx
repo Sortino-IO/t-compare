@@ -65,7 +65,7 @@ export default function ComparisonsIndexPage() {
             <ul className="mt-3 list-disc pl-5 text-sm text-[#57534e] space-y-2">
               <li>What does “starting at” assume (commitment, promos, dose)?</li>
               <li>Are labs included or billed separately (and how often)?</li>
-              <li>What happens if you need a dose change—does the pricing reset?</li>
+              <li>What happens if you need a dose change-does the pricing reset?</li>
               <li>Is a live visit required, or is care primarily async messaging?</li>
             </ul>
           </div>

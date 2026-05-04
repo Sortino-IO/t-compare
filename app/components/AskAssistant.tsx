@@ -16,14 +16,14 @@ const QA_LIST: QA[] = [
     id: "cheapest",
     question: "Which provider has the lowest starting price?",
     answer:
-      "On T-Compare’s enclomiphene comparison grid, providers are sorted low → high by published starting price. The top row is always the lowest anchor in our current dataset (verify checkout totals—labs, promos, and plan length can change the real cost).",
+      "On T-Compare’s enclomiphene comparison grid, providers are sorted low → high by published starting price. The top row is always the lowest anchor in our current dataset (verify checkout totals-labs, promos, and plan length can change the real cost).",
     scrollTo: "lowest-price-provider",
   },
   {
     id: "fastest",
     question: "Which program emphasizes the fastest onboarding?",
     answer:
-      "Among brands we list, TTime is tagged as a faster-start flow versus standard onboarding elsewhere. “Fast” still means clinician review and eligibility rules apply—open the provider listing for specifics.",
+      "Among brands we list, TTime is tagged as a faster-start flow versus standard onboarding elsewhere. “Fast” still means clinician review and eligibility rules apply-open the provider listing for specifics.",
     scrollTo: "card-ttime",
   },
   {
@@ -36,7 +36,7 @@ const QA_LIST: QA[] = [
     id: "consultation",
     question: "Do I need a consultation or labs?",
     answer:
-      "Prescription programs require licensed clinician review; many also require baseline and follow‑up labs. Exact requirements vary by provider, state, and clinical context—confirm what you must complete before checkout.",
+      "Prescription programs require licensed clinician review; many also require baseline and follow‑up labs. Exact requirements vary by provider, state, and clinical context-confirm what you must complete before checkout.",
   },
   {
     id: "after-signup",
@@ -64,7 +64,7 @@ export default function AskAssistant() {
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Close on outside click / tap — only active when open
+  // Close on outside click / tap - only active when open
   useEffect(() => {
     if (!open) return;
 
@@ -115,7 +115,7 @@ export default function AskAssistant() {
   return (
     <>
       {/*
-        PANEL — only mounted in the DOM when open.
+        PANEL - only mounted in the DOM when open.
         When closed it does not exist at all, so it cannot
         intercept any touch or pointer events.
       */}
@@ -226,7 +226,7 @@ export default function AskAssistant() {
       )}
 
       {/*
-        BUTTON — independent fixed element, always present.
+        BUTTON - independent fixed element, always present.
         Has no shared container with the panel, so its DOM
         footprint never exceeds the visible button area.
       */}

@@ -173,7 +173,7 @@ export default async function BrandPage({ params }: Props) {
                 <ul className="flex flex-col gap-1.5">
                   {brand.notes.map((note, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-[#44403c] leading-relaxed">
-                      <span className="text-[#b5b0a8] mt-0.5 shrink-0">–</span>
+                      <span className="text-[#b5b0a8] mt-0.5 shrink-0">-</span>
                       {note}
                     </li>
                   ))}
@@ -261,7 +261,7 @@ export default async function BrandPage({ params }: Props) {
               </section>
             ) : null}
 
-            {/* Sources — collapsed */}
+            {/* Sources - collapsed */}
             <details className="mt-8 group">
               <summary className="cursor-pointer list-none flex items-center gap-1.5 text-xs font-medium text-[#b5b0a8] hover:text-[#78716c] transition-colors select-none">
                 <svg
@@ -289,7 +289,7 @@ export default async function BrandPage({ params }: Props) {
             </details>
           </div>
 
-          {/* Right column — pricing card */}
+          {/* Right column - pricing card */}
           <div>
             <div className="rounded-2xl bg-white border border-[#e3dfd6] p-7 shadow-sm">
               <p className="text-[11px] font-semibold tracking-[0.2em] text-[#b5b0a8] uppercase mb-5">

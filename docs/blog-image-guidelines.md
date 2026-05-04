@@ -4,14 +4,14 @@ Use these rules for **every** `featuredImage`, inline `image` `src`, and any fut
 
 ## Allowed visual themes (pick one clear fit per image)
 
-- **Testosterone** — educational / clinical context (not sensational “gains” marketing).
-- **Men’s hormone health** — evaluation, monitoring, responsible care framing.
-- **Enclomiphene** — educational framing (mechanism, programs, labs)—never as branded advertising.
-- **Prescription medication** — neutral, **non-branded** pills/capsules/blister packs when appropriate.
-- **Healthy adult man, confident posture** — lifestyle-adjacent but still compatible with men’s health editorial tone.
-- **Man with increased energy / daily activity** — walking, training, everyday movement (avoid unrelated sports hero stock).
-- **Testosterone molecule structure** — scientific / diagram-style (ensure license and accuracy if custom).
-- **Infographic-style hormone levels chart** — educational charts only; no fake “lab results” that imply diagnosis.
+- **Testosterone** - educational / clinical context (not sensational “gains” marketing).
+- **Men’s hormone health** - evaluation, monitoring, responsible care framing.
+- **Enclomiphene** - educational framing (mechanism, programs, labs)-never as branded advertising.
+- **Prescription medication** - neutral, **non-branded** pills/capsules/blister packs when appropriate.
+- **Healthy adult man, confident posture** - lifestyle-adjacent but still compatible with men’s health editorial tone.
+- **Man with increased energy / daily activity** - walking, training, everyday movement (avoid unrelated sports hero stock).
+- **Testosterone molecule structure** - scientific / diagram-style (ensure license and accuracy if custom).
+- **Infographic-style hormone levels chart** - educational charts only; no fake “lab results” that imply diagnosis.
 
 ## Do not use (reject stock that looks like this)
 
@@ -26,18 +26,18 @@ Use these rules for **every** `featuredImage`, inline `image` `src`, and any fut
 - **Women-focused** marketing or lifestyle stock where women are the main subject.
 - **Pregnancy / female fertility** visuals.
 - **Female-presenting** people as hero/primary subjects for these posts (this site’s educational scope here is men’s hormone health).
-- **Surgery / operating room / “scrubs in an OR”** as the main subject — these articles are not surgical care; OR imagery misleads unless the copy is explicitly about a surgical topic (it isn’t here).
-- **Stethoscope** as the primary visual shorthand for “medicine” — overused, clichéd stock; avoid heroes where the stethoscope is the main subject.
-- **Fake-looking “doctor holding a clipboard, smiling straight at the camera”** — generic healthcare-ad tropes; looks like performance marketing, not men’s hormone education.
-- **Readable text in the frame** — especially logos, slogans, or non-English script on clothing, signs, or screens (including Hebrew). Prefer plain apparel and backgrounds so visuals stay language-neutral for all readers.
+- **Surgery / operating room / “scrubs in an OR”** as the main subject - these articles are not surgical care; OR imagery misleads unless the copy is explicitly about a surgical topic (it isn’t here).
+- **Stethoscope** as the primary visual shorthand for “medicine” - overused, clichéd stock; avoid heroes where the stethoscope is the main subject.
+- **Fake-looking “doctor holding a clipboard, smiling straight at the camera”** - generic healthcare-ad tropes; looks like performance marketing, not men’s hormone education.
+- **Readable text in the frame** - especially logos, slogans, or non-English script on clothing, signs, or screens (including Hebrew). Prefer plain apparel and backgrounds so visuals stay language-neutral for all readers.
 
 If a candidate image could fit both an “allowed” and a “banned” reading (e.g. “fit woman running”), **discard it** and pick a clearer option.
 
 ## Style guidelines
 
-- **Modern, clean, premium** — avoid cluttered stock, neon gradients, or meme aesthetics.
-- **Natural lighting, realistic environments** — believable clinic/home/gym context; no hyper-stylized CGI unless it’s a diagram.
-- **Subtle, trustworthy, editorial-style imagery** — looks like serious health publishing, not aggressive performance marketing.
+- **Modern, clean, premium** - avoid cluttered stock, neon gradients, or meme aesthetics.
+- **Natural lighting, realistic environments** - believable clinic/home/gym context; no hyper-stylized CGI unless it’s a diagram.
+- **Subtle, trustworthy, editorial-style imagery** - looks like serious health publishing, not aggressive performance marketing.
 
 ## Alt text and captions
 
@@ -48,7 +48,7 @@ If a candidate image could fit both an “allowed” and a “banned” reading 
 
 Run `npm run check:blog-images` to ensure there are no broken **local** `/blog/...` paths. Remote URLs must still be chosen using the rules above.
 
-For **Unsplash** links, paste the full `https://images.unsplash.com/photo-…` URL in a browser or use `curl -I`: the image must return **HTTP 200**. A wrong photo suffix returns **404** (broken hero). Also open the uncropped image on unsplash.com once—stock that looks like a **hotel room**, **invoice**, or **generic laptop** should be rejected even if the ID was copy-pasted from an old list.
+For **Unsplash** links, paste the full `https://images.unsplash.com/photo-…` URL in a browser or use `curl -I`: the image must return **HTTP 200**. A wrong photo suffix returns **404** (broken hero). Also open the uncropped image on unsplash.com once-stock that looks like a **hotel room**, **invoice**, or **generic laptop** should be rejected even if the ID was copy-pasted from an old list.
 
 **Site-wide reuse:** the same Unsplash `photo-…` ID should appear **at most twice** across all featured and inline images (run `npm run check:blog-image-cap`).
 

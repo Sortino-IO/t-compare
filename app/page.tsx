@@ -85,7 +85,7 @@ export default function HomePage() {
 
         <p className="mt-5 text-xs text-[#b5b0a8] text-center leading-relaxed">
           Information is based on publicly available sources and may change over
-          time. Pricing is indicative — verify directly with each provider.
+          time. Pricing is indicative - verify directly with each provider.
         </p>
 
         {/* Trust section */}

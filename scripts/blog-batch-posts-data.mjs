@@ -4,11 +4,11 @@ export const batchPosts = [
     title: "Low Testosterone Ruined My Marriage: Real Stories and Solutions",
     slug: "low-testosterone-marriage-real-stories-solutions",
     excerpt:
-      "If you searched “low testosterone ruined my marriage,” you are not alone in feeling strain—but the evidence is more nuanced than a single hormone label. Here is what research links to relationship distress, and what structured next steps look like.",
+      "If you searched “low testosterone ruined my marriage,” you are not alone in feeling strain-but the evidence is more nuanced than a single hormone label. Here is what research links to relationship distress, and what structured next steps look like.",
     featuredImage:
       "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Friends talking together outdoors — social support when stress affects relationships and health",
+      "Friends talking together outdoors - social support when stress affects relationships and health",
     publishedAt: "2026-04-14",
     seoTitle:
       "Low Testosterone Ruined My Marriage? Evidence & Next Steps | T-Compare",
@@ -17,7 +17,7 @@ export const batchPosts = [
     content: [
       {
         type: "paragraph",
-        text: 'The search phrase “low testosterone ruined my marriage” usually appears after months of tension: mismatched desire, fatigue, irritability, embarrassment, and silence. This article does not invent anonymous “real stories.” Instead, it summarizes peer-reviewed patterns that help explain why couples feel stuck, then outlines solutions that belong in real medical and relationship conversations—not in comment threads.',
+        text: 'The search phrase “low testosterone ruined my marriage” usually appears after months of tension: mismatched desire, fatigue, irritability, embarrassment, and silence. This article does not invent anonymous “real stories.” Instead, it summarizes peer-reviewed patterns that help explain why couples feel stuck, then outlines solutions that belong in real medical and relationship conversations-not in comment threads.',
       },
       {
         type: "heading",
@@ -30,7 +30,7 @@ export const batchPosts = [
       },
       {
         type: "paragraph",
-        text: "Interpreting that finding carefully matters. It does not mean testosterone “explains” every marriage problem, or that every man with relationship conflict has a hormone diagnosis. It means that when sexual health complaints exist, clinicians sometimes find endocrine contributors—and partners often experience the problem as relational, not narrowly medical.",
+        text: "Interpreting that finding carefully matters. It does not mean testosterone “explains” every marriage problem, or that every man with relationship conflict has a hormone diagnosis. It means that when sexual health complaints exist, clinicians sometimes find endocrine contributors-and partners often experience the problem as relational, not narrowly medical.",
       },
       {
         type: "heading",
@@ -39,7 +39,7 @@ export const batchPosts = [
       },
       {
         type: "paragraph",
-        text: "Symptoms linked to low testosterone in clinical hypogonadism—reduced libido, fatigue, low mood in some patients—overlap with common couples’ complaints. But many non-hormone factors also produce similar complaints: depression, alcohol use, sleep disruption, untreated sleep apnea, relationship conflict, stress, and medication effects. That overlap is why “verify, don’t assume” is the safer mental model.",
+        text: "Symptoms linked to low testosterone in clinical hypogonadism-reduced libido, fatigue, low mood in some patients-overlap with common couples’ complaints. But many non-hormone factors also produce similar complaints: depression, alcohol use, sleep disruption, untreated sleep apnea, relationship conflict, stress, and medication effects. That overlap is why “verify, don’t assume” is the safer mental model.",
       },
       {
         type: "bulletList",
@@ -59,7 +59,7 @@ export const batchPosts = [
         segments: [
           {
             type: "text",
-            text: "If evaluation confirms symptomatic hypogonadism, treatment options depend on goals—fertility plans, comorbidities, preferences, and monitoring capacity. Educational comparisons on this site (for example ",
+            text: "If evaluation confirms symptomatic hypogonadism, treatment options depend on goals-fertility plans, comorbidities, preferences, and monitoring capacity. Educational comparisons on this site (for example ",
           },
           {
             type: "link",
@@ -74,7 +74,7 @@ export const batchPosts = [
       },
       {
         type: "paragraph",
-        text: "If evaluation does not support hypogonadism, couples still deserve a plan for distress. In that scenario, the most evidence-aligned path may be mental-health support, sleep evaluation, cardiometabolic risk management, or conflict-resolution work—rather than hormone therapy driven by headlines.",
+        text: "If evaluation does not support hypogonadism, couples still deserve a plan for distress. In that scenario, the most evidence-aligned path may be mental-health support, sleep evaluation, cardiometabolic risk management, or conflict-resolution work-rather than hormone therapy driven by headlines.",
       },
       {
         type: "disclaimer",
@@ -93,7 +93,7 @@ export const batchPosts = [
     featuredImage:
       "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Outdoor cycling — investing effort in long-term men’s health planning and program costs",
+      "Outdoor cycling - investing effort in long-term men’s health planning and program costs",
     publishedAt: "2026-04-13",
     seoTitle: "Enclomiphene Cost: Compare Online Provider Fees | T-Compare",
     seoDescription:
@@ -101,7 +101,7 @@ export const batchPosts = [
     content: [
       {
         type: "paragraph",
-        text: 'People search “enclomiphene cost” because advertised monthly prices rarely arrive alone. A headline number may exclude initial labs, follow-up labs, consultation fees, shipping, or dose-dependent pharmacy charges. The only reliable approach is to rebuild the estimate line by line using each provider’s current disclosures—then compare similar bundles.',
+        text: 'People search “enclomiphene cost” because advertised monthly prices rarely arrive alone. A headline number may exclude initial labs, follow-up labs, consultation fees, shipping, or dose-dependent pharmacy charges. The only reliable approach is to rebuild the estimate line by line using each provider’s current disclosures-then compare similar bundles.',
       },
       {
         type: "heading",
@@ -167,11 +167,11 @@ export const batchPosts = [
     title: "Sleep Apnea and Low Testosterone: The Hidden Connection",
     slug: "sleep-apnea-low-testosterone-hidden-connection",
     excerpt:
-      "Sleep apnea and low testosterone track together in epidemiologic data and meta-analyses—especially as severity increases. Here are the numbers researchers report, and what they do (and do not) imply for treatment.",
+      "Sleep apnea and low testosterone track together in epidemiologic data and meta-analyses-especially as severity increases. Here are the numbers researchers report, and what they do (and do not) imply for treatment.",
     featuredImage:
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Yoga and breath-focused recovery — calm breathing as a contrast to disrupted sleep",
+      "Yoga and breath-focused recovery - calm breathing as a contrast to disrupted sleep",
     publishedAt: "2026-04-12",
     seoTitle: "Sleep Apnea and Low Testosterone: Data & Context | T-Compare",
     seoDescription:
@@ -179,7 +179,7 @@ export const batchPosts = [
     content: [
       {
         type: "paragraph",
-        text: 'If you pair the keywords “sleep apnea and low testosterone,” you are pointing at a real literature thread: across multiple systematic reviews, men with obstructive sleep apnea (OSA) on average show lower serum testosterone than control groups, with stronger associations in severe disease in several analyses. That does not automatically mean OSA “causes” every low testosterone result—but it does justify screening sleep symptoms when hormones and daytime sleepiness overlap.',
+        text: 'If you pair the keywords “sleep apnea and low testosterone,” you are pointing at a real literature thread: across multiple systematic reviews, men with obstructive sleep apnea (OSA) on average show lower serum testosterone than control groups, with stronger associations in severe disease in several analyses. That does not automatically mean OSA “causes” every low testosterone result-but it does justify screening sleep symptoms when hormones and daytime sleepiness overlap.',
       },
       {
         type: "heading",
@@ -188,11 +188,11 @@ export const batchPosts = [
       },
       {
         type: "paragraph",
-        text: "Wang et al. (Sleep and Breathing, 2023) pooled 24 case–control studies reporting 1,268 men with OSA versus 745 male controls; serum testosterone was lower in men with OSA (standardized mean difference approximately −0.97, 95% CI −1.47 to −0.47). Su et al. (Andrology, 2022) pooled 18 studies with 1,823 men and found a significant inverse association between OSA and serum testosterone (SMD −0.76, 95% CI −1.18 to −0.33; p=0.001), with a stronger gradient in severe OSA in subgroup analysis.",
+        text: "Wang et al. (Sleep and Breathing, 2023) pooled 24 case-control studies reporting 1,268 men with OSA versus 745 male controls; serum testosterone was lower in men with OSA (standardized mean difference approximately −0.97, 95% CI −1.47 to −0.47). Su et al. (Andrology, 2022) pooled 18 studies with 1,823 men and found a significant inverse association between OSA and serum testosterone (SMD −0.76, 95% CI −1.18 to −0.33; p=0.001), with a stronger gradient in severe OSA in subgroup analysis.",
       },
       {
         type: "paragraph",
-        text: "Those statistics describe group averages. Individual patients can be eugonadal with severe OSA or hypogonadal for reasons unrelated to sleep—labs and history still decide.",
+        text: "Those statistics describe group averages. Individual patients can be eugonadal with severe OSA or hypogonadal for reasons unrelated to sleep-labs and history still decide.",
       },
       {
         type: "heading",
@@ -202,7 +202,7 @@ export const batchPosts = [
       {
         type: "bulletList",
         items: [
-          "OSA symptoms overlap with depression, obesity-related fatigue, and sedentary habits—common confounders in hormone studies.",
+          "OSA symptoms overlap with depression, obesity-related fatigue, and sedentary habits-common confounders in hormone studies.",
           "Serum testosterone varies by time of day and assay method; guidelines often emphasize morning testing when feasible.",
           "Patients may attribute everything to “low T” and under-report snoring, witnessed apneas, or morning headaches.",
         ],
@@ -238,11 +238,11 @@ export const batchPosts = [
     title: "Can Sleep Apnea Cause Low Testosterone? What Research Says",
     slug: "can-sleep-apnea-cause-low-testosterone-research",
     excerpt:
-      "Association is clear in many cohorts; causation is harder to prove. Here is what interventional studies on CPAP suggest about testosterone changes—and why ‘treat the apnea first’ still matters even when hormones barely budge.",
+      "Association is clear in many cohorts; causation is harder to prove. Here is what interventional studies on CPAP suggest about testosterone changes-and why ‘treat the apnea first’ still matters even when hormones barely budge.",
     featuredImage:
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Yoga studio floor — breath, stress, and sleep quality as levers in hormone evaluation",
+      "Yoga studio floor - breath, stress, and sleep quality as levers in hormone evaluation",
     publishedAt: "2026-04-11",
     seoTitle:
       "Can Sleep Apnea Cause Low Testosterone? Research Summary | T-Compare",
@@ -251,7 +251,7 @@ export const batchPosts = [
     content: [
       {
         type: "paragraph",
-        text: 'The query “can sleep apnea cause low testosterone” pushes toward a mechanistic story: intermittent hypoxia and sleep fragmentation might disrupt hypothalamic–pituitary–gonadal signaling; obesity may simultaneously suppress testosterone and worsen OSA. Plausible physiology exists, but the highest-quality question for patients is pragmatic: if OSA is present, treating it is indicated for cardiometabolic and neurocognitive risk regardless of a hormone number.',
+        text: 'The query “can sleep apnea cause low testosterone” pushes toward a mechanistic story: intermittent hypoxia and sleep fragmentation might disrupt hypothalamic-pituitary-gonadal signaling; obesity may simultaneously suppress testosterone and worsen OSA. Plausible physiology exists, but the highest-quality question for patients is pragmatic: if OSA is present, treating it is indicated for cardiometabolic and neurocognitive risk regardless of a hormone number.',
       },
       {
         type: "heading",
@@ -264,7 +264,7 @@ export const batchPosts = [
       },
       {
         type: "paragraph",
-        text: "Read plainly: you should not count on CPAP to fix hypogonadism—but you also should not ignore OSA while chasing hormone targets. Many patients need both pathways addressed on their own merits.",
+        text: "Read plainly: you should not count on CPAP to fix hypogonadism-but you also should not ignore OSA while chasing hormone targets. Many patients need both pathways addressed on their own merits.",
       },
       {
         type: "heading",
@@ -310,11 +310,11 @@ export const batchPosts = [
     title: "HCG and Clomid Together: Combination Therapy for Low T",
     slug: "hcg-clomid-combination-therapy-low-t",
     excerpt:
-      "hcg and clomid for low testosterone is an off-label combination discussed in hypogonadotropic hypogonadism and fertility-preserving contexts. Here is what a prospective 12-month cohort reported—numbers, limitations, and why general “low T” marketing rarely matches this niche.",
+      "hcg and clomid for low testosterone is an off-label combination discussed in hypogonadotropic hypogonadism and fertility-preserving contexts. Here is what a prospective 12-month cohort reported-numbers, limitations, and why general “low T” marketing rarely matches this niche.",
     featuredImage:
       "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Strength training with a barbell — performance goals discussed alongside fertility-sparing hormone strategies",
+      "Strength training with a barbell - performance goals discussed alongside fertility-sparing hormone strategies",
     publishedAt: "2026-04-10",
     seoTitle: "HCG and Clomid Together for Low T: Evidence Basics | T-Compare",
     seoDescription:
@@ -322,7 +322,7 @@ export const batchPosts = [
     content: [
       {
         type: "paragraph",
-        text: 'Searching “hcg and clomid for low testosterone” usually reflects fertility-sparing goals or clinician-directed attempts to stimulate endogenous testosterone rather than supply exogenous testosterone. Human chorionic gonadotropin (hCG) acts as an LH analog at the Leydig cell; clomiphene citrate is a SERM that shifts hypothalamic/pituitary feedback. Together they are not a universal “low T stack”—they are tools in specific syndromes, dosed and monitored by specialists.',
+        text: 'Searching “hcg and clomid for low testosterone” usually reflects fertility-sparing goals or clinician-directed attempts to stimulate endogenous testosterone rather than supply exogenous testosterone. Human chorionic gonadotropin (hCG) acts as an LH analog at the Leydig cell; clomiphene citrate is a SERM that shifts hypothalamic/pituitary feedback. Together they are not a universal “low T stack”-they are tools in specific syndromes, dosed and monitored by specialists.',
       },
       {
         type: "heading",
@@ -331,7 +331,7 @@ export const batchPosts = [
       },
       {
         type: "paragraph",
-        text: "A prospective study in Research and Reports in Urology (2021; PubMed 34164348) followed 19 men with hypogonadotropic hypogonadism treated with hCG approximately every three days plus clomiphene citrate 25 mg daily for up to 12 months. Mean age was about 30.2 ± 5.6 years; mean hCG dose roughly 5,579 ± 1,774 IU. After 12 months, nine of 19 men (47.4%) had sperm detectable in semen, though morphology and motility limitations were noted in the report—underscoring that “sperm present” is not synonymous with fertility goals met.",
+        text: "A prospective study in Research and Reports in Urology (2021; PubMed 34164348) followed 19 men with hypogonadotropic hypogonadism treated with hCG approximately every three days plus clomiphene citrate 25 mg daily for up to 12 months. Mean age was about 30.2 ± 5.6 years; mean hCG dose roughly 5,579 ± 1,774 IU. After 12 months, nine of 19 men (47.4%) had sperm detectable in semen, though morphology and motility limitations were noted in the report-underscoring that “sperm present” is not synonymous with fertility goals met.",
       },
       {
         type: "paragraph",
@@ -346,7 +346,7 @@ export const batchPosts = [
         type: "bulletList",
         items: [
           "Combination therapy is context-dependent: hypogonadotropic patterns differ from common age-related mixed presentations.",
-          "Monitoring typically includes clinical exam, hormone labs, and semen analysis when fertility is a goal—not a single testosterone number in isolation.",
+          "Monitoring typically includes clinical exam, hormone labs, and semen analysis when fertility is a goal-not a single testosterone number in isolation.",
           "Enclomiphene monotherapy conversations differ mechanistically; compare educational framing in our enclomiphene articles rather than assuming interchangeability.",
         ],
       },
@@ -367,7 +367,7 @@ export const batchPosts = [
     featuredImage:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Adult man portrait — discussing fertility trade-offs and hormone therapy with a clinician",
+      "Adult man portrait - discussing fertility trade-offs and hormone therapy with a clinician",
     publishedAt: "2026-04-09",
     seoTitle: "Enclomiphene Fertility vs TRT: Trial Context | T-Compare",
     seoDescription:
@@ -375,7 +375,7 @@ export const batchPosts = [
     content: [
       {
         type: "paragraph",
-        text: 'The phrase “enclomiphene fertility” captures a prioritization conflict many men feel: treat symptoms now versus protect future fertility. Exogenous testosterone can suppress gonadotropins and reduce sperm production in many men—so telehealth narratives sometimes position enclomiphene as a middle path. The most defensible public statement is trial-specific: enclomiphene has been studied as an oral therapy intended to raise testosterone while avoiding the sperm suppression pattern observed with transdermal testosterone in a randomized comparison.',
+        text: 'The phrase “enclomiphene fertility” captures a prioritization conflict many men feel: treat symptoms now versus protect future fertility. Exogenous testosterone can suppress gonadotropins and reduce sperm production in many men-so telehealth narratives sometimes position enclomiphene as a middle path. The most defensible public statement is trial-specific: enclomiphene has been studied as an oral therapy intended to raise testosterone while avoiding the sperm suppression pattern observed with transdermal testosterone in a randomized comparison.',
       },
       {
         type: "heading",
@@ -426,11 +426,11 @@ export const batchPosts = [
     title: "How to Get an Enclomiphene Prescription Online: What to Expect",
     slug: "enclomiphene-prescription-online-what-to-expect",
     excerpt:
-      "Enclomiphene prescription access via telehealth follows a familiar arc: intake, clinician review, labs, informed consent, and pharmacy routing. Expectations should include verification steps—not instant guarantees.",
+      "Enclomiphene prescription access via telehealth follows a familiar arc: intake, clinician review, labs, informed consent, and pharmacy routing. Expectations should include verification steps-not instant guarantees.",
     featuredImage:
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Professionals collaborating in an office — telehealth coordination and follow-up planning",
+      "Professionals collaborating in an office - telehealth coordination and follow-up planning",
     publishedAt: "2026-04-08",
     seoTitle: "Enclomiphene Prescription Online: What to Expect | T-Compare",
     seoDescription:
@@ -438,7 +438,7 @@ export const batchPosts = [
     content: [
       {
         type: "paragraph",
-        text: 'People type “enclomiphene prescription” after ads promise streamlined access. Responsible programs still mirror core medical steps: history, examination where required, risk screening, baseline labs when indicated, and a discussion of alternatives and monitoring. Online access changes logistics—not the underlying requirement that prescribing remains clinician judgment.',
+        text: 'People type “enclomiphene prescription” after ads promise streamlined access. Responsible programs still mirror core medical steps: history, examination where required, risk screening, baseline labs when indicated, and a discussion of alternatives and monitoring. Online access changes logistics-not the underlying requirement that prescribing remains clinician judgment.',
       },
       {
         type: "heading",
@@ -451,7 +451,7 @@ export const batchPosts = [
           "Secure intake questionnaire covering symptoms, prior testosterone testing, fertility goals, sleep symptoms, medications, and cardiovascular risk factors.",
           "Synchronous or asynchronous clinician review; some states or clinical scenarios require live video.",
           "Laboratory orders for baseline testosterone and additional studies depending on presentation (LH/FSH, prolactin, CBC, PSA strategy per guidelines and age).",
-          "If medication is prescribed, pharmacy routing—often compounding pharmacies for non–FDA-approved formulations—and shipment tracking.",
+          "If medication is prescribed, pharmacy routing-often compounding pharmacies for non-FDA-approved formulations-and shipment tracking.",
           "Follow-up intervals for symptom review and repeat labs; dose changes should not be open-ended without monitoring.",
         ],
       },
@@ -462,7 +462,7 @@ export const batchPosts = [
       },
       {
         type: "paragraph",
-        text: "Enclomiphene citrate is not FDA-approved as a finished pharmaceutical product for male hypogonadism in the U.S. market in the same way as many legacy testosterone products; many online pathways involve compounded preparations. Patients should ask how product quality is documented, what batch testing exists, and what happens if a shipment is delayed—details that reputable clinicians and pharmacies can explain.",
+        text: "Enclomiphene citrate is not FDA-approved as a finished pharmaceutical product for male hypogonadism in the U.S. market in the same way as many legacy testosterone products; many online pathways involve compounded preparations. Patients should ask how product quality is documented, what batch testing exists, and what happens if a shipment is delayed-details that reputable clinicians and pharmacies can explain.",
       },
       {
         type: "paragraph",
@@ -495,11 +495,11 @@ export const batchPosts = [
     title: "Enclomiphene Side Effects: What the Research Actually Shows",
     slug: "enclomiphene-side-effects-what-research-shows",
     excerpt:
-      "Enclomiphene side effects in published trials look like a typical oral hormone-modulating profile: GI symptoms, headache, hot flushes, and lab shifts that require monitoring. Here is how to read the evidence without panic—or false certainty.",
+      "Enclomiphene side effects in published trials look like a typical oral hormone-modulating profile: GI symptoms, headache, hot flushes, and lab shifts that require monitoring. Here is how to read the evidence without panic-or false certainty.",
     featuredImage:
       "https://images.unsplash.com/photo-1631119701947-11d4fd05a8de?w=1200&h=630&fit=crop&auto=format&q=85",
     featuredImageAlt:
-      "Prescription medication on a neutral surface — monitoring labs alongside medication effects",
+      "Prescription medication on a neutral surface - monitoring labs alongside medication effects",
     publishedAt: "2026-04-07",
     seoTitle: "Enclomiphene Side Effects: Trial & Safety Context | T-Compare",
     seoDescription:
@@ -507,16 +507,16 @@ export const batchPosts = [
     content: [
       {
         type: "paragraph",
-        text: 'The search “enclomiphene side effects” mixes three different needs: understanding trial-reported adverse events, understanding compounded-product variability, and understanding personal risk. This article focuses on the first—what peer-reviewed development programs published—while insisting on the second: your prescriber is the source for personalized risk management.',
+        text: 'The search “enclomiphene side effects” mixes three different needs: understanding trial-reported adverse events, understanding compounded-product variability, and understanding personal risk. This article focuses on the first-what peer-reviewed development programs published-while insisting on the second: your prescriber is the source for personalized risk management.',
       },
       {
         type: "heading",
-        text: "What phase II/III–style programs generally watch",
+        text: "What phase II/III-style programs generally watch",
         level: 2,
       },
       {
         type: "paragraph",
-        text: "Across published enclomiphene development summaries, common themes include gastrointestinal symptoms (nausea, diarrhea), headache, hot flush, elevated estradiol-related dynamics, and shifts in laboratory parameters that warrant monitoring—exact incidence rates vary by dose, duration, and comparator arm. FDA review documents for former NDA efforts highlighted symptom reporting patterns and emphasized that labeling-grade conclusions require outcomes data beyond testosterone endpoints alone.",
+        text: "Across published enclomiphene development summaries, common themes include gastrointestinal symptoms (nausea, diarrhea), headache, hot flush, elevated estradiol-related dynamics, and shifts in laboratory parameters that warrant monitoring-exact incidence rates vary by dose, duration, and comparator arm. FDA review documents for former NDA efforts highlighted symptom reporting patterns and emphasized that labeling-grade conclusions require outcomes data beyond testosterone endpoints alone.",
       },
       {
         type: "heading",
@@ -533,7 +533,7 @@ export const batchPosts = [
       },
       {
         type: "paragraph",
-        text: "Because many online pathways use compounded formulations, batch variability can matter in ways trial tablets did not. That is not fear-mongering—it is an argument for structured follow-up and pharmacy quality questions.",
+        text: "Because many online pathways use compounded formulations, batch variability can matter in ways trial tablets did not. That is not fear-mongering-it is an argument for structured follow-up and pharmacy quality questions.",
       },
       {
         type: "paragraph",
@@ -557,7 +557,7 @@ export const batchPosts = [
         type: "disclaimer",
         paragraphs: [
           "Not medical advice; discuss side effects and monitoring with your clinician or pharmacist.",
-          "Seek urgent care for severe abdominal pain, visual symptoms, shortness of breath, chest pain, or other acute concerns—do not wait for a blog follow-up.",
+          "Seek urgent care for severe abdominal pain, visual symptoms, shortness of breath, chest pain, or other acute concerns-do not wait for a blog follow-up.",
         ],
       },
     ],

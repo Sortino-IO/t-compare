@@ -2,9 +2,9 @@
  * Shared Unsplash `photo-*` policy for blog assets.
  * Keep in sync with docs/blog-image-guidelines.md (“Do not use”).
  *
- * - BROKEN_IDS: known bad suffix / 404 on images.unsplash.com — never substitute toward these in tooling.
+ * - BROKEN_IDS: known bad suffix / 404 on images.unsplash.com - never substitute toward these in tooling.
  * - BANNED_IDS: removed for editorial/policy reasons (surgery/OR, stethoscope heroes, women-primary stock
- *   for men’s scope, etc.) — CI and dedupe must reject or replace them.
+ *   for men’s scope, etc.) - CI and dedupe must reject or replace them.
  */
 export const BROKEN_UNSPLASH_PHOTO_IDS = new Set([
   "photo-1476480862126-207bf8fa9edc",
@@ -26,7 +26,7 @@ export const BANNED_UNSPLASH_PHOTO_IDS = new Set([
   // Manufacturing PPE that reads clinical; sternotomy scar hero
   "photo-1551884170-09fb70a3a2ed",
   "photo-1597892653980-3cec697283fe",
-  // Hospitality — guidelines: avoid as filler
+  // Hospitality - guidelines: avoid as filler
   "photo-1582719478250-c89cae4dc85b",
   // Readable non-English text on clothing (editorial: keep stock language-neutral)
   "photo-1626624156750-f20ecfce6f8b",

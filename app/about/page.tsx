@@ -58,7 +58,7 @@ export default function AboutPage() {
               We collect and display publicly available pricing and program
               information from online providers. All information shown is for
               reference only. Prices, availability, and program details change
-              frequently — always verify directly with each provider.
+              frequently - always verify directly with each provider.
             </p>
           </div>
 

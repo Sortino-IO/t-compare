@@ -1,19 +1,19 @@
 /**
  * Short list of independent medical/education references to support reader trust.
- * Not exhaustive citation management — articles still cite specifics inline where needed.
+ * Not exhaustive citation management - articles still cite specifics inline where needed.
  */
 export default function BlogArticleTrust() {
   const links = [
     {
-      label: "MedlinePlus — Male hypogonadism overview",
+      label: "MedlinePlus - Male hypogonadism overview",
       href: "https://medlineplus.gov/ency/article/003707.htm",
     },
     {
-      label: "NIH Bookshelf — Overview of male hypogonadism",
+      label: "NIH Bookshelf - Overview of male hypogonadism",
       href: "https://www.ncbi.nlm.nih.gov/books/NBK279359/",
     },
     {
-      label: "FDA — How to read prescription drug labeling (consumer)",
+      label: "FDA - How to read prescription drug labeling (consumer)",
       href: "https://www.fda.gov/consumers/free-publications-women/understanding-prescription-drug-labels",
     },
   ];
@@ -24,7 +24,7 @@ export default function BlogArticleTrust() {
         Authoritative references (education)
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-[#78716c]">
-        Independent references for core definitions and labeling—not a substitute for your clinician’s judgment about your case.
+        Independent references for core definitions and labeling-not a substitute for your clinician’s judgment about your case.
       </p>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-[#44403c] marker:text-[#2a6e47]">
         {links.map((l) => (

@@ -15,12 +15,12 @@ export default function BrandCard({ brand, highlight = false }: BrandCardProps) 
         highlight ? "bg-[#f0f7f3] border-[#8fbc9e]" : "bg-white border-[#d8d3c8]"
       }`}
     >
-      {/* Main body — navigates to brand page */}
+      {/* Main body - navigates to brand page */}
       <Link
         href={`/testosterone/enclomiphene/${brand.slug}`}
         className="flex items-stretch"
       >
-        {/* LEFT — name + labels */}
+        {/* LEFT - name + labels */}
         <div className="flex flex-col justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 sm:py-5 flex-1 min-w-0 border-r border-[#ede9e0]">
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="inline-flex items-center rounded-full bg-[#f5f3ee] border border-[#e3dfd6] px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-[11px] font-semibold text-[#a8a29e] tracking-wide uppercase">
@@ -41,7 +41,7 @@ export default function BrandCard({ brand, highlight = false }: BrandCardProps) 
           <p className="text-xs sm:text-sm text-[#a8a29e]">{brand.shortDescription}</p>
         </div>
 
-        {/* RIGHT — price */}
+        {/* RIGHT - price */}
         <div className="flex flex-col items-end justify-center gap-0.5 px-3 sm:px-7 py-3.5 sm:py-5 shrink-0 w-[34%] sm:w-[30%] min-w-[100px] sm:min-w-[130px]">
           <span className="text-[9px] sm:text-[11px] font-semibold text-[#6daa87] tracking-widest uppercase">
             From

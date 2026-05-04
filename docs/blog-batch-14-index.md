@@ -1,4 +1,4 @@
-# Blog batch 14 — article list (sync source: `scripts/blog-14-posts.mjs`)
+# Blog batch 14 - article list (sync source: `scripts/blog-14-posts.mjs`)
 
 Use **`node scripts/sync-blog14-to-posts.mjs`** after editing batch 14 so `app/data/posts.json` stays aligned.
 
@@ -19,4 +19,4 @@ Use **`node scripts/sync-blog14-to-posts.mjs`** after editing batch 14 so `app/d
 | 13 | `can-clomid-fix-low-testosterone-permanently` | 2026-04-18 |
 | 14 | `does-low-testosterone-cause-penile-shrinkage-facts` | 2026-04-17 |
 
-**Not in this batch:** `what-is-enclomiphene-how-it-works` (published 2026-04-15) — edit directly in `posts.json` or extract to its own module if you batch it later.
+**Not in this batch:** `what-is-enclomiphene-how-it-works` (published 2026-04-15) - edit directly in `posts.json` or extract to its own module if you batch it later.

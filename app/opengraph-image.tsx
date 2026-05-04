@@ -3,7 +3,7 @@ import { SITE_URL } from "./lib/site";
 
 const siteHost = new URL(SITE_URL).host;
 
-export const alt = "T-Compare — Compare Testosterone Providers";
+export const alt = "T-Compare - Compare Testosterone Providers";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

@@ -76,7 +76,7 @@ export default function DisclaimerPage() {
                 <ul className="flex flex-col gap-2">
                   {section.bullets.map((bullet, j) => (
                     <li key={j} className="flex items-start gap-2 text-sm text-[#44403c] leading-relaxed">
-                      <span className="text-[#b5b0a8] mt-0.5 shrink-0">–</span>
+                      <span className="text-[#b5b0a8] mt-0.5 shrink-0">-</span>
                       {bullet}
                     </li>
                   ))}
