@@ -18,7 +18,8 @@
     "align:blog-images-unsplash": "node scripts/apply-blog-image-guidelines.mjs",
     "sync:blog14": "node scripts/sync-blog14-to-posts.mjs",
     "export:blog14": "node scripts/export-blog14-from-posts.mjs",
-    "apply:blog-standards": "node scripts/apply-blog-content-standards.mjs"
+    "apply:blog-standards": "node scripts/apply-blog-content-standards.mjs",
+    "fix:blog-faq-split": "node scripts/fix-faq-misconception-split.mjs"
   },
   "dependencies": {
     "next": "16.2.0",
