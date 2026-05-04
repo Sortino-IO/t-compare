@@ -1,0 +1,52 @@
+---
+description: Standards for new site copy and blog articles (length, sources, SEO, FAQ, style)
+alwaysApply: true
+---
+
+# Site and blog content (authoring)
+
+Use this whenever drafting or editing **user-facing site content** (blog posts in `app/data/posts.json`, `seoTitle` / `seoDescription`, on-page copy, and synced batch sources like `scripts/blog-14-posts.mjs`).
+
+## 1. Length and substance
+
+- Minimum **1,000 words** of main article body (count the narrative blocks, not disclaimer boilerplate).
+- Target a natural **1,000-1,200** words unless the topic clearly needs a tighter range; every sentence should add value.
+- **No filler:** no repetition, empty elaboration, or generic “in conclusion” padding. Each paragraph should move understanding forward.
+
+## 2. Sources and links
+
+- Cite or support **every verifiable claim** (stats, study results, expert or regulatory statements, history) with a **credible** source.
+- Put citations as **inline hyperlinks** in the text (use `paragraph` + `segments` with `type: "link"` in `posts.json`); do not use footnote-only style.
+- Prefer: peer-reviewed or official sources (journals, government agencies, professional bodies), serious reports, reputable news, recognized expert or institutional pages.
+- **Anchor text** should describe what the reader gets (e.g. “2024 FDA drug safety communication on …”, not “click here”).
+- Before shipping, **verify links** resolve and are not obviously outdated; note uncertainty or debate when the field disagrees.
+
+## 3. SEO and readability
+
+- **Primary keyword** appears **naturally in the first ~100 words** of body copy.
+- Use **2-3 secondary** related terms through the piece; keep **keyword density around 0.5-1.5%** (do not force).
+- **`seoTitle`:** about **50-60** characters, descriptive, unique.
+- **`seoDescription`:** about **150-160** characters, compelling, accurate.
+- **Readability:** favor **active voice**; average sentence length roughly **15-20 words**; aim for **Flesch Reading Ease ~60-70** (edit long sentences and swapped passive constructions). Use white space: **short paragraphs (about 3-4 sentences max)**.
+
+## 4. FAQ (required for full articles)
+
+- Add a **dedicated FAQ** block **near the end** (before any disclaimer block).
+- **5-8 questions** that match real search language and real reader worries; **2-4 sentences** per answer, direct and specific.
+- Include **at least one** item that **corrects a common misconception**.
+
+**This repo’s blog schema** (`app/lib/blog.ts` / `BlogContent.tsx`) supports `heading` (h2/h3), `paragraph`, `bulletList`, `image`, `disclaimer`—**not** native `<details>`/collapsible FAQ. Implement FAQ as: `heading` level 2 (e.g. “FAQ”), then each **question** as `heading` level 3, **answer** as one or more `paragraph` blocks. If the product later adds a FAQ/collapsible block type, migrate to it.
+
+## 5. Style and formatting
+
+- Short, clear sentences; define jargon on first use.
+- Include **at least 2-3** list sections: use `bulletList` (3-5 items per list when possible).
+- **Numbered / step order:** there is no separate `numberedList` type yet; use a `bulletList` with clear step labels (“Step 1: …”) or consecutive short paragraphs.
+- **“Bold” key takeaways:** `posts.json` has no rich-text bold in paragraph segments. Emphasize with a **crisp h3**, a **one-line lead sentence**, or a **bullet** that states the takeaway first; do not rely on `**markdown**` unless the renderer is extended to support it.
+- **Tone:** professional, conversational, reader-respectful; **no** hype, fear-mongering, or exaggerated claims (especially for health content).
+
+## 6. Quality bar
+
+- **Accuracy:** current data where it matters; flag evolving or contested areas.
+- **Originality:** synthesize multiple sources in your own words; add practical angles (what to ask a clinician, how to read a label, etc.) where appropriate.
+- Align with existing project rules: **`docs/blog-image-guidelines.md`**, image reuse caps, and **sync** duplicate post sources (`posts.json` vs batch scripts) per `AGENTS.md`.
