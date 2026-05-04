@@ -144,8 +144,7 @@ function buildFaqBlocks(post) {
       "How often should I expect lab monitoring in testosterone-adjacent care?",
       "Protocols vary by diagnosis and therapy class. Ask your clinician what tests are required at baseline, what triggers earlier retesting, and what thresholds would prompt dose changes or stopping therapy.",
     ],
-    misQ,
-    misA,
+    [misQ, misA],
     [
       "What is T-Compare’s role relative to my clinician?",
       "T-Compare organizes publicly described program attributes so you can shortlist and ask better questions. It does not replace prescribing decisions, informed consent, or emergency care when you have red-flag symptoms.",

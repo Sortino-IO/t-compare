@@ -174,21 +174,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -410,21 +401,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -646,21 +628,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -876,21 +849,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -1119,21 +1083,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -1371,21 +1326,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -1615,21 +1561,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -1857,21 +1794,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -2109,21 +2037,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "C",
+        "text": "Can I self-diagnose low testosterone from an article checklist?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "a"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "No. Symptom overlap is huge—thyroid issues, depression, sleep apnea, and medications can mimic complaints that send people to hormone keywords. Use articles to prepare questions; let testing and history confirm what applies to you."
       },
       {
         "type": "heading",
@@ -2337,21 +2256,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -2595,21 +2505,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -2831,21 +2732,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -3066,21 +2958,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
@@ -3306,21 +3189,12 @@ export const blogBatch14 = [
       },
       {
         "type": "heading",
-        "text": "I",
+        "text": "Is a higher testosterone number always better?",
         "level": 3
       },
       {
         "type": "paragraph",
-        "text": "s"
-      },
-      {
-        "type": "heading",
-        "text": "N",
-        "level": 3
-      },
-      {
-        "type": "paragraph",
-        "text": "o"
+        "text": "Not necessarily. Clinicians track symptoms, safety labs (including hematocrit), fertility goals, and cardiovascular risk—not a single lab value in isolation. Treatment aims for an individualized balance, not the top of the reference range for everyone."
       },
       {
         "type": "heading",
