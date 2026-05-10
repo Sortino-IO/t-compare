@@ -3,12 +3,29 @@ import Link from "next/link";
 import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Disclaimer",
+  title: "Medical Disclaimer",
   description:
-    "This website is for informational purposes only and does not provide medical advice, diagnosis, or treatment.",
+    "Read T-Compare's medical disclaimer, content limitations, and why all provider details should be verified directly before making health decisions.",
   openGraph: {
-    title: "Disclaimer | T-Compare",
+    title: "Medical Disclaimer | T-Compare",
+    description:
+      "Read T-Compare's medical disclaimer, content limitations, and why all provider details should be verified directly before making health decisions.",
     url: `${SITE_URL}/disclaimer`,
+    images: [
+      {
+        url: "/disclaimer/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "T-Compare Medical Disclaimer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Medical Disclaimer | T-Compare",
+    description:
+      "Read T-Compare's medical disclaimer, content limitations, and why all provider details should be verified directly before making health decisions.",
+    images: ["/disclaimer/opengraph-image"],
   },
 };
 

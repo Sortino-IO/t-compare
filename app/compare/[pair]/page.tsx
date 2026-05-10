@@ -5,6 +5,7 @@ import ComparisonTable, { type ComparisonRow } from "../../components/Comparison
 import { getAllBrands, getBrandBySlug, type Brand } from "../../lib/brands";
 import { getPairComparisonExtras } from "../../lib/pair-comparison-extras";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
+import { SITE_URL } from "../../lib/site";
 
 type Params = { pair: string };
 type PageProps = { params: Params | Promise<Params> };
@@ -39,7 +40,13 @@ export function generateStaticParams(): Params[] {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const p = await Promise.resolve(params);
   const parsed = parsePair(p.pair);
-  if (!parsed) return { title: "Comparison", description: "Provider comparison." };
+  if (!parsed) {
+    return {
+      title: "TRT Provider Comparison",
+      description:
+        "Compare testosterone providers side by side on pricing, labs, onboarding, and plan terms before you sign up.",
+    };
+  }
 
   const canonical = canonicalPair(parsed.left, parsed.right);
   const leftBrand = getBrandBySlug(canonical.left);
@@ -48,11 +55,34 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     leftBrand && rightBrand
       ? `${leftBrand.name} vs ${rightBrand.name}`
       : `${canonical.left} vs ${canonical.right}`;
+  const description =
+    leftBrand && rightBrand
+      ? `Compare ${leftBrand.name} vs ${rightBrand.name} across pricing, labs, onboarding flow, and plan structure. See key differences before you choose.`
+      : `Compare ${canonical.left} vs ${canonical.right} across pricing, labs, onboarding flow, and plan structure.`;
+  const canonicalUrl = `${SITE_URL}/compare/${canonical.left}-vs-${canonical.right}`;
 
   return {
-    title: `${title} | T-Compare`.slice(0, 60),
-    description:
-      "Side-by-side TRT and enclomiphene snapshots: price framing, onboarding, and provider notes. Re-verify totals, labs, and state rules on each site before you pay.",
+    title: `${title} Comparison: Price, Labs & Plan Terms`,
+    description,
+    openGraph: {
+      title: `${title} Comparison: Price, Labs & Plan Terms | T-Compare`,
+      description,
+      url: canonicalUrl,
+      images: [
+        {
+          url: "/comparisons/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: `${title} comparison`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} Comparison: Price, Labs & Plan Terms | T-Compare`,
+      description,
+      images: ["/comparisons/opengraph-image"],
+    },
   };
 }
 

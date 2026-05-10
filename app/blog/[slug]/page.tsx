@@ -32,15 +32,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
   const featuredAbsolute = absoluteImageUrl(post.featuredImage);
+  const metadataTitle = `${post.title} | T-Compare`;
+  const metadataDescription =
+    post.excerpt.length > 155 ? `${post.excerpt.slice(0, 152).trimEnd()}...` : post.excerpt;
 
   return {
     title: {
-      absolute: post.seoTitle,
+      absolute: metadataTitle,
     },
-    description: post.seoDescription,
+    description: metadataDescription,
     openGraph: {
-      title: post.seoTitle,
-      description: post.seoDescription,
+      title: metadataTitle,
+      description: metadataDescription,
       url: pageUrl,
       type: "article",
       publishedTime: post.publishedAt,
@@ -54,8 +57,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ],
     },
     twitter: {
-      title: post.seoTitle,
-      description: post.seoDescription,
+      card: "summary_large_image",
+      title: metadataTitle,
+      description: metadataDescription,
       images: [featuredAbsolute],
     },
   };

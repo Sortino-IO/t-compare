@@ -7,19 +7,29 @@ import { SITE_URL } from "../../lib/site";
 const PAGE_URL = `${SITE_URL}/testosterone/enclomiphene`;
 
 export const metadata: Metadata = {
-  title: "Testosterone & Enclomiphene Providers Comparison | T-Compare",
+  title: "Top Enclomiphene Providers Compared (2026)",
   description:
-    "Browse and compare testosterone-related providers and enclomiphene programs by pricing, onboarding, and structure.",
+    "Compare enclomiphene providers by starting price, onboarding flow, labs, and plan structure. Shortlist the best fit, then verify details on official sites.",
   openGraph: {
-    title: "Testosterone & Enclomiphene Providers Comparison | T-Compare",
+    title: "Top Enclomiphene Providers Compared (2026) | T-Compare",
     description:
-      "Browse and compare testosterone-related providers and enclomiphene programs by pricing, onboarding, and structure.",
+      "Compare enclomiphene providers by starting price, onboarding flow, labs, and plan structure. Shortlist the best fit, then verify details on official sites.",
     url: PAGE_URL,
+    images: [
+      {
+        url: "/testosterone/enclomiphene/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Top Enclomiphene Providers Compared",
+      },
+    ],
   },
   twitter: {
-    title: "Testosterone & Enclomiphene Providers Comparison | T-Compare",
+    card: "summary_large_image",
+    title: "Top Enclomiphene Providers Compared (2026) | T-Compare",
     description:
-      "Browse and compare testosterone-related providers and enclomiphene programs by pricing, onboarding, and structure.",
+      "Compare enclomiphene providers by starting price, onboarding flow, labs, and plan structure. Shortlist the best fit, then verify details on official sites.",
+    images: ["/testosterone/enclomiphene/opengraph-image"],
   },
 };
 

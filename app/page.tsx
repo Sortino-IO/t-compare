@@ -4,19 +4,29 @@ import BrandCard from "./components/BrandCard";
 import { SITE_URL } from "./lib/site";
 
 export const metadata: Metadata = {
-  title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
+  title: "Compare Testosterone Providers, Prices & Plans",
   description:
-    "Compare testosterone-related providers and enclomiphene programs. Browse pricing, onboarding, and provider differences in one place.",
+    "Compare testosterone and enclomiphene providers in minutes. Review pricing, onboarding, labs, and plan details side by side before you choose.",
   openGraph: {
-    title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
+    title: "Compare Testosterone Providers, Prices & Plans | T-Compare",
     description:
-      "Compare testosterone-related providers and enclomiphene programs. Browse pricing, onboarding, and provider differences in one place.",
+      "Compare testosterone and enclomiphene providers in minutes. Review pricing, onboarding, labs, and plan details side by side before you choose.",
     url: SITE_URL,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Compare Testosterone Providers, Prices & Plans",
+      },
+    ],
   },
   twitter: {
-    title: "Compare Testosterone & Enclomiphene Providers | T-Compare",
+    card: "summary_large_image",
+    title: "Compare Testosterone Providers, Prices & Plans | T-Compare",
     description:
-      "Compare testosterone-related providers and enclomiphene programs. Browse pricing, onboarding, and provider differences in one place.",
+      "Compare testosterone and enclomiphene providers in minutes. Review pricing, onboarding, labs, and plan details side by side before you choose.",
+    images: ["/opengraph-image.png"],
   },
 };
 

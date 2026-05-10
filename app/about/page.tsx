@@ -3,14 +3,29 @@ import Link from "next/link";
 import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About T-Compare: How We Compare Providers",
   description:
-    "T-Compare is an informational website that helps users browse publicly available information about testosterone-related providers and programs.",
+    "Learn how T-Compare researches testosterone and enclomiphene providers, how listings are built, and how to use our comparisons to make smarter decisions.",
   openGraph: {
-    title: "About | T-Compare",
+    title: "About T-Compare: How We Compare Providers",
     description:
-      "T-Compare is an informational website that helps users browse publicly available information about testosterone-related providers and programs.",
+      "Learn how T-Compare researches testosterone and enclomiphene providers, how listings are built, and how to use our comparisons to make smarter decisions.",
     url: `${SITE_URL}/about`,
+    images: [
+      {
+        url: "/about/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "About T-Compare",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About T-Compare: How We Compare Providers",
+    description:
+      "Learn how T-Compare researches testosterone and enclomiphene providers, how listings are built, and how to use our comparisons to make smarter decisions.",
+    images: ["/about/opengraph-image"],
   },
 };
 

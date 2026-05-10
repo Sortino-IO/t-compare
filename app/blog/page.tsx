@@ -6,19 +6,29 @@ import { getPostsPage } from "../lib/blog";
 import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Men’s Health & Testosterone Education Blog",
+  title: "Testosterone & Enclomiphene Blog: Guides That Help You Choose",
   description:
-    "In-depth guides on enclomiphene, TRT, testosterone symptoms, fertility, online men’s health, costs, and how to compare providers responsibly.",
+    "Get practical guides on TRT, enclomiphene, symptoms, fertility, and real treatment costs so you can ask better questions and choose providers with confidence.",
   openGraph: {
-    title: "Men’s Health & Testosterone Education Blog | T-Compare",
+    title: "Testosterone & Enclomiphene Blog: Guides That Help You Choose",
     description:
-      "In-depth guides on enclomiphene, TRT, testosterone symptoms, fertility, online men’s health, costs, and how to compare providers responsibly.",
+      "Get practical guides on TRT, enclomiphene, symptoms, fertility, and real treatment costs so you can ask better questions and choose providers with confidence.",
     url: `${SITE_URL}/blog`,
+    images: [
+      {
+        url: "/blog/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Testosterone and Enclomiphene Blog Guides",
+      },
+    ],
   },
   twitter: {
-    title: "Men’s Health & Testosterone Education Blog | T-Compare",
+    card: "summary_large_image",
+    title: "Testosterone & Enclomiphene Blog: Guides That Help You Choose",
     description:
-      "In-depth guides on enclomiphene, TRT, testosterone symptoms, fertility, online men’s health, costs, and how to compare providers responsibly.",
+      "Get practical guides on TRT, enclomiphene, symptoms, fertility, and real treatment costs so you can ask better questions and choose providers with confidence.",
+    images: ["/blog/opengraph-image"],
   },
 };
 

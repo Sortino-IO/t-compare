@@ -20,18 +20,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!brand) return { title: "Provider not found" };
 
   const pageUrl = `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`;
+  const seoTitle = `${brand.name} Enclomiphene Review: Price, Labs & Onboarding`;
+  const seoDescription = `Thinking about ${brand.name}? Compare enclomiphene pricing, lab requirements, onboarding speed, and plan details before you choose a provider.`;
 
   return {
-    title: brand.seoTitle,
-    description: brand.seoDescription,
+    title: seoTitle,
+    description: seoDescription,
     openGraph: {
-      title: brand.seoTitle,
-      description: brand.seoDescription,
+      title: seoTitle,
+      description: seoDescription,
       url: pageUrl,
+      images: [
+        {
+          url: "/testosterone/enclomiphene/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: `${brand.name} enclomiphene review`,
+        },
+      ],
     },
     twitter: {
-      title: brand.seoTitle,
-      description: brand.seoDescription,
+      card: "summary_large_image",
+      title: seoTitle,
+      description: seoDescription,
+      images: ["/testosterone/enclomiphene/opengraph-image"],
     },
   };
 }
@@ -57,8 +69,8 @@ export default async function BrandPage({ params }: Props) {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: brand.seoTitle,
-    description: brand.seoDescription,
+    name: `${brand.name} Enclomiphene Review`,
+    description: `Independent overview of ${brand.name}'s enclomiphene pricing, onboarding, and program details.`,
     url: pageUrl,
     dateModified: brand.lastReviewed,
     breadcrumb: breadcrumbSchema,

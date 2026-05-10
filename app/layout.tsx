@@ -33,11 +33,11 @@ function siteVerification(): Metadata["verification"] | undefined {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "T-Compare - Testosterone Provider Comparison",
+    default: "T-Compare: Compare Testosterone Providers",
     template: "%s | T-Compare",
   },
   description:
-    "Browse and compare testosterone-related providers and programs in one place. An independent, informational reference.",
+    "Compare testosterone and enclomiphene providers by pricing, labs, onboarding, and plan terms. Independent, informational comparisons to help you choose faster.",
   icons: {
     icon: [
       { url: "/favicon.ico" },

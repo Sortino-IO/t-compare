@@ -1,9 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
-  description: "Terms of Use for T-Compare.",
+  description:
+    "Read the terms for using T-Compare, including informational-use limits, liability notes, and rules for relying on provider comparison content.",
+  openGraph: {
+    title: "Terms of Use | T-Compare",
+    description:
+      "Read the terms for using T-Compare, including informational-use limits, liability notes, and rules for relying on provider comparison content.",
+    url: `${SITE_URL}/terms`,
+    images: [
+      {
+        url: "/terms/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "T-Compare Terms of Use",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Use | T-Compare",
+    description:
+      "Read the terms for using T-Compare, including informational-use limits, liability notes, and rules for relying on provider comparison content.",
+    images: ["/terms/opengraph-image"],
+  },
 };
 
 export default function TermsPage() {

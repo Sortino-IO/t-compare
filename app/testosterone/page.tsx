@@ -1,11 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllBrands } from "../lib/brands";
+import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Testosterone Treatment Categories",
+  title: "Testosterone Treatment Options: Compare by Category",
   description:
-    "Browse informational comparisons of testosterone-related treatment categories including enclomiphene and more.",
+    "Explore testosterone treatment categories, starting with enclomiphene providers. Compare pricing ranges, onboarding style, and key differences before you choose.",
+  openGraph: {
+    title: "Testosterone Treatment Options: Compare by Category | T-Compare",
+    description:
+      "Explore testosterone treatment categories, starting with enclomiphene providers. Compare pricing ranges, onboarding style, and key differences before you choose.",
+    url: `${SITE_URL}/testosterone`,
+    images: [
+      {
+        url: "/testosterone/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Testosterone Treatment Options: Compare by Category",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Testosterone Treatment Options: Compare by Category | T-Compare",
+    description:
+      "Explore testosterone treatment categories, starting with enclomiphene providers. Compare pricing ranges, onboarding style, and key differences before you choose.",
+    images: ["/testosterone/opengraph-image"],
+  },
 };
 
 export default function TestosteronePage() {

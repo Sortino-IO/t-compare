@@ -2,11 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllBrands } from "../lib/brands";
 import ComparisonPairsGrid from "../components/ComparisonPairsGrid";
+import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Comparisons | T-Compare",
+  title: "TRT Provider Comparisons: Cost, Labs & Plans",
   description:
-    "TRT and enclomiphene telehealth comparisons: use 90-day all-in cost, lab cadence, and plan length. Confirm pricing on official sites, not forum screenshots.",
+    "Explore side-by-side TRT and enclomiphene provider comparisons. Check 90-day total cost, lab cadence, commitment terms, and what each plan includes.",
+  openGraph: {
+    title: "TRT Provider Comparisons: Cost, Labs & Plans | T-Compare",
+    description:
+      "Explore side-by-side TRT and enclomiphene provider comparisons. Check 90-day total cost, lab cadence, commitment terms, and what each plan includes.",
+    url: `${SITE_URL}/comparisons`,
+    images: [
+      {
+        url: "/comparisons/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "TRT Provider Comparisons: Cost, Labs & Plans",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TRT Provider Comparisons: Cost, Labs & Plans | T-Compare",
+    description:
+      "Explore side-by-side TRT and enclomiphene provider comparisons. Check 90-day total cost, lab cadence, commitment terms, and what each plan includes.",
+    images: ["/comparisons/opengraph-image"],
+  },
 };
 
 function allPairs() {
