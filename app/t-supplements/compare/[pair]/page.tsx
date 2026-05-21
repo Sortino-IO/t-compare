@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import BrandSourceLinks from "../../../components/BrandSourceLinks";
 import ComparisonTable, { type ComparisonRow } from "../../../components/ComparisonTable";
 import {
   getBrandBySlug,
@@ -94,13 +95,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 function byName(a: Brand, b: Brand) {
   return a.name.localeCompare(b.name);
-}
-
-function sourceList(brand: Brand) {
-  const urls = [...brand.sourceUrls];
-  const affiliate = brand.affiliateUrl;
-  if (affiliate && !urls.includes(affiliate)) urls.unshift(affiliate);
-  return urls;
 }
 
 export default async function TSupplementComparePairPage({ params }: PageProps) {
@@ -237,20 +231,7 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
             {[a, b].map((brand) => (
               <div key={brand.slug}>
                 <div className="text-sm font-semibold text-[#1c1917]">{brand.name}</div>
-                <ul className="mt-2 space-y-1.5 text-sm text-[#57534e]">
-                  {sourceList(brand).map((url) => (
-                    <li key={url}>
-                      <a
-                        className="text-[#2a6e47] hover:underline break-all"
-                        href={withTtimeAffiliateParams(url)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {url}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <BrandSourceLinks brand={brand} />
               </div>
             ))}
           </div>
@@ -265,14 +246,13 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
               <ul className="mt-3 space-y-2 text-sm text-[#57534e]">
                 {pairExtras.extraSources.map((s) => (
                   <li key={s.href}>
-                    <span className="text-[#78716c]">{s.label}: </span>
                     <a
-                      className="text-[#2a6e47] hover:underline break-all"
+                      className="text-[#2a6e47] hover:underline font-medium"
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {s.href}
+                      {s.label}
                     </a>
                   </li>
                 ))}

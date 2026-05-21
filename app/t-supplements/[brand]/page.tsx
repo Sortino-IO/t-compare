@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import BrandSourceLinks from "../../components/BrandSourceLinks";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 import {
   BRAND_CATEGORY_CONFIG,
@@ -184,6 +185,26 @@ export default async function TSupplementBrandPage({ params }: Props) {
                 </div>
               </section>
             ) : null}
+
+            <details className="mt-8 group">
+              <summary className="cursor-pointer list-none flex items-center gap-1.5 text-xs font-medium text-[#b5b0a8] hover:text-[#78716c] transition-colors select-none">
+                <svg
+                  width="12" height="12" viewBox="0 0 12 12" fill="none"
+                  className="transition-transform duration-150 group-open:rotate-90"
+                  aria-hidden="true"
+                >
+                  <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Sources
+              </summary>
+              <div className="mt-3 pl-4 border-l border-[#e3dfd6]">
+                <BrandSourceLinks
+                  brand={brand}
+                  className="flex flex-col gap-1.5"
+                  linkClassName="text-xs text-[#78716c] hover:text-[#2a6e47] hover:underline transition-colors font-normal"
+                />
+              </div>
+            </details>
           </div>
 
           <div>

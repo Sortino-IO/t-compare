@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import BrandSourceLinks from "../../../components/BrandSourceLinks";
 import { withTtimeAffiliateParams } from "../../../lib/affiliate-links";
 import { getBrandBySlug, getBrandsByCategory } from "../../../lib/brands";
 import { SITE_URL } from "../../../lib/site";
@@ -285,18 +286,12 @@ export default async function BrandPage({ params }: Props) {
                 </svg>
                 Sources
               </summary>
-              <div className="mt-3 pl-4 border-l border-[#e3dfd6] flex flex-col gap-1.5">
-                {brand.sourceUrls.map((url) => (
-                  <a
-                    key={url}
-                    href={withTtimeAffiliateParams(url)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-[#78716c] hover:text-[#2a6e47] hover:underline transition-colors break-all"
-                  >
-                    {url}
-                  </a>
-                ))}
+              <div className="mt-3 pl-4 border-l border-[#e3dfd6]">
+                <BrandSourceLinks
+                  brand={brand}
+                  className="flex flex-col gap-1.5"
+                  linkClassName="text-xs text-[#78716c] hover:text-[#2a6e47] hover:underline transition-colors font-normal"
+                />
               </div>
             </details>
           </div>
