@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllBrands } from "../lib/brands";
+import { getBrandsByCategory } from "../lib/brands";
 import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Testosterone Treatment Options: Compare by Category",
+  title: "Testosterone Options Compared: Providers & Supplements",
   description:
-    "Explore testosterone treatment categories, starting with enclomiphene providers. Compare pricing ranges, onboarding style, and key differences before you choose.",
+    "Compare enclomiphene telehealth providers and OTC testosterone supplements in one place. Review entry pricing, plan structure, and bulk value before you choose.",
   openGraph: {
-    title: "Testosterone Treatment Options: Compare by Category | T-Compare",
+    title: "Testosterone Options Compared: Providers & Supplements | T-Compare",
     description:
-      "Explore testosterone treatment categories, starting with enclomiphene providers. Compare pricing ranges, onboarding style, and key differences before you choose.",
+      "Compare enclomiphene telehealth providers and OTC testosterone supplements in one place. Review entry pricing, plan structure, and bulk value before you choose.",
     url: `${SITE_URL}/testosterone`,
     images: [
       {
@@ -23,18 +23,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Testosterone Treatment Options: Compare by Category | T-Compare",
+    title: "Testosterone Options Compared: Providers & Supplements | T-Compare",
     description:
-      "Explore testosterone treatment categories, starting with enclomiphene providers. Compare pricing ranges, onboarding style, and key differences before you choose.",
+      "Compare enclomiphene telehealth providers and OTC testosterone supplements in one place. Review entry pricing, plan structure, and bulk value before you choose.",
     images: ["/testosterone/opengraph-image"],
   },
 };
 
 export default function TestosteronePage() {
-  const encloBrands = getAllBrands().filter((b) => b.category === "enclomiphene");
-  const providerCount = encloBrands.length;
-  /** Same ordering as /testosterone/enclomiphene (low → high). */
-  const priceFrom = encloBrands.length ? encloBrands[0]!.priceFromMonthly : 0;
+  const encloBrands = getBrandsByCategory("enclomiphene");
+  const supplementBrands = getBrandsByCategory("supplement");
 
   const categories = [
     {
@@ -42,8 +40,16 @@ export default function TestosteronePage() {
       slug: "enclomiphene",
       description:
         "A selective estrogen receptor modulator (SERM) that stimulates the body's own testosterone production without direct hormone replacement.",
-      providerCount,
-      priceFrom,
+      providerCount: encloBrands.length,
+      priceFrom: encloBrands.length ? encloBrands[0]!.priceFromMonthly : 0,
+    },
+    {
+      name: "Testosterone supplements",
+      slug: "supplement",
+      description:
+        "Compare OTC testosterone boosters by entry price, bulk savings, guarantees, and ingredients-from $55/mo-before you fall for a multi-bottle funnel.",
+      providerCount: supplementBrands.length,
+      priceFrom: supplementBrands.length ? supplementBrands[0]!.priceFromMonthly : 0,
     },
   ];
 
@@ -60,11 +66,12 @@ export default function TestosteronePage() {
 
       <div className="max-w-xl mb-14">
         <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-semibold text-[#1c1917] mb-4 leading-tight">
-          Testosterone treatment categories
+          Compare testosterone options by category
         </h1>
         <p className="text-base text-[#78716c] leading-relaxed">
-          Select a category below to view a side-by-side comparison of
-          providers and pricing. All information is purely informational.
+          Prescription enclomiphene programs and OTC testosterone supplements
+          solve different problems. Pick a category below to compare pricing,
+          structure, and value before you commit.
         </p>
       </div>
 

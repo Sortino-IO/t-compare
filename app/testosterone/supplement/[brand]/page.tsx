@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { withTtimeAffiliateParams } from "../../../lib/affiliate-links";
-import { getBrandBySlug, getBrandsByCategory } from "../../../lib/brands";
+import {
+  BRAND_CATEGORY_CONFIG,
+  getBrandBySlug,
+  getBrandsByCategory,
+  getCategoryIndexPath,
+} from "../../../lib/brands";
 import { SITE_URL } from "../../../lib/site";
 
 type Props = {
@@ -10,18 +15,18 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return getBrandsByCategory("enclomiphene").map((b) => ({ brand: b.slug }));
+  return getBrandsByCategory("supplement").map((b) => ({ brand: b.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { brand: slug } = await params;
   const brand = getBrandBySlug(slug);
 
-  if (!brand) return { title: "Provider not found" };
+  if (!brand || brand.category !== "supplement") return { title: "Supplement not found" };
 
-  const pageUrl = `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`;
-  const seoTitle = `${brand.name} Enclomiphene Review: Price, Labs & Onboarding`;
-  const seoDescription = `Thinking about ${brand.name}? Compare enclomiphene pricing, lab requirements, onboarding speed, and plan details before you choose a provider.`;
+  const pageUrl = `${SITE_URL}/testosterone/supplement/${brand.slug}`;
+  const seoTitle = brand.seoTitle.replace(/\s*\|\s*T-Compare\s*$/, "");
+  const seoDescription = brand.seoDescription;
 
   return {
     title: seoTitle,
@@ -32,10 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: pageUrl,
       images: [
         {
-          url: "/testosterone/enclomiphene/opengraph-image",
+          url: "/testosterone/supplement/opengraph-image",
           width: 1200,
           height: 630,
-          alt: `${brand.name} enclomiphene review`,
+          alt: `${brand.name} testosterone supplement review`,
         },
       ],
     },
@@ -43,34 +48,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: seoTitle,
       description: seoDescription,
-      images: ["/testosterone/enclomiphene/opengraph-image"],
+      images: ["/testosterone/supplement/opengraph-image"],
     },
   };
 }
 
-export default async function BrandPage({ params }: Props) {
+export default async function SupplementBrandPage({ params }: Props) {
   const { brand: slug } = await params;
   const brand = getBrandBySlug(slug);
 
-  if (!brand) notFound();
+  if (!brand || brand.category !== "supplement") notFound();
 
-  const pageUrl = `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`;
+  const config = BRAND_CATEGORY_CONFIG.supplement;
+  const categoryPath = getCategoryIndexPath("supplement");
+  const pageUrl = `${SITE_URL}/testosterone/supplement/${brand.slug}`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home",        item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "T Providers", item: `${SITE_URL}/testosterone/enclomiphene` },
-      { "@type": "ListItem", position: 3, name: brand.name,    item: pageUrl },
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Testosterone",
+        item: `${SITE_URL}/testosterone`,
+      },
+      { "@type": "ListItem", position: 3, name: config.breadcrumbLabel, item: `${SITE_URL}${categoryPath}` },
+      { "@type": "ListItem", position: 4, name: brand.name, item: pageUrl },
     ],
   };
 
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `${brand.name} Enclomiphene Review`,
-    description: `Independent overview of ${brand.name}'s enclomiphene pricing, onboarding, and program details.`,
+    name: `${brand.name} Testosterone Supplement Review`,
+    description: `Independent overview of ${brand.name} pricing, ingredients, and guarantee terms.`,
     url: pageUrl,
     dateModified: brand.lastReviewed,
     breadcrumb: breadcrumbSchema,
@@ -100,7 +113,6 @@ export default async function BrandPage({ params }: Props) {
 
   return (
     <>
-      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -117,42 +129,41 @@ export default async function BrandPage({ params }: Props) {
       ) : null}
 
       <div className="mx-auto max-w-5xl px-6 py-10 sm:py-16">
-        {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-[#b5b0a8] mb-10 sm:mb-14 flex-wrap">
           <Link href="/" className="hover:text-[#1c1917] transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/testosterone/enclomiphene" className="hover:text-[#1c1917] transition-colors">
-            T Providers
+          <Link href="/testosterone" className="hover:text-[#1c1917] transition-colors">
+            Testosterone
+          </Link>
+          <span>/</span>
+          <Link href={categoryPath} className="hover:text-[#1c1917] transition-colors">
+            {config.breadcrumbLabel}
           </Link>
           <span>/</span>
           <span className="text-[#78716c]">{brand.name}</span>
         </nav>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_300px] items-start">
-          {/* Left column */}
           <div>
             <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-4">
-              Informational Comparison · Enclomiphene Provider
+              Informational Comparison · {config.detailBadge}
             </p>
             <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl font-semibold text-[#1c1917] leading-tight mb-2">
               {brand.name}
             </h1>
 
-            {/* Last reviewed */}
             <p className="text-xs text-[#b5b0a8] mb-5">
               Last reviewed: {formattedDate}
             </p>
 
-            {/* Intro */}
             <p className="text-base text-[#78716c] leading-relaxed mb-8 max-w-lg">
-              This page provides an overview of {brand.name}&apos;s enclomiphene
-              and testosterone-related program, including publicly available
-              pricing and onboarding details.
+              Considering {brand.name}? This page breaks down what you&apos;ll
+              actually pay, what the formula emphasizes, and how its guarantee
+              works-so you can decide if it fits your goals before checkout.
+              Not medical advice.
             </p>
 
-            {/* Info card */}
             <div className="rounded-2xl bg-white border border-[#e3dfd6] overflow-hidden shadow-sm mb-8">
-              {/* Overview */}
               <div className="px-7 py-5 border-b border-[#f0ece4]">
                 <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">
                   Overview
@@ -162,22 +173,20 @@ export default async function BrandPage({ params }: Props) {
                 </p>
               </div>
 
-              {/* Pricing */}
               <div className="px-7 py-5 border-b border-[#f0ece4]">
                 <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">
                   Pricing
                 </p>
                 <p className="text-sm text-[#44403c] leading-relaxed">
-                  Starting from{" "}
+                  {brand.priceLabel}.{" "}
                   <span className="font-semibold text-[#2a6e47]">
-                    ${brand.priceFromMonthly}/mo.
+                    Headline anchor ~${brand.priceFromMonthly}/mo equivalent.
                   </span>{" "}
-                  Final pricing may vary based on consultation, dosage, and
-                  location. Verify directly with the provider.
+                  Bulk tiers and shipping can change total cost. Verify on the
+                  official checkout page.
                 </p>
               </div>
 
-              {/* Notes */}
               <div className="px-7 py-5">
                 <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">
                   Notes
@@ -193,7 +202,6 @@ export default async function BrandPage({ params }: Props) {
               </div>
             </div>
 
-            {/* CTA */}
             <a
               href={withTtimeAffiliateParams(brand.affiliateUrl)}
               target="_blank"
@@ -208,14 +216,12 @@ export default async function BrandPage({ params }: Props) {
               </svg>
             </a>
             <p className="mt-3 text-xs text-[#b5b0a8]">
-              Prices shown are the same as going direct.
+              Dietary supplements are not prescription therapies. Confirm
+              ingredients and pricing on the official site.
             </p>
 
             {brand.ctaBelowParagraphs.length > 0 ? (
-              <section
-                className="mt-8 max-w-2xl"
-                aria-labelledby={`about-${brand.slug}`}
-              >
+              <section className="mt-8 max-w-2xl" aria-labelledby={`about-${brand.slug}`}>
                 <h2
                   id={`about-${brand.slug}`}
                   className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-4"
@@ -231,10 +237,7 @@ export default async function BrandPage({ params }: Props) {
             ) : null}
 
             {brand.faqItems.length > 0 ? (
-              <section
-                className="mt-10 max-w-2xl"
-                aria-labelledby={`faq-${brand.slug}`}
-              >
+              <section className="mt-10 max-w-2xl" aria-labelledby={`faq-${brand.slug}`}>
                 <h2
                   id={`faq-${brand.slug}`}
                   className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-5"
@@ -273,7 +276,6 @@ export default async function BrandPage({ params }: Props) {
               </section>
             ) : null}
 
-            {/* Sources - collapsed */}
             <details className="mt-8 group">
               <summary className="cursor-pointer list-none flex items-center gap-1.5 text-xs font-medium text-[#b5b0a8] hover:text-[#78716c] transition-colors select-none">
                 <svg
@@ -301,11 +303,10 @@ export default async function BrandPage({ params }: Props) {
             </details>
           </div>
 
-          {/* Right column - pricing card */}
           <div>
             <div className="rounded-2xl bg-white border border-[#e3dfd6] p-7 shadow-sm">
               <p className="text-[11px] font-semibold tracking-[0.2em] text-[#b5b0a8] uppercase mb-5">
-                Monthly pricing
+                Starting price
               </p>
               <div className="mb-2">
                 <span className="text-sm text-[#78716c]">From</span>
@@ -316,24 +317,26 @@ export default async function BrandPage({ params }: Props) {
                 </span>
                 <span className="text-base text-[#78716c]">/mo</span>
               </div>
+              <p className="text-xs text-[#44403c] leading-relaxed mb-3">
+                {brand.priceLabel}
+              </p>
               <p className="text-xs text-[#b5b0a8] leading-relaxed border-t border-[#f0ece4] pt-4">
-                Program details may vary by consultation, eligibility, and
-                location.
+                Bulk bundles may lower per-bottle cost. Shipping and promos vary
+                by package size.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Footer row */}
         <div className="mt-12 sm:mt-14 pt-8 border-t border-[#e3dfd6] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <Link
-            href="/testosterone/enclomiphene"
+            href={categoryPath}
             className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors"
           >
-            ← Back to provider comparison
+            ← Back to supplement comparison
           </Link>
           <p className="text-xs text-[#b5b0a8] sm:text-right max-w-sm leading-relaxed">
-            Verify current information directly with the provider.
+            Verify current pricing and supplement facts on the official site.
           </p>
         </div>
       </div>

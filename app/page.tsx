@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllBrands } from "./lib/brands";
+import { getBrandsByCategory } from "./lib/brands";
 import BrandCard from "./components/BrandCard";
 import { SITE_URL } from "./lib/site";
 
@@ -49,7 +49,7 @@ const websiteSchema = {
 };
 
 export default function HomePage() {
-  const brands = getAllBrands();
+  const brands = getBrandsByCategory("enclomiphene");
 
   return (
     <>

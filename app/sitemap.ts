@@ -1,12 +1,10 @@
 import type { MetadataRoute } from "next";
-import { getAllBrands } from "./lib/brands";
+import { getBrandPairs, getBrandsByCategory } from "./lib/brands";
 import { getAllPosts } from "./lib/blog";
 import { discoverStaticAppRoutes } from "./lib/sitemap-routes";
 import { SITE_URL } from "./lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const brands = getAllBrands();
-
   const staticEntries: MetadataRoute.Sitemap = discoverStaticAppRoutes().map(
     ({ pathname, lastModified }) => ({
       url: `${SITE_URL}${pathname}`,
@@ -23,18 +21,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  const brandEntries: MetadataRoute.Sitemap = brands.map((brand) => ({
-    url: `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`,
-    lastModified: new Date(brand.lastReviewed),
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
-
+  const brandEntries: MetadataRoute.Sitemap = [];
   const comparisonEntries: MetadataRoute.Sitemap = [];
-  for (let i = 0; i < brands.length; i++) {
-    for (let j = i + 1; j < brands.length; j++) {
-      const a = brands[i]!;
-      const b = brands[j]!;
+
+  for (const category of ["enclomiphene", "supplement"] as const) {
+    const brands = getBrandsByCategory(category);
+    for (const brand of brands) {
+      brandEntries.push({
+        url: `${SITE_URL}/testosterone/${category}/${brand.slug}`,
+        lastModified: new Date(brand.lastReviewed),
+        changeFrequency: "weekly",
+        priority: 0.8,
+      });
+    }
+
+    for (const { a, b } of getBrandPairs(category)) {
       const slugs = [a.slug, b.slug].sort();
       const lastA = new Date(a.lastReviewed);
       const lastB = new Date(b.lastReviewed);

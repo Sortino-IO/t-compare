@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import ComparisonTable, { type ComparisonRow } from "../../components/ComparisonTable";
-import { getAllBrands, getBrandBySlug, type Brand } from "../../lib/brands";
+import {
+  getBrandBySlug,
+  getBrandDetailPath,
+  getBrandPairs,
+  type Brand,
+  type BrandCategory,
+} from "../../lib/brands";
 import { getPairComparisonExtras } from "../../lib/pair-comparison-extras";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 import { SITE_URL } from "../../lib/site";
@@ -27,11 +33,12 @@ function canonicalPair(left: string, right: string) {
 }
 
 export function generateStaticParams(): Params[] {
-  const slugs = getAllBrands().map((b) => b.slug).sort();
+  const categories: BrandCategory[] = ["enclomiphene", "supplement"];
   const out: Params[] = [];
-  for (let i = 0; i < slugs.length; i++) {
-    for (let j = i + 1; j < slugs.length; j++) {
-      out.push({ pair: `${slugs[i]}-vs-${slugs[j]}` });
+  for (const category of categories) {
+    for (const { a, b } of getBrandPairs(category)) {
+      const slugs = [a.slug, b.slug].sort();
+      out.push({ pair: `${slugs[0]}-vs-${slugs[1]}` });
     }
   }
   return out;
@@ -55,17 +62,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     leftBrand && rightBrand
       ? `${leftBrand.name} vs ${rightBrand.name}`
       : `${canonical.left} vs ${canonical.right}`;
+  const isSupplement =
+    leftBrand?.category === "supplement" && rightBrand?.category === "supplement";
   const description =
     leftBrand && rightBrand
-      ? `Compare ${leftBrand.name} vs ${rightBrand.name} across pricing, labs, onboarding flow, and plan structure. See key differences before you choose.`
-      : `Compare ${canonical.left} vs ${canonical.right} across pricing, labs, onboarding flow, and plan structure.`;
+      ? isSupplement
+        ? `Compare ${leftBrand.name} vs ${rightBrand.name} on entry price, bulk bundles, guarantees, and ingredients. See which testosterone booster fits your budget before checkout.`
+        : `Compare ${leftBrand.name} vs ${rightBrand.name} across pricing, labs, onboarding flow, and plan structure. See key differences before you choose.`
+      : isSupplement
+        ? `Compare ${canonical.left} vs ${canonical.right} on testosterone supplement pricing, bulk savings, and guarantee terms.`
+        : `Compare ${canonical.left} vs ${canonical.right} across pricing, labs, onboarding flow, and plan structure.`;
+  const pageTitle = isSupplement
+    ? `${title}: Which T-Booster Is Better?`
+    : `${title} Comparison: Price, Labs & Plan Terms`;
   const canonicalUrl = `${SITE_URL}/compare/${canonical.left}-vs-${canonical.right}`;
 
   return {
-    title: `${title} Comparison: Price, Labs & Plan Terms`,
+    title: pageTitle,
     description,
     openGraph: {
-      title: `${title} Comparison: Price, Labs & Plan Terms | T-Compare`,
+      title: `${pageTitle} | T-Compare`,
       description,
       url: canonicalUrl,
       images: [
@@ -79,7 +95,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} Comparison: Price, Labs & Plan Terms | T-Compare`,
+      title: `${pageTitle} | T-Compare`,
       description,
       images: ["/comparisons/opengraph-image"],
     },
@@ -109,6 +125,9 @@ export default async function ComparePairPage({ params }: PageProps) {
   const leftBrand = getBrandBySlug(canonical.left);
   const rightBrand = getBrandBySlug(canonical.right);
   if (!leftBrand || !rightBrand) redirect("/comparisons");
+  if (leftBrand.category !== rightBrand.category) redirect("/comparisons");
+
+  const isSupplement = leftBrand.category === "supplement";
 
   const [a, b] = [leftBrand, rightBrand].sort(byName);
 
@@ -119,33 +138,41 @@ export default async function ComparePairPage({ params }: PageProps) {
       label: "Starting price (snapshot)",
       left: (
         <>
-          <strong>{a.priceLabel}</strong>. Verify the live price at checkout because promos, plan length,
-          and lab/testing requirements can change.
+          <strong>{a.priceLabel}</strong>. Verify the live price at checkout because promos, bundle size,
+          and {isSupplement ? "shipping" : "lab/testing requirements"} can change.
         </>
       ),
       right: (
         <>
-          <strong>{b.priceLabel}</strong>. Verify the live price at checkout because promos, plan length,
-          and lab/testing requirements can change.
+          <strong>{b.priceLabel}</strong>. Verify the live price at checkout because promos, bundle size,
+          and {isSupplement ? "shipping" : "lab/testing requirements"} can change.
         </>
       ),
     },
     {
-      label: "Onboarding",
-      left: a.onboardingType === "faster-start" ? "Faster-start flow" : "Standard onboarding flow",
-      right: b.onboardingType === "faster-start" ? "Faster-start flow" : "Standard onboarding flow",
+      label: isSupplement ? "Money-back guarantee" : "Onboarding",
+      left: isSupplement ? a.why.onboarding : a.onboardingType === "faster-start" ? "Faster-start flow" : "Standard onboarding flow",
+      right: isSupplement ? b.why.onboarding : b.onboardingType === "faster-start" ? "Faster-start flow" : "Standard onboarding flow",
     },
-    { label: "Program overview", left: a.overview, right: b.overview },
     {
-      label: "Important notes",
-      left: (
+      label: isSupplement ? "Bulk pricing snapshot" : "Program overview",
+      left: isSupplement ? a.why.pricing : a.overview,
+      right: isSupplement ? b.why.pricing : b.overview,
+    },
+    {
+      label: isSupplement ? "Formula focus" : "Important notes",
+      left: isSupplement ? (
+        a.why.positioning
+      ) : (
         <ul className="list-disc pl-5 space-y-1">
           {a.notes.slice(0, 4).map((n) => (
             <li key={n}>{n}</li>
           ))}
         </ul>
       ),
-      right: (
+      right: isSupplement ? (
+        b.why.positioning
+      ) : (
         <ul className="list-disc pl-5 space-y-1">
           {b.notes.slice(0, 4).map((n) => (
             <li key={n}>{n}</li>
@@ -165,8 +192,9 @@ export default async function ComparePairPage({ params }: PageProps) {
               {a.name} vs {b.name}
             </h1>
             <p className="mt-3 text-sm sm:text-base text-[#57534e] max-w-2xl leading-relaxed">
-              Side-by-side snapshot of pricing framing, onboarding, and what each provider emphasizes publicly.
-              Always verify eligibility and total cost at checkout.
+              {isSupplement
+                ? "Side-by-side snapshot of supplement pricing anchors, guarantee terms, and formula positioning from public checkout pages. Always verify the live cart before you pay."
+                : "Side-by-side snapshot of pricing framing, onboarding, and what each provider emphasizes publicly. Always verify eligibility and total cost at checkout."}
             </p>
           </div>
           <Link href="/comparisons" className="text-sm font-medium text-[#2a6e47] hover:underline">
@@ -195,9 +223,9 @@ export default async function ComparePairPage({ params }: PageProps) {
 
         <ComparisonTable
           leftName={a.name}
-          leftHref={`/testosterone/enclomiphene/${a.slug}`}
+          leftHref={getBrandDetailPath(a)}
           rightName={b.name}
-          rightHref={`/testosterone/enclomiphene/${b.slug}`}
+          rightHref={getBrandDetailPath(b)}
           rows={rows}
         />
 

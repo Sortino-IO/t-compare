@@ -1,5 +1,5 @@
 import { permanentRedirect } from "next/navigation";
-import { getAllBrands } from "../../lib/brands";
+import { getBrandPairs, type BrandCategory } from "../../lib/brands";
 
 type Params = { pair: string };
 type PageProps = { params: Params | Promise<Params> };
@@ -24,13 +24,12 @@ function canonicalPairSlug(left: string, right: string) {
  * `/comparisons/:pair` links consolidate without duplicate on-page content.
  */
 export function generateStaticParams(): Params[] {
-  const slugs = getAllBrands()
-    .map((b) => b.slug)
-    .sort();
+  const categories: BrandCategory[] = ["enclomiphene", "supplement"];
   const out: Params[] = [];
-  for (let i = 0; i < slugs.length; i++) {
-    for (let j = i + 1; j < slugs.length; j++) {
-      out.push({ pair: `${slugs[i]}-vs-${slugs[j]}` });
+  for (const category of categories) {
+    for (const { a, b } of getBrandPairs(category)) {
+      const slugs = [a.slug, b.slug].sort();
+      out.push({ pair: `${slugs[0]}-vs-${slugs[1]}` });
     }
   }
   return out;

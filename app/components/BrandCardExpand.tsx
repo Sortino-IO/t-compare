@@ -5,33 +5,40 @@ import Link from "next/link";
 import type { BrandWhy } from "../lib/brands";
 
 interface BrandCardExpandProps {
-  slug: string;
+  detailPath: string;
   why: BrandWhy;
+  whyLabels: { onboarding: string; pricing: string; positioning: string };
+  expandPrompt: string;
   highlight: boolean;
 }
 
-const rows: { label: string; key: keyof BrandWhy }[] = [
-  { label: "Onboarding", key: "onboarding" },
-  { label: "Pricing",    key: "pricing" },
-  { label: "Overview",   key: "positioning" },
-];
-
-export default function BrandCardExpand({ slug, why, highlight }: BrandCardExpandProps) {
+export default function BrandCardExpand({
+  detailPath,
+  why,
+  whyLabels,
+  expandPrompt,
+  highlight,
+}: BrandCardExpandProps) {
   const [open, setOpen] = useState(false);
 
-  const footerBg   = highlight ? "border-[#b8d9c6] bg-[#e8f4ee]" : "border-[#ede9e0] bg-[#faf9f7]";
-  const expandBg   = highlight ? "bg-[#f0f7f3] border-[#c6e0d0]" : "bg-[#fafaf8] border-[#ede9e0]";
+  const rows: { label: string; key: keyof BrandWhy }[] = [
+    { label: whyLabels.onboarding, key: "onboarding" },
+    { label: whyLabels.pricing, key: "pricing" },
+    { label: whyLabels.positioning, key: "positioning" },
+  ];
+
+  const footerBg = highlight ? "border-[#b8d9c6] bg-[#e8f4ee]" : "border-[#ede9e0] bg-[#faf9f7]";
+  const expandBg = highlight ? "bg-[#f0f7f3] border-[#c6e0d0]" : "bg-[#fafaf8] border-[#ede9e0]";
 
   return (
     <>
-      {/* Footer bar */}
       <div className={`flex items-center justify-between px-6 py-2.5 border-t ${footerBg}`}>
         <button
           onClick={() => setOpen((v) => !v)}
           className="flex items-center gap-1.5 text-xs font-medium text-[#78716c] hover:text-[#2a6e47] transition-colors py-2 pr-4 -my-2"
           aria-expanded={open}
         >
-          Why this provider?
+          {expandPrompt}
           <svg
             width="12"
             height="12"
@@ -45,7 +52,7 @@ export default function BrandCardExpand({ slug, why, highlight }: BrandCardExpan
         </button>
 
         <Link
-          href={`/testosterone/enclomiphene/${slug}`}
+          href={detailPath}
           className="inline-flex items-center gap-1.5 rounded-lg bg-[#2a6e47] px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#22593a] transition-colors"
         >
           View details
@@ -55,7 +62,6 @@ export default function BrandCardExpand({ slug, why, highlight }: BrandCardExpan
         </Link>
       </div>
 
-      {/* Expandable panel - smooth height via grid trick */}
       <div
         className={`grid transition-[grid-template-rows] duration-200 ease-out ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
       >

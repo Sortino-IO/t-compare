@@ -1,5 +1,9 @@
 import Link from "next/link";
-import type { Brand } from "../lib/brands";
+import {
+  BRAND_CATEGORY_CONFIG,
+  getBrandDetailPath,
+  type Brand,
+} from "../lib/brands";
 import BrandCardExpand from "./BrandCardExpand";
 
 interface BrandCardProps {
@@ -8,6 +12,9 @@ interface BrandCardProps {
 }
 
 export default function BrandCard({ brand, highlight = false }: BrandCardProps) {
+  const detailPath = getBrandDetailPath(brand);
+  const config = BRAND_CATEGORY_CONFIG[brand.category];
+
   return (
     <div
       id={`card-${brand.slug}`}
@@ -15,12 +22,7 @@ export default function BrandCard({ brand, highlight = false }: BrandCardProps) 
         highlight ? "bg-[#f0f7f3] border-[#8fbc9e]" : "bg-white border-[#d8d3c8]"
       }`}
     >
-      {/* Main body - navigates to brand page */}
-      <Link
-        href={`/testosterone/enclomiphene/${brand.slug}`}
-        className="flex items-stretch"
-      >
-        {/* LEFT - name + labels */}
+      <Link href={detailPath} className="flex items-stretch">
         <div className="flex flex-col justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 sm:py-5 flex-1 min-w-0 border-r border-[#ede9e0]">
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="inline-flex items-center rounded-full bg-[#f5f3ee] border border-[#e3dfd6] px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-[11px] font-semibold text-[#a8a29e] tracking-wide uppercase">
@@ -41,7 +43,6 @@ export default function BrandCard({ brand, highlight = false }: BrandCardProps) 
           <p className="text-xs sm:text-sm text-[#a8a29e]">{brand.shortDescription}</p>
         </div>
 
-        {/* RIGHT - price */}
         <div className="flex flex-col items-end justify-center gap-0.5 px-3 sm:px-7 py-3.5 sm:py-5 shrink-0 w-[34%] sm:w-[30%] min-w-[100px] sm:min-w-[130px]">
           <span className="text-[9px] sm:text-[11px] font-semibold text-[#6daa87] tracking-widest uppercase">
             From
@@ -53,10 +54,11 @@ export default function BrandCard({ brand, highlight = false }: BrandCardProps) 
         </div>
       </Link>
 
-      {/* Footer bar + expandable panel */}
       <BrandCardExpand
-        slug={brand.slug}
+        detailPath={detailPath}
         why={brand.why}
+        whyLabels={config.whyLabels}
+        expandPrompt={config.expandPrompt}
         highlight={highlight}
       />
     </div>
