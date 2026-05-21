@@ -6,6 +6,7 @@ import Link from "next/link";
 import AskAssistant from "./components/AskAssistant";
 import GoogleTagManager from "./components/GoogleTagManager";
 import MobileNav from "./components/MobileNav";
+import { SupplementsNavDesktop } from "./components/SupplementsNav";
 import { SITE_URL } from "./lib/site";
 import "./globals.css";
 
@@ -110,6 +111,7 @@ export default function RootLayout({
               <Link href="/testosterone/enclomiphene" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
                 T Providers
               </Link>
+              <SupplementsNavDesktop />
               <Link href="/comparisons" className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
                 Comparisons
               </Link>
@@ -152,6 +154,12 @@ export default function RootLayout({
                   </Link>
                   <Link href="/testosterone/enclomiphene" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
                     Enclomiphene providers
+                  </Link>
+                  <Link href="/t-supplements" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    T-Supplements
+                  </Link>
+                  <Link href="/t-supplements/comparisons" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
+                    T-Supplements comparisons
                   </Link>
                   <Link href="/testosterone" className="text-[#78716c] hover:text-[#1c1917] transition-colors">
                     Testosterone topics

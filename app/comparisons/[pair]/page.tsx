@@ -1,5 +1,5 @@
 import { permanentRedirect } from "next/navigation";
-import { getBrandPairs, type BrandCategory } from "../../lib/brands";
+import { getBrandBySlug, getBrandPairs, getComparePairPath } from "../../lib/brands";
 
 type Params = { pair: string };
 type PageProps = { params: Params | Promise<Params> };
@@ -20,13 +20,11 @@ function canonicalPairSlug(left: string, right: string) {
 }
 
 /**
- * Pairwise URLs are canonical under `/compare/:pair`. This route exists only so older
- * `/comparisons/:pair` links consolidate without duplicate on-page content.
+ * Legacy `/comparisons/:pair` → canonical compare route for the brand category.
  */
 export function generateStaticParams(): Params[] {
-  const categories: BrandCategory[] = ["enclomiphene", "supplement"];
   const out: Params[] = [];
-  for (const category of categories) {
+  for (const category of ["enclomiphene", "supplement"] as const) {
     for (const { a, b } of getBrandPairs(category)) {
       const slugs = [a.slug, b.slug].sort();
       out.push({ pair: `${slugs[0]}-vs-${slugs[1]}` });
@@ -39,6 +37,17 @@ export default async function ComparisonsPairRedirect({ params }: PageProps) {
   const p = await Promise.resolve(params);
   const parsed = parsePair(p.pair);
   if (!parsed) permanentRedirect("/comparisons");
+
   const slug = canonicalPairSlug(parsed.left, parsed.right);
+  const leftBrand = getBrandBySlug(parsed.left);
+  const rightBrand = getBrandBySlug(parsed.right);
+
+  if (
+    leftBrand?.category === "supplement" &&
+    rightBrand?.category === "supplement"
+  ) {
+    permanentRedirect(getComparePairPath("supplement", parsed.left, parsed.right));
+  }
+
   permanentRedirect(`/compare/${slug}`);
 }

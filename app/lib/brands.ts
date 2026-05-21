@@ -87,11 +87,31 @@ export function getBrandBySlug(slug: string): Brand | undefined {
 }
 
 export function getBrandDetailPath(brand: Brand): string {
-  return `/testosterone/${brand.category}/${brand.slug}`;
+  if (brand.category === "supplement") {
+    return `/t-supplements/${brand.slug}`;
+  }
+  return `/testosterone/enclomiphene/${brand.slug}`;
 }
 
 export function getCategoryIndexPath(category: BrandCategory): string {
-  return `/testosterone/${category}`;
+  if (category === "supplement") return "/t-supplements";
+  return "/testosterone/enclomiphene";
+}
+
+export function getComparisonsIndexPath(category: BrandCategory): string {
+  if (category === "supplement") return "/t-supplements/comparisons";
+  return "/comparisons";
+}
+
+export function getComparePairPath(
+  category: BrandCategory,
+  leftSlug: string,
+  rightSlug: string,
+): string {
+  const slugs = [leftSlug, rightSlug].sort();
+  const pair = `${slugs[0]}-vs-${slugs[1]}`;
+  if (category === "supplement") return `/t-supplements/compare/${pair}`;
+  return `/compare/${pair}`;
 }
 
 export function getBrandPairs(category: BrandCategory): { a: Brand; b: Brand }[] {

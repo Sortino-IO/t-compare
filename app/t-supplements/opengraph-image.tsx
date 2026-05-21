@@ -1,9 +1,9 @@
 import { ImageResponse } from "next/og";
-import { SITE_URL } from "../../lib/site";
+import { SITE_URL } from "../lib/site";
 
 const siteHost = new URL(SITE_URL).host;
 
-export const alt = "Top Testosterone Supplements Compared";
+export const alt = "T-Supplements Compared";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -33,7 +33,7 @@ export default function Image() {
             fontFamily: "serif",
           }}
         >
-          Supplement Guide
+          T-Supplements
         </p>
 
         <p

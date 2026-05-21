@@ -4,13 +4,13 @@ import { getBrandsByCategory } from "../lib/brands";
 import { SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Testosterone Options Compared: Providers & Supplements",
+  title: "Enclomiphene Providers: Compare by Category",
   description:
-    "Compare enclomiphene telehealth providers and OTC testosterone supplements in one place. Review entry pricing, plan structure, and bulk value before you choose.",
+    "Compare enclomiphene telehealth providers by pricing, onboarding, labs, and plan structure before you choose.",
   openGraph: {
-    title: "Testosterone Options Compared: Providers & Supplements | T-Compare",
+    title: "Enclomiphene Providers: Compare by Category | T-Compare",
     description:
-      "Compare enclomiphene telehealth providers and OTC testosterone supplements in one place. Review entry pricing, plan structure, and bulk value before you choose.",
+      "Compare enclomiphene telehealth providers by pricing, onboarding, labs, and plan structure before you choose.",
     url: `${SITE_URL}/testosterone`,
     images: [
       {
@@ -23,16 +23,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Testosterone Options Compared: Providers & Supplements | T-Compare",
+    title: "Enclomiphene Providers: Compare by Category | T-Compare",
     description:
-      "Compare enclomiphene telehealth providers and OTC testosterone supplements in one place. Review entry pricing, plan structure, and bulk value before you choose.",
+      "Compare enclomiphene telehealth providers by pricing, onboarding, labs, and plan structure before you choose.",
     images: ["/testosterone/opengraph-image"],
   },
 };
 
 export default function TestosteronePage() {
   const encloBrands = getBrandsByCategory("enclomiphene");
-  const supplementBrands = getBrandsByCategory("supplement");
 
   const categories = [
     {
@@ -42,14 +41,6 @@ export default function TestosteronePage() {
         "A selective estrogen receptor modulator (SERM) that stimulates the body's own testosterone production without direct hormone replacement.",
       providerCount: encloBrands.length,
       priceFrom: encloBrands.length ? encloBrands[0]!.priceFromMonthly : 0,
-    },
-    {
-      name: "Testosterone supplements",
-      slug: "supplement",
-      description:
-        "Compare OTC testosterone boosters by entry price, bulk savings, guarantees, and ingredients-from $55/mo-before you fall for a multi-bottle funnel.",
-      providerCount: supplementBrands.length,
-      priceFrom: supplementBrands.length ? supplementBrands[0]!.priceFromMonthly : 0,
     },
   ];
 

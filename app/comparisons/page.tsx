@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getBrandPairs, type BrandCategory } from "../lib/brands";
+import { getBrandPairs, getComparePairPath } from "../lib/brands";
 import ComparisonPairsGrid from "../components/ComparisonPairsGrid";
 import { SITE_URL } from "../lib/site";
 
@@ -31,17 +31,16 @@ export const metadata: Metadata = {
   },
 };
 
-function pairsForCategory(category: BrandCategory) {
-  return getBrandPairs(category).map(({ a, b }) => ({
+function allEnclomiphenePairs() {
+  return getBrandPairs("enclomiphene").map(({ a, b }) => ({
     title: `${a.name} vs ${b.name}`,
-    href: `/compare/${[a.slug, b.slug].sort().join("-vs-")}`,
+    href: getComparePairPath("enclomiphene", a.slug, b.slug),
     description: `Compare ${a.name} and ${b.name} side-by-side.`,
   }));
 }
 
 export default function ComparisonsIndexPage() {
-  const enclomiphenePairs = pairsForCategory("enclomiphene");
-  const supplementPairs = pairsForCategory("supplement");
+  const pairs = allEnclomiphenePairs();
   return (
     <div className="bg-[#f5f3ee]">
       <div className="mx-auto max-w-5xl px-6 py-12">
@@ -94,21 +93,7 @@ export default function ComparisonsIndexPage() {
           </div>
         </div>
 
-        <h2 className="mt-10 text-2xl font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)]">
-          Enclomiphene provider comparisons
-        </h2>
-
-        <ComparisonPairsGrid pairs={enclomiphenePairs} />
-
-        <h2 className="mt-14 text-2xl font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)]">
-          Testosterone supplement comparisons
-        </h2>
-        <p className="mt-2 text-sm text-[#57534e] max-w-3xl leading-relaxed">
-          OTC booster funnels often hide the real cost behind multi-bottle bundles. Compare entry
-          anchors, bulk per-bottle math, guarantee length, and formula positioning before checkout.
-        </p>
-
-        <ComparisonPairsGrid pairs={supplementPairs} />
+        <ComparisonPairsGrid pairs={pairs} />
 
         <section className="mt-12 rounded-2xl border border-[#e3dfd6] bg-white p-6 sm:p-8">
           <h2 className="text-xl sm:text-2xl font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)]">

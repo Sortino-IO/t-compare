@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, startTransition } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SupplementsNavMobile } from "./SupplementsNav";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -106,11 +107,12 @@ export default function MobileNav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="py-4 text-[15px] font-medium text-[#1c1917] border-b border-[#ede9e0] last:border-0 hover:text-[#2a6e47] transition-colors"
+                className="py-4 text-[15px] font-medium text-[#1c1917] border-b border-[#ede9e0] hover:text-[#2a6e47] transition-colors"
               >
                 {link.label}
               </Link>
             ))}
+            <SupplementsNavMobile onNavigate={() => setOpen(false)} />
           </nav>
         </div>
       )}

@@ -24,29 +24,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const brandEntries: MetadataRoute.Sitemap = [];
   const comparisonEntries: MetadataRoute.Sitemap = [];
 
-  for (const category of ["enclomiphene", "supplement"] as const) {
-    const brands = getBrandsByCategory(category);
-    for (const brand of brands) {
-      brandEntries.push({
-        url: `${SITE_URL}/testosterone/${category}/${brand.slug}`,
-        lastModified: new Date(brand.lastReviewed),
-        changeFrequency: "weekly",
-        priority: 0.8,
-      });
-    }
+  for (const brand of getBrandsByCategory("enclomiphene")) {
+    brandEntries.push({
+      url: `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`,
+      lastModified: new Date(brand.lastReviewed),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
+  }
 
-    for (const { a, b } of getBrandPairs(category)) {
-      const slugs = [a.slug, b.slug].sort();
-      const lastA = new Date(a.lastReviewed);
-      const lastB = new Date(b.lastReviewed);
-      const lastModified = lastA > lastB ? lastA : lastB;
-      comparisonEntries.push({
-        url: `${SITE_URL}/compare/${slugs[0]}-vs-${slugs[1]}`,
-        lastModified,
-        changeFrequency: "weekly",
-        priority: 0.78,
-      });
-    }
+  for (const { a, b } of getBrandPairs("enclomiphene")) {
+    const slugs = [a.slug, b.slug].sort();
+    const lastModified =
+      new Date(a.lastReviewed) > new Date(b.lastReviewed)
+        ? new Date(a.lastReviewed)
+        : new Date(b.lastReviewed);
+    comparisonEntries.push({
+      url: `${SITE_URL}/compare/${slugs[0]}-vs-${slugs[1]}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.78,
+    });
+  }
+
+  for (const brand of getBrandsByCategory("supplement")) {
+    brandEntries.push({
+      url: `${SITE_URL}/t-supplements/${brand.slug}`,
+      lastModified: new Date(brand.lastReviewed),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
+  }
+
+  for (const { a, b } of getBrandPairs("supplement")) {
+    const slugs = [a.slug, b.slug].sort();
+    const lastModified =
+      new Date(a.lastReviewed) > new Date(b.lastReviewed)
+        ? new Date(a.lastReviewed)
+        : new Date(b.lastReviewed);
+    comparisonEntries.push({
+      url: `${SITE_URL}/t-supplements/compare/${slugs[0]}-vs-${slugs[1]}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.78,
+    });
   }
 
   return [...staticEntries, ...blogEntries, ...brandEntries, ...comparisonEntries];

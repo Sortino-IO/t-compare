@@ -41,6 +41,16 @@ const nextConfig: NextConfig = {
         destination: "/compare/hims-vs-maximus-tribe",
         permanent: true,
       },
+      {
+        source: "/testosterone/supplement",
+        destination: "/t-supplements",
+        permanent: true,
+      },
+      {
+        source: "/testosterone/supplement/:brand",
+        destination: "/t-supplements/:brand",
+        permanent: true,
+      },
     ];
   },
 };

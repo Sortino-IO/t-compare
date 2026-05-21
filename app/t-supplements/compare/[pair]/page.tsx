@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import ComparisonTable, { type ComparisonRow } from "../../components/ComparisonTable";
+import ComparisonTable, { type ComparisonRow } from "../../../components/ComparisonTable";
 import {
   getBrandBySlug,
   getBrandDetailPath,
   getBrandPairs,
+  getComparisonsIndexPath,
   getComparePairPath,
   type Brand,
-} from "../../lib/brands";
-import { getPairComparisonExtras } from "../../lib/pair-comparison-extras";
-import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
-import { SITE_URL } from "../../lib/site";
+} from "../../../lib/brands";
+import { getPairComparisonExtras } from "../../../lib/pair-comparison-extras";
+import { withTtimeAffiliateParams } from "../../../lib/affiliate-links";
+import { SITE_URL } from "../../../lib/site";
+
+const COMPARISONS_INDEX = getComparisonsIndexPath("supplement");
 
 type Params = { pair: string };
 type PageProps = { params: Params | Promise<Params> };
@@ -33,12 +36,10 @@ function canonicalPair(left: string, right: string) {
 }
 
 export function generateStaticParams(): Params[] {
-  const out: Params[] = [];
-  for (const { a, b } of getBrandPairs("enclomiphene")) {
+  return getBrandPairs("supplement").map(({ a, b }) => {
     const slugs = [a.slug, b.slug].sort();
-    out.push({ pair: `${slugs[0]}-vs-${slugs[1]}` });
-  }
-  return out;
+    return { pair: `${slugs[0]}-vs-${slugs[1]}` };
+  });
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -46,9 +47,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const parsed = parsePair(p.pair);
   if (!parsed) {
     return {
-      title: "TRT Provider Comparison",
+      title: "T-Supplement Comparison",
       description:
-        "Compare testosterone providers side by side on pricing, labs, onboarding, and plan terms before you sign up.",
+        "Compare testosterone boosters side by side on entry price, bulk bundles, guarantees, and ingredients before checkout.",
     };
   }
 
@@ -59,20 +60,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     leftBrand && rightBrand
       ? `${leftBrand.name} vs ${rightBrand.name}`
       : `${canonical.left} vs ${canonical.right}`;
-  const isSupplement =
-    leftBrand?.category === "supplement" && rightBrand?.category === "supplement";
   const description =
     leftBrand && rightBrand
-      ? isSupplement
-        ? `Compare ${leftBrand.name} vs ${rightBrand.name} on entry price, bulk bundles, guarantees, and ingredients. See which testosterone booster fits your budget before checkout.`
-        : `Compare ${leftBrand.name} vs ${rightBrand.name} across pricing, labs, onboarding flow, and plan structure. See key differences before you choose.`
-      : isSupplement
-        ? `Compare ${canonical.left} vs ${canonical.right} on testosterone supplement pricing, bulk savings, and guarantee terms.`
-        : `Compare ${canonical.left} vs ${canonical.right} across pricing, labs, onboarding flow, and plan structure.`;
-  const pageTitle = isSupplement
-    ? `${title}: Which T-Booster Is Better?`
-    : `${title} Comparison: Price, Labs & Plan Terms`;
-  const canonicalUrl = `${SITE_URL}/compare/${canonical.left}-vs-${canonical.right}`;
+      ? `Compare ${leftBrand.name} vs ${rightBrand.name} on entry price, bulk bundles, guarantees, and ingredients. See which testosterone booster fits your budget before checkout.`
+      : `Compare ${canonical.left} vs ${canonical.right} on testosterone supplement pricing, bulk savings, and guarantee terms.`;
+  const pageTitle = `${title}: Which T-Booster Is Better?`;
+  const canonicalUrl = `${SITE_URL}${getComparePairPath("supplement", canonical.left, canonical.right)}`;
 
   return {
     title: pageTitle,
@@ -83,7 +76,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: canonicalUrl,
       images: [
         {
-          url: "/comparisons/opengraph-image",
+          url: "/t-supplements/opengraph-image",
           width: 1200,
           height: 630,
           alt: `${title} comparison`,
@@ -94,7 +87,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: `${pageTitle} | T-Compare`,
       description,
-      images: ["/comparisons/opengraph-image"],
+      images: ["/t-supplements/opengraph-image"],
     },
   };
 }
@@ -110,24 +103,22 @@ function sourceList(brand: Brand) {
   return urls;
 }
 
-export default async function ComparePairPage({ params }: PageProps) {
+export default async function TSupplementComparePairPage({ params }: PageProps) {
   const p = await Promise.resolve(params);
   const parsed = parsePair(p.pair);
-  if (!parsed) redirect("/comparisons");
+  if (!parsed) redirect(COMPARISONS_INDEX);
 
   const canonical = canonicalPair(parsed.left, parsed.right);
   const canonicalPairSlug = `${canonical.left}-vs-${canonical.right}`;
-  if (canonicalPairSlug !== p.pair) redirect(`/compare/${canonicalPairSlug}`);
+  const canonicalPath = getComparePairPath("supplement", canonical.left, canonical.right);
+  if (canonicalPairSlug !== p.pair) redirect(canonicalPath);
 
   const leftBrand = getBrandBySlug(canonical.left);
   const rightBrand = getBrandBySlug(canonical.right);
-  if (!leftBrand || !rightBrand) redirect("/comparisons");
-  if (leftBrand.category !== rightBrand.category) redirect("/comparisons");
-  if (leftBrand.category === "supplement") {
-    redirect(getComparePairPath("supplement", canonical.left, canonical.right));
+  if (!leftBrand || !rightBrand) redirect(COMPARISONS_INDEX);
+  if (leftBrand.category !== "supplement" || rightBrand.category !== "supplement") {
+    redirect(COMPARISONS_INDEX);
   }
-
-  const isSupplement = false;
 
   const [a, b] = [leftBrand, rightBrand].sort(byName);
 
@@ -139,46 +130,30 @@ export default async function ComparePairPage({ params }: PageProps) {
       left: (
         <>
           <strong>{a.priceLabel}</strong>. Verify the live price at checkout because promos, bundle size,
-          and {isSupplement ? "shipping" : "lab/testing requirements"} can change.
+          and shipping can change.
         </>
       ),
       right: (
         <>
           <strong>{b.priceLabel}</strong>. Verify the live price at checkout because promos, bundle size,
-          and {isSupplement ? "shipping" : "lab/testing requirements"} can change.
+          and shipping can change.
         </>
       ),
     },
     {
-      label: isSupplement ? "Money-back guarantee" : "Onboarding",
-      left: isSupplement ? a.why.onboarding : a.onboardingType === "faster-start" ? "Faster-start flow" : "Standard onboarding flow",
-      right: isSupplement ? b.why.onboarding : b.onboardingType === "faster-start" ? "Faster-start flow" : "Standard onboarding flow",
+      label: "Money-back guarantee",
+      left: a.why.onboarding,
+      right: b.why.onboarding,
     },
     {
-      label: isSupplement ? "Bulk pricing snapshot" : "Program overview",
-      left: isSupplement ? a.why.pricing : a.overview,
-      right: isSupplement ? b.why.pricing : b.overview,
+      label: "Bulk pricing snapshot",
+      left: a.why.pricing,
+      right: b.why.pricing,
     },
     {
-      label: isSupplement ? "Formula focus" : "Important notes",
-      left: isSupplement ? (
-        a.why.positioning
-      ) : (
-        <ul className="list-disc pl-5 space-y-1">
-          {a.notes.slice(0, 4).map((n) => (
-            <li key={n}>{n}</li>
-          ))}
-        </ul>
-      ),
-      right: isSupplement ? (
-        b.why.positioning
-      ) : (
-        <ul className="list-disc pl-5 space-y-1">
-          {b.notes.slice(0, 4).map((n) => (
-            <li key={n}>{n}</li>
-          ))}
-        </ul>
-      ),
+      label: "Formula focus",
+      left: a.why.positioning,
+      right: b.why.positioning,
     },
     ...(pairExtras?.rows ?? []),
   ];
@@ -192,12 +167,11 @@ export default async function ComparePairPage({ params }: PageProps) {
               {a.name} vs {b.name}
             </h1>
             <p className="mt-3 text-sm sm:text-base text-[#57534e] max-w-2xl leading-relaxed">
-              {isSupplement
-                ? "Side-by-side snapshot of supplement pricing anchors, guarantee terms, and formula positioning from public checkout pages. Always verify the live cart before you pay."
-                : "Side-by-side snapshot of pricing framing, onboarding, and what each provider emphasizes publicly. Always verify eligibility and total cost at checkout."}
+              Side-by-side snapshot of supplement pricing anchors, guarantee terms, and formula positioning from
+              public checkout pages. Always verify the live cart before you pay.
             </p>
           </div>
-          <Link href="/comparisons" className="text-sm font-medium text-[#2a6e47] hover:underline">
+          <Link href={COMPARISONS_INDEX} className="text-sm font-medium text-[#2a6e47] hover:underline">
             ← All comparisons
           </Link>
         </div>
@@ -233,25 +207,25 @@ export default async function ComparePairPage({ params }: PageProps) {
           <h2 className="text-lg font-semibold text-[#1c1917]">Objective summary</h2>
           <div className="mt-3 grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
-              <div className="text-sm font-semibold text-[#1c1917]">Compare the same time horizon</div>
+              <div className="text-sm font-semibold text-[#1c1917]">Compare the same bundle size</div>
               <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                If one provider’s headline price assumes a longer commitment, compare both on 90 days or 12 months
-                with the same assumptions (promos, shipping, and required testing).
+                A $49/bottle headline often requires buying six bottles upfront. Normalize both products to the same
+                commitment (single bottle, 3-pack, or 6-pack) before picking a winner.
               </p>
             </div>
             <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
               <div className="text-sm font-semibold text-[#1c1917]">Model your “all-in” cost</div>
               <ul className="mt-2 list-disc pl-5 text-sm text-[#57534e] space-y-1.5">
-                <li>Initial labs / test kit and follow-up cadence</li>
-                <li>Shipping and refill schedule</li>
-                <li>What’s included (visits, messaging, adjustments)</li>
+                <li>Entry price vs bulk per-bottle math</li>
+                <li>Shipping thresholds and free-shipping minimums</li>
+                <li>Money-back guarantee length and return terms</li>
               </ul>
             </div>
             <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
               <div className="text-sm font-semibold text-[#1c1917]">Use sources for the final check</div>
               <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Provider pages change often. Use the links below to confirm the exact plan terms and pricing you’d
-                actually purchase today.
+                Checkout funnels change often. Use the links below to confirm the exact bundle pricing, guarantee
+                window, and ingredient list you would purchase today.
               </p>
             </div>
           </div>
@@ -281,7 +255,8 @@ export default async function ComparePairPage({ params }: PageProps) {
             ))}
           </div>
           <p className="mt-4 text-xs text-[#78716c] leading-relaxed">
-            Not medical advice. Pricing, availability, and inclusions vary by state and can change over time.
+            Not medical advice. Supplements are not FDA-approved to treat low testosterone. Pricing, availability,
+            and guarantee terms can change over time.
           </p>
 
           {pairExtras?.extraSources?.length ? (
@@ -309,8 +284,8 @@ export default async function ComparePairPage({ params }: PageProps) {
         <section className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6 sm:p-8">
           <h2 className="text-lg font-semibold text-[#1c1917]">FAQ</h2>
           <p className="mt-2 text-sm text-[#57534e] max-w-3xl leading-relaxed">
-            Quick answers for comparing {a.name} and {b.name}. Educational only; confirm your own eligibility and
-            pricing on official sites.
+            Quick answers for comparing {a.name} and {b.name}. Educational only; confirm pricing and supplement facts
+            on official sites before checkout.
           </p>
           <dl className="mt-6 space-y-6">
             <div>
@@ -318,17 +293,18 @@ export default async function ComparePairPage({ params }: PageProps) {
                 Does this page pick a “winner” between {a.name} and {b.name}?
               </dt>
               <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                No. It summarizes publicly framed pricing and onboarding language so you can ask sharper questions.
-                Outcomes depend on diagnosis, monitoring, and adherence—not logos.
+                No. It summarizes publicly framed pricing, bulk tiers, and guarantee language so you can compare
+                honestly. Results vary by individual health, adherence, and expectations—not brand logos.
               </dd>
             </div>
             <div>
               <dt className="text-sm font-semibold text-[#1c1917]">
-                What is the biggest mistake when comparing monthly prices?
+                What is the biggest mistake when comparing supplement prices?
               </dt>
               <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Ignoring plan length and lab cadence. Normalize both brands to the same time horizon (for example 90
-                days) and include shipping, kits, and repeat labs when advertised separately.
+                Stopping at the single-bottle headline. Many funnels require multi-bottle bundles to unlock the
+                advertised per-bottle rate. Normalize both brands to the same package size and include shipping
+                before you decide.
               </dd>
             </div>
             <div>
@@ -336,26 +312,26 @@ export default async function ComparePairPage({ params }: PageProps) {
                 Where should I verify the numbers?
               </dt>
               <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Use each provider’s official checkout or FAQ pages for your state on the day you enroll. This snapshot
-                can drift when promotions or regulations change.
+                On each brand’s official checkout page the day you buy. Promotions, bundle requirements, and guarantee
+                terms change frequently; stale comparison tables are unreliable.
               </dd>
             </div>
             <div>
               <dt className="text-sm font-semibold text-[#1c1917]">
-                Common misconception: if two brands list testosterone, are they the same therapy?
+                Common misconception: do testosterone boosters treat clinically low testosterone?
               </dt>
               <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Not necessarily. Enclomiphene-first programs and injectable TRT carry different monitoring expectations
-                and risks. Your clinician helps match therapy class to labs and goals.
+                OTC supplements are not FDA-approved to diagnose or treat hypogonadism. If you have symptoms or
+                abnormal labs, talk to a clinician before relying on booster funnels instead of medical evaluation.
               </dd>
             </div>
             <div>
               <dt className="text-sm font-semibold text-[#1c1917]">
-                What should I ask before paying?
+                What should I check before paying?
               </dt>
               <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Ask what is included if your dose changes, what labs repeat and when, and how urgent symptoms are
-                triaged after hours.
+                Confirm the money-back guarantee window, whether you must return unused bottles, shipping costs on
+                your bundle size, and the full ingredient list for allergens or medication interactions.
               </dd>
             </div>
           </dl>
@@ -364,4 +340,3 @@ export default async function ComparePairPage({ params }: PageProps) {
     </div>
   );
 }
-
