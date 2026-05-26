@@ -8,106 +8,69 @@ export type LpMedia = {
   gallery: { src: string; alt: string }[];
 };
 
-const AVATARS = [
-  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=240&h=240&fit=crop&crop=faces",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&h=240&fit=crop&crop=faces",
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=240&h=240&fit=crop&crop=faces",
-  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&h=240&fit=crop&crop=faces",
-];
+/** Local assets under /public/lp — downloaded via scripts/download-lp-images.mjs */
+const IMG = {
+  avatar1: "/lp/avatar-1.jpg",
+  avatar2: "/lp/avatar-2.jpg",
+  avatar3: "/lp/avatar-3.jpg",
+  avatar4: "/lp/avatar-4.jpg",
+  gymStrength: "/lp/gym-strength.jpg",
+  gymTraining: "/lp/gym-training.jpg",
+  manRunning: "/lp/man-running.jpg",
+  workoutSession: "/lp/workout-session.jpg",
+  yogaStretch: "/lp/yoga-stretch.jpg",
+  coupleActive: "/lp/couple-active.jpg",
+  manPortraitSmile: "/lp/man-portrait-smile.jpg",
+  coupleHappy: "/lp/couple-happy.jpg",
+  teamMeeting: "/lp/team-meeting.jpg",
+  gymLifting: "/lp/gym-lifting.jpg",
+  meditationCalm: "/lp/meditation-calm.jpg",
+  manConfident: "/lp/man-confident.jpg",
+} as const;
+
+const AVATARS = [IMG.avatar1, IMG.avatar2, IMG.avatar3, IMG.avatar4];
 
 export const LP_MEDIA: Record<string, LpMedia> = {
   "critical-t-lp1": {
-    heroImage:
-      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50c?w=900&h=700&fit=crop",
+    heroImage: IMG.manRunning,
     heroImageAlt: "Fit man training with energy and confidence",
-    splitImage:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop",
+    splitImage: IMG.gymStrength,
     splitImageAlt: "Man lifting weights in gym",
     gallery: [
-      {
-        src: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=500&fit=crop",
-        alt: "Athletic man mid-workout",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=500&fit=crop",
-        alt: "Man training hard at the gym",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&h=400&fit=crop",
-        alt: "Active couple enjoying life together",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop",
-        alt: "Confident man stretching outdoors",
-      },
+      { src: IMG.workoutSession, alt: "Athletic man mid-workout" },
+      { src: IMG.gymTraining, alt: "Man training hard at the gym" },
+      { src: IMG.coupleActive, alt: "Active couple enjoying life together" },
+      { src: IMG.yogaStretch, alt: "Confident man stretching outdoors" },
     ],
   },
   "endopeak24-lp1": {
-    heroImage:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&h=700&fit=crop",
+    heroImage: IMG.gymTraining,
     heroImageAlt: "Strong man training with focus and drive",
-    splitImage:
-      "https://images.unsplash.com/photo-1583500178690-e59a82a490ca?w=800&h=600&fit=crop",
-    splitImageAlt: "Happy mature man feeling vital",
+    splitImage: IMG.teamMeeting,
+    splitImageAlt: "Confident man ready to take on the day",
     gallery: [
-      {
-        src: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50c?w=600&h=500&fit=crop",
-        alt: "Man building strength at gym",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1540497077202-7a8a3998166e?w=600&h=500&fit=crop",
-        alt: "Energetic man in fitness center",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=400&fit=crop",
-        alt: "Happy couple smiling together",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&h=400&fit=crop",
-        alt: "Confident man in casual setting",
-      },
+      { src: IMG.manRunning, alt: "Man building strength at gym" },
+      { src: IMG.gymLifting, alt: "Energetic man in fitness center" },
+      { src: IMG.coupleHappy, alt: "Happy couple smiling together" },
+      { src: IMG.manPortraitSmile, alt: "Confident man feeling vital" },
     ],
   },
   "erecprime24-lp1": {
-    heroImage:
-      "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=900&h=700&fit=crop",
+    heroImage: IMG.manPortraitSmile,
     heroImageAlt: "Confident smiling man feeling his best",
-    splitImage:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&h=600&fit=crop",
+    splitImage: IMG.coupleHappy,
     splitImageAlt: "Happy couple enjoying life",
     gallery: [
-      {
-        src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=500&fit=crop",
-        alt: "Smiling man radiating confidence",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=500&fit=crop",
-        alt: "Mature man feeling strong and happy",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&h=400&fit=crop",
-        alt: "Active couple staying fit together",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1583500178690-e59a82a490ca?w=600&h=400&fit=crop",
-        alt: "Vital man ready to take on the day",
-      },
+      { src: IMG.manConfident, alt: "Smiling man radiating confidence" },
+      { src: IMG.gymLifting, alt: "Mature man feeling strong and happy" },
+      { src: IMG.coupleActive, alt: "Active couple staying fit together" },
+      { src: IMG.teamMeeting, alt: "Vital man ready to take on the day" },
     ],
   },
 };
 
 export function getLpMedia(slug: string): LpMedia {
-  return (
-    LP_MEDIA[slug] ?? {
-      heroImage:
-        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50c?w=900&h=700&fit=crop",
-      heroImageAlt: "Man training with energy",
-      splitImage:
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop",
-      splitImageAlt: "Man at gym",
-      gallery: LP_MEDIA["critical-t-lp1"]!.gallery,
-    }
-  );
+  return LP_MEDIA[slug] ?? LP_MEDIA["critical-t-lp1"]!;
 }
 
 export function testimonialAvatar(index: number): string {

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm run check:blog-images:all",
+    "prebuild": "npm run check:blog-images:all && npm run check:lp-images",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -14,6 +14,7 @@
     "check:blog-image-per-post": "node scripts/validate-blog-image-per-post.mjs",
     "check:blog-image-unsplash-http": "node scripts/validate-blog-images-unsplash-http.mjs",
     "check:blog-images:all": "npm run check:blog-images && npm run check:blog-image-banned && npm run check:blog-image-cap && npm run check:blog-image-per-post && npm run check:blog-image-unsplash-http",
+    "check:lp-images": "node scripts/check-lp-images.mjs",
     "dedupe:blog-images": "node scripts/dedupe-blog-images.mjs",
     "align:blog-images-unsplash": "node scripts/apply-blog-image-guidelines.mjs",
     "sync:blog14": "node scripts/sync-blog14-to-posts.mjs",
