@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import LandingPageView from "../../components/landing/LandingPageView";
+import LandingPageRouter from "../../components/landing/LandingPageRouter";
 import { getAllLandingPageSlugs, getLandingPageBySlug } from "../../lib/landing-pages";
 
 type Props = {
@@ -27,5 +27,5 @@ export default async function LandingPage({ params }: Props) {
   const page = getLandingPageBySlug(slug);
   if (!page) notFound();
 
-  return <LandingPageView config={page} />;
+  return <LandingPageRouter config={page} />;
 }

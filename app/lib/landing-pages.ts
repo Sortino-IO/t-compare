@@ -1,3 +1,5 @@
+import { LANDING_PAGES_LP2 } from "./landing-pages-lp2";
+
 export type LpTheme = {
   primary: string;
   primaryDark: string;
@@ -33,8 +35,19 @@ export type LpTestimonial = {
   packageLabel: string;
 };
 
+export type LpTimelineStep = {
+  milestone: string;
+  title: string;
+  body: string;
+};
+
+export type LpLayoutVariant = "lp1" | "lp2";
+export type Lp2Style = "dtc" | "advertorial" | "bento";
+
 export type LandingPageConfig = {
   slug: string;
+  variant?: LpLayoutVariant;
+  lp2Style?: Lp2Style;
   brandName: string;
   productName: string;
   ctaUrl: string;
@@ -60,9 +73,10 @@ export type LandingPageConfig = {
   packages: LpPackage[];
   faq: { q: string; a: string }[];
   finalCtaHeadline: string;
+  timeline?: LpTimelineStep[];
 };
 
-export const LANDING_PAGES: LandingPageConfig[] = [
+export const LANDING_PAGES_LP1: LandingPageConfig[] = [
   {
     slug: "critical-t-lp1",
     brandName: "Critical T",
@@ -516,6 +530,8 @@ export const LANDING_PAGES: LandingPageConfig[] = [
     finalCtaHeadline: "Claim Your ErecPrime Package Before Pricing Resets",
   },
 ];
+
+export const LANDING_PAGES: LandingPageConfig[] = [...LANDING_PAGES_LP1, ...LANDING_PAGES_LP2];
 
 export function getLandingPageBySlug(slug: string): LandingPageConfig | undefined {
   return LANDING_PAGES.find((p) => p.slug === slug);

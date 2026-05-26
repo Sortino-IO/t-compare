@@ -67,6 +67,42 @@ export const LP_MEDIA: Record<string, LpMedia> = {
       { src: IMG.teamMeeting, alt: "Vital man ready to take on the day" },
     ],
   },
+  "critical-t-lp2": {
+    heroImage: IMG.gymStrength,
+    heroImageAlt: "Athletic man lifting weights with focus",
+    splitImage: IMG.workoutSession,
+    splitImageAlt: "Man mid-workout session",
+    gallery: [
+      { src: IMG.manRunning, alt: "Runner training outdoors" },
+      { src: IMG.gymTraining, alt: "Gym training session" },
+      { src: IMG.yogaStretch, alt: "Man stretching after workout" },
+      { src: IMG.meditationCalm, alt: "Calm focused man recovering" },
+    ],
+  },
+  "endopeak24-lp2": {
+    heroImage: IMG.manConfident,
+    heroImageAlt: "Confident mature man in casual setting",
+    splitImage: IMG.gymLifting,
+    splitImageAlt: "Man training with energy at gym",
+    gallery: [
+      { src: IMG.teamMeeting, alt: "Professional man ready for the day" },
+      { src: IMG.coupleHappy, alt: "Happy couple together" },
+      { src: IMG.manPortraitSmile, alt: "Smiling man feeling vital" },
+      { src: IMG.coupleActive, alt: "Active lifestyle couple" },
+    ],
+  },
+  "erecprime24-lp2": {
+    heroImage: IMG.gymTraining,
+    heroImageAlt: "Fit man training with intensity",
+    splitImage: IMG.manConfident,
+    splitImageAlt: "Confident man post-workout",
+    gallery: [
+      { src: IMG.workoutSession, alt: "High energy workout" },
+      { src: IMG.coupleHappy, alt: "Happy couple intimate moment" },
+      { src: IMG.gymLifting, alt: "Strength training focus" },
+      { src: IMG.manRunning, alt: "Man running with stamina" },
+    ],
+  },
 };
 
 export function getLpMedia(slug: string): LpMedia {

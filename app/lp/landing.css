@@ -29,3 +29,41 @@
 .lp-headline-shadow {
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
+
+/* LP2 — advertorial editorial */
+.lp-advertorial-headline {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.lp-advertorial-dropcap::first-letter {
+  float: left;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.5rem;
+  line-height: 0.85;
+  font-weight: 700;
+  margin: 0.08em 0.12em 0 0;
+  color: #134e4a;
+}
+
+/* LP2 — bento dark glow */
+@keyframes lp-bento-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(255, 71, 87, 0.45);
+  }
+}
+
+.lp-bento-glow {
+  animation: lp-bento-pulse 3s ease-in-out infinite;
+}
+
+.lp-bento-card {
+  transition: transform 0.2s ease;
+}
+
+.lp-bento-card:hover {
+  transform: scale(1.02);
+}
