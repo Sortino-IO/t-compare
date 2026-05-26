@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getBrandPairs, getBrandsByCategory } from "./lib/brands";
 import { getAllPosts } from "./lib/blog";
+import { LANDING_PAGES } from "./lib/landing-pages";
 import { discoverStaticAppRoutes } from "./lib/sitemap-routes";
 import { SITE_URL } from "./lib/site";
 
@@ -70,5 +71,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  return [...staticEntries, ...blogEntries, ...brandEntries, ...comparisonEntries];
+  const landingPageEntries: MetadataRoute.Sitemap = LANDING_PAGES.map((page) => ({
+    url: `${SITE_URL}/lp/${page.slug}`,
+    lastModified: new Date("2026-05-21"),
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...blogEntries, ...brandEntries, ...comparisonEntries, ...landingPageEntries];
 }

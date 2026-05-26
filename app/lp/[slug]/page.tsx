@@ -1,0 +1,31 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import LandingPageView from "../../components/landing/LandingPageView";
+import { getAllLandingPageSlugs, getLandingPageBySlug } from "../../lib/landing-pages";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateStaticParams() {
+  return getAllLandingPageSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const page = getLandingPageBySlug(slug);
+  if (!page) return { title: "Offer not found" };
+
+  return {
+    title: { absolute: page.seoTitle },
+    description: page.seoDescription,
+  };
+}
+
+export default async function LandingPage({ params }: Props) {
+  const { slug } = await params;
+  const page = getLandingPageBySlug(slug);
+  if (!page) notFound();
+
+  return <LandingPageView config={page} />;
+}
