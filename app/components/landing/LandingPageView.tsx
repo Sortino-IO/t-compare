@@ -1,30 +1,66 @@
+import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
+import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCountdown from "./LpCountdown";
 import LpCtaButton from "./LpCtaButton";
+import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
 
-function Section({
-  children,
-  bg,
-  className = "",
-}: {
-  children: React.ReactNode;
-  bg?: string;
-  className?: string;
-}) {
+function TrustRow({ theme }: { theme: LandingPageConfig["theme"] }) {
+  const items = ["60-Day Guarantee", "Free Shipping Options", "Secure Checkout", "4.9★ Reviews"];
   return (
-    <section className={`px-4 sm:px-6 py-10 sm:py-14 ${className}`} style={{ background: bg }}>
-      <div className="mx-auto max-w-3xl">{children}</div>
-    </section>
+    <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+      {items.map((item) => (
+        <span
+          key={item}
+          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wide border"
+          style={{
+            backgroundColor: theme.cardBg,
+            borderColor: theme.accent,
+            color: theme.primary,
+          }}
+        >
+          <span style={{ color: theme.accent }}>✓</span> {item}
+        </span>
+      ))}
+    </div>
   );
 }
 
-function CheckList({ items, color }: { items: string[]; color: string }) {
+function ProductBadge({ config }: { config: LandingPageConfig }) {
+  const { theme, productName, brandName } = config;
+  return (
+    <div
+      className="relative mx-auto w-40 sm:w-48 aspect-[3/4] rounded-2xl shadow-2xl border-4 flex flex-col items-center justify-end p-4 text-center"
+      style={{
+        background: `linear-gradient(160deg, ${theme.primaryDark} 0%, ${theme.primary} 100%)`,
+        borderColor: theme.accent,
+      }}
+    >
+      <div
+        className="absolute top-3 inset-x-3 rounded-lg py-2 px-2 text-[10px] sm:text-xs font-black uppercase leading-tight"
+        style={{ backgroundColor: theme.accent, color: theme.accentText }}
+      >
+        {brandName}
+      </div>
+      <p className="text-white font-black text-lg sm:text-xl leading-tight mb-1">{productName}</p>
+      <p className="text-white/70 text-[10px] uppercase tracking-widest">Daily Formula</p>
+    </div>
+  );
+}
+
+function CheckList({ items, color, bold }: { items: string[]; color: string; bold?: boolean }) {
   return (
     <ul className="space-y-3">
       {items.map((item) => (
-        <li key={item} className="flex gap-3 text-sm sm:text-base leading-relaxed">
-          <span className="shrink-0 mt-0.5 font-bold" style={{ color }}>
+        <li
+          key={item}
+          className={`flex gap-3 text-sm sm:text-base leading-relaxed ${bold ? "font-semibold" : ""}`}
+        >
+          <span
+            className="shrink-0 mt-0.5 flex h-6 w-6 items-center justify-center rounded-full text-white text-xs font-bold"
+            style={{ backgroundColor: color }}
+          >
             ✓
           </span>
           <span>{item}</span>
@@ -36,237 +72,310 @@ function CheckList({ items, color }: { items: string[]; color: string }) {
 
 export default function LandingPageView({ config }: { config: LandingPageConfig }) {
   const { theme } = config;
+  const media = getLpMedia(config.slug);
+  const testimonials = withAvatars(config.testimonials);
 
   return (
-    <div className="min-h-screen pb-20 sm:pb-0" style={{ color: theme.text }}>
+    <div className="min-h-screen pb-24 sm:pb-0 bg-[#f0f0f0]" style={{ color: theme.text }}>
       {/* Urgency strip */}
       <div
-        className="px-4 py-3 text-center text-sm sm:text-base font-bold uppercase tracking-wide text-white"
-        style={{ backgroundColor: theme.accent, color: theme.accentText }}
+        className="px-4 py-3 sm:py-4 text-center font-black uppercase tracking-wide text-sm sm:text-base lp-urgency-shimmer border-b-2 border-[#b8860b]"
+        style={{
+          background: `linear-gradient(90deg, ${theme.accent}, #fff176, ${theme.accent})`,
+          color: theme.accentText,
+        }}
       >
-        {config.urgencyHeadline}
+        ⚡ {config.urgencyHeadline} ⚡
       </div>
 
       {/* Hero */}
-      <header
-        className="px-4 sm:px-6 pt-10 pb-12 sm:pt-14 sm:pb-16 text-white text-center"
-        style={{ background: theme.heroBg }}
-      >
-        <div className="mx-auto max-w-3xl">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] opacity-80 mb-4">
-            Limited offer · Private page
-          </p>
-          <h1 className="text-2xl sm:text-4xl lg:text-[2.75rem] font-bold leading-tight mb-5">
-            {config.heroHeadline}
-          </h1>
-          <p className="text-base sm:text-lg opacity-90 leading-relaxed max-w-2xl mx-auto mb-8">
-            {config.heroSubheadline}
-          </p>
+      <header className="relative overflow-hidden" style={{ background: theme.heroBg }}>
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_30%,#fff_0%,transparent_50%)]" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14 lg:py-16">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="text-white text-center lg:text-left">
+              <p className="inline-block rounded-full bg-[#c0392b] px-4 py-1 text-xs font-black uppercase tracking-widest mb-4">
+                Limited offer · Act now
+              </p>
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-black leading-[1.1] mb-5 lp-headline-shadow">
+                {config.heroHeadline}
+              </h1>
+              <p className="text-base sm:text-lg font-medium opacity-95 leading-relaxed mb-6">{config.heroSubheadline}</p>
 
-          <div className="text-left bg-white/10 backdrop-blur-sm rounded-xl p-5 sm:p-6 mb-8 border border-white/20">
-            <CheckList items={config.heroBullets} color={theme.accent} />
+              <div className="rounded-xl bg-white p-5 sm:p-6 mb-6 text-left shadow-xl" style={{ color: theme.text }}>
+                <CheckList items={config.heroBullets} color={theme.primary} bold />
+              </div>
+
+              <div className="mb-6">
+                <LpCountdown variant="light" minutes={47} label="Your reserved pricing expires in:" />
+              </div>
+
+              <LpCtaButton
+                ctaUrl={config.ctaUrl}
+                label={`Yes! Get ${config.productName} Now →`}
+                theme={theme}
+                size="xl"
+                className="w-full sm:w-auto"
+              />
+              <p className="mt-4 text-xs sm:text-sm opacity-90 font-semibold">
+                ✓ Money-back guarantee · ✓ Secure official checkout
+              </p>
+            </div>
+
+            <div className="relative flex flex-col items-center gap-6">
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30">
+                <Image
+                  src={media.heroImage}
+                  alt={media.heroImageAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-5">
+                  <p className="text-white font-black text-lg sm:text-xl">Feel the difference.</p>
+                  <p className="text-white/90 text-sm">Join thousands of men already on {config.productName}</p>
+                </div>
+              </div>
+              <ProductBadge config={config} />
+            </div>
           </div>
-
-          <LpCountdown className="mb-8 text-white" minutes={47} />
-
-          <LpCtaButton
-            ctaUrl={config.ctaUrl}
-            label={`Yes! Get ${config.productName} Now →`}
-            theme={theme}
-          />
-
-          <p className="mt-4 text-xs sm:text-sm opacity-75">
-            Includes money-back guarantee · Secure checkout on official site
-          </p>
         </div>
       </header>
 
-      {/* Hook copy */}
-      <Section bg={theme.sectionBg}>
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-6" style={{ color: theme.primary }}>
-          Your Benefits at a Glance
-        </h2>
-        <div className="space-y-4 text-sm sm:text-base leading-relaxed" style={{ color: theme.muted }}>
-          {config.hookParagraphs.map((p) => (
-            <p key={p.slice(0, 40)}>{p}</p>
-          ))}
-        </div>
-        <div className="mt-8 text-center">
-          <LpCtaButton
-            ctaUrl={config.ctaUrl}
-            label={`Try ${config.productName} Risk-Free →`}
-            theme={theme}
-            size="md"
-          />
-        </div>
-      </Section>
+      <div className="py-4 px-4" style={{ backgroundColor: theme.sectionBg }}>
+        <TrustRow theme={theme} />
+      </div>
 
-      {/* Problem */}
-      <Section bg={theme.cardBg}>
-        <h2
-          className="text-xl sm:text-2xl font-bold text-center mb-6 leading-snug"
-          style={{ color: theme.primary }}
-        >
-          {config.problemTitle}
-        </h2>
-        <div
-          className="rounded-xl border p-5 sm:p-6"
-          style={{ borderColor: theme.border, backgroundColor: theme.sectionBg }}
-        >
-          <ul className="space-y-3">
+      {/* Hook */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16 bg-white">
+        <div className="mx-auto max-w-5xl">
+          <h2
+            className="text-2xl sm:text-4xl font-black text-center mb-8 leading-tight"
+            style={{ color: theme.primary }}
+          >
+            Your Benefits at a Glance
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4 text-base sm:text-lg leading-relaxed" style={{ color: theme.muted }}>
+              {config.hookParagraphs.map((p) => (
+                <p key={p.slice(0, 40)}>{p}</p>
+              ))}
+            </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-2" style={{ borderColor: theme.accent }}>
+              <Image src={media.splitImage} alt={media.splitImageAlt} fill className="object-cover" sizes="50vw" />
+            </div>
+          </div>
+          <div className="mt-10 text-center">
+            <LpCtaButton ctaUrl={config.ctaUrl} label={`Try ${config.productName} Risk-Free →`} theme={theme} size="xl" />
+          </div>
+        </div>
+      </section>
+
+      {/* Problem — red tinted */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16 bg-[#fff5f5] border-y-4 border-red-200">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-2xl sm:text-3xl font-black text-center mb-8 text-[#922b21] leading-snug">
+            {config.problemTitle}
+          </h2>
+          <ul className="space-y-4">
             {config.problemBullets.map((item) => (
-              <li key={item} className="flex gap-3 text-sm sm:text-base leading-relaxed">
-                <span className="shrink-0 font-bold text-red-600">✕</span>
+              <li
+                key={item}
+                className="flex gap-4 rounded-xl bg-white border-2 border-red-200 p-4 sm:p-5 shadow-sm text-sm sm:text-base leading-relaxed"
+              >
+                <span className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-white font-black text-sm">
+                  ✕
+                </span>
                 <span>{item}</span>
               </li>
             ))}
           </ul>
         </div>
-      </Section>
+      </section>
 
-      {/* Solution */}
-      <Section bg={theme.sectionBg}>
-        <h2
-          className="text-xl sm:text-2xl font-bold text-center mb-6 leading-snug"
-          style={{ color: theme.primary }}
-        >
-          {config.solutionTitle}
-        </h2>
-        <div className="space-y-4 text-sm sm:text-base leading-relaxed" style={{ color: theme.muted }}>
-          {config.solutionParagraphs.map((p) => (
-            <p key={p.slice(0, 40)}>{p}</p>
-          ))}
+      {/* Solution — brand colored */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16 text-white" style={{ background: theme.heroBg }}>
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-2xl sm:text-4xl font-black mb-8 leading-tight lp-headline-shadow">{config.solutionTitle}</h2>
+          <div className="space-y-5 text-base sm:text-lg leading-relaxed opacity-95 text-left max-w-3xl mx-auto">
+            {config.solutionParagraphs.map((p) => (
+              <p key={p.slice(0, 40)}>{p}</p>
+            ))}
+          </div>
+          <div className="mt-10">
+            <LpCtaButton ctaUrl={config.ctaUrl} label={`Get ${config.productName} Today →`} theme={theme} size="xl" />
+          </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Ingredients */}
-      <Section bg={theme.cardBg}>
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-8" style={{ color: theme.primary }}>
-          {config.ingredientsTitle}
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {config.ingredients.map((ing) => (
-            <div
-              key={ing.name}
-              className="rounded-xl border p-4 sm:p-5"
-              style={{ borderColor: theme.border, backgroundColor: theme.sectionBg }}
-            >
-              <h3 className="font-bold text-base sm:text-lg mb-1" style={{ color: theme.primary }}>
-                {ing.name}
-              </h3>
-              <p className="text-sm leading-relaxed" style={{ color: theme.muted }}>
-                {ing.benefit}
-              </p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Benefits */}
-      <Section bg={theme.sectionBg}>
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-6" style={{ color: theme.primary }}>
-          {config.benefitsTitle}
-        </h2>
-        <CheckList items={config.benefits} color={theme.primary} />
-      </Section>
-
-      {/* Testimonials */}
-      <Section bg={theme.cardBg}>
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-2" style={{ color: theme.primary }}>
-          Real {config.productName} Users
-        </h2>
-        <p className="text-center text-sm mb-8" style={{ color: theme.muted }}>
-          Verified purchaser-style feedback · Individual results may vary
-        </p>
-        <div className="space-y-5">
-          {config.testimonials.map((t) => (
-            <blockquote
-              key={t.name}
-              className="rounded-xl border p-5 sm:p-6"
-              style={{ borderColor: theme.border, backgroundColor: theme.sectionBg }}
-            >
-              <div className="flex items-center gap-1 text-amber-500 text-sm mb-3" aria-hidden="true">
-                ★★★★★
-              </div>
-              <p className="text-sm sm:text-base leading-relaxed italic mb-4">&ldquo;{t.quote}&rdquo;</p>
-              <footer className="text-sm">
-                <strong>{t.name}</strong>
-                <span style={{ color: theme.muted }}> · {t.location}</span>
-                <div className="text-xs mt-1" style={{ color: theme.muted }}>
-                  Purchased {t.packageLabel}
+      {/* Ingredients grid with color cards */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16" style={{ backgroundColor: theme.sectionBg }}>
+        <div className="mx-auto max-w-5xl">
+          <h2 className="text-2xl sm:text-4xl font-black text-center mb-10" style={{ color: theme.primary }}>
+            {config.ingredientsTitle}
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {config.ingredients.map((ing, i) => (
+              <div
+                key={ing.name}
+                className="rounded-2xl border-2 bg-white p-5 shadow-lg hover:shadow-xl transition-shadow"
+                style={{ borderColor: i % 2 === 0 ? theme.accent : theme.primary }}
+              >
+                <div
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white font-black text-lg mb-3"
+                  style={{ backgroundColor: theme.primary }}
+                >
+                  {i + 1}
                 </div>
-              </footer>
-            </blockquote>
-          ))}
+                <h3 className="font-black text-lg mb-2" style={{ color: theme.primary }}>
+                  {ing.name}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: theme.muted }}>
+                  {ing.benefit}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
+
+      {/* Benefits — green check section */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16 bg-white">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-2xl sm:text-3xl font-black text-center mb-8" style={{ color: theme.primary }}>
+            {config.benefitsTitle}
+          </h2>
+          <div
+            className="rounded-2xl border-2 p-6 sm:p-8 shadow-inner"
+            style={{ borderColor: theme.accent, backgroundColor: theme.sectionBg }}
+          >
+            <CheckList items={config.benefits} color="#16a34a" bold />
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials — erecprime style */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16 bg-[#ececec]">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="text-2xl sm:text-4xl font-black text-center mb-2" style={{ color: theme.primary }}>
+            Real {config.productName} Users, Real Results
+          </h2>
+          <p className="text-center text-sm font-semibold mb-10" style={{ color: theme.muted }}>
+            Verified purchaser feedback · * Results may vary
+          </p>
+
+          <div className="space-y-0 bg-white rounded-2xl shadow-xl overflow-hidden border border-[#ddd]">
+            {testimonials.map((t, idx) => (
+              <blockquote
+                key={t.name}
+                className={`flex flex-col sm:flex-row gap-5 sm:gap-8 p-6 sm:p-8 ${idx > 0 ? "border-t border-[#ddd]" : ""}`}
+              >
+                <div className="flex sm:flex-col items-center sm:items-start gap-4 sm:gap-3 shrink-0 sm:w-36">
+                  <div className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden border-4 border-white shadow-lg ring-2 ring-[#f5b800]">
+                    <Image src={t.avatarUrl} alt={t.name} fill className="object-cover" sizes="96px" />
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <p className="font-black text-sm uppercase tracking-wide">{t.name}</p>
+                    <p className="text-xs font-semibold" style={{ color: theme.muted }}>
+                      {t.location}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <p className="text-base sm:text-lg leading-relaxed italic mb-4">&ldquo;{t.quote}&rdquo;</p>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="text-xs font-black uppercase tracking-wider">Verified Purchase</span>
+                    <LpStars />
+                  </div>
+                  <p className="text-xs mt-2 font-semibold" style={{ color: theme.muted }}>
+                    Purchased {t.packageLabel}
+                  </p>
+                </div>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lifestyle gallery */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16 bg-white">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="text-2xl sm:text-3xl font-black text-center mb-8" style={{ color: theme.primary }}>
+            Men Like You Are Already Feeling the Surge
+          </h2>
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            {media.gallery.map((img, i) => (
+              <div
+                key={img.src}
+                className={`relative rounded-xl overflow-hidden shadow-lg border-2 border-[#eee] ${
+                  i < 2 ? "aspect-[3/4] sm:aspect-[4/5]" : "aspect-[4/3]"
+                }`}
+              >
+                <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Pricing */}
-      <Section bg={theme.sectionBg} className="!max-w-none">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-xl sm:text-2xl font-bold text-center mb-2" style={{ color: theme.primary }}>
-            Choose Your Package
+      <section className="px-4 sm:px-6 py-12 sm:py-16" style={{ backgroundColor: theme.sectionBg }}>
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-2xl sm:text-4xl font-black text-center mb-2" style={{ color: theme.primary }}>
+            Choose Your Package — Save More When You Stock Up
           </h2>
-          <p className="text-center text-sm mb-6" style={{ color: theme.muted }}>
-            All orders processed on the official secure checkout
+          <p className="text-center text-sm font-bold mb-6 uppercase tracking-wide" style={{ color: theme.muted }}>
+            Secure SSL checkout · Official {config.brandName} order page
           </p>
-          <LpCountdown className="mb-8" minutes={47} />
+          <div className="max-w-lg mx-auto mb-10">
+            <LpCountdown variant="urgent" minutes={47} label="Inventory hold expires in:" />
+          </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {config.packages.map((pkg) => (
               <div
                 key={pkg.id}
-                className={`relative rounded-2xl border-2 p-5 sm:p-6 flex flex-col ${
-                  pkg.highlight ? "shadow-xl scale-[1.02] md:scale-105" : "shadow-md"
+                className={`relative rounded-2xl border-[3px] p-6 flex flex-col bg-white ${
+                  pkg.highlight ? "shadow-2xl md:scale-105 z-10 ring-4 ring-[#f5b800]/40" : "shadow-lg"
                 }`}
-                style={{
-                  borderColor: pkg.highlight ? theme.accent : theme.border,
-                  backgroundColor: theme.cardBg,
-                }}
+                style={{ borderColor: pkg.highlight ? theme.accent : theme.border }}
               >
                 {pkg.badge ? (
                   <span
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-wide"
-                    style={{ backgroundColor: theme.accent, color: theme.accentText }}
+                    className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-black uppercase tracking-wide shadow-lg"
+                    style={{ backgroundColor: "#c0392b", color: "#fff" }}
                   >
                     {pkg.badge}
                   </span>
                 ) : null}
-                {pkg.highlight ? (
-                  <span
-                    className="text-[10px] font-bold uppercase tracking-widest mb-2 text-center"
-                    style={{ color: theme.primary }}
-                  >
-                    ★ Recommended ★
-                  </span>
-                ) : null}
 
-                <h3 className="text-lg font-bold text-center" style={{ color: theme.primary }}>
+                <h3 className="text-xl font-black text-center mt-2" style={{ color: theme.primary }}>
                   {pkg.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-center mt-1 mb-4" style={{ color: theme.muted }}>
+                <p className="text-sm text-center font-semibold mt-1 mb-5" style={{ color: theme.muted }}>
                   {pkg.subtitle}
                 </p>
 
-                <div className="text-center mb-4">
-                  <div className="text-3xl sm:text-4xl font-bold tabular-nums" style={{ color: theme.primary }}>
+                <div className="text-center mb-4 py-4 rounded-xl" style={{ backgroundColor: theme.sectionBg }}>
+                  <div className="text-4xl sm:text-5xl font-black tabular-nums" style={{ color: theme.primary }}>
                     {pkg.pricePerBottle}
                   </div>
-                  <div className="text-xs uppercase tracking-wide mt-1" style={{ color: theme.muted }}>
+                  <div className="text-xs font-bold uppercase tracking-widest mt-1" style={{ color: theme.muted }}>
                     per bottle
                   </div>
                 </div>
 
                 {pkg.savings ? (
-                  <p className="text-center text-sm font-semibold text-green-700 mb-2">{pkg.savings}</p>
+                  <p className="text-center text-base font-black text-green-700 mb-2">{pkg.savings}</p>
                 ) : null}
                 {pkg.regularTotal ? (
-                  <p className="text-center text-sm mb-1">
-                    <span className="line-through opacity-50">{pkg.regularTotal}</span>
+                  <p className="text-center text-lg mb-1">
+                    <span className="line-through text-red-600 font-bold opacity-80">{pkg.regularTotal}</span>
                   </p>
                 ) : null}
-                <p className="text-center text-xl font-bold mb-1">{pkg.total}</p>
-                <p className="text-center text-xs mb-5" style={{ color: theme.muted }}>
+                <p className="text-center text-2xl font-black mb-1">{pkg.total}</p>
+                <p className="text-center text-xs font-bold uppercase mb-6" style={{ color: theme.muted }}>
                   {pkg.shipping}
                 </p>
 
@@ -276,105 +385,87 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
                     label={pkg.ctaLabel}
                     theme={theme}
                     size="md"
-                    className="w-full text-sm !px-4"
+                    className="w-full !text-sm"
                   />
                 </div>
-                <p className="text-[10px] text-center mt-3 opacity-70">60-day guarantee</p>
+                <p className="text-[10px] text-center mt-3 font-bold uppercase opacity-70">60-day guarantee</p>
               </div>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* Guarantee */}
-      <Section bg={theme.cardBg}>
-        <div
-          className="rounded-2xl border-2 p-6 sm:p-8 text-center"
-          style={{ borderColor: theme.accent, backgroundColor: theme.sectionBg }}
-        >
-          <div className="text-4xl mb-4" aria-hidden="true">
-            🛡️
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: theme.primary }}>
+      <section className="px-4 sm:px-6 py-12 sm:py-16 bg-[#fffbea] border-y-4" style={{ borderColor: theme.accent }}>
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="text-6xl mb-4">🛡️</div>
+          <h2 className="text-2xl sm:text-3xl font-black mb-6" style={{ color: theme.primary }}>
             {config.guaranteeTitle}
           </h2>
-          <div className="space-y-3 text-sm sm:text-base leading-relaxed text-left max-w-xl mx-auto" style={{ color: theme.muted }}>
+          <div className="space-y-4 text-base leading-relaxed text-left" style={{ color: theme.muted }}>
             {config.guaranteeParagraphs.map((p) => (
               <p key={p.slice(0, 40)}>{p}</p>
             ))}
           </div>
-          <div className="mt-8">
-            <LpCtaButton
-              ctaUrl={config.ctaUrl}
-              label={`Start My ${config.productName} Trial →`}
-              theme={theme}
-            />
+          <div className="mt-10">
+            <LpCtaButton ctaUrl={config.ctaUrl} label={`Start My ${config.productName} Trial →`} theme={theme} size="xl" />
           </div>
-        </div>
-      </Section>
-
-      {/* FAQ */}
-      <Section bg={theme.sectionBg}>
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-8" style={{ color: theme.primary }}>
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-4">
-          {config.faq.map((item) => (
-            <details
-              key={item.q}
-              className="rounded-xl border bg-white group open:shadow-md"
-              style={{ borderColor: theme.border }}
-            >
-              <summary className="cursor-pointer list-none px-5 py-4 font-semibold text-sm sm:text-base flex items-center justify-between gap-2">
-                {item.q}
-                <span className="text-lg opacity-40 group-open:rotate-45 transition-transform">+</span>
-              </summary>
-              <p className="px-5 pb-4 text-sm leading-relaxed" style={{ color: theme.muted }}>
-                {item.a}
-              </p>
-            </details>
-          ))}
-        </div>
-      </Section>
-
-      {/* Final CTA */}
-      <section
-        className="px-4 sm:px-6 py-12 sm:py-16 text-white text-center"
-        style={{ background: theme.heroBg }}
-      >
-        <div className="mx-auto max-w-3xl">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{config.finalCtaHeadline}</h2>
-          <LpCountdown className="mb-8 text-white" minutes={47} label="Inventory hold expires in:" />
-          <LpCtaButton
-            ctaUrl={config.ctaUrl}
-            label={`Claim ${config.productName} Now →`}
-            theme={theme}
-          />
-          <p className="mt-6 text-xs sm:text-sm opacity-75 max-w-lg mx-auto leading-relaxed">
-            Secure checkout on the official {config.brandName} order page. Pricing and availability
-            subject to change — confirm live totals before you pay.
-          </p>
         </div>
       </section>
 
-      {/* Disclaimer footer */}
-      <footer className="px-4 sm:px-6 py-8 text-[10px] sm:text-xs leading-relaxed text-center max-w-3xl mx-auto opacity-70">
+      {/* FAQ */}
+      <section className="px-4 sm:px-6 py-12 sm:py-16 bg-white">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-2xl sm:text-3xl font-black text-center mb-8" style={{ color: theme.primary }}>
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3">
+            {config.faq.map((item) => (
+              <details
+                key={item.q}
+                className="rounded-xl border-2 bg-[#fafafa] group open:shadow-lg"
+                style={{ borderColor: theme.border }}
+              >
+                <summary className="cursor-pointer list-none px-5 py-4 font-bold text-sm sm:text-base flex items-center justify-between gap-2">
+                  {item.q}
+                  <span className="text-2xl font-light opacity-40 group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p className="px-5 pb-5 text-sm leading-relaxed border-t pt-4" style={{ color: theme.muted }}>
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="px-4 sm:px-6 py-14 sm:py-20 text-white text-center" style={{ background: theme.heroBg }}>
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl font-black mb-6 lp-headline-shadow">{config.finalCtaHeadline}</h2>
+          <div className="mb-8">
+            <LpCountdown variant="light" minutes={47} label="Last chance — pricing expires in:" />
+          </div>
+          <LpCtaButton ctaUrl={config.ctaUrl} label={`Claim ${config.productName} Now →`} theme={theme} size="xl" className="w-full sm:w-auto" />
+          <TrustRow theme={{ ...theme, cardBg: "rgba(255,255,255,0.95)" }} />
+        </div>
+      </section>
+
+      <footer className="px-4 sm:px-6 py-8 text-[10px] sm:text-xs leading-relaxed text-center max-w-3xl mx-auto opacity-70 bg-[#f0f0f0]">
         <p className="mb-3">
-          These statements have not been evaluated by the Food and Drug Administration. This product
-          is not intended to diagnose, treat, cure, or prevent any disease. The information on this
-          page is for educational and marketing purposes only and is not medical advice.
+          These statements have not been evaluated by the Food and Drug Administration. This product is not intended to
+          diagnose, treat, cure, or prevent any disease.
         </p>
         <p>
-          Consult your healthcare provider before starting any supplement, especially if you take
-          medication or have a medical condition. Individual results vary. Testimonials reflect
-          experiences reported by product users and are not guaranteed outcomes.
+          Consult your healthcare provider before starting any supplement. Individual results vary. Testimonials reflect
+          reported user experiences and are not guaranteed.
         </p>
         <p className="mt-4">
-          <a href="/disclaimer" className="underline hover:opacity-100">
-            Full disclaimer
+          <a href="/disclaimer" className="underline">
+            Disclaimer
           </a>
           {" · "}
-          <a href="/privacy" className="underline hover:opacity-100">
+          <a href="/privacy" className="underline">
             Privacy
           </a>
         </p>

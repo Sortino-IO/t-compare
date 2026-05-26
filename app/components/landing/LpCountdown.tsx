@@ -6,6 +6,7 @@ type Props = {
   minutes?: number;
   className?: string;
   label?: string;
+  variant?: "light" | "dark" | "urgent";
 };
 
 function pad(n: number) {
@@ -16,6 +17,7 @@ export default function LpCountdown({
   minutes = 47,
   className = "",
   label = "Promotional pricing resets in:",
+  variant = "dark",
 }: Props) {
   const [secondsLeft, setSecondsLeft] = useState(minutes * 60);
 
@@ -30,20 +32,27 @@ export default function LpCountdown({
   const m = Math.floor((secondsLeft % 3600) / 60);
   const s = secondsLeft % 60;
 
+  const boxClass =
+    variant === "urgent"
+      ? "bg-[#c0392b] text-white border-[#922b21]"
+      : variant === "light"
+        ? "bg-white/15 text-white border-white/30 backdrop-blur-sm"
+        : "bg-[#1a1a1a] text-white border-[#333]";
+
   return (
-    <div className={className}>
-      <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-90 mb-2 text-center">
-        {label}
-      </p>
-      <div className="flex items-center justify-center gap-2 sm:gap-3">
+    <div className={`rounded-xl border-2 px-4 py-4 sm:px-6 sm:py-5 ${boxClass} ${className}`}>
+      <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-center mb-3">{label}</p>
+      <div className="flex items-center justify-center gap-3 sm:gap-5">
         {[
           { value: pad(h), unit: "Hours" },
           { value: pad(m), unit: "Minutes" },
           { value: pad(s), unit: "Seconds" },
         ].map(({ value, unit }) => (
-          <div key={unit} className="flex flex-col items-center min-w-[56px] sm:min-w-[68px]">
-            <span className="text-2xl sm:text-3xl font-bold tabular-nums leading-none">{value}</span>
-            <span className="text-[10px] sm:text-xs uppercase tracking-wide mt-1 opacity-80">{unit}</span>
+          <div key={unit} className="flex flex-col items-center min-w-[64px] sm:min-w-[80px]">
+            <span className="text-3xl sm:text-5xl font-black tabular-nums leading-none">{value}</span>
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wide mt-1.5 opacity-90">
+              {unit}
+            </span>
           </div>
         ))}
       </div>
