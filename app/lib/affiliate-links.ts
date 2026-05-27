@@ -7,6 +7,8 @@ const CLICKBANK_AFFILIATE_BY_HOST: Record<string, string> = {
   "criticaltboost.com": "https://9dcacr3eqbms0qez2408eyse51.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
   "heroichustle.com": "https://b0d9bkvcsibq9yawuhqvyty0tn.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
   "endopeak24.com": "https://42ad2cskk5msam5atc1eq2ur5a.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+  "getnitricboost.com": "https://getnitricboost.com/?traffic_source=blog&traffic_type=paid&campaign=t-compare",
+  "www.getnitricboost.com": "https://getnitricboost.com/?traffic_source=blog&traffic_type=paid&campaign=t-compare",
 };
 
 const UTM = {

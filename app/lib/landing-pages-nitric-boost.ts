@@ -1,0 +1,335 @@
+import type { LandingPageConfig } from "./landing-pages";
+
+const NITRIC_BOOST_CTA =
+  "https://getnitricboost.com/?traffic_source=blog&traffic_type=paid&campaign=t-compare#order";
+
+export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
+  {
+    slug: "nitric-boost-lp1",
+    brandName: "Nitric Boost",
+    productName: "Nitric Boost Ultra",
+    ctaUrl: NITRIC_BOOST_CTA,
+    seoTitle: "Nitric Boost Ultra — Support Performance From $49/Jar",
+    seoDescription:
+      "Nitric Boost Ultra: nitric oxide powder with L-Arginine, Beet Root & 6 more actives. 1 scoop daily. Bulk from $49/jar, 60-day guarantee, 2 free bonuses on 3+ jars.",
+    theme: {
+      primary: "#0c3d6e",
+      primaryDark: "#072847",
+      accent: "#00b4d8",
+      accentHover: "#0096c7",
+      accentText: "#072847",
+      heroBg: "linear-gradient(165deg, #0c3d6e 0%, #1565a8 55%, #0c3d6e 100%)",
+      sectionBg: "#eef6fc",
+      cardBg: "#ffffff",
+      border: "#b8d4ea",
+      text: "#1a1a1a",
+      muted: "#5a6b78",
+    },
+    urgencyHeadline: "WAIT — Your Nitric Boost bulk discount is still reserved",
+    heroHeadline: "Don't Just Get By — Dominate. Unleash Your Full Potential.",
+    heroSubheadline:
+      "Discover a method to support sexual performance naturally — one scoop of Nitric Boost Ultra daily fuels nitric oxide pathways for blood flow, stamina, and confidence.",
+    heroBullets: [
+      "One scoop per day — mix with water, smoothie, or tea",
+      "Bulk tiers from ~$49/jar with free US shipping on 3+ jars",
+      "2 FREE bonuses on 3- and 6-jar orders (per official offer)",
+      "60-day 100% money-back guarantee — even empty containers",
+    ],
+    hookParagraphs: [
+      "Biomedical research has reframed the conversation: performance isn't just about blood flow — it's about cyclic guanosine monophosphate (cGMP), the signaling molecule that activates firm, sustained arousal. When PDE5 destroys cGMP faster than your body replenishes it, results fade — even if circulation looks fine on paper.",
+      "Nitric Boost Ultra targets the full stack: nitrates and amino acids that convert into nitric oxide (NO), antioxidants that support nitric oxide synthase, and botanicals framed for circulation and drive — in one refreshing daily powder.",
+      "This page mirrors the official bundle structure on getnitricboost.com — 1, 3, and 6-jar tiers with the same savings math — so you can lock pricing before inventory refreshes.",
+    ],
+    problemTitle: "Why Pills Alone Stop Working for So Many Men",
+    problemBullets: [
+      "PDE5 inhibitors block destruction of cGMP but don't boost production — effectiveness can decline over time",
+      "Poor NO production means vessels don't expand fully when it matters most",
+      "Stimulant-heavy shortcuts deliver a spike, not sustained stamina through the night",
+      "Single amino acids miss the synergistic nitrates and antioxidants a full formula provides",
+    ],
+    solutionTitle: "Nitric Boost Ultra: One Scoop, Full NO Pathway Support",
+    solutionParagraphs: [
+      "Every scoop delivers Beet Root nitrates, L-Arginine and L-Citrulline for NO conversion, Horny Goat Weed and Dong Quai for circulation framing, Ginkgo for vessel protection, D-Aspartic Acid for drive support, and Niacin for enhanced blood flow.",
+      "Official copy recommends 3–6 months of daily use for the best experience — Stage 1 brings energy clarity, Stage 2 adds stamina, Stage 3 solidifies results for men who stay consistent.",
+      "Order through the official checkout and you're covered by the same 60-day, no-questions-asked guarantee advertised on getnitricboost.com.",
+    ],
+    ingredientsTitle: "Inside Every Scoop of Nitric Boost Ultra",
+    ingredients: [
+      { name: "Beet Root Powder", benefit: "High nitrate levels that convert into nitric oxide for blood flow" },
+      { name: "L-Arginine", benefit: "Amino acid precursor that relaxes blood vessels via NO production" },
+      { name: "L-Citrulline DL-Malate", benefit: "Boosts NO levels while malate supports energy production" },
+      { name: "Horny Goat Weed", benefit: "Icariin compound linked to sexual health support" },
+      { name: "Ginkgo Biloba", benefit: "Antioxidant protection for blood vessels and circulation" },
+      { name: "D-Aspartic Acid", benefit: "Supports luteinizing hormone and testosterone pathways" },
+      { name: "Dong Quai", benefit: "Traditional botanical for improved blood flow" },
+      { name: "Niacin (B3)", benefit: "Vasodilation support for circulation and erectile function" },
+    ],
+    benefitsTitle: "What Men Buy Nitric Boost Ultra For",
+    benefits: [
+      "Firmer, longer-lasting performance when it counts",
+      "Surge of daily confidence — in and out of the bedroom",
+      "Enhanced gym pumps and recovery from improved circulation",
+      "Cleaner energy without stimulant jitters or afternoon crash",
+      "Simple once-daily ritual — one scoop, any beverage",
+    ],
+    testimonials: [
+      {
+        name: "Steve W.",
+        location: "Verified Purchase",
+        quote:
+          "My wife has never been more satisfied and our intimacy has reached new heights. Nitric Boost is tasty, refreshing, and best of all it's highly effective.",
+        packageLabel: "6 jars",
+      },
+      {
+        name: "David S.",
+        location: "Verified Purchase",
+        quote:
+          "Nitric Boost not only restored my libido and rock solid performance — it rekindled the spark in my marriage. We've never been happier.",
+        packageLabel: "6 jars",
+      },
+      {
+        name: "Michael H.",
+        location: "Tampa, Florida",
+        quote:
+          "I can hardly believe the transformation since I started Nitric Boost. My erections are back, stronger than ever, and I've discovered a confidence I never knew I had.",
+        packageLabel: "6 jars",
+      },
+    ],
+    guaranteeTitle: "100% Satisfaction 60-Day Money Back Guarantee",
+    guaranteeParagraphs: [
+      "Order any amount — one, three, or six jars — and you're covered for 60 full days. Not thrilled? Call or email support, say you'd like a refund, and get every penny back per vendor terms.",
+      "No reason required. Use every scoop or never open the container — the guarantee stands either way on official orders.",
+    ],
+    packages: [
+      {
+        id: "basic",
+        title: "Basic",
+        subtitle: "30-day supply · 1 jar",
+        pricePerBottle: "$69",
+        total: "$69",
+        regularTotal: "$199",
+        savings: "Save $130",
+        shipping: "+ shipping",
+        ctaLabel: "Try 1 Jar",
+      },
+      {
+        id: "popular",
+        title: "Most Popular",
+        subtitle: "90-day supply · 3 jars",
+        pricePerBottle: "$59",
+        total: "$177",
+        regularTotal: "$597",
+        savings: "Save $420",
+        badge: "2 FREE BONUSES · FREE US SHIPPING",
+        shipping: "Free US shipping",
+        highlight: true,
+        ctaLabel: "Claim 3-Jar Bundle",
+      },
+      {
+        id: "best",
+        title: "Best Value",
+        subtitle: "180-day supply · 6 jars",
+        pricePerBottle: "$49",
+        total: "$294",
+        regularTotal: "$1,194",
+        savings: "Save $900",
+        badge: "BIGGEST DISCOUNT · 2 FREE BONUSES",
+        shipping: "Free US shipping",
+        ctaLabel: "Claim 6-Jar Bundle",
+      },
+    ],
+    faq: [
+      {
+        q: "How do I take Nitric Boost Ultra?",
+        a: "Take 1 scoop with a glass of water daily — or mix into a smoothie or tea. The proprietary blend goes to work immediately per official directions.",
+      },
+      {
+        q: "Is Nitric Boost safe?",
+        a: "Soy-free, dairy-free, vegetarian, non-GMO, third-party inspected, and manufactured in a GMP-certified US facility. Consult your doctor before starting any supplement.",
+      },
+      {
+        q: "How many jars should I order?",
+        a: "Official guidance recommends 3–6 months of consistent use. The 6-jar package offers the lowest per-jar cost plus two free bonuses and free US shipping.",
+      },
+      {
+        q: "What if it doesn't work for me?",
+        a: "Every order includes a 60-day no-questions-asked money-back guarantee — return even empty containers for a full refund.",
+      },
+    ],
+    finalCtaHeadline: "Claim Your Discounted Nitric Boost Before Pricing Resets",
+  },
+  {
+    slug: "nitric-boost-lp2",
+    variant: "lp2",
+    lp2Style: "advertorial",
+    brandName: "Nitric Boost",
+    productName: "Nitric Boost Ultra",
+    ctaUrl: NITRIC_BOOST_CTA,
+    seoTitle: "Nitric Boost Ultra Review — The cGMP Discovery Explained",
+    seoDescription:
+      "Editorial breakdown of Nitric Boost Ultra: the manhood molecule (cGMP), nitric oxide mechanism, ingredient science, and official bundle pricing from $49/jar.",
+    theme: {
+      primary: "#0c3d6e",
+      primaryDark: "#072847",
+      accent: "#0077b6",
+      accentHover: "#005f92",
+      accentText: "#ffffff",
+      heroBg: "#f8fafc",
+      sectionBg: "#eef6fc",
+      cardBg: "#ffffff",
+      border: "#cbd5e1",
+      text: "#1e293b",
+      muted: "#64748b",
+    },
+    urgencyHeadline: "Official site still offering bulk pricing + 2 free bonuses on 3+ jars",
+    heroHeadline:
+      "Breaking: Scientists Identify the \"Manhood Molecule\" That Controls Male Sexual Function",
+    heroSubheadline:
+      "New research points to cGMP — not just blood flow — as the erection activator. Here's how a nitric oxide powder is framing the solution differently than legacy pills.",
+    heroBullets: [
+      "Targets cGMP production + PDE5 balance — not just temporary blocking",
+      "8-ingredient powder: Beet Root, L-Arginine, L-Citrulline & more",
+      "Bulk from $49/jar · free US shipping on 3- and 6-jar orders",
+      "60-day empty-container guarantee on official checkout",
+    ],
+    hookParagraphs: [
+      "SAN DIEGO, CA — Biomedical engineers have reframed erectile dysfunction: the bottleneck isn't always poor circulation alone, but insufficient cyclic guanosine monophosphate (cGMP) — dubbed the \"manhood molecule\" on the official Nitric Boost funnel.",
+      "Without adequate cGMP, achieving full hardness becomes biologically difficult. PDE5 destroys cGMP molecules; while legacy pills temporarily block PDE5, they don't address production — which may explain why many men report declining effectiveness over time.",
+      "The proposed alternative: support nitric oxide pathways that help vessels relax and expand, while delivering amino acids and nitrates that feed cGMP signaling — exactly the mechanism story Nitric Boost Ultra builds its formula around.",
+      "We traced pricing on getnitricboost.com so readers can access the same 1-, 3-, and 6-jar tiers — including two free digital bonuses on larger orders — without hunting through pop-ups.",
+    ],
+    problemTitle: "Why \"Just Take a Pill\" Stops Being Enough",
+    problemBullets: [
+      "Blocking PDE5 without boosting cGMP production treats symptoms, not the signaling gap",
+      "Declining nitric oxide means vessels can't fully dilate when arousal hits",
+      "Performance anxiety compounds biology — confidence erodes month after month",
+      "Counterfeit listings on Amazon and eBay risk fake product — official site only",
+    ],
+    solutionTitle: "One Scoop Daily: The Nitric Boost Ultra Protocol",
+    solutionParagraphs: [
+      "Nitric Boost Ultra combines Beet Root nitrates, L-Arginine, L-Citrulline DL-Malate, Horny Goat Weed, Ginkgo Biloba, Dong Quai, D-Aspartic Acid, and Niacin in a daily powder — manufactured in the USA with GMP certification per official copy.",
+      "Men planning a fair trial should budget 90–180 days on the 3- or 6-jar tiers — the same packages 87% of customers choose for free shipping and bonus access.",
+    ],
+    ingredientsTitle: "Ingredient Breakdown — What Each Scoop Delivers",
+    ingredients: [
+      { name: "Beet Root Powder", benefit: "Nitrate concentrate converts to nitric oxide for circulation" },
+      { name: "L-Arginine", benefit: "Direct NO precursor that relaxes and expands blood vessels" },
+      { name: "L-Citrulline DL-Malate", benefit: "Sustained NO elevation plus malate-driven energy support" },
+      { name: "Horny Goat Weed", benefit: "Icariin-linked sexual health botanical" },
+      { name: "Ginkgo Biloba", benefit: "Antioxidant vessel protection" },
+      { name: "D-Aspartic Acid", benefit: "LH and testosterone pathway support" },
+      { name: "Dong Quai", benefit: "Traditional blood flow botanical" },
+      { name: "Niacin", benefit: "B3 vasodilation for circulation support" },
+    ],
+    benefitsTitle: "What Verified Purchasers Report",
+    benefits: [
+      "Renewed stamina and performance confidence",
+      "Stronger arousal response and longer-lasting encounters",
+      "Better gym pumps from enhanced blood flow",
+      "Marriage and relationship spark returning",
+      "Tasty daily ritual — not another pill to choke down",
+    ],
+    timeline: [
+      {
+        milestone: "Week 1–2",
+        title: "NO pathway activation",
+        body: "Many men report early shifts in energy and mental clarity as nitric oxide levels respond to daily nitrates and amino acids.",
+      },
+      {
+        milestone: "Month 1–2",
+        title: "Stamina & firmness",
+        body: "Official funnel copy describes Stage 2 as improved stamina and arousal response — the window most partners notice first.",
+      },
+      {
+        milestone: "Month 3+",
+        title: "Results solidify",
+        body: "Three to six months of consistency aligns with official guidance for a full assessment of performance and drive.",
+      },
+    ],
+    testimonials: [
+      {
+        name: "Steve Wilson",
+        location: "Phoenix, Arizona",
+        quote:
+          "With every scoop, I feel an incredible surge of confidence. My wife has never been more satisfied, and our intimacy has reached new heights.",
+        packageLabel: "6 jars · Verified Purchase",
+      },
+      {
+        name: "David Silver",
+        location: "Houston, Texas",
+        quote:
+          "Nitric Boost not only restored my libido — it rekindled the spark in my marriage. We've never been happier.",
+        packageLabel: "6 jars · Verified Purchase",
+      },
+      {
+        name: "Michael Harris",
+        location: "Tampa, Florida",
+        quote:
+          "My erections are back, stronger than ever. I've discovered a confidence in myself I never knew I had.",
+        packageLabel: "6 jars · Verified Purchase",
+      },
+    ],
+    guaranteeTitle: "60-Day \"No Questions Asked\" Guarantee",
+    guaranteeParagraphs: [
+      "Every jar order on the official site includes 60 days to test Nitric Boost Ultra. Request a refund anytime — even if you've used every scoop.",
+      "Start with one jar if skeptical. Move to 3- or 6-jar bulk once early shifts appear for lowest per-jar cost and free bonuses.",
+    ],
+    packages: [
+      {
+        id: "basic",
+        title: "Basic — 1 Jar",
+        subtitle: "30-day supply",
+        pricePerBottle: "$69",
+        total: "$69",
+        regularTotal: "$199",
+        savings: "Save $130",
+        shipping: "+ shipping",
+        ctaLabel: "Check 1-Jar Availability",
+      },
+      {
+        id: "popular",
+        title: "Bundle — 3 Jars",
+        subtitle: "90-day supply · 2 free bonuses",
+        pricePerBottle: "$59",
+        total: "$177",
+        regularTotal: "$597",
+        savings: "Save $420",
+        badge: "FREE US SHIPPING",
+        shipping: "Free US shipping",
+        highlight: true,
+        ctaLabel: "Claim Reader Discount — 3 Jars",
+      },
+      {
+        id: "best",
+        title: "Best Value — 6 Jars",
+        subtitle: "180-day supply · 2 free bonuses",
+        pricePerBottle: "$49",
+        total: "$294",
+        regularTotal: "$1,194",
+        savings: "Save $900",
+        badge: "BIGGEST DISCOUNT",
+        shipping: "Free US shipping",
+        ctaLabel: "Get 6-Jar Bundle",
+      },
+    ],
+    faq: [
+      {
+        q: "Is Nitric Boost Ultra natural?",
+        a: "Yes — soy-free, dairy-free, vegetarian, non-GMO, with plant ingredients and natural minerals per official product copy.",
+      },
+      {
+        q: "What's the best way to take it?",
+        a: "One scoop daily with water, smoothie, or tea. Consistency over 3–6 months is key.",
+      },
+      {
+        q: "Are the bonuses really free?",
+        a: "Official offer includes The Nitric Boost Blueprint and Marathon Man Stamina guides free on 3- and 6-jar orders.",
+      },
+      {
+        q: "Where should I buy?",
+        a: "Only through getnitricboost.com — third-party sellers on Amazon/eBay may sell counterfeits per vendor warnings.",
+      },
+    ],
+    finalCtaHeadline: "See If Nitric Boost Bulk Pricing Is Still Available",
+  },
+];

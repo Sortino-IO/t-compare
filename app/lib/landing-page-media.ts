@@ -103,6 +103,30 @@ export const LP_MEDIA: Record<string, LpMedia> = {
       { src: IMG.manRunning, alt: "Man running with stamina" },
     ],
   },
+  "nitric-boost-lp1": {
+    heroImage: IMG.gymLifting,
+    heroImageAlt: "Powerful man training with explosive energy",
+    splitImage: IMG.manRunning,
+    splitImageAlt: "Athletic man building stamina outdoors",
+    gallery: [
+      { src: IMG.workoutSession, alt: "Intense gym workout session" },
+      { src: IMG.manConfident, alt: "Confident man feeling his best" },
+      { src: IMG.coupleActive, alt: "Active couple enjoying life" },
+      { src: IMG.gymStrength, alt: "Man lifting heavy weights" },
+    ],
+  },
+  "nitric-boost-lp2": {
+    heroImage: IMG.manPortraitSmile,
+    heroImageAlt: "Confident smiling man radiating vitality",
+    splitImage: IMG.teamMeeting,
+    splitImageAlt: "Professional man ready to perform",
+    gallery: [
+      { src: IMG.gymTraining, alt: "Man training with focus" },
+      { src: IMG.coupleHappy, alt: "Happy couple reconnected" },
+      { src: IMG.meditationCalm, alt: "Calm confident man" },
+      { src: IMG.yogaStretch, alt: "Man stretching with energy" },
+    ],
+  },
 };
 
 export function getLpMedia(slug: string): LpMedia {

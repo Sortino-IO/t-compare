@@ -1,4 +1,5 @@
 import { LANDING_PAGES_LP2 } from "./landing-pages-lp2";
+import { LANDING_PAGES_NITRIC_BOOST } from "./landing-pages-nitric-boost";
 
 export type LpTheme = {
   primary: string;
@@ -531,7 +532,11 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
   },
 ];
 
-export const LANDING_PAGES: LandingPageConfig[] = [...LANDING_PAGES_LP1, ...LANDING_PAGES_LP2];
+export const LANDING_PAGES: LandingPageConfig[] = [
+  ...LANDING_PAGES_LP1,
+  ...LANDING_PAGES_LP2,
+  ...LANDING_PAGES_NITRIC_BOOST,
+];
 
 export function getLandingPageBySlug(slug: string): LandingPageConfig | undefined {
   return LANDING_PAGES.find((p) => p.slug === slug);
