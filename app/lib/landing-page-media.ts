@@ -26,6 +26,12 @@ const IMG = {
   gymLifting: "/lp/gym-lifting.jpg",
   meditationCalm: "/lp/meditation-calm.jpg",
   manConfident: "/lp/man-confident.jpg",
+  woodWorkshop1: "/lp/wood-workshop-1.jpg",
+  woodCraft2: "/lp/wood-craft-2.jpg",
+  woodInterior3: "/lp/wood-interior-3.jpg",
+  woodFurniture4: "/lp/wood-furniture-4.jpg",
+  woodProject5: "/lp/wood-project-5.jpg",
+  woodHome6: "/lp/wood-home-6.jpg",
 } as const;
 
 const AVATARS = [IMG.avatar1, IMG.avatar2, IMG.avatar3, IMG.avatar4];
@@ -125,6 +131,42 @@ export const LP_MEDIA: Record<string, LpMedia> = {
       { src: IMG.coupleHappy, alt: "Happy couple reconnected" },
       { src: IMG.meditationCalm, alt: "Calm confident man" },
       { src: IMG.yogaStretch, alt: "Man stretching with energy" },
+    ],
+  },
+  "tedplansdiy-lp1": {
+    heroImage: IMG.woodWorkshop1,
+    heroImageAlt: "Warm workshop with woodworking project in progress",
+    splitImage: IMG.woodCraft2,
+    splitImageAlt: "Craftsman working on a wood project",
+    gallery: [
+      { src: IMG.woodFurniture4, alt: "Handmade wooden furniture piece" },
+      { src: IMG.woodInterior3, alt: "Custom wood interior built by homeowner" },
+      { src: IMG.woodProject5, alt: "Finished woodworking project in modern home" },
+      { src: IMG.woodHome6, alt: "Beautiful home with custom wood details" },
+    ],
+  },
+  "tedplansdiy-lp2": {
+    heroImage: IMG.woodCraft2,
+    heroImageAlt: "Woodworker focused on a shop project",
+    splitImage: IMG.woodWorkshop1,
+    splitImageAlt: "Garage workshop setup for weekend builds",
+    gallery: [
+      { src: IMG.woodProject5, alt: "Completed furniture build" },
+      { src: IMG.woodFurniture4, alt: "Wooden dining table project" },
+      { src: IMG.woodHome6, alt: "Outdoor wood structure project" },
+      { src: IMG.woodInterior3, alt: "Built-in shelving project" },
+    ],
+  },
+  "tedplansdiy-lp3": {
+    heroImage: IMG.woodFurniture4,
+    heroImageAlt: "Quality woodworking furniture result",
+    splitImage: IMG.woodProject5,
+    splitImageAlt: "Modern room with custom woodwork",
+    gallery: [
+      { src: IMG.woodWorkshop1, alt: "Workshop ready for next build" },
+      { src: IMG.woodCraft2, alt: "Tools and materials for woodworking" },
+      { src: IMG.woodInterior3, alt: "Home project built from plans" },
+      { src: IMG.woodHome6, alt: "Craftsman-quality wood finish" },
     ],
   },
 };

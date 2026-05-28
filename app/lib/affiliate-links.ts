@@ -9,6 +9,9 @@ const CLICKBANK_AFFILIATE_BY_HOST: Record<string, string> = {
   "endopeak24.com": "https://42ad2cskk5msam5atc1eq2ur5a.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
   "getnitricboost.com": "https://getnitricboost.com/?traffic_source=blog&traffic_type=paid&campaign=t-compare",
   "www.getnitricboost.com": "https://getnitricboost.com/?traffic_source=blog&traffic_type=paid&campaign=t-compare",
+  "tedplansdiy.com": "https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+  "www.tedplansdiy.com": "https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+  "8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net": "https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
 };
 
 const UTM = {

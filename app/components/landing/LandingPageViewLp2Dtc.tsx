@@ -9,6 +9,7 @@ import LpStickyBar from "./LpStickyBar";
 function ProductCard({ config }: { config: LandingPageConfig }) {
   const { theme, brandName, productName } = config;
   const popular = config.packages.find((p) => p.highlight) ?? config.packages[0]!;
+  const priceLabel = config.packagePriceLabel ?? "per bottle";
 
   return (
     <div
@@ -27,7 +28,9 @@ function ProductCard({ config }: { config: LandingPageConfig }) {
             {brandName}
           </span>
           <p className="text-white font-black text-2xl text-center">{productName}</p>
-          <p className="text-white/60 text-xs uppercase tracking-widest mt-1">Daily Formula · 60 caps</p>
+          <p className="text-white/60 text-xs uppercase tracking-widest mt-1">
+            {config.productBadgeLine ?? "Daily Formula · 60 caps"}
+          </p>
         </div>
       </div>
       <div className="p-5">
@@ -37,7 +40,7 @@ function ProductCard({ config }: { config: LandingPageConfig }) {
         </div>
         <p className="text-3xl font-black tabular-nums" style={{ color: theme.primary }}>
           {popular.pricePerBottle}
-          <span className="text-sm font-semibold text-slate-500"> / bottle</span>
+          <span className="text-sm font-semibold text-slate-500"> / {priceLabel}</span>
         </p>
         {popular.savings ? <p className="text-sm font-bold text-emerald-600 mt-1">{popular.savings}</p> : null}
         <LpCtaButton
@@ -69,6 +72,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
   const media = getLpMedia(config.slug);
   const testimonials = withAvatars(config.testimonials);
   const timeline = config.timeline ?? [];
+  const priceLabel = config.packagePriceLabel ?? "per bottle";
 
   return (
     <div className="min-h-screen bg-white pb-24 sm:pb-0" style={{ color: theme.text }}>
@@ -270,7 +274,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                 </p>
                 <p className="text-4xl font-black tabular-nums">{pkg.pricePerBottle}</p>
                 <p className="text-xs font-semibold mb-1" style={{ color: theme.muted }}>
-                  per bottle · {pkg.total}
+                  {priceLabel} · {pkg.total}
                 </p>
                 {pkg.savings ? <p className="text-sm font-bold text-emerald-600 mb-4">{pkg.savings}</p> : <div className="mb-4" />}
                 <LpCtaButton

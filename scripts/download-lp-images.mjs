@@ -71,6 +71,31 @@ const ASSETS = [
     file: "man-confident.jpg",
     url: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&h=800&fit=crop&auto=format&q=85",
   },
+  // Woodworking / workshop
+  {
+    file: "wood-workshop-1.jpg",
+    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=900&fit=crop&auto=format&q=85",
+  },
+  {
+    file: "wood-craft-2.jpg",
+    url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=900&fit=crop&auto=format&q=85",
+  },
+  {
+    file: "wood-interior-3.jpg",
+    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=900&fit=crop&auto=format&q=85",
+  },
+  {
+    file: "wood-furniture-4.jpg",
+    url: "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1200&h=900&fit=crop&auto=format&q=85",
+  },
+  {
+    file: "wood-project-5.jpg",
+    url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=900&fit=crop&auto=format&q=85",
+  },
+  {
+    file: "wood-home-6.jpg",
+    url: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=900&fit=crop&auto=format&q=85",
+  },
 ];
 
 fs.mkdirSync(OUT_DIR, { recursive: true });

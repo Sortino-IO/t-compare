@@ -11,6 +11,7 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
   const media = getLpMedia(config.slug);
   const testimonials = withAvatars(config.testimonials);
   const popular = config.packages.find((p) => p.highlight) ?? config.packages[0]!;
+  const priceLabel = config.packagePriceLabel ?? "per bottle";
 
   return (
     <div className="min-h-screen pb-24 sm:pb-0 lp-advertorial" style={{ backgroundColor: theme.heroBg, color: theme.text }}>
@@ -196,7 +197,7 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
                   <p className="text-sm text-stone-500">{pkg.subtitle}</p>
                   <p className="text-2xl font-black mt-2">
                     {pkg.pricePerBottle}
-                    <span className="text-sm font-normal text-stone-500"> / bottle</span>
+                    <span className="text-sm font-normal text-stone-500"> / {priceLabel}</span>
                   </p>
                   {pkg.savings ? <p className="text-sm font-bold text-emerald-700">{pkg.savings}</p> : null}
                 </div>

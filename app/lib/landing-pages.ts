@@ -1,5 +1,6 @@
 import { LANDING_PAGES_LP2 } from "./landing-pages-lp2";
 import { LANDING_PAGES_NITRIC_BOOST } from "./landing-pages-nitric-boost";
+import { LANDING_PAGES_TEDPLANS } from "./landing-pages-tedplans";
 
 export type LpTheme = {
   primary: string;
@@ -75,6 +76,10 @@ export type LandingPageConfig = {
   faq: { q: string; a: string }[];
   finalCtaHeadline: string;
   timeline?: LpTimelineStep[];
+  /** Override product card subtitle (default: "Daily Formula") */
+  productBadgeLine?: string;
+  /** Override pricing unit label (default: "per bottle") */
+  packagePriceLabel?: string;
 };
 
 export const LANDING_PAGES_LP1: LandingPageConfig[] = [
@@ -536,6 +541,7 @@ export const LANDING_PAGES: LandingPageConfig[] = [
   ...LANDING_PAGES_LP1,
   ...LANDING_PAGES_LP2,
   ...LANDING_PAGES_NITRIC_BOOST,
+  ...LANDING_PAGES_TEDPLANS,
 ];
 
 export function getLandingPageBySlug(slug: string): LandingPageConfig | undefined {

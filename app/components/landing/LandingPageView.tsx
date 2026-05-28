@@ -44,7 +44,9 @@ function ProductBadge({ config }: { config: LandingPageConfig }) {
         {brandName}
       </div>
       <p className="text-white font-black text-lg sm:text-xl leading-tight mb-1">{productName}</p>
-      <p className="text-white/70 text-[10px] uppercase tracking-widest">Daily Formula</p>
+      <p className="text-white/70 text-[10px] uppercase tracking-widest">
+        {config.productBadgeLine ?? "Daily Formula"}
+      </p>
     </div>
   );
 }
@@ -74,6 +76,7 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
   const { theme } = config;
   const media = getLpMedia(config.slug);
   const testimonials = withAvatars(config.testimonials);
+  const priceLabel = config.packagePriceLabel ?? "per bottle";
 
   return (
     <div className="min-h-screen pb-24 sm:pb-0 bg-[#f0f0f0]" style={{ color: theme.text }}>
@@ -362,7 +365,7 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
                     {pkg.pricePerBottle}
                   </div>
                   <div className="text-xs font-bold uppercase tracking-widest mt-1" style={{ color: theme.muted }}>
-                    per bottle
+                    {priceLabel}
                   </div>
                 </div>
 
