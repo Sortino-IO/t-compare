@@ -3,15 +3,19 @@ import type { LandingPageConfig } from "../../lib/landing-pages";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
+import LpOfferStackBlock from "./LpOfferStack";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
 
 export default function LandingPageViewLp2Advertorial({ config }: { config: LandingPageConfig }) {
   const { theme } = config;
+  const meta = config.productMeta;
   const media = getLpMedia(config.slug);
   const testimonials = withAvatars(config.testimonials);
   const popular = config.packages.find((p) => p.highlight) ?? config.packages[0]!;
   const priceLabel = config.packagePriceLabel ?? "per bottle";
+  const masthead = meta?.advertorialMasthead;
+  const showPricingList = !config.offerStack || config.packages.length > 1;
 
   return (
     <div className="min-h-screen pb-24 sm:pb-0 lp-advertorial" style={{ backgroundColor: theme.heroBg, color: theme.text }}>
@@ -19,10 +23,10 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
       <header className="border-b border-stone-200 bg-white">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 py-4">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 text-center mb-1">
-            Men&apos;s Wellness Daily · Special Report
+            {masthead?.category ?? "Men's Wellness Daily · Special Report"}
           </p>
           <h1 className="text-center font-serif text-2xl sm:text-3xl font-bold tracking-tight" style={{ color: theme.primary }}>
-            Wellness Insider
+            {masthead?.publication ?? "Wellness Insider"}
           </h1>
         </div>
       </header>
@@ -30,7 +34,7 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
       {/* Article body — narrow column */}
       <article className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-12">
         <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: theme.accent }}>
-          Men&apos;s Health · Updated May 2026
+          {meta?.isDigitalProduct ? "Woodworking · Updated May 2026" : "Men's Health · Updated May 2026"}
         </p>
 
         <h2 className="font-serif text-3xl sm:text-[2.35rem] font-bold leading-[1.15] mb-5 lp-advertorial-headline">
@@ -43,10 +47,10 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
 
         <div className="flex items-center gap-3 pb-6 mb-8 border-b border-stone-200 text-sm">
           <div className="h-10 w-10 rounded-full bg-teal-100 flex items-center justify-center font-bold text-teal-800 text-xs">
-            MW
+            {meta?.isDigitalProduct ? "WI" : "MW"}
           </div>
           <div>
-            <p className="font-semibold">By Marcus Webb, Health Editor</p>
+            <p className="font-semibold">{masthead?.author ?? "By Marcus Webb, Health Editor"}</p>
             <p className="text-xs text-stone-500">12 min read · Independent review</p>
           </div>
         </div>
@@ -57,7 +61,9 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
             <Image src={media.heroImage} alt={media.heroImageAlt} fill className="object-cover" sizes="680px" priority />
           </div>
           <figcaption className="text-xs text-stone-500 mt-2 px-4 sm:px-0 italic">
-            Consistent daily support — not overnight miracles — is what most men report after 90 days.
+            {meta?.isDigitalProduct
+              ? "Shop-tested plans — each project built in Ted McGrath's workshop before publication."
+              : "Consistent daily support — not overnight miracles — is what most men report after 90 days."}
           </figcaption>
         </figure>
 
@@ -177,7 +183,12 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
           </p>
         </blockquote>
 
+        {/* Full offer stack — matches official checkout page */}
+        {config.offerStack ? <LpOfferStackBlock stack={config.offerStack} config={config} className="!px-0 !py-8" /> : null}
+
         {/* Pricing — editorial CTA blocks */}
+        {showPricingList ? (
+        <>
         <h3 className="font-serif text-2xl font-bold mb-6 text-center">Official Bundle Pricing</h3>
         <div className="space-y-4 mb-10">
           {config.packages.map((pkg) => (
@@ -213,6 +224,8 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
             </div>
           ))}
         </div>
+        </>
+        ) : null}
 
         {/* FAQ */}
         <h3 className="font-serif text-xl font-bold mb-4">Common Questions</h3>
@@ -238,7 +251,7 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
           </p>
           <LpCtaButton
             ctaUrl={config.ctaUrl}
-            label={`Visit Official ${config.brandName} Page →`}
+            label={config.offerStack?.ctaLabel ?? `Visit Official ${config.brandName} Page →`}
             theme={theme}
             size="lg"
             className="!rounded-md !normal-case w-full sm:w-auto"

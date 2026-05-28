@@ -3,6 +3,7 @@ import type { LandingPageConfig } from "../../lib/landing-pages";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
+import LpOfferStackBlock from "./LpOfferStack";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
 
@@ -56,11 +57,16 @@ function ProductCard({ config }: { config: LandingPageConfig }) {
             <span className="text-emerald-600">✓</span> 60-day money-back guarantee
           </li>
           <li className="flex gap-2">
-            <span className="text-emerald-600">✓</span> Secure official checkout
+            <span className="text-emerald-600">✓</span> Secure ClickBank checkout
           </li>
           <li className="flex gap-2">
             <span className="text-emerald-600">✓</span> {popular.shipping}
           </li>
+          {config.offerStack ? (
+            <li className="flex gap-2">
+              <span className="text-emerald-600">✓</span> 4 bonuses included ($190+ value)
+            </li>
+          ) : null}
         </ul>
       </div>
     </div>
@@ -69,6 +75,7 @@ function ProductCard({ config }: { config: LandingPageConfig }) {
 
 export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageConfig }) {
   const { theme } = config;
+  const meta = config.productMeta;
   const media = getLpMedia(config.slug);
   const testimonials = withAvatars(config.testimonials);
   const timeline = config.timeline ?? [];
@@ -89,7 +96,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
           </div>
           <LpCtaButton
             ctaUrl={config.ctaUrl}
-            label="Shop Now"
+            label={config.offerStack?.ctaLabel ?? "Shop Now"}
             theme={theme}
             size="md"
             className="!rounded-lg !normal-case !tracking-normal !text-sm"
@@ -122,7 +129,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
           <div className="order-2 lg:sticky lg:top-20 space-y-6">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: theme.accent }}>
-                Natural testosterone support
+                {meta?.heroTagline ?? "Natural testosterone support"}
               </p>
               <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-black leading-[1.08] tracking-tight mb-4">
                 {config.heroHeadline}
@@ -145,7 +152,11 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                     >
                       ✓
                     </span>
-                    {b}
+                    <span>
+                      {b.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                        i % 2 === 1 ? <strong key={i}>{part}</strong> : part,
+                      )}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -159,9 +170,13 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       {timeline.length > 0 ? (
         <section className="py-14 sm:py-20" style={{ backgroundColor: theme.sectionBg }}>
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-black text-center mb-3">What to Expect Over Time</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-center mb-3">
+              {meta?.isDigitalProduct ? "Your First Build Starts Here" : "What to Expect Over Time"}
+            </h2>
             <p className="text-center text-sm mb-12 max-w-xl mx-auto" style={{ color: theme.muted }}>
-              Individual results vary. Most men plan a 60–90 day runway for a fair assessment.
+              {meta?.isDigitalProduct
+                ? "Instant access → pick a plan → buy lumber → finish your project."
+                : "Individual results vary. Most men plan a 60–90 day runway for a fair assessment."}
             </p>
             <div className="grid sm:grid-cols-3 gap-6">
               {timeline.map((step, i) => (
@@ -252,11 +267,16 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
         </div>
       </section>
 
-      {/* Pricing cards — clean eCommerce */}
+      {/* Full value stack — primary conversion block */}
+      {config.offerStack ? <LpOfferStackBlock stack={config.offerStack} config={config} /> : null}
+
+      {/* Pricing cards — comparison tiers when multiple packages */}
       <section className="py-14 sm:py-20" style={{ backgroundColor: theme.sectionBg }}>
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">Choose Your Supply</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">
+            {meta?.pricingHeadline ?? "Choose Your Supply"}
+          </h2>
+          <div className={`grid gap-6 ${config.packages.length > 1 ? "md:grid-cols-3" : "max-w-md mx-auto"}`}>
             {config.packages.map((pkg) => (
               <div
                 key={pkg.id}

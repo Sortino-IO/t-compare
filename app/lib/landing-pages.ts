@@ -43,6 +43,40 @@ export type LpTimelineStep = {
   body: string;
 };
 
+export type LpOfferStackItem = {
+  text: string;
+  /** e.g. "($297 Value)" — shown in red */
+  value?: string;
+};
+
+export type LpOfferStack = {
+  preHeadline?: string;
+  bundleImage?: string;
+  bundleImageAlt?: string;
+  items: LpOfferStackItem[];
+  bonusTitle?: string;
+  bonuses: LpOfferStackItem[];
+  /** e.g. guarantee line below bonuses */
+  extras?: LpOfferStackItem[];
+  totalValue: string;
+  priceLabel?: string;
+  offerPrice: string;
+  ctaLabel?: string;
+  secondaryLinkLabel?: string;
+};
+
+export type LpProductMeta = {
+  /** Digital / woodworking — hides supplement footer, adjusts trust copy */
+  isDigitalProduct?: boolean;
+  trustItems?: readonly string[];
+  galleryTitle?: string;
+  heroTagline?: string;
+  heroSocialProof?: string;
+  stickyCtaLabel?: string;
+  advertorialMasthead?: { category: string; publication: string; author?: string };
+  pricingHeadline?: string;
+};
+
 export type LpLayoutVariant = "lp1" | "lp2";
 export type Lp2Style = "dtc" | "advertorial" | "bento";
 
@@ -80,6 +114,9 @@ export type LandingPageConfig = {
   productBadgeLine?: string;
   /** Override pricing unit label (default: "per bottle") */
   packagePriceLabel?: string;
+  /** Full value-stack offer block (plans, bonuses, anchored price) */
+  offerStack?: LpOfferStack;
+  productMeta?: LpProductMeta;
 };
 
 export const LANDING_PAGES_LP1: LandingPageConfig[] = [

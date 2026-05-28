@@ -1,7 +1,64 @@
-import type { LandingPageConfig } from "./landing-pages";
+import type { LandingPageConfig, LpOfferStack } from "./landing-pages";
 
 const TEDPLANS_CTA =
   "https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare";
+
+export const TEDPLANS_OFFER_STACK: LpOfferStack = {
+  preHeadline: "Hit the **ADD TO CART** button below and I'll see you on the inside...",
+  bundleImage: "/lp/teds-bundle-offer.png",
+  bundleImageAlt: "TedsWoodworking — 16,000 plans, bonuses, videos, and lifetime membership",
+  items: [
+    {
+      text: "**Instant Access To All 16,000 Projects** with step-by-step details, drawings, plans, cutting & materials list and more...",
+      value: "($297 Value)",
+    },
+    {
+      text: "**Lifetime Membership Access** — Easy-to-use and fully searchable members area with organized categories, difficulty levels, and keyword search.",
+    },
+    {
+      text: "**Lifetime FREE Monthly Plans** — with varied and unique plans added every month with no recurring fees or charges.",
+      value: "($39 Per Month Value)",
+    },
+    {
+      text: "**Free Custom Plan Request** — Get a custom plan drafted for your specific project by our craftsman team.",
+      value: "($250 Value)",
+    },
+    {
+      text: "**Woodworking Guides & Videos** — archive of detailed guides and video tutorials from master woodworkers.",
+    },
+    {
+      text: "**Option to have everything on physical copies** shipped to you available at checkout (optional add-on).",
+    },
+  ],
+  extras: [{ text: "**100% Risk-Free Money Back Guarantee**" }],
+  bonusTitle: "Plus These Amazing Bonuses:",
+  bonuses: [
+    { text: "DWG & CAD Plan Viewer", value: "($47 Value)" },
+    { text: "150 Premium Woodworking Videos", value: "($77 Value)" },
+    { text: "How To Start A Woodworking Business", value: "($27 Value)" },
+    { text: "Complete Woodworking Guides", value: "($39 Value)" },
+  ],
+  totalValue: "$749 + $39/m",
+  priceLabel: "Get Started For A One Time Fee Of:",
+  offerPrice: "$67.00",
+  ctaLabel: "Add To Cart",
+  secondaryLinkLabel: "Get Instant Access to 16,000 Projects Now",
+};
+
+const TEDPLANS_PRODUCT_META = {
+  isDigitalProduct: true,
+  trustItems: ["60-Day Guarantee", "Instant Digital Access", "Secure ClickBank Checkout", "4.9★ Member Reviews"],
+  galleryTitle: "Real Builds From the Library",
+  heroTagline: "16,000 Shop-Tested Plans · Lifetime Access",
+  heroSocialProof: "Join 54,000+ woodworkers already building from Ted's library",
+  stickyCtaLabel: "Add To Cart — $67 Lifetime",
+  advertorialMasthead: {
+    category: "Woodworking · Special Report",
+    publication: "Workshop Insider",
+    author: "By James Hartley, DIY Editor",
+  },
+  pricingHeadline: "Everything Included — One-Time $67",
+} as const;
 
 const LIFETIME_PACKAGE = {
   id: "lifetime",
@@ -9,12 +66,12 @@ const LIFETIME_PACKAGE = {
   subtitle: "16,000 plans + 4 bonuses + monthly updates",
   pricePerBottle: "$67",
   total: "$67 one-time",
-  regularTotal: "$39/mo",
-  savings: "Lock in lifetime vs $468/year",
+  regularTotal: "$749 + $39/mo",
+  savings: "Save $682+ vs total package value",
   badge: "LIMITED LIFETIME DEAL",
   shipping: "Instant digital download",
   highlight: true,
-  ctaLabel: "Get Instant Access →",
+  ctaLabel: "Add To Cart",
 } as const;
 
 const BONUSES = [
@@ -96,10 +153,12 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
     heroSubheadline:
       "16,000+ woodworking plans — each one built and tested in Ted McGrath's workshop before you download it. Exact cut lists. Zero guesswork. One-time $67.",
     heroBullets: [
-      "Every plan shop-tested — mistakes caught before they hit your lumber",
-      "Search 100+ categories: furniture, outdoor, sheds, kids, workshop jigs",
-      "New plans added free every month — lifetime, no recurring fees",
-      "4 bonuses included: CAD viewer, 150 videos, business guide, 200-page manual",
+      "**Instant access** to all 16,000 shop-tested projects ($297 value)",
+      "**Lifetime membership** — searchable library, not a zip file dump",
+      "**Free monthly plans** for life — normally $39/month ($468/year saved)",
+      "**Free custom plan request** — team drafts your specific build ($250 value)",
+      "**4 bonuses included:** CAD viewer, 150 videos, business guide, 200-page manual ($190 value)",
+      "**60-day guarantee** · Secure ClickBank checkout · Optional physical copies",
     ],
     hookParagraphs: [
       "You already know what you want to build — the deck, the dining table, the workbench. The problem isn't vision. It's plans that look complete but fall apart at step five.",
@@ -145,6 +204,8 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
     packages: [{ ...LIFETIME_PACKAGE }],
     faq: FAQ,
     finalCtaHeadline: "Lock In Lifetime Access for $67 Before It's Gone",
+    offerStack: TEDPLANS_OFFER_STACK,
+    productMeta: TEDPLANS_PRODUCT_META,
   },
   {
     slug: "tedplansdiy-lp2",
@@ -176,10 +237,11 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
     heroSubheadline:
       "From the desk of Ted McGrath — why your half-finished garage projects aren't your fault, and what 25 years of workshop teaching changed about how plans should work.",
     heroBullets: [
-      "16,000 plans — each built in-shop before you download",
-      "Exact cut lists that eliminate wasted lumber trips",
-      "Searchable library — not a chaotic zip file dump",
-      "Lifetime $67 vs upcoming $39/month standard rate",
+      "16,000 plans — each built in-shop before you download ($297 value)",
+      "Lifetime access + free monthly plan drops ($39/mo value — included free)",
+      "Free custom plan request when you can't find your exact project ($250 value)",
+      "4 bonuses: CAD viewer ($47), 150 videos ($77), business guide ($27), manuals ($39)",
+      "Total package value $749+ — **yours for $67 one-time** while this page is live",
     ],
     hookParagraphs: [
       "Dear fellow woodworker — you already know what you want to build. You can picture the deck, the table, the bench. But every time you sit down to really start, something gets in the way.",
@@ -260,6 +322,8 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
     packages: [{ ...LIFETIME_PACKAGE }],
     faq: FAQ,
     finalCtaHeadline: "See If the $67 Lifetime Offer Is Still Available",
+    offerStack: TEDPLANS_OFFER_STACK,
+    productMeta: TEDPLANS_PRODUCT_META,
   },
   {
     slug: "tedplansdiy-lp3",
@@ -291,10 +355,11 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
     heroSubheadline:
       "The organized plan library for makers who'd rather build on Saturday than debug bad measurements. Searchable. Shop-verified. Lifetime access.",
     heroBullets: [
-      "Instant access — searchable members area, not a file dump",
+      "Instant access — searchable members area with 16,000 projects ($297 value)",
       "Every plan includes cut list, materials list, and step-by-step drawings",
-      "4 bonuses: CAD viewer ($47), 150 videos ($77), business guide, 200-page manual",
-      "60-day guarantee · ClickBank secure checkout",
+      "Lifetime FREE monthly plans ($39/mo value) · Custom plan request ($250 value)",
+      "4 bonuses: CAD viewer ($47), 150 videos ($77), business guide ($27), guides ($39)",
+      "Total value $749+ · **$67 one-time** · 60-day guarantee · ClickBank secure checkout",
     ],
     hookParagraphs: [
       "Magazines sell single plans for $10–20. At that rate, 16,000 plans would cost over $160,000. TedsWoodworking bundles the full shop-tested library for a one-time $67 while lifetime pricing is still available.",
@@ -362,7 +427,7 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
         total: "$39/mo",
         regularTotal: "$468/yr",
         shipping: "Recurring billing",
-        ctaLabel: "Skip Monthly — Get Lifetime",
+        ctaLabel: "Add To Cart — Get Lifetime",
       },
       {
         id: "compare-value",
@@ -374,10 +439,12 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
         badge: "BEST DEAL",
         shipping: "One-time payment",
         highlight: false,
-        ctaLabel: "Claim $67 Lifetime",
+        ctaLabel: "Add To Cart",
       },
     ],
     faq: FAQ,
     finalCtaHeadline: "Add TedsWoodworking to Cart — $67 Lifetime",
+    offerStack: TEDPLANS_OFFER_STACK,
+    productMeta: TEDPLANS_PRODUCT_META,
   },
 ];

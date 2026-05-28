@@ -3,14 +3,16 @@ import type { LandingPageConfig } from "../../lib/landing-pages";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCountdown from "./LpCountdown";
 import LpCtaButton from "./LpCtaButton";
+import LpOfferStackBlock from "./LpOfferStack";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
 
-function TrustRow({ theme }: { theme: LandingPageConfig["theme"] }) {
-  const items = ["60-Day Guarantee", "Free Shipping Options", "Secure Checkout", "4.9★ Reviews"];
+function TrustRow({ theme, items }: { theme: LandingPageConfig["theme"]; items?: readonly string[] }) {
+  const defaults = ["60-Day Guarantee", "Free Shipping Options", "Secure Checkout", "4.9★ Reviews"];
+  const list = items ?? defaults;
   return (
     <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-      {items.map((item) => (
+      {list.map((item) => (
         <span
           key={item}
           className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wide border"
@@ -51,6 +53,12 @@ function ProductBadge({ config }: { config: LandingPageConfig }) {
   );
 }
 
+function renderBoldInline(text: string) {
+  const parts = text.split(/\*\*(.*?)\*\*/);
+  if (parts.length === 1) return text;
+  return parts.map((part, i) => (i % 2 === 1 ? <strong key={i}>{part}</strong> : part));
+}
+
 function CheckList({ items, color, bold }: { items: string[]; color: string; bold?: boolean }) {
   return (
     <ul className="space-y-3">
@@ -65,7 +73,7 @@ function CheckList({ items, color, bold }: { items: string[]; color: string; bol
           >
             ✓
           </span>
-          <span>{item}</span>
+          <span>{renderBoldInline(item)}</span>
         </li>
       ))}
     </ul>
@@ -74,9 +82,11 @@ function CheckList({ items, color, bold }: { items: string[]; color: string; bol
 
 export default function LandingPageView({ config }: { config: LandingPageConfig }) {
   const { theme } = config;
+  const meta = config.productMeta;
   const media = getLpMedia(config.slug);
   const testimonials = withAvatars(config.testimonials);
   const priceLabel = config.packagePriceLabel ?? "per bottle";
+  const showPricingGrid = !config.offerStack || config.packages.length > 1;
 
   return (
     <div className="min-h-screen pb-24 sm:pb-0 bg-[#f0f0f0]" style={{ color: theme.text }}>
@@ -115,13 +125,13 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
 
               <LpCtaButton
                 ctaUrl={config.ctaUrl}
-                label={`Yes! Get ${config.productName} Now →`}
+                label={config.offerStack?.ctaLabel ?? `Yes! Get ${config.productName} Now →`}
                 theme={theme}
                 size="xl"
                 className="w-full sm:w-auto"
               />
               <p className="mt-4 text-xs sm:text-sm opacity-90 font-semibold">
-                ✓ Money-back guarantee · ✓ Secure official checkout
+                ✓ 60-day money-back guarantee · ✓ Secure ClickBank checkout
               </p>
             </div>
 
@@ -136,8 +146,10 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
                   priority
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-5">
-                  <p className="text-white font-black text-lg sm:text-xl">Feel the difference.</p>
-                  <p className="text-white/90 text-sm">Join thousands of men already on {config.productName}</p>
+                  <p className="text-white font-black text-lg sm:text-xl">Build it right the first time.</p>
+                  <p className="text-white/90 text-sm">
+                    {meta?.heroSocialProof ?? `Join thousands already using ${config.productName}`}
+                  </p>
                 </div>
               </div>
               <ProductBadge config={config} />
@@ -147,7 +159,7 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
       </header>
 
       <div className="py-4 px-4" style={{ backgroundColor: theme.sectionBg }}>
-        <TrustRow theme={theme} />
+        <TrustRow theme={theme} items={meta?.trustItems} />
       </div>
 
       {/* Hook */}
@@ -305,7 +317,7 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
       <section className="px-4 sm:px-6 py-12 sm:py-16 bg-white">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-2xl sm:text-3xl font-black text-center mb-8" style={{ color: theme.primary }}>
-            Men Like You Are Already Feeling the Surge
+            {meta?.galleryTitle ?? "Men Like You Are Already Feeling the Surge"}
           </h2>
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {media.gallery.map((img, i) => (
@@ -322,11 +334,15 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Value stack + pricing anchor */}
+      {config.offerStack ? <LpOfferStackBlock stack={config.offerStack} config={config} /> : null}
+
+      {/* Pricing cards (supplements / multi-tier) */}
+      {showPricingGrid ? (
       <section className="px-4 sm:px-6 py-12 sm:py-16" style={{ backgroundColor: theme.sectionBg }}>
         <div className="mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-4xl font-black text-center mb-2" style={{ color: theme.primary }}>
-            Choose Your Package — Save More When You Stock Up
+            {meta?.pricingHeadline ?? "Choose Your Package — Save More When You Stock Up"}
           </h2>
           <p className="text-center text-sm font-bold mb-6 uppercase tracking-wide" style={{ color: theme.muted }}>
             Secure SSL checkout · Official {config.brandName} order page
@@ -397,6 +413,7 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
           </div>
         </div>
       </section>
+      ) : null}
 
       {/* Guarantee */}
       <section className="px-4 sm:px-6 py-12 sm:py-16 bg-[#fffbea] border-y-4" style={{ borderColor: theme.accent }}>
@@ -411,7 +428,12 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
             ))}
           </div>
           <div className="mt-10">
-            <LpCtaButton ctaUrl={config.ctaUrl} label={`Start My ${config.productName} Trial →`} theme={theme} size="xl" />
+            <LpCtaButton
+            ctaUrl={config.ctaUrl}
+            label={config.offerStack?.ctaLabel ?? `Start My ${config.productName} Trial →`}
+            theme={theme}
+            size="xl"
+          />
           </div>
         </div>
       </section>
@@ -449,20 +471,41 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
           <div className="mb-8">
             <LpCountdown variant="light" minutes={47} label="Last chance — pricing expires in:" />
           </div>
-          <LpCtaButton ctaUrl={config.ctaUrl} label={`Claim ${config.productName} Now →`} theme={theme} size="xl" className="w-full sm:w-auto" />
-          <TrustRow theme={{ ...theme, cardBg: "rgba(255,255,255,0.95)" }} />
+          <LpCtaButton
+            ctaUrl={config.ctaUrl}
+            label={config.offerStack?.ctaLabel ?? `Claim ${config.productName} Now →`}
+            theme={theme}
+            size="xl"
+            className="w-full sm:w-auto"
+          />
+          <TrustRow theme={{ ...theme, cardBg: "rgba(255,255,255,0.95)" }} items={meta?.trustItems} />
         </div>
       </section>
 
       <footer className="px-4 sm:px-6 py-8 text-[10px] sm:text-xs leading-relaxed text-center max-w-3xl mx-auto opacity-70 bg-[#f0f0f0]">
-        <p className="mb-3">
-          These statements have not been evaluated by the Food and Drug Administration. This product is not intended to
-          diagnose, treat, cure, or prevent any disease.
-        </p>
-        <p>
-          Consult your healthcare provider before starting any supplement. Individual results vary. Testimonials reflect
-          reported user experiences and are not guaranteed.
-        </p>
+        {meta?.isDigitalProduct ? (
+          <>
+            <p className="mb-3">
+              This is an independent affiliate page. Purchases are processed securely through ClickBank. Digital product
+              — instant access after checkout. Individual build results vary based on skill, tools, and plan followed.
+            </p>
+            <p>
+              Testimonials reflect reported member experiences and are not guaranteed. Plan licenses may restrict
+              commercial resale — check terms before selling finished pieces.
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="mb-3">
+              These statements have not been evaluated by the Food and Drug Administration. This product is not intended to
+              diagnose, treat, cure, or prevent any disease.
+            </p>
+            <p>
+              Consult your healthcare provider before starting any supplement. Individual results vary. Testimonials reflect
+              reported user experiences and are not guaranteed.
+            </p>
+          </>
+        )}
         <p className="mt-4">
           <a href="/disclaimer" className="underline">
             Disclaimer
