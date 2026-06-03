@@ -34,7 +34,7 @@ const IMG = {
   /** Generic white capsule bottle — supplement LP product hero (not brand-specific). */
   supplementBottleHero: "/lp/supplement-bottle-hero.jpg",
   coupleHappy: "/lp/couple-happy.jpg",
-  couplePartner: "/lp/couple-partner.png",
+  couplePartner: "/lp/couple-outdoor-together.jpg",
   teamMeeting: "/lp/team-meeting.jpg",
   gymLifting: "/lp/gym-lifting.jpg",
   meditationCalm: "/lp/meditation-calm.jpg",
@@ -62,7 +62,7 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     gallery: [
       { src: IMG.gymLifting, alt: "Man lifting weights in gym" },
       { src: IMG.manRunning, alt: "Fit man running outdoors" },
-      { src: IMG.couplePartner, alt: "Happy man and woman together" },
+      { src: IMG.couplePartner, alt: "Happy couple outdoors together" },
       { src: IMG.manConfident, alt: "Confident man feeling vital" },
     ],
   },

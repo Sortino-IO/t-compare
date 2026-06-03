@@ -240,8 +240,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       blocks: [
         {
           imagePosition: "right",
-          image: "/lp/couple-partner.png",
-          imageAlt: "Happy man and woman enjoying closeness together",
+          image: "/lp/couple-outdoor-together.jpg",
+          imageAlt: "Happy couple walking together outdoors in daylight",
           paragraphs: [
             "When your body has the raw materials to support healthy testosterone and balanced estrogen metabolism, many men report feeling more present at home — not just in the gym.",
             "More morning energy often translates into better mood, patience, and connection with your partner. That is the \"magic morning\" most men are really chasing: vitality that shows up everywhere, not just on a lab printout.",
@@ -427,8 +427,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       blocks: [
         {
           imagePosition: "right",
-          image: "/lp/couple-partner.png",
-          imageAlt: "Happy man and woman enjoying renewed connection",
+          image: "/lp/couple-outdoor-together.jpg",
+          imageAlt: "Happy couple walking together outdoors in daylight",
           paragraphs: [
             "When circulation and stamina improve, the benefits show up at home — not just in the gym. Partners notice before you finish explaining the formula.",
             "EndoPeak is framed as consistent daily support, not a stimulant spike. That is the edge most men are actually shopping for.",
@@ -615,8 +615,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       blocks: [
         {
           imagePosition: "right",
-          image: "/lp/couple-partner.png",
-          imageAlt: "Happy man and woman with energy and connection",
+          image: "/lp/couple-outdoor-together.jpg",
+          imageAlt: "Happy couple walking together outdoors in daylight",
           paragraphs: [
             "Men who stay on ErecPrime for 90 days often describe renewed appetite for intimacy — not a jittery hour, but sustained confidence.",
             "Your partner notices the difference when stamina and mood improve together. That is the outcome this stack is marketed for.",
