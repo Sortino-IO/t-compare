@@ -29,6 +29,8 @@ const IMG = {
   coupleActive: "/lp/couple-active.jpg",
   coupleTogether: "/lp/couple-together.jpg",
   manPortraitSmile: "/lp/man-portrait-smile.jpg",
+  /** Verified male lifestyle — used for supplement LP heroes (avoids bad stock swaps). */
+  heroManFitness: "/lp/hero-man-fitness.jpg",
   coupleHappy: "/lp/couple-happy.jpg",
   couplePartner: "/lp/couple-partner.png",
   teamMeeting: "/lp/team-meeting.jpg",
@@ -49,8 +51,8 @@ const AVATARS = [IMG.avatar1, IMG.avatar2, IMG.avatar3, IMG.avatar4];
 
 export const LP_MEDIA: Record<string, LpMedia> = {
   "critical-t-lp1": {
-    heroImage: IMG.manPortraitSmile,
-    heroImageAlt: "Confident man smiling — Critical T daily support",
+    heroImage: IMG.heroManFitness,
+    heroImageAlt: "Fit man training — Critical T daily support",
     heroImageCaption: "Feel the difference.",
     heroImageSubcaption: "Join thousands of men already on Critical T",
     splitImage: IMG.gymTraining,
@@ -63,7 +65,7 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     ],
   },
   "endopeak24-lp1": {
-    heroImage: IMG.manPortraitSmile,
+    heroImage: IMG.heroManFitness,
     heroImageAlt: "Confident man smiling — EndoPeak vitality support",
     heroImageCaption: "Feel the edge again.",
     heroImageSubcaption: "Join thousands of men already on EndoPeak",

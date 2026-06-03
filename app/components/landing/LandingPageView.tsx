@@ -153,47 +153,73 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
             </div>
 
             <div className="relative flex flex-col items-center gap-6">
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30">
-                <Image
-                  src={media.heroImage}
-                  alt={media.heroImageAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-5">
-                  <p className="text-white font-black text-lg sm:text-xl">
-                    {media.heroImageCaption ?? "Feel the difference."}
-                  </p>
-                  <p className="text-white/90 text-sm">
-                    {media.heroImageSubcaption ??
-                      meta?.heroSocialProof ??
-                      `Join thousands of men already on ${config.productName}`}
-                  </p>
-                </div>
-              </div>
-              {heroBottleCount ? (
+              {isTestosteroneSupplementLp(config.slug) && heroBottleCount ? (
                 <div
-                  className="mx-auto w-44 sm:w-52 rounded-2xl shadow-2xl border-4 bg-[#f8fafc] flex items-center justify-center py-6"
+                  className="relative w-full max-w-sm aspect-[4/5] rounded-2xl shadow-2xl border-4 bg-[#f8fafc] flex flex-col items-center justify-center py-10 px-6"
                   style={{ borderColor: theme.accent }}
                 >
                   <LpProductBottle
                     productName={config.productName}
                     brandName={config.brandName}
                     count={heroBottleCount}
-                    size="md"
+                    size="lg"
                     labelColor={theme.primary}
                     capColor={theme.accent}
                   />
+                  <p className="mt-6 text-center font-black text-lg" style={{ color: theme.primary }}>
+                    {media.heroImageCaption ?? "Feel the difference."}
+                  </p>
+                  <p className="mt-1 text-center text-sm" style={{ color: theme.muted }}>
+                    {media.heroImageSubcaption ??
+                      meta?.heroSocialProof ??
+                      `Join thousands of men already on ${config.productName}`}
+                  </p>
                 </div>
-              ) : media.heroProductImage ? (
-                <HeroProductCard
-                  config={config}
-                  imageSrc={media.heroProductImage}
-                  imageAlt={media.heroProductImageAlt ?? config.productName}
-                />
-              ) : null}
+              ) : (
+                <>
+                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30">
+                    <Image
+                      src={media.heroImage}
+                      alt={media.heroImageAlt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority
+                    />
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-5">
+                      <p className="text-white font-black text-lg sm:text-xl">
+                        {media.heroImageCaption ?? "Feel the difference."}
+                      </p>
+                      <p className="text-white/90 text-sm">
+                        {media.heroImageSubcaption ??
+                          meta?.heroSocialProof ??
+                          `Join thousands of men already on ${config.productName}`}
+                      </p>
+                    </div>
+                  </div>
+                  {heroBottleCount ? (
+                    <div
+                      className="mx-auto w-44 sm:w-52 rounded-2xl shadow-2xl border-4 bg-[#f8fafc] flex items-center justify-center py-6"
+                      style={{ borderColor: theme.accent }}
+                    >
+                      <LpProductBottle
+                        productName={config.productName}
+                        brandName={config.brandName}
+                        count={heroBottleCount}
+                        size="md"
+                        labelColor={theme.primary}
+                        capColor={theme.accent}
+                      />
+                    </div>
+                  ) : media.heroProductImage ? (
+                    <HeroProductCard
+                      config={config}
+                      imageSrc={media.heroProductImage}
+                      imageAlt={media.heroProductImageAlt ?? config.productName}
+                    />
+                  ) : null}
+                </>
+              )}
             </div>
           </div>
         </div>

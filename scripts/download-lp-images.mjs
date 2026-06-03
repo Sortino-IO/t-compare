@@ -53,7 +53,11 @@ const ASSETS = [
   },
   {
     file: "man-portrait-smile.jpg",
-    url: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1200&h=900&fit=crop&auto=format&q=85",
+    url: "https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+  },
+  {
+    file: "hero-man-fitness.jpg",
+    url: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&h=900&fit=crop&auto=format&q=85",
   },
   {
     file: "couple-happy.jpg",
