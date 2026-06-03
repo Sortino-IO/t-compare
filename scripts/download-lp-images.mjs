@@ -60,6 +60,10 @@ const ASSETS = [
     url: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&h=900&fit=crop&auto=format&q=85",
   },
   {
+    file: "supplement-bottle-hero.jpg",
+    url: "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1200&fit=crop",
+  },
+  {
     file: "couple-happy.jpg",
     url: "https://images.unsplash.com/photo-1541089404510-5c9a779841fc?w=1200&h=800&fit=crop&auto=format&q=85",
   },

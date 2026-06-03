@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { LandingPageConfig, LpPackage } from "../../lib/landing-pages";
+import { getLpMedia } from "../../lib/landing-page-media";
+import { isTestosteroneSupplementLp } from "../../lib/testosterone-lp";
 import LpCtaButton from "./LpCtaButton";
 import LpProductBottle from "./LpProductBottle";
 
@@ -17,6 +19,11 @@ function FunnelColumn({
   highlightHeaderBg: string;
 }) {
   const { theme, ctaUrl, brandName, productName } = config;
+  const media = getLpMedia(config.slug);
+  const useBottlePhoto =
+    Boolean(pkg.bottleCount) &&
+    isTestosteroneSupplementLp(config.slug) &&
+    Boolean(media.heroProductImage);
   const headerBg = isCenter ? highlightHeaderBg : "#b8d4e8";
   const headerText = "#0f172a";
 
@@ -41,7 +48,22 @@ function FunnelColumn({
             {pkg.savingsBurst}
           </span>
         ) : null}
-        {pkg.bottleCount ? (
+        {useBottlePhoto ? (
+          <div className="relative w-full h-32 sm:h-40">
+            <Image
+              src={media.heroProductImage!}
+              alt={media.heroProductImageAlt ?? productName}
+              fill
+              className="object-contain p-2 drop-shadow-sm"
+              sizes="240px"
+            />
+            {(pkg.bottleCount ?? 1) > 1 ? (
+              <span className="absolute bottom-1 right-2 rounded bg-white/90 px-2 py-0.5 text-[10px] font-black text-stone-800 shadow">
+                ×{pkg.bottleCount}
+              </span>
+            ) : null}
+          </div>
+        ) : pkg.bottleCount ? (
           <LpProductBottle
             productName={productName}
             brandName={brandName}

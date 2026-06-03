@@ -165,15 +165,28 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div className="space-y-4 order-1">
             {isTestosteroneSupplementLp(config.slug) ? (
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#f0f4f8] shadow-md flex items-center justify-center p-8 sm:p-12">
-                <LpProductBottle
-                  productName={config.productName}
-                  brandName={config.brandName}
-                  count={1}
-                  size="lg"
-                  labelColor={theme.primary}
-                  capColor={theme.accent}
-                />
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#f0f4f8] shadow-md">
+                {media.heroProductImage ? (
+                  <Image
+                    src={media.heroProductImage}
+                    alt={media.heroProductImageAlt ?? `${config.productName} supplement bottle`}
+                    fill
+                    className="object-contain p-8 sm:p-12 drop-shadow-md"
+                    sizes="50vw"
+                    priority
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-12">
+                    <LpProductBottle
+                      productName={config.productName}
+                      brandName={config.brandName}
+                      count={1}
+                      size="lg"
+                      labelColor={theme.primary}
+                      capColor={theme.accent}
+                    />
+                  </div>
+                )}
               </div>
             ) : (
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 shadow-md">

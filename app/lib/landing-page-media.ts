@@ -31,6 +31,8 @@ const IMG = {
   manPortraitSmile: "/lp/man-portrait-smile.jpg",
   /** Verified male lifestyle — used for supplement LP heroes (avoids bad stock swaps). */
   heroManFitness: "/lp/hero-man-fitness.jpg",
+  /** Generic white capsule bottle — supplement LP product hero (not brand-specific). */
+  supplementBottleHero: "/lp/supplement-bottle-hero.jpg",
   coupleHappy: "/lp/couple-happy.jpg",
   couplePartner: "/lp/couple-partner.png",
   teamMeeting: "/lp/team-meeting.jpg",
@@ -191,7 +193,14 @@ export const LP_MEDIA: Record<string, LpMedia> = {
 };
 
 export function getLpMedia(slug: string): LpMedia {
-  return LP_MEDIA[slug] ?? LP_MEDIA["critical-t-lp1"]!;
+  const base = LP_MEDIA[slug] ?? LP_MEDIA["critical-t-lp1"]!;
+  if (!isTestosteroneSupplementLp(slug)) return base;
+  return {
+    ...base,
+    heroProductImage: base.heroProductImage ?? IMG.supplementBottleHero,
+    heroProductImageAlt:
+      base.heroProductImageAlt ?? "White supplement capsule bottle — illustrative product photo",
+  };
 }
 
 export function testimonialAvatar(index: number, slug?: string): string {

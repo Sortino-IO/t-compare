@@ -153,19 +153,32 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
             </div>
 
             <div className="relative flex flex-col items-center gap-6">
-              {isTestosteroneSupplementLp(config.slug) && heroBottleCount ? (
+              {isTestosteroneSupplementLp(config.slug) && (media.heroProductImage || heroBottleCount) ? (
                 <div
-                  className="relative w-full max-w-sm aspect-[4/5] rounded-2xl shadow-2xl border-4 bg-[#f8fafc] flex flex-col items-center justify-center py-10 px-6"
+                  className="relative w-full max-w-sm aspect-[4/5] rounded-2xl shadow-2xl border-4 bg-[#f8fafc] flex flex-col items-center justify-center py-8 px-6"
                   style={{ borderColor: theme.accent }}
                 >
-                  <LpProductBottle
-                    productName={config.productName}
-                    brandName={config.brandName}
-                    count={heroBottleCount}
-                    size="lg"
-                    labelColor={theme.primary}
-                    capColor={theme.accent}
-                  />
+                  {media.heroProductImage ? (
+                    <div className="relative w-full flex-1 min-h-[220px] max-h-[340px]">
+                      <Image
+                        src={media.heroProductImage}
+                        alt={media.heroProductImageAlt ?? `${config.productName} supplement bottle`}
+                        fill
+                        className="object-contain drop-shadow-md"
+                        sizes="(max-width: 1024px) 85vw, 400px"
+                        priority
+                      />
+                    </div>
+                  ) : (
+                    <LpProductBottle
+                      productName={config.productName}
+                      brandName={config.brandName}
+                      count={heroBottleCount}
+                      size="lg"
+                      labelColor={theme.primary}
+                      capColor={theme.accent}
+                    />
+                  )}
                   <p className="mt-6 text-center font-black text-lg" style={{ color: theme.primary }}>
                     {media.heroImageCaption ?? "Feel the difference."}
                   </p>
