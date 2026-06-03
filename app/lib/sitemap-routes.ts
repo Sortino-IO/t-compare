@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 /** Directories under `app/` that never contain public pages. */
-const SKIP_APP_CHILD_DIRS = new Set(["components", "data", "lib", "lp"]);
+const SKIP_APP_CHILD_DIRS = new Set(["components", "data", "lib", "lp", "internal"]);
 
 export type StaticSitemapPath = {
   /** URL path: "" for home, "/about" for about, etc. */
