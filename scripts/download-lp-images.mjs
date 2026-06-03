@@ -71,6 +71,18 @@ const ASSETS = [
     file: "man-confident.jpg",
     url: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&h=800&fit=crop&auto=format&q=85",
   },
+  {
+    file: "ingredient-tongkat.jpg",
+    url: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&h=600&fit=crop&auto=format&q=85",
+  },
+  {
+    file: "ingredient-dim.jpg",
+    url: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&h=600&fit=crop&auto=format&q=85",
+  },
+  {
+    file: "ingredient-acacetin.jpg",
+    url: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&h=600&fit=crop&auto=format&q=85",
+  },
   // Woodworking / workshop
   {
     file: "wood-workshop-1.jpg",

@@ -6,6 +6,7 @@ import LpCtaButton from "./LpCtaButton";
 import LpOfferStackBlock from "./LpOfferStack";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
+import LpStorySection from "./LpStorySection";
 
 function TrustRow({ theme, items }: { theme: LandingPageConfig["theme"]; items?: readonly string[] }) {
   const defaults = ["60-Day Guarantee", "Free Shipping Options", "Secure Checkout", "4.9★ Reviews"];
@@ -29,26 +30,35 @@ function TrustRow({ theme, items }: { theme: LandingPageConfig["theme"]; items?:
   );
 }
 
-function ProductBadge({ config }: { config: LandingPageConfig }) {
+function HeroProductCard({
+  config,
+  imageSrc,
+  imageAlt,
+}: {
+  config: LandingPageConfig;
+  imageSrc: string;
+  imageAlt: string;
+}) {
   const { theme, productName, brandName } = config;
   return (
     <div
-      className="relative mx-auto w-40 sm:w-48 aspect-[3/4] rounded-2xl shadow-2xl border-4 flex flex-col items-center justify-end p-4 text-center"
-      style={{
-        background: `linear-gradient(160deg, ${theme.primaryDark} 0%, ${theme.primary} 100%)`,
-        borderColor: theme.accent,
-      }}
+      className="relative mx-auto w-44 sm:w-52 aspect-[3/4] rounded-2xl shadow-2xl border-4 overflow-hidden"
+      style={{ borderColor: theme.accent }}
     >
+      <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="208px" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
       <div
-        className="absolute top-3 inset-x-3 rounded-lg py-2 px-2 text-[10px] sm:text-xs font-black uppercase leading-tight"
+        className="absolute top-3 inset-x-3 rounded-lg py-2 px-2 text-[10px] sm:text-xs font-black uppercase leading-tight text-center shadow-md"
         style={{ backgroundColor: theme.accent, color: theme.accentText }}
       >
         {brandName}
       </div>
-      <p className="text-white font-black text-lg sm:text-xl leading-tight mb-1">{productName}</p>
-      <p className="text-white/70 text-[10px] uppercase tracking-widest">
-        {config.productBadgeLine ?? "Daily Formula"}
-      </p>
+      <div className="absolute bottom-0 inset-x-0 p-4 text-center">
+        <p className="text-white font-black text-lg sm:text-xl leading-tight">{productName}</p>
+        <p className="text-white/80 text-[10px] uppercase tracking-widest mt-1">
+          {config.productBadgeLine ?? "Daily Formula"}
+        </p>
+      </div>
     </div>
   );
 }
@@ -146,13 +156,23 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
                   priority
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-5">
-                  <p className="text-white font-black text-lg sm:text-xl">Build it right the first time.</p>
+                  <p className="text-white font-black text-lg sm:text-xl">
+                    {media.heroImageCaption ?? "Feel the difference."}
+                  </p>
                   <p className="text-white/90 text-sm">
-                    {meta?.heroSocialProof ?? `Join thousands already using ${config.productName}`}
+                    {media.heroImageSubcaption ??
+                      meta?.heroSocialProof ??
+                      `Join thousands of men already on ${config.productName}`}
                   </p>
                 </div>
               </div>
-              <ProductBadge config={config} />
+              {media.heroProductImage ? (
+                <HeroProductCard
+                  config={config}
+                  imageSrc={media.heroProductImage}
+                  imageAlt={media.heroProductImageAlt ?? config.productName}
+                />
+              ) : null}
             </div>
           </div>
         </div>
@@ -234,21 +254,28 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
             {config.ingredients.map((ing, i) => (
               <div
                 key={ing.name}
-                className="rounded-2xl border-2 bg-white p-5 shadow-lg hover:shadow-xl transition-shadow"
+                className="rounded-2xl border-2 bg-white overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 style={{ borderColor: i % 2 === 0 ? theme.accent : theme.primary }}
               >
-                <div
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white font-black text-lg mb-3"
-                  style={{ backgroundColor: theme.primary }}
-                >
-                  {i + 1}
+                {ing.image ? (
+                  <div className="relative aspect-[4/3] w-full bg-slate-100">
+                    <Image src={ing.image} alt={ing.name} fill className="object-cover" sizes="(max-width:768px) 100vw, 320px" />
+                  </div>
+                ) : null}
+                <div className="p-5">
+                  <div
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white font-black text-lg mb-3"
+                    style={{ backgroundColor: theme.primary }}
+                  >
+                    {i + 1}
+                  </div>
+                  <h3 className="font-black text-lg mb-2" style={{ color: theme.primary }}>
+                    {ing.name}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.muted }}>
+                    {ing.benefit}
+                  </p>
                 </div>
-                <h3 className="font-black text-lg mb-2" style={{ color: theme.primary }}>
-                  {ing.name}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: theme.muted }}>
-                  {ing.benefit}
-                </p>
               </div>
             ))}
           </div>
@@ -313,26 +340,29 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
         </div>
       </section>
 
-      {/* Lifestyle gallery */}
-      <section className="px-4 sm:px-6 py-12 sm:py-16 bg-white">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-2xl sm:text-3xl font-black text-center mb-8" style={{ color: theme.primary }}>
-            {meta?.galleryTitle ?? "Men Like You Are Already Feeling the Surge"}
-          </h2>
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            {media.gallery.map((img, i) => (
-              <div
-                key={img.src}
-                className={`relative rounded-xl overflow-hidden shadow-lg border-2 border-[#eee] ${
-                  i < 2 ? "aspect-[3/4] sm:aspect-[4/5]" : "aspect-[4/3]"
-                }`}
-              >
-                <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
-              </div>
-            ))}
+      {config.storySection ? (
+        <LpStorySection section={config.storySection} theme={theme} />
+      ) : (
+        <section className="px-4 sm:px-6 py-12 sm:py-16 bg-white">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-2xl sm:text-3xl font-black text-center mb-8" style={{ color: theme.primary }}>
+              {meta?.galleryTitle ?? "Men Like You Are Already Feeling the Surge"}
+            </h2>
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {media.gallery.map((img, i) => (
+                <div
+                  key={img.src}
+                  className={`relative rounded-xl overflow-hidden shadow-lg border-2 border-[#eee] ${
+                    i < 2 ? "aspect-[3/4] sm:aspect-[4/5]" : "aspect-[4/3]"
+                  }`}
+                >
+                  <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Value stack + pricing anchor */}
       {config.offerStack ? <LpOfferStackBlock stack={config.offerStack} config={config} /> : null}

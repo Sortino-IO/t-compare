@@ -3,36 +3,69 @@ import type { LandingPageConfig } from "../../lib/landing-pages";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
+import LpCriticalTPricing from "./LpCriticalTPricing";
 import LpOfferStackBlock from "./LpOfferStack";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
 
-function ProductCard({ config }: { config: LandingPageConfig }) {
+function ProductCard({
+  config,
+  productImage,
+  productImageAlt,
+  productImagePosition,
+}: {
+  config: LandingPageConfig;
+  productImage?: string;
+  productImageAlt?: string;
+  productImagePosition?: string;
+}) {
   const { theme, brandName, productName } = config;
   const popular = config.packages.find((p) => p.highlight) ?? config.packages[0]!;
   const priceLabel = config.packagePriceLabel ?? "per bottle";
+  const imgSrc = productImage ?? popular.productImage;
 
   return (
     <div
       className="rounded-2xl border bg-white shadow-lg overflow-hidden"
       style={{ borderColor: theme.border }}
     >
-      <div className="relative aspect-square bg-slate-100">
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center p-6"
-          style={{ background: `linear-gradient(145deg, ${theme.primary} 0%, ${theme.primaryDark} 100%)` }}
-        >
-          <span
-            className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-3"
-            style={{ backgroundColor: theme.accent, color: theme.accentText }}
+      <div className="relative aspect-square bg-[#f0f4f8]">
+        {imgSrc ? (
+          <>
+            <Image
+              src={imgSrc}
+              alt={productImageAlt ?? popular.productImageAlt ?? productName}
+              fill
+              className="object-cover scale-125"
+              style={{ objectPosition: productImagePosition ?? popular.productImagePosition ?? "18% 45%" }}
+              sizes="400px"
+            />
+            <div className="absolute top-3 left-3 right-3 flex justify-center">
+              <span
+                className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest shadow-sm"
+                style={{ backgroundColor: theme.accent, color: theme.accentText }}
+              >
+                {brandName}
+              </span>
+            </div>
+          </>
+        ) : (
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center p-6"
+            style={{ background: `linear-gradient(145deg, ${theme.primary} 0%, ${theme.primaryDark} 100%)` }}
           >
-            {brandName}
-          </span>
-          <p className="text-white font-black text-2xl text-center">{productName}</p>
-          <p className="text-white/60 text-xs uppercase tracking-widest mt-1">
-            {config.productBadgeLine ?? "Daily Formula · 60 caps"}
-          </p>
-        </div>
+            <span
+              className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-3"
+              style={{ backgroundColor: theme.accent, color: theme.accentText }}
+            >
+              {brandName}
+            </span>
+            <p className="text-white font-black text-2xl text-center">{productName}</p>
+            <p className="text-white/60 text-xs uppercase tracking-widest mt-1">
+              {config.productBadgeLine ?? "Daily Formula · 60 caps"}
+            </p>
+          </div>
+        )}
       </div>
       <div className="p-5">
         <div className="flex items-center gap-2 mb-3">
@@ -40,8 +73,10 @@ function ProductCard({ config }: { config: LandingPageConfig }) {
           <span className="text-xs font-semibold text-slate-600">4.9 · 2,400+ reviews</span>
         </div>
         <p className="text-3xl font-black tabular-nums" style={{ color: theme.primary }}>
-          {popular.pricePerBottle}
-          <span className="text-sm font-semibold text-slate-500"> / {priceLabel}</span>
+          {popular.priceDisplay ?? popular.pricePerBottle}
+          <span className="text-sm font-semibold text-slate-500">
+            {popular.priceDisplay ? "" : ` / ${priceLabel}`}
+          </span>
         </p>
         {popular.savings ? <p className="text-sm font-bold text-emerald-600 mt-1">{popular.savings}</p> : null}
         <LpCtaButton
@@ -161,7 +196,12 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                 ))}
               </ul>
             </div>
-            <ProductCard config={config} />
+            <ProductCard
+              config={config}
+              productImage={media.heroProductImage ?? config.packages.find((p) => p.highlight)?.productImage}
+              productImageAlt={media.heroProductImageAlt}
+              productImagePosition={media.heroProductImagePosition}
+            />
           </div>
         </div>
       </section>
@@ -205,19 +245,26 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       <section className="py-14 sm:py-20 bg-white">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">{config.ingredientsTitle}</h2>
-          <div className="rounded-2xl border overflow-hidden" style={{ borderColor: theme.border }}>
+          <div className="grid gap-4 sm:grid-cols-3">
             {config.ingredients.map((ing, i) => (
               <div
                 key={ing.name}
-                className={`flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 p-5 ${i > 0 ? "border-t" : ""}`}
-                style={{ borderColor: theme.border, backgroundColor: i % 2 === 0 ? theme.sectionBg : "white" }}
+                className="rounded-2xl border overflow-hidden bg-white shadow-sm"
+                style={{ borderColor: i % 2 === 0 ? theme.accent : theme.border }}
               >
-                <span className="font-black text-base sm:w-40 shrink-0" style={{ color: theme.primary }}>
-                  {ing.name}
-                </span>
-                <span className="text-sm leading-relaxed" style={{ color: theme.muted }}>
-                  {ing.benefit}
-                </span>
+                {ing.image ? (
+                  <div className="relative aspect-[4/3] bg-slate-100">
+                    <Image src={ing.image} alt={ing.name} fill className="object-cover" sizes="320px" />
+                  </div>
+                ) : null}
+                <div className="p-4">
+                  <h3 className="font-black text-base mb-1" style={{ color: theme.primary }}>
+                    {ing.name}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.muted }}>
+                    {ing.benefit}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -270,46 +317,49 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       {/* Full value stack — primary conversion block */}
       {config.offerStack ? <LpOfferStackBlock stack={config.offerStack} config={config} /> : null}
 
-      {/* Pricing cards — comparison tiers when multiple packages */}
-      <section className="py-14 sm:py-20" style={{ backgroundColor: theme.sectionBg }}>
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">
-            {meta?.pricingHeadline ?? "Choose Your Supply"}
-          </h2>
-          <div className={`grid gap-6 ${config.packages.length > 1 ? "md:grid-cols-3" : "max-w-md mx-auto"}`}>
-            {config.packages.map((pkg) => (
-              <div
-                key={pkg.id}
-                className={`rounded-2xl border-2 p-6 bg-white flex flex-col ${pkg.highlight ? "ring-2 ring-offset-2 shadow-xl" : "shadow-sm"}`}
-                style={{ borderColor: pkg.highlight ? theme.accent : theme.border }}
-              >
-                {pkg.badge ? (
-                  <span className="text-[10px] font-black uppercase tracking-widest mb-2" style={{ color: theme.accent }}>
-                    {pkg.badge}
-                  </span>
-                ) : null}
-                <h3 className="font-black text-xl">{pkg.title}</h3>
-                <p className="text-xs mb-4" style={{ color: theme.muted }}>
-                  {pkg.subtitle}
-                </p>
-                <p className="text-4xl font-black tabular-nums">{pkg.pricePerBottle}</p>
-                <p className="text-xs font-semibold mb-1" style={{ color: theme.muted }}>
-                  {priceLabel} · {pkg.total}
-                </p>
-                {pkg.savings ? <p className="text-sm font-bold text-emerald-600 mb-4">{pkg.savings}</p> : <div className="mb-4" />}
-                <LpCtaButton
-                  ctaUrl={config.ctaUrl}
-                  label={pkg.ctaLabel}
-                  theme={theme}
-                  size="md"
-                  className="w-full mt-auto !rounded-lg !normal-case"
-                  pulse={false}
-                />
-              </div>
-            ))}
+      {config.pricingFunnel?.layout === "critical-t-funnel" ? (
+        <LpCriticalTPricing config={config} />
+      ) : (
+        <section className="py-14 sm:py-20" style={{ backgroundColor: theme.sectionBg }}>
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">
+              {meta?.pricingHeadline ?? "Choose Your Supply"}
+            </h2>
+            <div className={`grid gap-6 ${config.packages.length > 1 ? "md:grid-cols-3" : "max-w-md mx-auto"}`}>
+              {config.packages.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  className={`rounded-2xl border-2 p-6 bg-white flex flex-col ${pkg.highlight ? "ring-2 ring-offset-2 shadow-xl" : "shadow-sm"}`}
+                  style={{ borderColor: pkg.highlight ? theme.accent : theme.border }}
+                >
+                  {pkg.badge ? (
+                    <span className="text-[10px] font-black uppercase tracking-widest mb-2" style={{ color: theme.accent }}>
+                      {pkg.badge}
+                    </span>
+                  ) : null}
+                  <h3 className="font-black text-xl">{pkg.title}</h3>
+                  <p className="text-xs mb-4" style={{ color: theme.muted }}>
+                    {pkg.subtitle}
+                  </p>
+                  <p className="text-4xl font-black tabular-nums">{pkg.pricePerBottle}</p>
+                  <p className="text-xs font-semibold mb-1" style={{ color: theme.muted }}>
+                    {priceLabel} · {pkg.total}
+                  </p>
+                  {pkg.savings ? <p className="text-sm font-bold text-emerald-600 mb-4">{pkg.savings}</p> : <div className="mb-4" />}
+                  <LpCtaButton
+                    ctaUrl={config.ctaUrl}
+                    label={pkg.ctaLabel}
+                    theme={theme}
+                    size="md"
+                    className="w-full mt-auto !rounded-lg !normal-case"
+                    pulse={false}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* FAQ */}
       <section className="py-14 sm:py-20 bg-white">

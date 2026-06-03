@@ -3,6 +3,12 @@ import type { LpTestimonial } from "./landing-pages";
 export type LpMedia = {
   heroImage: string;
   heroImageAlt: string;
+  /** Fills hero product card (replaces empty gradient badge) */
+  heroProductImage?: string;
+  heroProductImageAlt?: string;
+  heroProductImagePosition?: string;
+  heroImageCaption?: string;
+  heroImageSubcaption?: string;
   splitImage: string;
   splitImageAlt: string;
   gallery: { src: string; alt: string }[];
@@ -38,10 +44,14 @@ const AVATARS = [IMG.avatar1, IMG.avatar2, IMG.avatar3, IMG.avatar4];
 
 export const LP_MEDIA: Record<string, LpMedia> = {
   "critical-t-lp1": {
-    heroImage: IMG.manRunning,
-    heroImageAlt: "Fit man training with energy and confidence",
-    splitImage: IMG.gymStrength,
-    splitImageAlt: "Man lifting weights in gym",
+    heroImage: IMG.manPortraitSmile,
+    heroImageAlt: "Confident man smiling — Critical T daily support",
+    heroProductImage: IMG.manConfident,
+    heroProductImageAlt: "Strong man feeling vital and energized",
+    heroImageCaption: "Feel the difference.",
+    heroImageSubcaption: "Join thousands of men already on Critical T",
+    splitImage: IMG.gymTraining,
+    splitImageAlt: "Man working out at the gym with focus",
     gallery: [
       { src: IMG.workoutSession, alt: "Athletic man mid-workout" },
       { src: IMG.gymTraining, alt: "Man training hard at the gym" },
@@ -74,15 +84,18 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     ],
   },
   "critical-t-lp2": {
-    heroImage: IMG.gymStrength,
-    heroImageAlt: "Athletic man lifting weights with focus",
-    splitImage: IMG.workoutSession,
-    splitImageAlt: "Man mid-workout session",
+    heroImage: IMG.manPortraitSmile,
+    heroImageAlt: "Confident man — Critical T natural support",
+    heroProductImage: "/lp/critical-t-bottles-4.png",
+    heroProductImageAlt: "Critical T supplement bottle",
+    heroProductImagePosition: "18% 45%",
+    splitImage: IMG.gymTraining,
+    splitImageAlt: "Man training at the gym",
     gallery: [
-      { src: IMG.manRunning, alt: "Runner training outdoors" },
-      { src: IMG.gymTraining, alt: "Gym training session" },
-      { src: IMG.yogaStretch, alt: "Man stretching after workout" },
-      { src: IMG.meditationCalm, alt: "Calm focused man recovering" },
+      { src: IMG.gymLifting, alt: "Man lifting weights in gym" },
+      { src: IMG.workoutSession, alt: "Man working out with intensity" },
+      { src: IMG.manConfident, alt: "Confident man feeling strong" },
+      { src: IMG.gymStrength, alt: "Strength training at the gym" },
     ],
   },
   "endopeak24-lp2": {

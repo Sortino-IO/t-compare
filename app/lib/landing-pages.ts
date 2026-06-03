@@ -16,6 +16,8 @@ export type LpTheme = {
   muted: string;
 };
 
+export type LpPricingLayout = "default" | "critical-t-funnel";
+
 export type LpPackage = {
   id: string;
   title: string;
@@ -28,6 +30,29 @@ export type LpPackage = {
   shipping: string;
   highlight?: boolean;
   ctaLabel: string;
+  /** Product shot for funnel-style pricing columns */
+  productImage?: string;
+  productImageAlt?: string;
+  /** CSS object-position when using a shared funnel screenshot */
+  productImagePosition?: string;
+  /** Official-style column header (e.g. STARTER, BEST VALUE!) */
+  funnelHeader?: string;
+  funnelSubheader?: string;
+  /** Large price line under product image */
+  priceDisplay?: string;
+  /** Secondary price line */
+  priceSubline?: string;
+  /** Red burst text e.g. SAVE $209 */
+  savingsBurst?: string;
+  /** Extra perk rows with checkmarks */
+  perkLines?: string[];
+};
+
+export type LpPricingFunnelConfig = {
+  layout: "critical-t-funnel";
+  /** Column order left → right */
+  columnOrder: string[];
+  sectionTitle?: string;
 };
 
 export type LpTestimonial = {
@@ -65,6 +90,20 @@ export type LpOfferStack = {
   secondaryLinkLabel?: string;
 };
 
+export type LpStoryBlock = {
+  paragraphs: string[];
+  image: string;
+  imageAlt: string;
+  imagePosition: "left" | "right";
+};
+
+export type LpStorySection = {
+  title: string;
+  introParagraphs?: string[];
+  blocks: LpStoryBlock[];
+  footerParagraph?: string;
+};
+
 export type LpProductMeta = {
   /** Digital / woodworking — hides supplement footer, adjusts trust copy */
   isDigitalProduct?: boolean;
@@ -100,7 +139,7 @@ export type LandingPageConfig = {
   solutionTitle: string;
   solutionParagraphs: string[];
   ingredientsTitle: string;
-  ingredients: { name: string; benefit: string }[];
+  ingredients: { name: string; benefit: string; image?: string }[];
   benefitsTitle: string;
   benefits: string[];
   testimonials: LpTestimonial[];
@@ -117,6 +156,9 @@ export type LandingPageConfig = {
   /** Full value-stack offer block (plans, bonuses, anchored price) */
   offerStack?: LpOfferStack;
   productMeta?: LpProductMeta;
+  /** Replaces lifestyle gallery grid (e.g. Magic Morning narrative) */
+  storySection?: LpStorySection;
+  pricingFunnel?: LpPricingFunnelConfig;
 };
 
 export const LANDING_PAGES_LP1: LandingPageConfig[] = [
@@ -172,10 +214,55 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     ingredientsTitle: "Inside Every Critical T Dose",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Supports natural testosterone signaling via luteinizing hormone pathways" },
-      { name: "DIM", benefit: "Helps the liver convert excess estrogen into inactive forms" },
-      { name: "Acacetin", benefit: "From Turnera diffusa — marketed for aromatase balance support" },
+      {
+        name: "Tongkat Ali",
+        benefit: "Supports natural testosterone signaling via luteinizing hormone pathways",
+        image: "/lp/ingredient-tongkat.jpg",
+      },
+      {
+        name: "DIM",
+        benefit: "Helps the liver convert excess estrogen into inactive forms",
+        image: "/lp/ingredient-dim.jpg",
+      },
+      {
+        name: "Acacetin",
+        benefit: "From Turnera diffusa — marketed for aromatase balance support",
+        image: "/lp/ingredient-acacetin.jpg",
+      },
     ],
+    storySection: {
+      title: "The Magic Morning",
+      introParagraphs: [
+        "Imagine waking up every morning with the energy and drive you had in your twenties — before the slow drain of age, stress, and declining hormones.",
+        "Critical T is built around a simple daily ritual: two capsules with water, then get on with your day. No injections. No clinic visits. Just consistent support for the pathways that matter.",
+      ],
+      blocks: [
+        {
+          imagePosition: "right",
+          image: "/lp/couple-happy.jpg",
+          imageAlt: "Happy couple enjoying closeness and energy together",
+          paragraphs: [
+            "When your body has the raw materials to support healthy testosterone and balanced estrogen metabolism, many men report feeling more present at home — not just in the gym.",
+            "More morning energy often translates into better mood, patience, and connection with your partner. That is the \"magic morning\" most men are really chasing: vitality that shows up everywhere, not just on a lab printout.",
+          ],
+        },
+        {
+          imagePosition: "left",
+          image: "/lp/man-running.jpg",
+          imageAlt: "Fit mature man running outdoors with confidence",
+          paragraphs: [
+            "Training feels different when recovery and drive improve. Men who stick with Critical T for 60–90 days often describe pushing harder in workouts without feeling wrecked the next day.",
+            "Whether you are 35 or 55, the goal is the same: wake up ready to move, work, and live — not negotiate with your alarm clock every morning.",
+          ],
+        },
+      ],
+      footerParagraph:
+        "Critical T retails for $69 per bottle on the official site. This page routes you to bundle and Subscribe & Save pricing so you pay less per month when you commit to a fair trial window.",
+    },
+    productMeta: {
+      heroSocialProof: "Join thousands of men already supporting natural T with Critical T",
+      galleryTitle: "The Magic Morning",
+    },
     benefitsTitle: "What Optimized Daily Support Can Feel Like",
     benefits: [
       "Wake up with clearer morning energy instead of hitting snooze three times",
