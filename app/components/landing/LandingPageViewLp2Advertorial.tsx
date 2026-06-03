@@ -4,6 +4,7 @@ import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
 import LpOfferStackBlock from "./LpOfferStack";
+import LpPricingFunnel from "./LpPricingFunnel";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
 
@@ -15,7 +16,8 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
   const popular = config.packages.find((p) => p.highlight) ?? config.packages[0]!;
   const priceLabel = config.packagePriceLabel ?? "per bottle";
   const masthead = meta?.advertorialMasthead;
-  const showPricingList = !config.offerStack || config.packages.length > 1;
+  const showPricingList =
+    config.pricingFunnel?.layout !== "supplement-funnel" && (!config.offerStack || config.packages.length > 1);
 
   return (
     <div className="min-h-screen pb-24 sm:pb-0 lp-advertorial" style={{ backgroundColor: theme.heroBg, color: theme.text }}>
@@ -123,13 +125,20 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
         <h3 className="font-serif text-2xl font-bold mb-6">{config.ingredientsTitle}</h3>
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
           {config.ingredients.map((ing) => (
-            <div key={ing.name} className="rounded-lg bg-white border border-stone-200 p-4 shadow-sm">
-              <p className="font-bold mb-1" style={{ color: theme.primary }}>
-                {ing.name}
-              </p>
-              <p className="text-sm leading-relaxed" style={{ color: theme.muted }}>
-                {ing.benefit}
-              </p>
+            <div key={ing.name} className="rounded-lg bg-white border border-stone-200 overflow-hidden shadow-sm">
+              {ing.image ? (
+                <div className="relative aspect-[16/10] bg-stone-100">
+                  <Image src={ing.image} alt={ing.name} fill className="object-cover" sizes="340px" />
+                </div>
+              ) : null}
+              <div className="p-4">
+                <p className="font-bold mb-1" style={{ color: theme.primary }}>
+                  {ing.name}
+                </p>
+                <p className="text-sm leading-relaxed" style={{ color: theme.muted }}>
+                  {ing.benefit}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -183,11 +192,13 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
           </p>
         </blockquote>
 
-        {/* Full offer stack — matches official checkout page */}
         {config.offerStack ? <LpOfferStackBlock stack={config.offerStack} config={config} className="!px-0 !py-8" /> : null}
 
-        {/* Pricing — editorial CTA blocks */}
-        {showPricingList ? (
+        {config.pricingFunnel?.layout === "supplement-funnel" ? (
+          <div className="-mx-4 sm:mx-0 mb-10">
+            <LpPricingFunnel config={config} />
+          </div>
+        ) : showPricingList ? (
         <>
         <h3 className="font-serif text-2xl font-bold mb-6 text-center">Official Bundle Pricing</h3>
         <div className="space-y-4 mb-10">

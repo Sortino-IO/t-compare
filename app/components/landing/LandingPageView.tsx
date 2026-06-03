@@ -7,6 +7,8 @@ import LpOfferStackBlock from "./LpOfferStack";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
 import LpStorySection from "./LpStorySection";
+import LpPricingFunnel from "./LpPricingFunnel";
+import LpProductBottle from "./LpProductBottle";
 
 function TrustRow({ theme, items }: { theme: LandingPageConfig["theme"]; items?: readonly string[] }) {
   const defaults = ["60-Day Guarantee", "Free Shipping Options", "Secure Checkout", "4.9★ Reviews"];
@@ -96,7 +98,8 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
   const media = getLpMedia(config.slug);
   const testimonials = withAvatars(config.testimonials);
   const priceLabel = config.packagePriceLabel ?? "per bottle";
-  const showPricingGrid = !config.offerStack || config.packages.length > 1;
+  const showPricingGrid =
+    config.pricingFunnel?.layout !== "supplement-funnel" && (!config.offerStack || config.packages.length > 1);
 
   return (
     <div className="min-h-screen pb-24 sm:pb-0 bg-[#f0f0f0]" style={{ color: theme.text }}>
@@ -172,6 +175,19 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
                   imageSrc={media.heroProductImage}
                   imageAlt={media.heroProductImageAlt ?? config.productName}
                 />
+              ) : meta?.heroBottleCount ? (
+                <div
+                  className="mx-auto w-44 sm:w-52 rounded-2xl shadow-2xl border-4 bg-[#f8fafc] flex items-center justify-center py-6"
+                  style={{ borderColor: theme.accent }}
+                >
+                  <LpProductBottle
+                    productName={config.productName}
+                    brandName={config.brandName}
+                    count={meta.heroBottleCount}
+                    labelColor={theme.primary}
+                    capColor={theme.accent}
+                  />
+                </div>
               ) : null}
             </div>
           </div>
@@ -366,6 +382,8 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
 
       {/* Value stack + pricing anchor */}
       {config.offerStack ? <LpOfferStackBlock stack={config.offerStack} config={config} /> : null}
+
+      {config.pricingFunnel?.layout === "supplement-funnel" ? <LpPricingFunnel config={config} /> : null}
 
       {/* Pricing cards (supplements / multi-tier) */}
       {showPricingGrid ? (

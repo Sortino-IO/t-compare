@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { LandingPageConfig, LpPackage } from "../../lib/landing-pages";
 import LpCtaButton from "./LpCtaButton";
+import LpProductBottle from "./LpProductBottle";
 
 const PAYMENT_LABELS = ["Discover", "Amex", "Mastercard", "Visa"];
 
@@ -8,14 +9,16 @@ function FunnelColumn({
   pkg,
   config,
   isCenter,
+  highlightHeaderBg,
 }: {
   pkg: LpPackage;
   config: LandingPageConfig;
   isCenter: boolean;
+  highlightHeaderBg: string;
 }) {
-  const { theme, ctaUrl } = config;
-  const headerBg = isCenter ? "#f5b800" : "#b8d4e8";
-  const headerText = isCenter ? "#0f172a" : "#0f172a";
+  const { theme, ctaUrl, brandName, productName } = config;
+  const headerBg = isCenter ? highlightHeaderBg : "#b8d4e8";
+  const headerText = "#0f172a";
 
   return (
     <div
@@ -32,7 +35,7 @@ function FunnelColumn({
         )}
       </div>
 
-      <div className="relative px-4 pt-4 pb-2 bg-[#f0f4f8] min-h-[140px] sm:min-h-[160px] flex items-center justify-center">
+      <div className="relative px-4 pt-4 pb-2 bg-[#f0f4f8] min-h-[140px] sm:min-h-[168px] flex items-center justify-center">
         {pkg.savingsBurst ? (
           <span className="absolute top-2 right-2 z-10 rounded-full bg-red-600 text-white text-[9px] sm:text-[10px] font-black px-2 py-1 shadow-md rotate-6">
             {pkg.savingsBurst}
@@ -49,6 +52,14 @@ function FunnelColumn({
               sizes="240px"
             />
           </div>
+        ) : pkg.bottleCount ? (
+          <LpProductBottle
+            productName={productName}
+            brandName={brandName}
+            count={pkg.bottleCount}
+            labelColor={theme.primary}
+            capColor={theme.accent}
+          />
         ) : null}
       </div>
 
@@ -79,13 +90,18 @@ function FunnelColumn({
           <p
             key={line}
             className="mt-2 text-[10px] sm:text-xs font-bold uppercase tracking-wide text-white py-1.5 px-2 rounded"
-            style={{ backgroundColor: line.includes("SHIPPING") && line.includes("FREE") ? "#0d5c63" : "#c0392b" }}
+            style={{
+              backgroundColor:
+                line.toUpperCase().includes("FREE") && line.toUpperCase().includes("SHIPPING")
+                  ? "#0d5c63"
+                  : "#c0392b",
+            }}
           >
             ✓ {line}
           </p>
         ))}
 
-        {pkg.badge && pkg.funnelHeader ? (
+        {pkg.badge && !pkg.perkLines?.length ? (
           <p className="mt-2 text-[10px] font-bold uppercase" style={{ color: theme.accent }}>
             {pkg.badge}
           </p>
@@ -125,26 +141,37 @@ type Props = {
   config: LandingPageConfig;
 };
 
-export default function LpCriticalTPricing({ config }: Props) {
+export default function LpPricingFunnel({ config }: Props) {
   const funnel = config.pricingFunnel;
+  const { theme } = config;
   const order = funnel?.columnOrder ?? config.packages.map((p) => p.id);
   const packages = order
     .map((id) => config.packages.find((p) => p.id === id))
     .filter((p): p is LpPackage => Boolean(p));
 
+  const sectionBg = `linear-gradient(180deg, ${theme.primaryDark} 0%, ${theme.primary} 100%)`;
+  const highlightHeaderBg = funnel?.highlightHeaderBg ?? "#f5b800";
+
   return (
-    <section className="py-14 sm:py-20 px-4 sm:px-6" style={{ background: "linear-gradient(180deg, #0c2340 0%, #163a5f 100%)" }}>
+    <section className="py-14 sm:py-20 px-4 sm:px-6" style={{ background: sectionBg }}>
       <div className="mx-auto max-w-6xl">
         <h2 className="text-2xl sm:text-3xl font-black text-center text-white mb-10 sm:mb-12">
           {funnel?.sectionTitle ?? "Choose Your Package"}
         </h2>
         <div className="grid md:grid-cols-3 gap-4 sm:gap-6 items-end">
           {packages.map((pkg) => (
-            <FunnelColumn key={pkg.id} pkg={pkg} config={config} isCenter={Boolean(pkg.highlight)} />
+            <FunnelColumn
+              key={pkg.id}
+              pkg={pkg}
+              config={config}
+              isCenter={Boolean(pkg.highlight)}
+              highlightHeaderBg={highlightHeaderBg}
+            />
           ))}
         </div>
         <p className="text-center text-xs text-white/70 mt-8 max-w-2xl mx-auto">
-          Secure checkout · Prices match official Critical T bundle tiers · 60-day guarantee per vendor terms
+          {funnel?.footerNote ??
+            `Secure checkout · Official ${config.brandName} bundle tiers · 60-day guarantee per vendor terms`}
         </p>
       </div>
     </section>

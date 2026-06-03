@@ -3,7 +3,8 @@ import type { LandingPageConfig } from "../../lib/landing-pages";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
-import LpCriticalTPricing from "./LpCriticalTPricing";
+import LpPricingFunnel from "./LpPricingFunnel";
+import LpProductBottle from "./LpProductBottle";
 import LpOfferStackBlock from "./LpOfferStack";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
@@ -49,6 +50,16 @@ function ProductCard({
               </span>
             </div>
           </>
+        ) : popular.bottleCount ? (
+          <div className="absolute inset-0 flex items-center justify-center bg-[#f0f4f8] p-4">
+            <LpProductBottle
+              productName={productName}
+              brandName={brandName}
+              count={popular.bottleCount}
+              labelColor={theme.primary}
+              capColor={theme.accent}
+            />
+          </div>
         ) : (
           <div
             className="absolute inset-0 flex flex-col items-center justify-center p-6"
@@ -115,6 +126,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
   const testimonials = withAvatars(config.testimonials);
   const timeline = config.timeline ?? [];
   const priceLabel = config.packagePriceLabel ?? "per bottle";
+  const showPricingGrid = config.pricingFunnel?.layout !== "supplement-funnel";
 
   return (
     <div className="min-h-screen bg-white pb-24 sm:pb-0" style={{ color: theme.text }}>
@@ -317,9 +329,9 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       {/* Full value stack — primary conversion block */}
       {config.offerStack ? <LpOfferStackBlock stack={config.offerStack} config={config} /> : null}
 
-      {config.pricingFunnel?.layout === "critical-t-funnel" ? (
-        <LpCriticalTPricing config={config} />
-      ) : (
+      {config.pricingFunnel?.layout === "supplement-funnel" ? (
+        <LpPricingFunnel config={config} />
+      ) : showPricingGrid ? (
         <section className="py-14 sm:py-20" style={{ backgroundColor: theme.sectionBg }}>
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">
@@ -359,7 +371,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
             </div>
           </div>
         </section>
-      )}
+      ) : null}
 
       {/* FAQ */}
       <section className="py-14 sm:py-20 bg-white">

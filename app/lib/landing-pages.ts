@@ -16,8 +16,6 @@ export type LpTheme = {
   muted: string;
 };
 
-export type LpPricingLayout = "default" | "critical-t-funnel";
-
 export type LpPackage = {
   id: string;
   title: string;
@@ -42,6 +40,8 @@ export type LpPackage = {
   priceDisplay?: string;
   /** Secondary price line */
   priceSubline?: string;
+  /** CSS bottle mockup count when no productImage */
+  bottleCount?: number;
   /** Red burst text e.g. SAVE $209 */
   savingsBurst?: string;
   /** Extra perk rows with checkmarks */
@@ -49,10 +49,13 @@ export type LpPackage = {
 };
 
 export type LpPricingFunnelConfig = {
-  layout: "critical-t-funnel";
+  layout: "supplement-funnel";
   /** Column order left → right */
   columnOrder: string[];
   sectionTitle?: string;
+  footerNote?: string;
+  /** Header bg for highlighted (center) column */
+  highlightHeaderBg?: string;
 };
 
 export type LpTestimonial = {
@@ -112,6 +115,7 @@ export type LpProductMeta = {
   heroTagline?: string;
   heroSocialProof?: string;
   stickyCtaLabel?: string;
+  heroBottleCount?: number;
   advertorialMasthead?: { category: string; publication: string; author?: string };
   pricingHeadline?: string;
 };
@@ -407,13 +411,48 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     ingredientsTitle: "Inside Every EndoPeak Capsule",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Boosts sexual performance & male vitality signaling" },
-      { name: "Epimedium", benefit: "Facilitates blood flow where it matters most" },
-      { name: "Saw Palmetto", benefit: "Supports healthy testosterone production pathways" },
-      { name: "Hawthorn Berry", benefit: "Promotes circulation and cardiovascular support" },
-      { name: "Tribulus", benefit: "Maintains a healthy libido baseline" },
-      { name: "Magnesium", benefit: "Supports testosterone levels and recovery" },
+      { name: "Tongkat Ali", benefit: "Boosts sexual performance & male vitality signaling", image: "/lp/ingredient-tongkat.jpg" },
+      { name: "Epimedium", benefit: "Facilitates blood flow where it matters most", image: "/lp/ingredient-acacetin.jpg" },
+      { name: "Saw Palmetto", benefit: "Supports healthy testosterone production pathways", image: "/lp/ingredient-tongkat.jpg" },
+      { name: "Hawthorn Berry", benefit: "Promotes circulation and cardiovascular support", image: "/lp/ingredient-dim.jpg" },
+      { name: "Tribulus", benefit: "Maintains a healthy libido baseline", image: "/lp/ingredient-acacetin.jpg" },
+      { name: "Magnesium", benefit: "Supports testosterone levels and recovery", image: "/lp/ingredient-dim.jpg" },
     ],
+    storySection: {
+      title: "The Daily Edge",
+      introParagraphs: [
+        "Most men over 40 feel the same slow leak — less morning drive, longer recovery after workouts, and confidence that used to come naturally.",
+        "EndoPeak is built as one daily capsule after breakfast: eight botanicals working on circulation, libido, stress resilience, and testosterone pathway support together.",
+      ],
+      blocks: [
+        {
+          imagePosition: "right",
+          image: "/lp/couple-happy.jpg",
+          imageAlt: "Happy couple enjoying renewed energy and connection",
+          paragraphs: [
+            "When circulation and stamina improve, the benefits show up at home — not just in the gym. Partners notice before you finish explaining the formula.",
+            "EndoPeak is framed as consistent daily support, not a stimulant spike. That is the edge most men are actually shopping for.",
+          ],
+        },
+        {
+          imagePosition: "left",
+          image: "/lp/gym-lifting.jpg",
+          imageAlt: "Man training with strength and focus at the gym",
+          paragraphs: [
+            "Better blood flow and recovery often translate into stronger sessions and less afternoon crash — the combination that keeps men consistent on a 90-day trial.",
+            "Bulk pricing drops to about $49 per bottle on the 6-bottle tier with free US shipping — the math smart buyers use after week two feels different.",
+          ],
+        },
+      ],
+      footerParagraph:
+        "Official EndoPeak pricing: intro 2-bottle, 90-day (3 bottles), and 180-day (6 bottles) tiers. This page routes you to the same checkout with your discount intact.",
+    },
+    productMeta: {
+      heroSocialProof: "Join thousands of men already using EndoPeak",
+      heroBottleCount: 1,
+      galleryTitle: "The Daily Edge",
+    },
+    productBadgeLine: "8 Botanicals · 60 caps",
     benefitsTitle: "What Men Report After Staying Consistent",
     benefits: [
       "More usable energy from morning through evening — not a jittery 2-hour spike",
@@ -558,13 +597,48 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     ingredientsTitle: "8 Ingredients. One Daily Ritual.",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Improves sexual performance & male vitality" },
-      { name: "Epimedium", benefit: "Facilitates blood flow for stronger arousal response" },
-      { name: "Saw Palmetto", benefit: "Testosterone production aid & prostate support framing" },
-      { name: "Hawthorn Berry", benefit: "Promotes healthy circulation" },
-      { name: "Tribulus", benefit: "Heightens libido baseline" },
-      { name: "Magnesium", benefit: "Supports testosterone levels and muscle function" },
+      { name: "Tongkat Ali", benefit: "Improves sexual performance & male vitality", image: "/lp/ingredient-tongkat.jpg" },
+      { name: "Epimedium", benefit: "Facilitates blood flow for stronger arousal response", image: "/lp/ingredient-acacetin.jpg" },
+      { name: "Saw Palmetto", benefit: "Testosterone production aid & prostate support framing", image: "/lp/ingredient-tongkat.jpg" },
+      { name: "Hawthorn Berry", benefit: "Promotes healthy circulation", image: "/lp/ingredient-dim.jpg" },
+      { name: "Tribulus", benefit: "Heightens libido baseline", image: "/lp/ingredient-acacetin.jpg" },
+      { name: "Magnesium", benefit: "Supports testosterone levels and muscle function", image: "/lp/ingredient-dim.jpg" },
     ],
+    storySection: {
+      title: "Perform With Confidence",
+      introParagraphs: [
+        "Performance is not one problem — it is blood flow, stamina, stress, and hormone balance intersecting every day.",
+        "ErecPrime targets all four legs with eight named botanicals in one capsule after your first meal.",
+      ],
+      blocks: [
+        {
+          imagePosition: "right",
+          image: "/lp/couple-active.jpg",
+          imageAlt: "Active couple with energy and connection",
+          paragraphs: [
+            "Men who stay on ErecPrime for 90 days often describe renewed appetite for intimacy — not a jittery hour, but sustained confidence.",
+            "Your partner notices the difference when stamina and mood improve together. That is the outcome this stack is marketed for.",
+          ],
+        },
+        {
+          imagePosition: "left",
+          image: "/lp/workout-session.jpg",
+          imageAlt: "Man pushing through an intense gym workout",
+          paragraphs: [
+            "Circulation and testosterone pathway support also show up in training — better sessions, faster recovery, less couch time after work.",
+            "From $69 for a single bottle to about $49 per bottle on the 6-bottle bundle with free shipping — pick the tier that matches your trial runway.",
+          ],
+        },
+      ],
+      footerParagraph:
+        "ErecPrime retails higher on single bottles; bulk tiers unlock the lowest per-capsule cost. This page mirrors official bundle structure.",
+    },
+    productMeta: {
+      heroSocialProof: "Join thousands of men already on ErecPrime",
+      heroBottleCount: 1,
+      galleryTitle: "Perform With Confidence",
+    },
+    productBadgeLine: "8 Botanicals · 60 caps",
     benefitsTitle: "The Benefits Men Buy ErecPrime For",
     benefits: [
       "Reliable stamina for longer-lasting intimate encounters",

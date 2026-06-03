@@ -3,6 +3,7 @@ import type { LandingPageConfig } from "../../lib/landing-pages";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
+import LpPricingFunnel from "./LpPricingFunnel";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
 
@@ -128,19 +129,28 @@ export default function LandingPageViewLp2Bento({ config }: { config: LandingPag
         </section>
       ) : null}
 
-      {/* Ingredients — horizontal pills */}
+      {/* Ingredients — image cards */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-black mb-8">{config.ingredientsTitle}</h2>
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {config.ingredients.map((ing) => (
               <div
                 key={ing.name}
-                className="rounded-full border border-zinc-700 px-5 py-3 hover:border-[var(--accent)] transition-colors"
-                style={{ ["--accent" as string]: theme.accent }}
-                title={ing.benefit}
+                className="rounded-2xl border border-zinc-700 overflow-hidden"
+                style={{ backgroundColor: theme.cardBg }}
               >
-                <span className="font-bold text-sm">{ing.name}</span>
+                {ing.image ? (
+                  <div className="relative aspect-[4/3]">
+                    <Image src={ing.image} alt={ing.name} fill className="object-cover opacity-80" sizes="280px" />
+                  </div>
+                ) : null}
+                <div className="p-3 sm:p-4">
+                  <p className="font-bold text-sm mb-1" style={{ color: theme.accent }}>
+                    {ing.name}
+                  </p>
+                  <p className="text-xs leading-relaxed text-zinc-400">{ing.benefit}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -179,46 +189,49 @@ export default function LandingPageViewLp2Bento({ config }: { config: LandingPag
         </div>
       </section>
 
-      {/* Pricing — dark glass cards */}
-      <section className="py-16 sm:py-24" style={{ backgroundColor: theme.sectionBg }}>
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl font-black text-center mb-12">Pick Your Stack</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {config.packages.map((pkg) => (
-              <div
-                key={pkg.id}
-                className={`rounded-3xl border p-6 flex flex-col backdrop-blur-sm ${
-                  pkg.highlight ? "border-2 scale-105 shadow-2xl lp-bento-glow" : "border-zinc-700"
-                }`}
-                style={{
-                  backgroundColor: pkg.highlight ? "rgba(255,71,87,0.08)" : theme.cardBg,
-                  borderColor: pkg.highlight ? theme.accent : undefined,
-                }}
-              >
-                {pkg.badge ? (
-                  <span className="text-[10px] font-black uppercase tracking-widest mb-2" style={{ color: theme.accent }}>
-                    {pkg.badge}
-                  </span>
-                ) : null}
-                <h3 className="font-black text-2xl">{pkg.title}</h3>
-                <p className="text-xs text-zinc-500 mb-6">{pkg.subtitle}</p>
-                <p className="text-5xl font-black tabular-nums">{pkg.pricePerBottle}</p>
-                <p className="text-xs text-zinc-500 mb-1">per bottle</p>
-                <p className="text-lg font-bold mb-1">{pkg.total}</p>
-                {pkg.savings ? <p className="text-sm font-bold mb-6" style={{ color: theme.accent }}>{pkg.savings}</p> : <div className="mb-6" />}
-                <LpCtaButton
-                  ctaUrl={config.ctaUrl}
-                  label={pkg.ctaLabel}
-                  theme={theme}
-                  size="md"
-                  className="w-full mt-auto !rounded-full !normal-case"
-                  pulse={pkg.highlight}
-                />
-              </div>
-            ))}
+      {config.pricingFunnel?.layout === "supplement-funnel" ? (
+        <LpPricingFunnel config={config} />
+      ) : (
+        <section className="py-16 sm:py-24" style={{ backgroundColor: theme.sectionBg }}>
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <h2 className="text-3xl sm:text-4xl font-black text-center mb-12">Pick Your Stack</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {config.packages.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  className={`rounded-3xl border p-6 flex flex-col backdrop-blur-sm ${
+                    pkg.highlight ? "border-2 scale-105 shadow-2xl lp-bento-glow" : "border-zinc-700"
+                  }`}
+                  style={{
+                    backgroundColor: pkg.highlight ? "rgba(255,71,87,0.08)" : theme.cardBg,
+                    borderColor: pkg.highlight ? theme.accent : undefined,
+                  }}
+                >
+                  {pkg.badge ? (
+                    <span className="text-[10px] font-black uppercase tracking-widest mb-2" style={{ color: theme.accent }}>
+                      {pkg.badge}
+                    </span>
+                  ) : null}
+                  <h3 className="font-black text-2xl">{pkg.title}</h3>
+                  <p className="text-xs text-zinc-500 mb-6">{pkg.subtitle}</p>
+                  <p className="text-5xl font-black tabular-nums">{pkg.pricePerBottle}</p>
+                  <p className="text-xs text-zinc-500 mb-1">per bottle</p>
+                  <p className="text-lg font-bold mb-1">{pkg.total}</p>
+                  {pkg.savings ? <p className="text-sm font-bold mb-6" style={{ color: theme.accent }}>{pkg.savings}</p> : <div className="mb-6" />}
+                  <LpCtaButton
+                    ctaUrl={config.ctaUrl}
+                    label={pkg.ctaLabel}
+                    theme={theme}
+                    size="md"
+                    className="w-full mt-auto !rounded-full !normal-case"
+                    pulse={pkg.highlight}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Guarantee */}
       <section className="py-16 border-t border-zinc-800 text-center px-4">
