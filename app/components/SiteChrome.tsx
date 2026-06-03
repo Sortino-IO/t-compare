@@ -17,7 +17,9 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
 
   return (
     <>
-      <header className="relative border-b border-[#e3dfd6] bg-[#f5f3ee]">
+      <header
+        className="sticky top-0 z-50 border-b border-[#e3dfd6] bg-[#f5f3ee] [--site-header-height:4.25rem] sm:[--site-header-height:4.5rem]"
+      >
         <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
           <Link
             href="/"

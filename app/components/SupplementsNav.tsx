@@ -2,43 +2,34 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 
 const SUPPLEMENTS_HREF = "/t-supplements";
 const SUPPLEMENTS_COMPARISONS_HREF = "/t-supplements/comparisons";
+
+const SUB_LINKS = [
+  { label: "Browse all supplements", href: SUPPLEMENTS_HREF },
+  { label: "Head-to-head comparisons", href: SUPPLEMENTS_COMPARISONS_HREF },
+] as const;
 
 function isSupplementsActive(pathname: string): boolean {
   return pathname === SUPPLEMENTS_HREF || pathname.startsWith(`${SUPPLEMENTS_HREF}/`);
 }
 
+function subLinkActive(pathname: string, href: string): boolean {
+  return pathname === href || (href !== SUPPLEMENTS_HREF && pathname.startsWith(href));
+}
+
 export function SupplementsNavDesktop() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
   const active = isSupplementsActive(pathname);
 
-  useEffect(() => {
-    if (!open) return;
-    function handleOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    }
-    document.addEventListener("mousedown", handleOutside);
-    return () => document.removeEventListener("mousedown", handleOutside);
-  }, [open]);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   return (
-    <div ref={ref} className="relative">
+    <div className="relative group/nav">
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
         className={`inline-flex items-center gap-1 text-sm transition-colors ${
-          active ? "text-[#1c1917] font-medium" : "text-[#78716c] hover:text-[#1c1917]"
+          active ? "text-[#1c1917] font-medium" : "text-[#78716c] group-hover/nav:text-[#1c1917]"
         }`}
-        aria-expanded={open}
         aria-haspopup="true"
       >
         T-Supplements
@@ -48,28 +39,33 @@ export function SupplementsNavDesktop() {
           viewBox="0 0 12 12"
           fill="none"
           aria-hidden="true"
-          className={`transition-transform ${open ? "rotate-180" : ""}`}
+          className="transition-transform group-hover/nav:rotate-180 group-focus-within/nav:rotate-180"
         >
           <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
-      {open ? (
-        <div className="absolute top-full left-0 mt-2 min-w-[220px] rounded-xl border border-[#e3dfd6] bg-white py-1.5 shadow-lg z-50">
-          <Link
-            href={SUPPLEMENTS_HREF}
-            className="block px-4 py-2.5 text-sm text-[#44403c] hover:bg-[#f5f3ee] hover:text-[#2a6e47] transition-colors"
-          >
-            T-Supplements
-          </Link>
-          <Link
-            href={SUPPLEMENTS_COMPARISONS_HREF}
-            className="block px-4 py-2.5 text-sm text-[#44403c] hover:bg-[#f5f3ee] hover:text-[#2a6e47] transition-colors"
-          >
-            T-Supplements Comparisons
-          </Link>
+      <div
+        className="absolute top-full left-0 z-50 pt-2 min-w-[240px] opacity-0 invisible translate-y-1 pointer-events-none transition-all duration-150 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:pointer-events-auto group-focus-within/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:translate-y-0 group-focus-within/nav:pointer-events-auto"
+        role="menu"
+      >
+        <div className="rounded-xl border border-[#e3dfd6] bg-white py-1.5 shadow-lg">
+          {SUB_LINKS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              role="menuitem"
+              className={`block px-4 py-2.5 text-sm transition-colors ${
+                subLinkActive(pathname, item.href)
+                  ? "bg-[#f0f7f3] text-[#2a6e47] font-medium"
+                  : "text-[#44403c] hover:bg-[#f5f3ee] hover:text-[#2a6e47]"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
-      ) : null}
+      </div>
     </div>
   );
 }
@@ -79,29 +75,33 @@ export function SupplementsNavMobile({ onNavigate }: { onNavigate?: () => void }
   const active = isSupplementsActive(pathname);
 
   return (
-    <div className="border-b border-[#ede9e0] last:border-0">
-      <Link
-        href={SUPPLEMENTS_HREF}
-        onClick={onNavigate}
-        className={`block py-4 text-[15px] font-medium transition-colors ${
-          active && pathname === SUPPLEMENTS_HREF
-            ? "text-[#2a6e47]"
-            : "text-[#1c1917] hover:text-[#2a6e47]"
+    <div className="rounded-xl bg-white/80 border border-[#e3dfd6] px-3 py-2">
+      <p
+        className={`px-2 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.12em] ${
+          active ? "text-[#2a6e47]" : "text-[#a8a29e]"
         }`}
       >
         T-Supplements
-      </Link>
-      <Link
-        href={SUPPLEMENTS_COMPARISONS_HREF}
-        onClick={onNavigate}
-        className={`block pb-4 pl-4 text-[14px] transition-colors ${
-          pathname === SUPPLEMENTS_COMPARISONS_HREF
-            ? "text-[#2a6e47] font-medium"
-            : "text-[#78716c] hover:text-[#2a6e47]"
-        }`}
-      >
-        T-Supplements Comparisons
-      </Link>
+      </p>
+      <div className="flex flex-col">
+        {SUB_LINKS.map((item) => {
+          const isActive = subLinkActive(pathname, item.href);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onNavigate}
+              className={`rounded-lg px-3 py-3 text-[15px] transition-colors ${
+                isActive
+                  ? "bg-[#f0f7f3] text-[#2a6e47] font-medium"
+                  : "text-[#44403c] hover:bg-[#f5f3ee] hover:text-[#2a6e47]"
+              }`}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }
