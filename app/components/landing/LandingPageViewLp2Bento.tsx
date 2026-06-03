@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
+import { ingredientImageForName } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
@@ -10,7 +11,7 @@ import LpStickyBar from "./LpStickyBar";
 export default function LandingPageViewLp2Bento({ config }: { config: LandingPageConfig }) {
   const { theme } = config;
   const media = getLpMedia(config.slug);
-  const testimonials = withAvatars(config.testimonials);
+  const testimonials = withAvatars(config.testimonials, config.slug);
   const benefits = config.benefits.slice(0, 4);
   const gallery = media.gallery;
 
@@ -134,17 +135,17 @@ export default function LandingPageViewLp2Bento({ config }: { config: LandingPag
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-black mb-8">{config.ingredientsTitle}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-            {config.ingredients.map((ing) => (
+            {config.ingredients.map((ing) => {
+              const ingImage = ingredientImageForName(ing.name);
+              return (
               <div
                 key={ing.name}
                 className="rounded-2xl border border-zinc-700 overflow-hidden"
                 style={{ backgroundColor: theme.cardBg }}
               >
-                {ing.image ? (
-                  <div className="relative aspect-[4/3]">
-                    <Image src={ing.image} alt={ing.name} fill className="object-cover opacity-80" sizes="280px" />
-                  </div>
-                ) : null}
+                <div className="relative aspect-[4/3]">
+                  <Image src={ingImage} alt={ing.name} fill className="object-cover opacity-80" sizes="280px" />
+                </div>
                 <div className="p-3 sm:p-4">
                   <p className="font-bold text-sm mb-1" style={{ color: theme.accent }}>
                     {ing.name}
@@ -152,7 +153,8 @@ export default function LandingPageViewLp2Bento({ config }: { config: LandingPag
                   <p className="text-xs leading-relaxed text-zinc-400">{ing.benefit}</p>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
           <p className="mt-6 text-sm max-w-2xl leading-relaxed" style={{ color: theme.muted }}>
             {config.solutionParagraphs[0]}

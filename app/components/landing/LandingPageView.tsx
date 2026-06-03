@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
+import { ingredientImageForName } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
+import { isTestosteroneSupplementLp } from "../../lib/testosterone-lp";
 import LpCountdown from "./LpCountdown";
 import LpCtaButton from "./LpCtaButton";
 import LpOfferStackBlock from "./LpOfferStack";
@@ -47,7 +49,7 @@ function HeroProductCard({
       className="relative mx-auto w-44 sm:w-52 aspect-[3/4] rounded-2xl shadow-2xl border-4 overflow-hidden"
       style={{ borderColor: theme.accent }}
     >
-      <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="208px" />
+      <Image src={imageSrc} alt={imageAlt} fill className="object-contain p-2" sizes="208px" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
       <div
         className="absolute top-3 inset-x-3 rounded-lg py-2 px-2 text-[10px] sm:text-xs font-black uppercase leading-tight text-center shadow-md"
@@ -96,7 +98,9 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
   const { theme } = config;
   const meta = config.productMeta;
   const media = getLpMedia(config.slug);
-  const testimonials = withAvatars(config.testimonials);
+  const testimonials = withAvatars(config.testimonials, config.slug);
+  const heroBottleCount =
+    meta?.heroBottleCount ?? (isTestosteroneSupplementLp(config.slug) ? 1 : undefined);
   const priceLabel = config.packagePriceLabel ?? "per bottle";
   const showPricingGrid =
     config.pricingFunnel?.layout !== "supplement-funnel" && (!config.offerStack || config.packages.length > 1);
@@ -169,13 +173,7 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
                   </p>
                 </div>
               </div>
-              {media.heroProductImage ? (
-                <HeroProductCard
-                  config={config}
-                  imageSrc={media.heroProductImage}
-                  imageAlt={media.heroProductImageAlt ?? config.productName}
-                />
-              ) : meta?.heroBottleCount ? (
+              {heroBottleCount ? (
                 <div
                   className="mx-auto w-44 sm:w-52 rounded-2xl shadow-2xl border-4 bg-[#f8fafc] flex items-center justify-center py-6"
                   style={{ borderColor: theme.accent }}
@@ -183,11 +181,18 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
                   <LpProductBottle
                     productName={config.productName}
                     brandName={config.brandName}
-                    count={meta.heroBottleCount}
+                    count={heroBottleCount}
+                    size="md"
                     labelColor={theme.primary}
                     capColor={theme.accent}
                   />
                 </div>
+              ) : media.heroProductImage ? (
+                <HeroProductCard
+                  config={config}
+                  imageSrc={media.heroProductImage}
+                  imageAlt={media.heroProductImageAlt ?? config.productName}
+                />
               ) : null}
             </div>
           </div>
@@ -267,17 +272,17 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
             {config.ingredientsTitle}
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {config.ingredients.map((ing, i) => (
+            {config.ingredients.map((ing, i) => {
+              const ingImage = ingredientImageForName(ing.name);
+              return (
               <div
                 key={ing.name}
                 className="rounded-2xl border-2 bg-white overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 style={{ borderColor: i % 2 === 0 ? theme.accent : theme.primary }}
               >
-                {ing.image ? (
-                  <div className="relative aspect-[4/3] w-full bg-slate-100">
-                    <Image src={ing.image} alt={ing.name} fill className="object-cover" sizes="(max-width:768px) 100vw, 320px" />
-                  </div>
-                ) : null}
+                <div className="relative aspect-[4/3] w-full bg-slate-100">
+                  <Image src={ingImage} alt={ing.name} fill className="object-cover" sizes="(max-width:768px) 100vw, 320px" />
+                </div>
                 <div className="p-5">
                   <div
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white font-black text-lg mb-3"
@@ -293,7 +298,8 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
                   </p>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>

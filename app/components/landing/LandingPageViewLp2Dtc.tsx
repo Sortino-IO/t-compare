@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
+import { ingredientImageForName } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
+import { isTestosteroneSupplementLp } from "../../lib/testosterone-lp";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
 import LpPricingFunnel from "./LpPricingFunnel";
@@ -23,7 +25,8 @@ function ProductCard({
   const { theme, brandName, productName } = config;
   const popular = config.packages.find((p) => p.highlight) ?? config.packages[0]!;
   const priceLabel = config.packagePriceLabel ?? "per bottle";
-  const imgSrc = productImage ?? popular.productImage;
+  const bottleCount = popular.bottleCount;
+  const imgSrc = bottleCount ? undefined : productImage ?? popular.productImage;
 
   return (
     <div
@@ -31,14 +34,24 @@ function ProductCard({
       style={{ borderColor: theme.border }}
     >
       <div className="relative aspect-square bg-[#f0f4f8]">
-        {imgSrc ? (
+        {bottleCount ? (
+          <div className="absolute inset-0 flex items-center justify-center bg-[#f0f4f8] p-6">
+            <LpProductBottle
+              productName={productName}
+              brandName={brandName}
+              count={bottleCount}
+              size="md"
+              labelColor={theme.primary}
+              capColor={theme.accent}
+            />
+          </div>
+        ) : imgSrc ? (
           <>
             <Image
               src={imgSrc}
               alt={productImageAlt ?? popular.productImageAlt ?? productName}
               fill
-              className="object-cover scale-125"
-              style={{ objectPosition: productImagePosition ?? popular.productImagePosition ?? "18% 45%" }}
+              className="object-contain p-4"
               sizes="400px"
             />
             <div className="absolute top-3 left-3 right-3 flex justify-center">
@@ -50,16 +63,6 @@ function ProductCard({
               </span>
             </div>
           </>
-        ) : popular.bottleCount ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-[#f0f4f8] p-4">
-            <LpProductBottle
-              productName={productName}
-              brandName={brandName}
-              count={popular.bottleCount}
-              labelColor={theme.primary}
-              capColor={theme.accent}
-            />
-          </div>
         ) : (
           <div
             className="absolute inset-0 flex flex-col items-center justify-center p-6"
@@ -123,7 +126,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
   const { theme } = config;
   const meta = config.productMeta;
   const media = getLpMedia(config.slug);
-  const testimonials = withAvatars(config.testimonials);
+  const testimonials = withAvatars(config.testimonials, config.slug);
   const timeline = config.timeline ?? [];
   const priceLabel = config.packagePriceLabel ?? "per bottle";
   const showPricingGrid = config.pricingFunnel?.layout !== "supplement-funnel";
@@ -161,9 +164,22 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-10 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div className="space-y-4 order-1">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 shadow-md">
-              <Image src={media.heroImage} alt={media.heroImageAlt} fill className="object-cover" sizes="50vw" priority />
-            </div>
+            {isTestosteroneSupplementLp(config.slug) ? (
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#f0f4f8] shadow-md flex items-center justify-center p-8 sm:p-12">
+                <LpProductBottle
+                  productName={config.productName}
+                  brandName={config.brandName}
+                  count={1}
+                  size="lg"
+                  labelColor={theme.primary}
+                  capColor={theme.accent}
+                />
+              </div>
+            ) : (
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 shadow-md">
+                <Image src={media.heroImage} alt={media.heroImageAlt} fill className="object-cover" sizes="50vw" priority />
+              </div>
+            )}
             <div className="grid grid-cols-4 gap-2">
               {media.gallery.slice(0, 4).map((img) => (
                 <div key={img.src} className="relative aspect-square rounded-lg overflow-hidden border" style={{ borderColor: theme.border }}>
@@ -208,12 +224,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                 ))}
               </ul>
             </div>
-            <ProductCard
-              config={config}
-              productImage={media.heroProductImage ?? config.packages.find((p) => p.highlight)?.productImage}
-              productImageAlt={media.heroProductImageAlt}
-              productImagePosition={media.heroProductImagePosition}
-            />
+            <ProductCard config={config} />
           </div>
         </div>
       </section>
@@ -258,17 +269,17 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">{config.ingredientsTitle}</h2>
           <div className="grid gap-4 sm:grid-cols-3">
-            {config.ingredients.map((ing, i) => (
+            {config.ingredients.map((ing, i) => {
+              const ingImage = ingredientImageForName(ing.name);
+              return (
               <div
                 key={ing.name}
                 className="rounded-2xl border overflow-hidden bg-white shadow-sm"
                 style={{ borderColor: i % 2 === 0 ? theme.accent : theme.border }}
               >
-                {ing.image ? (
-                  <div className="relative aspect-[4/3] bg-slate-100">
-                    <Image src={ing.image} alt={ing.name} fill className="object-cover" sizes="320px" />
-                  </div>
-                ) : null}
+                <div className="relative aspect-[4/3] bg-slate-100">
+                  <Image src={ingImage} alt={ing.name} fill className="object-cover" sizes="320px" />
+                </div>
                 <div className="p-4">
                   <h3 className="font-black text-base mb-1" style={{ color: theme.primary }}>
                     {ing.name}
@@ -278,7 +289,8 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                   </p>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>

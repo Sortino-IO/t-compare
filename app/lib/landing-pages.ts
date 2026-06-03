@@ -221,17 +221,14 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       {
         name: "Tongkat Ali",
         benefit: "Supports natural testosterone signaling via luteinizing hormone pathways",
-        image: "/lp/ingredient-tongkat.jpg",
       },
       {
         name: "DIM",
         benefit: "Helps the liver convert excess estrogen into inactive forms",
-        image: "/lp/ingredient-dim.jpg",
       },
       {
         name: "Acacetin",
         benefit: "From Turnera diffusa — marketed for aromatase balance support",
-        image: "/lp/ingredient-acacetin.jpg",
       },
     ],
     storySection: {
@@ -243,8 +240,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       blocks: [
         {
           imagePosition: "right",
-          image: "/lp/couple-happy.jpg",
-          imageAlt: "Happy couple enjoying closeness and energy together",
+          image: "/lp/couple-partner.png",
+          imageAlt: "Happy man and woman enjoying closeness together",
           paragraphs: [
             "When your body has the raw materials to support healthy testosterone and balanced estrogen metabolism, many men report feeling more present at home — not just in the gym.",
             "More morning energy often translates into better mood, patience, and connection with your partner. That is the \"magic morning\" most men are really chasing: vitality that shows up everywhere, not just on a lab printout.",
@@ -265,6 +262,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     },
     productMeta: {
       heroSocialProof: "Join thousands of men already supporting natural T with Critical T",
+      heroBottleCount: 1,
       galleryTitle: "The Magic Morning",
     },
     benefitsTitle: "What Optimized Daily Support Can Feel Like",
@@ -411,12 +409,14 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     ingredientsTitle: "Inside Every EndoPeak Capsule",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Boosts sexual performance & male vitality signaling", image: "/lp/ingredient-tongkat.jpg" },
-      { name: "Epimedium", benefit: "Facilitates blood flow where it matters most", image: "/lp/ingredient-acacetin.jpg" },
-      { name: "Saw Palmetto", benefit: "Supports healthy testosterone production pathways", image: "/lp/ingredient-tongkat.jpg" },
-      { name: "Hawthorn Berry", benefit: "Promotes circulation and cardiovascular support", image: "/lp/ingredient-dim.jpg" },
-      { name: "Tribulus", benefit: "Maintains a healthy libido baseline", image: "/lp/ingredient-acacetin.jpg" },
-      { name: "Magnesium", benefit: "Supports testosterone levels and recovery", image: "/lp/ingredient-dim.jpg" },
+      { name: "Tongkat Ali", benefit: "Boosts sexual performance & male vitality signaling" },
+      { name: "Epimedium", benefit: "Facilitates blood flow where it matters most" },
+      { name: "Saw Palmetto", benefit: "Supports healthy testosterone production pathways" },
+      { name: "Hawthorn Berry", benefit: "Promotes circulation and cardiovascular support" },
+      { name: "Tribulus", benefit: "Maintains a healthy libido baseline" },
+      { name: "Magnesium", benefit: "Supports testosterone levels and recovery" },
+      { name: "Chrysin", benefit: "Supports healthy estrogen balance pathways" },
+      { name: "Winged Treebine", benefit: "Traditional vitality botanical support" },
     ],
     storySection: {
       title: "The Daily Edge",
@@ -427,8 +427,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       blocks: [
         {
           imagePosition: "right",
-          image: "/lp/couple-happy.jpg",
-          imageAlt: "Happy couple enjoying renewed energy and connection",
+          image: "/lp/couple-partner.png",
+          imageAlt: "Happy man and woman enjoying renewed connection",
           paragraphs: [
             "When circulation and stamina improve, the benefits show up at home — not just in the gym. Partners notice before you finish explaining the formula.",
             "EndoPeak is framed as consistent daily support, not a stimulant spike. That is the edge most men are actually shopping for.",
@@ -597,12 +597,14 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     ingredientsTitle: "8 Ingredients. One Daily Ritual.",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Improves sexual performance & male vitality", image: "/lp/ingredient-tongkat.jpg" },
-      { name: "Epimedium", benefit: "Facilitates blood flow for stronger arousal response", image: "/lp/ingredient-acacetin.jpg" },
-      { name: "Saw Palmetto", benefit: "Testosterone production aid & prostate support framing", image: "/lp/ingredient-tongkat.jpg" },
-      { name: "Hawthorn Berry", benefit: "Promotes healthy circulation", image: "/lp/ingredient-dim.jpg" },
-      { name: "Tribulus", benefit: "Heightens libido baseline", image: "/lp/ingredient-acacetin.jpg" },
-      { name: "Magnesium", benefit: "Supports testosterone levels and muscle function", image: "/lp/ingredient-dim.jpg" },
+      { name: "Tongkat Ali", benefit: "Improves sexual performance & male vitality" },
+      { name: "Epimedium", benefit: "Facilitates blood flow for stronger arousal response" },
+      { name: "Saw Palmetto", benefit: "Testosterone production aid & prostate support framing" },
+      { name: "Hawthorn Berry", benefit: "Promotes healthy circulation" },
+      { name: "Tribulus", benefit: "Heightens libido baseline" },
+      { name: "Magnesium", benefit: "Supports testosterone levels and muscle function" },
+      { name: "Chrysin", benefit: "Helps maintain healthy estrogen balance" },
+      { name: "Winged Treebine", benefit: "Traditional adaptogenic vitality support" },
     ],
     storySection: {
       title: "Perform With Confidence",
@@ -613,8 +615,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       blocks: [
         {
           imagePosition: "right",
-          image: "/lp/couple-active.jpg",
-          imageAlt: "Active couple with energy and connection",
+          image: "/lp/couple-partner.png",
+          imageAlt: "Happy man and woman with energy and connection",
           paragraphs: [
             "Men who stay on ErecPrime for 90 days often describe renewed appetite for intimacy — not a jittery hour, but sustained confidence.",
             "Your partner notices the difference when stamina and mood improve together. That is the outcome this stack is marketed for.",

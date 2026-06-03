@@ -41,25 +41,25 @@ function FunnelColumn({
             {pkg.savingsBurst}
           </span>
         ) : null}
-        {pkg.productImage ? (
-          <div className="relative w-full h-32 sm:h-40 overflow-hidden">
-            <Image
-              src={pkg.productImage}
-              alt={pkg.productImageAlt ?? pkg.title}
-              fill
-              className="object-cover scale-[1.35]"
-              style={{ objectPosition: pkg.productImagePosition ?? "center" }}
-              sizes="240px"
-            />
-          </div>
-        ) : pkg.bottleCount ? (
+        {pkg.bottleCount ? (
           <LpProductBottle
             productName={productName}
             brandName={brandName}
             count={pkg.bottleCount}
+            size="md"
             labelColor={theme.primary}
             capColor={theme.accent}
           />
+        ) : pkg.productImage ? (
+          <div className="relative w-full h-32 sm:h-40 flex items-center justify-center bg-white">
+            <Image
+              src={pkg.productImage}
+              alt={pkg.productImageAlt ?? pkg.title}
+              fill
+              className="object-contain p-2"
+              sizes="240px"
+            />
+          </div>
         ) : null}
       </div>
 

@@ -1,4 +1,5 @@
 import type { LpTestimonial } from "./landing-pages";
+import { isTestosteroneSupplementLp } from "./testosterone-lp";
 
 export type LpMedia = {
   heroImage: string;
@@ -26,8 +27,10 @@ const IMG = {
   workoutSession: "/lp/workout-session.jpg",
   yogaStretch: "/lp/yoga-stretch.jpg",
   coupleActive: "/lp/couple-active.jpg",
+  coupleTogether: "/lp/couple-together.jpg",
   manPortraitSmile: "/lp/man-portrait-smile.jpg",
   coupleHappy: "/lp/couple-happy.jpg",
+  couplePartner: "/lp/couple-partner.png",
   teamMeeting: "/lp/team-meeting.jpg",
   gymLifting: "/lp/gym-lifting.jpg",
   meditationCalm: "/lp/meditation-calm.jpg",
@@ -40,23 +43,23 @@ const IMG = {
   woodHome6: "/lp/wood-home-6.jpg",
 } as const;
 
+/** Male-presenting faces for supplement LPs (avoid mismatched stock portraits). */
+const SUPPLEMENT_AVATARS = [IMG.avatar2, IMG.avatar3, IMG.avatar4];
 const AVATARS = [IMG.avatar1, IMG.avatar2, IMG.avatar3, IMG.avatar4];
 
 export const LP_MEDIA: Record<string, LpMedia> = {
   "critical-t-lp1": {
     heroImage: IMG.manPortraitSmile,
     heroImageAlt: "Confident man smiling — Critical T daily support",
-    heroProductImage: IMG.manConfident,
-    heroProductImageAlt: "Strong man feeling vital and energized",
     heroImageCaption: "Feel the difference.",
     heroImageSubcaption: "Join thousands of men already on Critical T",
     splitImage: IMG.gymTraining,
     splitImageAlt: "Man working out at the gym with focus",
     gallery: [
-      { src: IMG.workoutSession, alt: "Athletic man mid-workout" },
-      { src: IMG.gymTraining, alt: "Man training hard at the gym" },
-      { src: IMG.coupleActive, alt: "Active couple enjoying life together" },
-      { src: IMG.yogaStretch, alt: "Confident man stretching outdoors" },
+      { src: IMG.gymLifting, alt: "Man lifting weights in gym" },
+      { src: IMG.manRunning, alt: "Fit man running outdoors" },
+      { src: IMG.couplePartner, alt: "Happy man and woman together" },
+      { src: IMG.manConfident, alt: "Confident man feeling vital" },
     ],
   },
   "endopeak24-lp1": {
@@ -69,8 +72,8 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     gallery: [
       { src: IMG.gymLifting, alt: "Man lifting weights in gym" },
       { src: IMG.workoutSession, alt: "Man training with intensity" },
-      { src: IMG.coupleHappy, alt: "Happy couple enjoying life together" },
-      { src: IMG.manConfident, alt: "Confident man feeling vital" },
+      { src: IMG.coupleHappy, alt: "Happy man and woman enjoying life together" },
+      { src: IMG.coupleTogether, alt: "Happy couple outdoors together" },
     ],
   },
   "erecprime24-lp1": {
@@ -83,16 +86,13 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     gallery: [
       { src: IMG.workoutSession, alt: "Man mid-workout with energy" },
       { src: IMG.gymTraining, alt: "Man building strength at gym" },
-      { src: IMG.coupleActive, alt: "Active couple with connection" },
+      { src: IMG.coupleTogether, alt: "Happy man and woman with connection" },
       { src: IMG.manPortraitSmile, alt: "Smiling man feeling his best" },
     ],
   },
   "critical-t-lp2": {
     heroImage: IMG.manPortraitSmile,
     heroImageAlt: "Confident man — Critical T natural support",
-    heroProductImage: "/lp/critical-t-bottles-4.png",
-    heroProductImageAlt: "Critical T supplement bottle",
-    heroProductImagePosition: "18% 45%",
     splitImage: IMG.gymTraining,
     splitImageAlt: "Man training at the gym",
     gallery: [
@@ -122,7 +122,7 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     gallery: [
       { src: IMG.gymTraining, alt: "Man training at gym" },
       { src: IMG.gymLifting, alt: "Strength training session" },
-      { src: IMG.coupleActive, alt: "Active couple with energy" },
+      { src: IMG.coupleHappy, alt: "Happy man and woman with energy" },
       { src: IMG.manPortraitSmile, alt: "Smiling confident man" },
     ],
   },
@@ -134,20 +134,20 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     gallery: [
       { src: IMG.workoutSession, alt: "Intense gym workout session" },
       { src: IMG.manConfident, alt: "Confident man feeling his best" },
-      { src: IMG.coupleActive, alt: "Active couple enjoying life" },
+      { src: IMG.coupleHappy, alt: "Happy man and woman enjoying life" },
       { src: IMG.gymStrength, alt: "Man lifting heavy weights" },
     ],
   },
   "nitric-boost-lp2": {
-    heroImage: IMG.manPortraitSmile,
-    heroImageAlt: "Confident smiling man radiating vitality",
-    splitImage: IMG.teamMeeting,
-    splitImageAlt: "Professional man ready to perform",
+    heroImage: IMG.gymLifting,
+    heroImageAlt: "Athletic man training with power and focus",
+    splitImage: IMG.manRunning,
+    splitImageAlt: "Man building stamina with outdoor cardio",
     gallery: [
       { src: IMG.gymTraining, alt: "Man training with focus" },
-      { src: IMG.coupleHappy, alt: "Happy couple reconnected" },
-      { src: IMG.meditationCalm, alt: "Calm confident man" },
-      { src: IMG.yogaStretch, alt: "Man stretching with energy" },
+      { src: IMG.coupleHappy, alt: "Happy man and woman reconnected" },
+      { src: IMG.coupleTogether, alt: "Man and woman enjoying time together" },
+      { src: IMG.manConfident, alt: "Confident man feeling his best" },
     ],
   },
   "tedplansdiy-lp1": {
@@ -192,10 +192,14 @@ export function getLpMedia(slug: string): LpMedia {
   return LP_MEDIA[slug] ?? LP_MEDIA["critical-t-lp1"]!;
 }
 
-export function testimonialAvatar(index: number): string {
-  return AVATARS[index % AVATARS.length]!;
+export function testimonialAvatar(index: number, slug?: string): string {
+  const pool = slug && isTestosteroneSupplementLp(slug) ? SUPPLEMENT_AVATARS : AVATARS;
+  return pool[index % pool.length]!;
 }
 
-export function withAvatars(testimonials: LpTestimonial[]): (LpTestimonial & { avatarUrl: string })[] {
-  return testimonials.map((t, i) => ({ ...t, avatarUrl: testimonialAvatar(i) }));
+export function withAvatars(
+  testimonials: LpTestimonial[],
+  slug?: string,
+): (LpTestimonial & { avatarUrl: string })[] {
+  return testimonials.map((t, i) => ({ ...t, avatarUrl: testimonialAvatar(i, slug) }));
 }

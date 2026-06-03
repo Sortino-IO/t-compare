@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
+import { ingredientImageForName } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
@@ -12,7 +13,7 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
   const { theme } = config;
   const meta = config.productMeta;
   const media = getLpMedia(config.slug);
-  const testimonials = withAvatars(config.testimonials);
+  const testimonials = withAvatars(config.testimonials, config.slug);
   const popular = config.packages.find((p) => p.highlight) ?? config.packages[0]!;
   const priceLabel = config.packagePriceLabel ?? "per bottle";
   const masthead = meta?.advertorialMasthead;
@@ -124,13 +125,13 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
         {/* Ingredients as editorial list */}
         <h3 className="font-serif text-2xl font-bold mb-6">{config.ingredientsTitle}</h3>
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
-          {config.ingredients.map((ing) => (
+          {config.ingredients.map((ing) => {
+            const ingImage = ingredientImageForName(ing.name);
+            return (
             <div key={ing.name} className="rounded-lg bg-white border border-stone-200 overflow-hidden shadow-sm">
-              {ing.image ? (
-                <div className="relative aspect-[16/10] bg-stone-100">
-                  <Image src={ing.image} alt={ing.name} fill className="object-cover" sizes="340px" />
-                </div>
-              ) : null}
+              <div className="relative aspect-[16/10] bg-stone-100">
+                <Image src={ingImage} alt={ing.name} fill className="object-cover" sizes="340px" />
+              </div>
               <div className="p-4">
                 <p className="font-bold mb-1" style={{ color: theme.primary }}>
                   {ing.name}
@@ -140,7 +141,8 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
                 </p>
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
 
         {/* Timeline inline */}
