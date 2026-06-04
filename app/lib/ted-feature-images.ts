@@ -1,3 +1,12 @@
+/** LP2 "Five Things Serious Plan Libraries Must Include" — filenames match uploaded assets */
+export const TED_LP2_INCLUDED_IMAGES = {
+  finishedPlans: "/lp/ted-lp2-finished-plans.png",
+  exactLists: "/lp/ted-lp2-exact-lists.png",
+  smartSearch: "/lp/ted-lp2-smart-search.png",
+  smallShopBuilds: "/lp/ted-lp2-small-shop-builds.png",
+  monthlyUpdates: "/lp/ted-lp2-monthly-updates.png",
+} as const;
+
 /** LP3 "Included With Lifetime Access" — filenames match uploaded assets */
 export const TED_LP3_INCLUDED_IMAGES = {
   projectPlans16000: "/lp/ted-included-16000-project-plans.png",

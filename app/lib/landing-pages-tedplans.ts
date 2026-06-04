@@ -2,6 +2,7 @@ import type { LandingPageConfig, LpOfferStack } from "./landing-pages";
 import {
   TED_DIFFERENTIATOR_CARDS,
   TED_FEATURE_IMAGES,
+  TED_LP2_INCLUDED_IMAGES,
   TED_LP3_INCLUDED_IMAGES,
 } from "./ted-feature-images";
 
@@ -269,27 +270,27 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
       {
         name: "Finished Plans",
         benefit: "Multi-angle schematics with exploded joint views",
-        image: TED_FEATURE_IMAGES.shopTestedBlueprints,
+        image: TED_LP2_INCLUDED_IMAGES.finishedPlans,
       },
       {
         name: "Exact Lists",
         benefit: "Cut and materials lists verified to 1/16″",
-        image: TED_FEATURE_IMAGES.exactCutMaterials,
+        image: TED_LP2_INCLUDED_IMAGES.exactLists,
       },
       {
         name: "Smart Search",
         benefit: "100+ categories, keyword search, difficulty filters",
-        image: TED_FEATURE_IMAGES.searchableLibrary,
+        image: TED_LP2_INCLUDED_IMAGES.smartSearch,
       },
       {
         name: "Small-Shop Builds",
         benefit: "Table saw + drill + clamps — no mega tool list",
-        image: TED_FEATURE_IMAGES.smallShopFriendly,
+        image: TED_LP2_INCLUDED_IMAGES.smallShopBuilds,
       },
       {
         name: "Monthly Updates",
         benefit: "New plans every month, free for life",
-        image: TED_FEATURE_IMAGES.monthlyPlanDrops,
+        image: TED_LP2_INCLUDED_IMAGES.monthlyUpdates,
       },
     ],
     benefitsTitle: "What 54,000+ Members Report",
