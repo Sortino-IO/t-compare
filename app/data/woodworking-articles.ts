@@ -1,12 +1,17 @@
 import type { WoodworkingArticle } from "../lib/woodworking";
 
 const IMG = {
-  workshop: "/lp/wood-workshop-1.jpg",
-  craft: "/lp/wood-craft-2.jpg",
-  interior: "/lp/wood-interior-3.jpg",
-  furniture: "/lp/wood-furniture-4.jpg",
-  project: "/lp/wood-project-5.jpg",
-  home: "/lp/wood-home-6.jpg",
+  heroCraftsman: "/lp/ted-hero-craftsman-table.png",
+  tableSaw: "/lp/ted-table-saw-blueprint.png",
+  measuring: "/lp/ted-measuring-precision.png",
+  portrait: "/lp/ted-craftsman-portrait.png",
+  sketch3d: "/lp/ted-sketch-to-3d.png",
+  library: "/lp/ted-library-tablet.png",
+  workshopList: "/lp/ted-cut-list-clipboard.png",
+  mortise: "/lp/ted-mortise-tenon.png",
+  lumber: "/lp/ted-materials-cart.png",
+  multiDevice: "/lp/ted-multi-device-plans.png",
+  offer: "/lp/ted-offer-banner.png",
 };
 
 function cta(title?: string, body?: string) {
@@ -19,8 +24,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "How to Start Woodworking: A Complete Beginner's Guide",
     excerpt:
       "New to the shop? Here is a realistic path from zero to your first finished project — tools, space, safety, budget, and how to avoid the plan mistakes that waste lumber.",
-    featuredImage: IMG.workshop,
-    featuredImageAlt: "Beginner woodworking workshop with tools and lumber",
+    featuredImage: IMG.tableSaw,
+    featuredImageAlt: "Woodworker at table saw with project blueprint in the shop",
     publishedAt: "2026-05-20",
     seoTitle: "How to Start Woodworking — Beginner's Guide (2026)",
     seoDescription:
@@ -99,8 +104,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
       },
       {
         type: "image",
-        src: IMG.craft,
-        alt: "Woodworker reviewing plans at a workbench",
+        src: IMG.multiDevice,
+        alt: "Woodworking plans on laptop, tablet, and phone at a workbench",
         caption: "A complete plan saves more time than any new gadget.",
       },
       {
@@ -191,8 +196,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "Essential Woodworking Tools for Beginners",
     excerpt:
       "The woodworking tools category gets 22,000+ searches a month for a reason — here is the minimal kit that covers 80% of starter projects, plus what to add next and what you can skip entirely.",
-    featuredImage: IMG.craft,
-    featuredImageAlt: "Essential woodworking tools laid out on a workbench",
+    featuredImage: IMG.measuring,
+    featuredImageAlt: "Measuring lumber with folding ruler and pencil on a workbench",
     publishedAt: "2026-05-19",
     seoTitle: "Essential Woodworking Tools for Beginners (2026)",
     seoDescription:
@@ -337,8 +342,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
       ),
       {
         type: "image",
-        src: IMG.workshop,
-        alt: "Garage workshop with basic woodworking tools",
+        src: IMG.tableSaw,
+        alt: "Garage workshop with table saw and project blueprint",
         caption: "A small, organized shop beats a large messy one every time.",
       },
     ],
@@ -348,8 +353,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "Best Table Saw for Beginners: 2026 Buyer's Guide",
     excerpt:
       "The table saw is the most searched single-tool decision in woodworking. Here is how to choose between jobsite, compact, and benchtop models — what actually matters for accuracy, safety, and long-term value.",
-    featuredImage: IMG.workshop,
-    featuredImageAlt: "Table saw in a home woodworking shop",
+    featuredImage: IMG.tableSaw,
+    featuredImageAlt: "Table saw in a home woodworking shop with coffee table plan",
     publishedAt: "2026-05-18",
     seoTitle: "Best Table Saw for Beginners — 2026 Buyer's Guide",
     seoDescription:
@@ -501,8 +506,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "Easy Woodworking Projects for Beginners",
     excerpt:
       "Woodworking projects is one of the highest-volume search topics in the hobby. These 12 builds are beginner-realistic — with time estimates, tools required, and skills each one teaches.",
-    featuredImage: IMG.project,
-    featuredImageAlt: "Finished easy woodworking project in a home",
+    featuredImage: IMG.portrait,
+    featuredImageAlt: "Woodworker with a finished beginner table project in the garage shop",
     publishedAt: "2026-05-17",
     seoTitle: "Easy Woodworking Projects for Beginners (12 Ideas)",
     seoDescription:
@@ -617,8 +622,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
       },
       {
         type: "image",
-        src: IMG.furniture,
-        alt: "Handmade wooden furniture built from plans",
+        src: IMG.portrait,
+        alt: "Handmade wooden table built from woodworking plans",
         caption: "Simple joinery plus good finishing makes beginner builds look store-bought.",
       },
       cta(
@@ -632,8 +637,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "Woodworking Plans: How to Pick Plans That Actually Work",
     excerpt:
       "With 14,800+ monthly searches for woodworking plans, most buyers still get incomplete diagrams. Here is how to spot a real plan vs a pretty picture — and organize your build workflow.",
-    featuredImage: IMG.interior,
-    featuredImageAlt: "Detailed woodworking plans and cut list on workbench",
+    featuredImage: IMG.sketch3d,
+    featuredImageAlt: "Hand sketch and 3D CAD model for a woodworking plan",
     publishedAt: "2026-05-16",
     seoTitle: "Woodworking Plans — How to Choose Plans That Work",
     seoDescription:
@@ -757,8 +762,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "How to Set Up a Garage Workshop on a Budget",
     excerpt:
       "You do not need a barn. Here is how to organize half a garage for woodworking — layout, lighting, dust control, storage, and budget tiers from $200 to $2,000.",
-    featuredImage: IMG.workshop,
-    featuredImageAlt: "Organized garage woodworking workshop",
+    featuredImage: IMG.workshopList,
+    featuredImageAlt: "Wood stock dimensions checklist on a workshop bench",
     publishedAt: "2026-05-15",
     seoTitle: "Garage Workshop Setup on a Budget — Woodworking Guide",
     seoDescription:
@@ -871,8 +876,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
       },
       {
         type: "image",
-        src: IMG.interior,
-        alt: "Organized small woodworking shop with wall storage",
+        src: IMG.workshopList,
+        alt: "Wood stock checklist and materials on a workshop bench",
         caption: "Vertical storage and mobile tools turn a cramped garage into a real shop.",
       },
       cta("Plans for small-shop builds", "Filter workshop & jig categories in a searchable plan library."),
@@ -883,8 +888,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "Woodworking Joinery Basics for Beginners",
     excerpt:
       "Woodworking techniques searches cluster around joints and assembly. Start with screws, glue, and pocket holes before you chase hand-cut dovetails — with detailed guidance on each method.",
-    featuredImage: IMG.craft,
-    featuredImageAlt: "Wood joinery and assembly in a workshop",
+    featuredImage: IMG.mortise,
+    featuredImageAlt: "Mortise and tenon joint plan with dado cut on hardwood",
     publishedAt: "2026-05-14",
     seoTitle: "Woodworking Joinery Basics for Beginners",
     seoDescription:
@@ -993,8 +998,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "How to Choose Lumber for Woodworking Projects",
     excerpt:
       "Nominal vs actual sizes, hardwood vs softwood, plywood grades, and how to read a plan's materials list so you buy once — not three trips to the yard.",
-    featuredImage: IMG.home,
-    featuredImageAlt: "Lumber selection for woodworking projects",
+    featuredImage: IMG.lumber,
+    featuredImageAlt: "Hardware store cart with lumber and a materials cutting plan",
     publishedAt: "2026-05-13",
     seoTitle: "How to Choose Lumber for Woodworking — Beginner Guide",
     seoDescription:
@@ -1126,8 +1131,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "Woodworking Safety Tips Every Beginner Should Know",
     excerpt:
       "Power tools, sharp blades, and dust — the safety basics that belong in every woodworking how-to before your first cut, plus per-tool rules and shop habits.",
-    featuredImage: IMG.workshop,
-    featuredImageAlt: "Safe woodworking practice with push stick and guards",
+    featuredImage: IMG.tableSaw,
+    featuredImageAlt: "Woodworker using a table saw safely in a well-lit shop",
     publishedAt: "2026-05-12",
     seoTitle: "Woodworking Safety Tips for Beginners",
     seoDescription:
@@ -1250,8 +1255,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
     title: "DIY Woodworking Projects That Sell (and How to Start)",
     excerpt:
       "DIY woodworking projects searches often hide a business angle — craft fairs, local buyers, and side income from builds you already enjoy. Here is what sells, how to price, and how to start legally.",
-    featuredImage: IMG.furniture,
-    featuredImageAlt: "Handmade woodworking projects ready to sell",
+    featuredImage: IMG.heroCraftsman,
+    featuredImageAlt: "Craftsman with finished furniture in a professional woodworking shop",
     publishedAt: "2026-05-11",
     seoTitle: "DIY Woodworking Projects That Sell — Side Income Guide",
     seoDescription:
@@ -1361,8 +1366,8 @@ export const WOODWORKING_ARTICLES: WoodworkingArticle[] = [
       },
       {
         type: "image",
-        src: IMG.project,
-        alt: "Quality outdoor woodworking project",
+        src: IMG.heroCraftsman,
+        alt: "Craftsman with quality handmade furniture in the shop",
         caption: "Outdoor furniture sells best when joinery and finish hold up to weather.",
       },
       cta(

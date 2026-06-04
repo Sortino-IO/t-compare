@@ -5,8 +5,8 @@ const TEDPLANS_CTA =
 
 export const TEDPLANS_OFFER_STACK: LpOfferStack = {
   preHeadline: "Hit the **ADD TO CART** button below and I'll see you on the inside...",
-  bundleImage: "/lp/teds-bundle-offer.png",
-  bundleImageAlt: "TedsWoodworking — 16,000 plans, bonuses, videos, and lifetime membership",
+  bundleImage: "/lp/ted-offer-bundle.png",
+  bundleImageAlt: "TedsWoodworking — 16,000+ plans on laptop, tablet, and phone with lifetime $67 offer",
   items: [
     {
       text: "**Instant Access To All 16,000 Projects** with step-by-step details, drawings, plans, cutting & materials list and more...",
