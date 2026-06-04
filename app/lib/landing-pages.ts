@@ -1,6 +1,7 @@
 import { LANDING_PAGES_LP2 } from "./landing-pages-lp2";
 import { LANDING_PAGES_NITRIC_BOOST } from "./landing-pages-nitric-boost";
 import { LANDING_PAGES_TEDPLANS } from "./landing-pages-tedplans";
+import { SUPPLEMENT_FACILITY_BULLET, SUPPLEMENT_FACILITY_FAQ } from "./lp-robots";
 
 export type LpTheme = {
   primary: string;
@@ -196,7 +197,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       "Subscribe & Save from ~$55/mo — among the lowest entry prices we track",
       "Two capsules each morning — no injections, no clinic visits",
       "60-day money-back guarantee (even empty bottles, per vendor terms)",
-      "FDA-registered facility · zero-fillers capsule framing on official site",
+      SUPPLEMENT_FACILITY_BULLET,
     ],
     hookParagraphs: [
       "If you've been dragging through mornings, losing gym momentum, or feeling like your edge slipped somewhere after 35 — you're not imagining it. Free testosterone naturally declines with age, and most store-bought \"boosters\" never address the full picture.",
@@ -269,7 +270,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     benefits: [
       "Wake up with clearer morning energy instead of hitting snooze three times",
       "Push harder in the gym with better recovery between sessions",
-      "Feel sharper decisions and motivation at work — not just in the bedroom",
+      "Feel sharper decisions and motivation at work and through your day",
       "Support libido and stamina as part of overall male vitality, not as a separate problem",
       "Stack consistently without injections, prescriptions, or clinic scheduling",
     ],
@@ -387,7 +388,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       "8 carefully selected ingredients in every capsule",
       "Bulk bundles from ~$49/bottle with free US shipping on larger tiers",
       "60-day money-back guarantee on official checkout",
-      "Manufactured in an FDA-registered, GMP-certified US facility",
+      SUPPLEMENT_FACILITY_BULLET,
     ],
     hookParagraphs: [
       "You've felt it — the slow leak of energy after 40. Workouts take longer to recover from. Desire isn't gone, but it's not what it used to be. And every \"miracle pill\" ad looks the same.",
@@ -396,7 +397,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     problemTitle: "The Real Reason \"Just Try Harder\" Stops Working",
     problemBullets: [
-      "Declining blood flow and stamina affect gym performance and intimate confidence together",
+      "Declining blood flow and stamina affect gym performance and everyday confidence together",
       "Stress and poor sleep accelerate the slide — willpower can't outrun biology forever",
       "One-ingredient supplements miss the synergy that multi-botanical stacks can provide",
       "Prescription paths cost more, take longer, and aren't what every man wants to jump into first",
@@ -409,8 +410,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     ingredientsTitle: "Inside Every EndoPeak Capsule",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Boosts sexual performance & male vitality signaling" },
-      { name: "Epimedium", benefit: "Facilitates blood flow where it matters most" },
+      { name: "Tongkat Ali", benefit: "Supports male vitality and natural energy signaling" },
+      { name: "Epimedium", benefit: "Traditional botanical framed for healthy circulation support" },
       { name: "Saw Palmetto", benefit: "Supports healthy testosterone production pathways" },
       { name: "Hawthorn Berry", benefit: "Promotes circulation and cardiovascular support" },
       { name: "Tribulus", benefit: "Maintains a healthy libido baseline" },
@@ -457,7 +458,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     benefits: [
       "More usable energy from morning through evening — not a jittery 2-hour spike",
       "Stronger gym sessions with faster bounce-back between workouts",
-      "Renewed confidence in intimate situations — for you and your partner",
+      "Renewed confidence in daily energy and connection with your partner",
       "Calmer stress response thanks to adaptogenic botanical support",
       "A simple once-daily ritual — no shots, no prescriptions, no clinic waiting rooms",
     ],
@@ -536,7 +537,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       },
       {
         q: "Is EndoPeak safe?",
-        a: "EndoPeak is manufactured in an FDA-registered, GMP-certified US facility using plant ingredients and natural minerals. Consult your doctor if you take medications or have health conditions.",
+        a: SUPPLEMENT_FACILITY_FAQ,
       },
       {
         q: "Which package should I choose?",
@@ -578,27 +579,27 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       "Natural formula · plant ingredients · easy-to-swallow capsules",
     ],
     hookParagraphs: [
-      "Performance anxiety isn't just \"in your head.\" Blood flow, stamina, stress, and hormone balance all play a role — and ignoring them doesn't make them go away.",
-      "ErecPrime was built for men who want a direct, daily ritual: one capsule after breakfast, eight synergistic ingredients working on circulation, libido, oxidative stress, and testosterone pathway support.",
+      "Energy dips aren't always \"in your head.\" Blood flow, stamina, stress, and hormone balance all play a role — and ignoring them doesn't make them go away.",
+      "ErecPrime was built for men who want a direct, daily ritual: one capsule after breakfast, eight synergistic ingredients working on circulation, vitality, oxidative stress, and testosterone pathway support.",
       "This private offer page mirrors the official bundle structure — so you can grab intro pricing or maximize bulk savings before inventory refreshes.",
     ],
     problemTitle: "Why Generic \"Men's Formulas\" Fail",
     problemBullets: [
       "Proprietary blends hide doses — you never know if you're getting enough of anything",
       "Stimulant-heavy pills give a crash, not sustained stamina",
-      "Ignoring circulation means ignoring half the performance equation",
+      "Ignoring circulation means ignoring half of the stamina equation",
       "Waiting until \"someday\" costs you months of confidence you won't get back",
     ],
-    solutionTitle: "ErecPrime Targets the Full Performance Stack",
+    solutionTitle: "ErecPrime Targets the Full Vitality Stack",
     solutionParagraphs: [
-      "Hawthorn Berry and Epimedium support blood flow. Tribulus and Tongkat Ali frame libido and sexual performance. Saw Palmetto and Magnesium support testosterone pathways. Chrysin and Winged Treebine round out oxidative stress and stamina support.",
+      "Hawthorn Berry and Epimedium support blood flow. Tribulus and Tongkat Ali frame libido and male vitality. Saw Palmetto and Magnesium support testosterone pathways. Chrysin and Winged Treebine round out oxidative stress and stamina support.",
       "Unlike gimmicky gummies or under-dosed singles, ErecPrime is positioned as a serious daily capsule — the same format used in the official funnel with verified purchaser testimonials and tiered bundle pricing.",
       "Choose the 1-bottle intro if you're skeptical. Choose 3- or 6-bottle packages when you're ready to commit to the 90-day runway most men need for a fair test.",
     ],
     ingredientsTitle: "8 Ingredients. One Daily Ritual.",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Improves sexual performance & male vitality" },
-      { name: "Epimedium", benefit: "Facilitates blood flow for stronger arousal response" },
+      { name: "Tongkat Ali", benefit: "Supports male vitality and daily energy" },
+      { name: "Epimedium", benefit: "Traditional botanical for healthy circulation support" },
       { name: "Saw Palmetto", benefit: "Testosterone production aid & prostate support framing" },
       { name: "Hawthorn Berry", benefit: "Promotes healthy circulation" },
       { name: "Tribulus", benefit: "Heightens libido baseline" },
@@ -643,10 +644,10 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     productBadgeLine: "8 Botanicals · 60 caps",
     benefitsTitle: "The Benefits Men Buy ErecPrime For",
     benefits: [
-      "Reliable stamina for longer-lasting intimate encounters",
-      "Faster, more intense arousal with renewed appetite for intimacy",
+      "Steadier stamina and drive through busy days",
       "Cleaner daily energy without stimulant jitters or afternoon crash",
-      "Gym performance that matches how you want to feel outside the bedroom",
+      "Circulation and vitality support framed around the eight-botanical stack",
+      "Gym performance that matches how you want to feel after work",
       "Confidence that compounds — because you're finally doing something consistent",
     ],
     testimonials: [
@@ -654,21 +655,21 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
         name: "Mark B.",
         location: "New York, USA",
         quote:
-          "Before ErecPrime I thought my best days were gone. Now I feel like I'm back in my prime — my partner and I enjoy a satisfying love life again.",
+          "Before ErecPrime I thought my best days were gone. Now I feel like I'm back in my prime — more energy after work and better mood at home.",
         packageLabel: "90-day supply",
       },
       {
         name: "Thomas J.",
         location: "Arizona, USA",
         quote:
-          "Since I started one capsule every morning with coffee, I've never had a problem with energy in the bedroom. My young wife and I are both VERY happy.",
+          "Since I started one capsule every morning with coffee, my afternoon crash disappeared. My wife noticed the difference before I did.",
         packageLabel: "180-day supply",
       },
       {
         name: "Chad B.",
         location: "Texas, USA",
         quote:
-          "Improved stamina, reliable performance, otherworldly confidence. ErecPrime changed my love life forever — no jitters, just results.",
+          "Improved stamina and steadier energy through the day. ErecPrime became part of my morning routine — no jitters, just consistency.",
         packageLabel: "6-bottle package",
       },
     ],

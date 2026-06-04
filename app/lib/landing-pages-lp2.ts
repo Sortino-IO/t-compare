@@ -1,4 +1,5 @@
 import type { LandingPageConfig } from "./landing-pages";
+import { SUPPLEMENT_FACILITY_BULLET, SUPPLEMENT_FACILITY_FAQ } from "./lp-robots";
 
 export const LANDING_PAGES_LP2: LandingPageConfig[] = [
   {
@@ -33,7 +34,7 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
       "Subscribe from ~$55/mo — transparent bundle math on every tier",
       "Two capsules each morning · no needles · no prescriptions",
       "60-day money-back guarantee per official vendor terms",
-      "Made in an FDA-registered facility · GMP-certified framing",
+      SUPPLEMENT_FACILITY_BULLET,
     ],
     hookParagraphs: [
       "Most men don't need a lecture on low energy — they need a formula that addresses testosterone signaling and estrogen balance together. Critical T was built around that dual-pathway idea.",
@@ -245,19 +246,19 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
     ],
     problemTitle: "Why \"Just Push Harder\" Stops Working After 40",
     problemBullets: [
-      "Blood flow and stamina decline together — gym and bedroom confidence share the same biology",
+      "Blood flow and stamina decline together — gym and daily confidence share the same biology",
       "Chronic stress accelerates the slide faster than willpower can reverse",
       "Single-ingredient pills miss the synergy multi-botanical stacks aim for",
       "Prescription paths aren't what every man wants as a first step",
     ],
     solutionTitle: "One Capsule, Eight Pathways — No Needles Required",
     solutionParagraphs: [
-      "Take EndoPeak with water after breakfast. The formula is manufactured in an FDA-registered, GMP-certified US facility using plant ingredients and natural minerals.",
+      "Take EndoPeak with water after breakfast. Per official vendor copy, the formula is manufactured in a US facility registered with the FDA for dietary supplements, using plant ingredients and natural minerals.",
       "Smart buyers often start with the 3-bottle tier for balance between savings and commitment, then move to the 6-bottle bundle at $49/bottle once early shifts appear.",
     ],
     ingredientsTitle: "Ingredient Breakdown",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Male vitality and sexual performance support" },
+      { name: "Tongkat Ali", benefit: "Male vitality and daily energy support" },
       { name: "Epimedium", benefit: "Blood flow where performance matters" },
       { name: "Saw Palmetto", benefit: "Healthy testosterone production pathways" },
       { name: "Hawthorn Berry", benefit: "Circulation and cardiovascular support" },
@@ -400,7 +401,7 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
       },
       {
         q: "Is EndoPeak safe?",
-        a: "Manufactured in an FDA-registered US facility. Consult your doctor if you take medications.",
+        a: SUPPLEMENT_FACILITY_FAQ,
       },
       {
         q: "Which package should I choose?",
@@ -461,8 +462,8 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
     ],
     ingredientsTitle: "8 Actives. Zero Fillers Story.",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Sexual performance & male vitality" },
-      { name: "Epimedium", benefit: "Blood flow for stronger arousal" },
+      { name: "Tongkat Ali", benefit: "Male vitality and daily energy support" },
+      { name: "Epimedium", benefit: "Circulation support botanical" },
       { name: "Saw Palmetto", benefit: "Testosterone production support" },
       { name: "Hawthorn Berry", benefit: "Healthy circulation" },
       { name: "Tribulus", benefit: "Libido baseline" },
@@ -485,10 +486,10 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
     },
     benefitsTitle: "Built For Men Who Want More",
     benefits: [
-      "Reliable stamina for longer encounters",
-      "Faster, more intense arousal response",
-      "Clean daily energy — no afternoon crash",
-      "Gym performance that matches bedroom confidence",
+      "Steadier stamina through long workdays",
+      "Cleaner daily energy — no afternoon crash",
+      "Circulation support framed around the eight-botanical stack",
+      "Gym performance that matches how you want to feel after work",
       "Compound confidence from consistent action",
     ],
     timeline: [
@@ -499,8 +500,8 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
       },
       {
         milestone: "Stage 2",
-        title: "Stamina & firmness",
-        body: "Weeks 4–8: many men report stamina and arousal improvements.",
+        title: "Stamina & drive",
+        body: "Weeks 4–8: many men report stamina and daily energy improvements.",
       },
       {
         milestone: "Stage 3",
@@ -513,21 +514,21 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
         name: "Mark B.",
         location: "New York, USA",
         quote:
-          "Thought my best days were gone. Back in my prime — satisfying love life again.",
+          "Thought my best days were gone. Back in my prime — more energy after work and better mood at home.",
         packageLabel: "90-day supply",
       },
       {
         name: "Thomas J.",
         location: "Arizona, USA",
         quote:
-          "One capsule with coffee every morning. Never had an energy problem in the bedroom since.",
+          "One capsule with coffee every morning. Afternoon crash is gone — my wife noticed before I did.",
         packageLabel: "180-day supply",
       },
       {
         name: "Chad B.",
         location: "Texas, USA",
         quote:
-          "Stamina, confidence, no jitters. Changed my love life permanently.",
+          "Stamina, confidence, no jitters. It became part of my morning routine.",
         packageLabel: "6-bottle package",
       },
     ],

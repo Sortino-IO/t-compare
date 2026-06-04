@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import LandingPageRouter from "../../components/landing/LandingPageRouter";
 import { getAllLandingPageSlugs, getLandingPageBySlug } from "../../lib/landing-pages";
+import { landingPageRobots } from "../../lib/lp-robots";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: { absolute: page.seoTitle },
     description: page.seoDescription,
+    robots: landingPageRobots(slug),
   };
 }
 

@@ -9,6 +9,7 @@ import {
   getWoodworkingArticle,
   getWoodworkingSlugs,
 } from "../../../lib/woodworking";
+import { LP_NOINDEX_ROBOTS } from "../../../lib/lp-robots";
 import { SITE_URL } from "../../../lib/site";
 
 type Props = {
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: { absolute: article.seoTitle },
     description: article.seoDescription,
+    robots: LP_NOINDEX_ROBOTS,
   };
 }
 

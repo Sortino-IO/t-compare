@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import WoodworkingArticleCard from "../../components/woodworking/WoodworkingArticleCard";
 import WoodworkingCta from "../../components/woodworking/WoodworkingCta";
+import { LP_NOINDEX_ROBOTS } from "../../lib/lp-robots";
 import { getAllWoodworkingArticles, WOODWORKING_HUB } from "../../lib/woodworking";
 
 export const metadata: Metadata = {
   title: { absolute: WOODWORKING_HUB.seoTitle },
   description: WOODWORKING_HUB.seoDescription,
+  robots: LP_NOINDEX_ROBOTS,
 };
 
 const CATEGORY_INTRO: Record<string, { title: string; body: string }> = {

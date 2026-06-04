@@ -28,7 +28,7 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
     urgencyHeadline: "WAIT — Your Nitric Boost bulk discount is still reserved",
     heroHeadline: "Don't Just Get By — Dominate. Unleash Your Full Potential.",
     heroSubheadline:
-      "Discover a method to support sexual performance naturally — one scoop of Nitric Boost Ultra daily fuels nitric oxide pathways for blood flow, stamina, and confidence.",
+      "One scoop of Nitric Boost Ultra daily supports nitric oxide pathways for circulation, stamina, and everyday vitality — not a prescription product.",
     heroBullets: [
       "One scoop per day — mix with water, smoothie, or tea",
       "Bulk tiers from ~$49/jar with free US shipping on 3+ jars",
@@ -36,16 +36,16 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
       "60-day 100% money-back guarantee — even empty containers",
     ],
     hookParagraphs: [
-      "Biomedical research has reframed the conversation: performance isn't just about blood flow — it's about cyclic guanosine monophosphate (cGMP), the signaling molecule that activates firm, sustained arousal. When PDE5 destroys cGMP faster than your body replenishes it, results fade — even if circulation looks fine on paper.",
-      "Nitric Boost Ultra targets the full stack: nitrates and amino acids that convert into nitric oxide (NO), antioxidants that support nitric oxide synthase, and botanicals framed for circulation and drive — in one refreshing daily powder.",
-      "This page mirrors the official bundle structure on getnitricboost.com — 1, 3, and 6-jar tiers with the same savings math — so you can lock pricing before inventory refreshes.",
+      "Many men look for better circulation and stamina without adding another pill to the stack. Nitric oxide helps blood vessels relax and expand — the same pathway athletes target for pumps and endurance.",
+      "Nitric Boost Ultra combines nitrates and amino acids that convert into nitric oxide (NO), antioxidants that support nitric oxide synthase, and botanicals framed for circulation and daily drive — in one refreshing powder.",
+      "This page mirrors the official bundle structure on getnitricboost.com — 1, 3, and 6-jar tiers with the same savings math — so you can compare packages before checkout.",
     ],
-    problemTitle: "Why Pills Alone Stop Working for So Many Men",
+    problemTitle: "Why Single-Ingredient NO Boosters Fall Short",
     problemBullets: [
-      "PDE5 inhibitors block destruction of cGMP but don't boost production — effectiveness can decline over time",
-      "Poor NO production means vessels don't expand fully when it matters most",
-      "Stimulant-heavy shortcuts deliver a spike, not sustained stamina through the night",
-      "Single amino acids miss the synergistic nitrates and antioxidants a full formula provides",
+      "One amino acid alone may not deliver the nitrate + antioxidant synergy a full formula provides",
+      "Poor NO production can mean vessels do not expand as efficiently during training or long days",
+      "Stimulant-heavy shortcuts deliver a spike, not sustained stamina through the afternoon",
+      "Under-dosed proprietary blends hide whether you are getting meaningful amounts of key actives",
     ],
     solutionTitle: "Nitric Boost Ultra: One Scoop, Full NO Pathway Support",
     solutionParagraphs: [
@@ -58,46 +58,46 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
       { name: "Beet Root Powder", benefit: "High nitrate levels that convert into nitric oxide for blood flow" },
       { name: "L-Arginine", benefit: "Amino acid precursor that relaxes blood vessels via NO production" },
       { name: "L-Citrulline DL-Malate", benefit: "Boosts NO levels while malate supports energy production" },
-      { name: "Horny Goat Weed", benefit: "Icariin compound linked to sexual health support" },
+      { name: "Horny Goat Weed", benefit: "Traditional botanical framed for vitality support" },
       { name: "Ginkgo Biloba", benefit: "Antioxidant protection for blood vessels and circulation" },
       { name: "D-Aspartic Acid", benefit: "Supports luteinizing hormone and testosterone pathways" },
       { name: "Dong Quai", benefit: "Traditional botanical for improved blood flow" },
-      { name: "Niacin (B3)", benefit: "Vasodilation support for circulation and erectile function" },
+      { name: "Niacin (B3)", benefit: "Vasodilation support for healthy circulation" },
     ],
     benefitsTitle: "What Men Buy Nitric Boost Ultra For",
     benefits: [
-      "Firmer, longer-lasting performance when it counts",
-      "Surge of daily confidence — in and out of the bedroom",
-      "Enhanced gym pumps and recovery from improved circulation",
+      "Steadier stamina and drive through demanding days",
+      "Surge of daily confidence from improved circulation support",
+      "Enhanced gym pumps and recovery from improved blood flow",
       "Cleaner energy without stimulant jitters or afternoon crash",
       "Simple once-daily ritual — one scoop, any beverage",
     ],
     testimonials: [
       {
         name: "Steve W.",
-        location: "Verified Purchase",
+        location: "Phoenix, Arizona",
         quote:
-          "My wife has never been more satisfied and our intimacy has reached new heights. Nitric Boost is tasty, refreshing, and best of all it's highly effective.",
+          "Nitric Boost is tasty and easy to stick with. I have more afternoon energy and my workouts feel stronger — my wife noticed the mood shift before I did.",
         packageLabel: "6 jars",
       },
       {
         name: "David S.",
-        location: "Verified Purchase",
+        location: "Houston, Texas",
         quote:
-          "Nitric Boost not only restored my libido and rock solid performance — it rekindled the spark in my marriage. We've never been happier.",
+          "I wanted better circulation without another pill. After a few weeks on Nitric Boost I feel more consistent energy and less crash after work.",
         packageLabel: "6 jars",
       },
       {
         name: "Michael H.",
         location: "Tampa, Florida",
         quote:
-          "I can hardly believe the transformation since I started Nitric Boost. My erections are back, stronger than ever, and I've discovered a confidence I never knew I had.",
+          "The powder mixes fast and I actually look forward to it. Gym pumps improved and I feel sharper through long days — results not overnight, but real for me.",
         packageLabel: "6 jars",
       },
     ],
     productMeta: {
       heroBottleCount: 1,
-      galleryTitle: "Real Men. Real Results.",
+      galleryTitle: "Daily Ritual · Circulation Support",
     },
     guaranteeTitle: "100% Satisfaction 60-Day Money Back Guarantee",
     guaranteeParagraphs: [
@@ -169,9 +169,9 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
     brandName: "Nitric Boost",
     productName: "Nitric Boost Ultra",
     ctaUrl: NITRIC_BOOST_CTA,
-    seoTitle: "Nitric Boost Ultra Review — The cGMP Discovery Explained",
+    seoTitle: "Nitric Boost Ultra Review — Nitric Oxide Powder Explained",
     seoDescription:
-      "Editorial breakdown of Nitric Boost Ultra: the manhood molecule (cGMP), nitric oxide mechanism, ingredient science, and official bundle pricing from $49/jar.",
+      "Breakdown of Nitric Boost Ultra: nitric oxide support, ingredient stack, and official bundle pricing from $49/jar. Not a prescription product.",
     theme: {
       primary: "#0c3d6e",
       primaryDark: "#072847",
@@ -186,28 +186,27 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
       muted: "#64748b",
     },
     urgencyHeadline: "Official site still offering bulk pricing + 2 free bonuses on 3+ jars",
-    heroHeadline:
-      "Breaking: Scientists Identify the \"Manhood Molecule\" That Controls Male Sexual Function",
+    heroHeadline: "Nitric Boost Ultra: How a Daily NO Powder Frames Circulation Support",
     heroSubheadline:
-      "New research points to cGMP — not just blood flow — as the erection activator. Here's how a nitric oxide powder is framing the solution differently than legacy pills.",
+      "A nitric oxide powder built around beet nitrates, amino acids, and circulation botanicals — for men who want stamina and blood-flow support without adding another pill.",
     heroBullets: [
-      "Targets cGMP production + PDE5 balance — not just temporary blocking",
+      "Supports nitric oxide pathways for circulation and daily stamina",
       "8-ingredient powder: Beet Root, L-Arginine, L-Citrulline & more",
       "Bulk from $49/jar · free US shipping on 3- and 6-jar orders",
       "60-day empty-container guarantee on official checkout",
     ],
     hookParagraphs: [
-      "SAN DIEGO, CA — Biomedical engineers have reframed erectile dysfunction: the bottleneck isn't always poor circulation alone, but insufficient cyclic guanosine monophosphate (cGMP) — dubbed the \"manhood molecule\" on the official Nitric Boost funnel.",
-      "Without adequate cGMP, achieving full hardness becomes biologically difficult. PDE5 destroys cGMP molecules; while legacy pills temporarily block PDE5, they don't address production — which may explain why many men report declining effectiveness over time.",
-      "The proposed alternative: support nitric oxide pathways that help vessels relax and expand, while delivering amino acids and nitrates that feed cGMP signaling — exactly the mechanism story Nitric Boost Ultra builds its formula around.",
-      "We traced pricing on getnitricboost.com so readers can access the same 1-, 3-, and 6-jar tiers — including two free digital bonuses on larger orders — without hunting through pop-ups.",
+      "Nitric oxide is how your body signals blood vessels to relax and expand — the same pathway tied to gym pumps, endurance, and daily stamina.",
+      "Nitric Boost Ultra stacks beet-root nitrates, L-arginine, L-citrulline, and circulation botanicals in one scoop — positioned as dietary supplement support, not a drug.",
+      "Men planning a fair trial should budget 90–180 days on larger jars, matching official guidance on getnitricboost.com.",
+      "We traced pricing on getnitricboost.com so readers can access the same 1-, 3-, and 6-jar tiers — including two free digital bonuses on larger orders.",
     ],
-    problemTitle: "Why \"Just Take a Pill\" Stops Being Enough",
+    problemTitle: "Why Under-Dosed NO Products Disappoint",
     problemBullets: [
-      "Blocking PDE5 without boosting cGMP production treats symptoms, not the signaling gap",
-      "Declining nitric oxide means vessels can't fully dilate when arousal hits",
-      "Performance anxiety compounds biology — confidence erodes month after month",
-      "Counterfeit listings on Amazon and eBay risk fake product — official site only",
+      "Single amino acids miss the nitrate + antioxidant synergy many formulas advertise",
+      "Declining nitric oxide can mean vessels do not dilate efficiently during training or long workdays",
+      "Stimulant shortcuts spike energy, then crash — not the steady support many men want",
+      "Buy only from the official site if you want the formula and guarantee in vendor terms",
     ],
     solutionTitle: "One Scoop Daily: The Nitric Boost Ultra Protocol",
     solutionParagraphs: [
@@ -219,7 +218,7 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
       { name: "Beet Root Powder", benefit: "Nitrate concentrate converts to nitric oxide for circulation" },
       { name: "L-Arginine", benefit: "Direct NO precursor that relaxes and expands blood vessels" },
       { name: "L-Citrulline DL-Malate", benefit: "Sustained NO elevation plus malate-driven energy support" },
-      { name: "Horny Goat Weed", benefit: "Icariin-linked sexual health botanical" },
+      { name: "Horny Goat Weed", benefit: "Traditional botanical framed for vitality support" },
       { name: "Ginkgo Biloba", benefit: "Antioxidant vessel protection" },
       { name: "D-Aspartic Acid", benefit: "LH and testosterone pathway support" },
       { name: "Dong Quai", benefit: "Traditional blood flow botanical" },
@@ -227,11 +226,11 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
     ],
     benefitsTitle: "What Verified Purchasers Report",
     benefits: [
-      "Renewed stamina and performance confidence",
-      "Stronger arousal response and longer-lasting encounters",
+      "Renewed stamina and daily confidence",
+      "Steadier energy through workouts and long workdays",
       "Better gym pumps from enhanced blood flow",
-      "Marriage and relationship spark returning",
-      "Tasty daily ritual — not another pill to choke down",
+      "Simpler morning ritual — powder instead of another capsule",
+      "Tasty daily mix — water, smoothie, or tea",
     ],
     timeline: [
       {
@@ -241,13 +240,13 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
       },
       {
         milestone: "Month 1–2",
-        title: "Stamina & firmness",
-        body: "Official funnel copy describes Stage 2 as improved stamina and arousal response — the window most partners notice first.",
+        title: "Stamina & drive",
+        body: "Official copy describes Stage 2 as improved stamina and training output — individual results vary.",
       },
       {
         milestone: "Month 3+",
         title: "Results solidify",
-        body: "Three to six months of consistency aligns with official guidance for a full assessment of performance and drive.",
+        body: "Three to six months of consistency aligns with official guidance for a full assessment of energy and drive.",
       },
     ],
     testimonials: [
@@ -255,22 +254,22 @@ export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
         name: "Steve Wilson",
         location: "Phoenix, Arizona",
         quote:
-          "With every scoop, I feel an incredible surge of confidence. My wife has never been more satisfied, and our intimacy has reached new heights.",
-        packageLabel: "6 jars · Verified Purchase",
+          "Easy to stick with every morning. More afternoon energy and better gym pumps — my wife noticed the mood lift first.",
+        packageLabel: "6 jars",
       },
       {
         name: "David Silver",
         location: "Houston, Texas",
         quote:
-          "Nitric Boost not only restored my libido — it rekindled the spark in my marriage. We've never been happier.",
-        packageLabel: "6 jars · Verified Purchase",
+          "I wanted circulation support without another pill. Steadier energy after a few weeks — not overnight, but consistent for me.",
+        packageLabel: "6 jars",
       },
       {
         name: "Michael Harris",
         location: "Tampa, Florida",
         quote:
-          "My erections are back, stronger than ever. I've discovered a confidence in myself I never knew I had.",
-        packageLabel: "6 jars · Verified Purchase",
+          "Mixes fast, tastes good. I feel sharper on long days and recovery between workouts improved.",
+        packageLabel: "6 jars",
       },
     ],
     guaranteeTitle: "60-Day \"No Questions Asked\" Guarantee",

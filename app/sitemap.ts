@@ -1,8 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getBrandPairs, getBrandsByCategory } from "./lib/brands";
 import { getAllPosts } from "./lib/blog";
-import { LANDING_PAGES } from "./lib/landing-pages";
-import { getAllWoodworkingArticles } from "./lib/woodworking";
 import { discoverStaticAppRoutes } from "./lib/sitemap-routes";
 import { SITE_URL } from "./lib/site";
 
@@ -72,34 +70,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  const landingPageEntries: MetadataRoute.Sitemap = LANDING_PAGES.map((page) => ({
-    url: `${SITE_URL}/lp/${page.slug}`,
-    lastModified: new Date("2026-05-21"),
-    changeFrequency: "weekly",
-    priority: 0.7,
-  }));
-
-  const woodworkingEntries: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}/lp/woodworking`,
-      lastModified: new Date("2026-05-27"),
-      changeFrequency: "weekly",
-      priority: 0.72,
-    },
-    ...getAllWoodworkingArticles().map((article) => ({
-      url: `${SITE_URL}/lp/woodworking/${article.slug}`,
-      lastModified: new Date(article.publishedAt),
-      changeFrequency: "monthly" as const,
-      priority: 0.68,
-    })),
-  ];
-
   return [
     ...staticEntries,
     ...blogEntries,
     ...brandEntries,
     ...comparisonEntries,
-    ...landingPageEntries,
-    ...woodworkingEntries,
   ];
 }
