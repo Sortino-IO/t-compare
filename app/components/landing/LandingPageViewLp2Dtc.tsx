@@ -46,23 +46,13 @@ function ProductCard({
             />
           </div>
         ) : imgSrc ? (
-          <>
-            <Image
-              src={imgSrc}
-              alt={productImageAlt ?? popular.productImageAlt ?? productName}
-              fill
-              className="object-contain p-4"
-              sizes="400px"
-            />
-            <div className="absolute top-3 left-3 right-3 flex justify-center">
-              <span
-                className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest shadow-sm"
-                style={{ backgroundColor: theme.accent, color: theme.accentText }}
-              >
-                {brandName}
-              </span>
-            </div>
-          </>
+          <Image
+            src={imgSrc}
+            alt={productImageAlt ?? popular.productImageAlt ?? productName}
+            fill
+            className="object-contain p-2 sm:p-3"
+            sizes="400px"
+          />
         ) : (
           <div
             className="absolute inset-0 flex flex-col items-center justify-center p-6"
@@ -188,6 +178,20 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                   </div>
                 )}
               </div>
+            ) : meta?.isDigitalProduct ? (
+              <div
+                className="relative aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-md border"
+                style={{ borderColor: theme.border }}
+              >
+                <Image
+                  src={media.heroImage}
+                  alt={media.heroImageAlt}
+                  fill
+                  className="object-contain"
+                  sizes="50vw"
+                  priority
+                />
+              </div>
             ) : (
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 shadow-md">
                 <Image src={media.heroImage} alt={media.heroImageAlt} fill className="object-cover" sizes="50vw" priority />
@@ -237,7 +241,11 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                 ))}
               </ul>
             </div>
-            <ProductCard config={config} />
+            <ProductCard
+              config={config}
+              productImage={config.packages.find((p) => p.highlight)?.productImage ?? config.packages[0]?.productImage}
+              productImageAlt={config.packages[0]?.productImageAlt}
+            />
           </div>
         </div>
       </section>

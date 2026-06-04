@@ -192,8 +192,8 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     ],
   },
   "tedplansdiy-lp3": {
-    heroImage: IMG.tedMultiDevice,
-    heroImageAlt: "Laptop, tablet, and phone displaying woodworking plans on a workbench",
+    heroImage: "/lp/ted-lp3-hero-banner.png",
+    heroImageAlt: "16,000+ woodworking plans — step-by-step, cut lists, diagrams — lifetime $67",
     splitImage: IMG.tedLibraryTablet,
     splitImageAlt: "Searchable woodworking project library on tablet in the shop",
     gallery: [
