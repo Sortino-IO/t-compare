@@ -1,5 +1,9 @@
 import type { LandingPageConfig, LpOfferStack } from "./landing-pages";
-import { TED_DIFFERENTIATOR_CARDS, TED_FEATURE_IMAGES } from "./ted-feature-images";
+import {
+  TED_DIFFERENTIATOR_CARDS,
+  TED_FEATURE_IMAGES,
+  TED_LP3_INCLUDED_IMAGES,
+} from "./ted-feature-images";
 
 const TEDPLANS_CTA =
   "https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare";
@@ -393,32 +397,32 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
       {
         name: "16,000 Project Plans",
         benefit: "Furniture, outdoor, sheds, decor, kids, workshop — all categories",
-        image: TED_FEATURE_IMAGES.searchableLibrary,
+        image: TED_LP3_INCLUDED_IMAGES.projectPlans16000,
       },
       {
         name: "DWG/CAD Viewer",
         benefit: "Resize plans to fit your exact space",
-        image: TED_FEATURE_IMAGES.shopTestedBlueprints,
+        image: TED_LP3_INCLUDED_IMAGES.dwgCadViewer,
       },
       {
         name: "150 Video Tutorials",
         benefit: "Joinery basics through advanced techniques",
-        image: TED_FEATURE_IMAGES.smallShopFriendly,
+        image: TED_LP3_INCLUDED_IMAGES.videoTutorials150,
       },
       {
         name: "Business Starter Guide",
         benefit: "Sell what you build for side income",
-        image: TED_FEATURE_IMAGES.monthlyPlanDrops,
+        image: TED_LP3_INCLUDED_IMAGES.businessStarterGuide,
       },
       {
         name: "200-Page Woodworking Manual",
         benefit: "Tools, joints, and fundamentals",
-        image: TED_FEATURE_IMAGES.exactCutMaterials,
+        image: TED_LP3_INCLUDED_IMAGES.woodworkingManual200,
       },
       {
         name: "Custom Plan Requests",
         benefit: "Team drafts your specific project ($250 value)",
-        image: TED_FEATURE_IMAGES.customPlanRequests,
+        image: TED_LP3_INCLUDED_IMAGES.customPlanRequests,
       },
     ],
     benefitsTitle: "Built for Real Shops",

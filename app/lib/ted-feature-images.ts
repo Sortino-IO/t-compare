@@ -1,3 +1,13 @@
+/** LP3 "Included With Lifetime Access" — filenames match uploaded assets */
+export const TED_LP3_INCLUDED_IMAGES = {
+  projectPlans16000: "/lp/ted-included-16000-project-plans.png",
+  dwgCadViewer: "/lp/ted-included-dwg-cad-viewer.png",
+  videoTutorials150: "/lp/ted-included-150-video-tutorials.png",
+  businessStarterGuide: "/lp/ted-included-business-starter-guide.png",
+  woodworkingManual200: "/lp/ted-included-200-page-woodworking-manual.png",
+  customPlanRequests: "/lp/ted-included-custom-plan-requests.png",
+} as const;
+
 /** Feature card images for TedsWoodworking LPs — "What Makes These Plans Different" */
 export const TED_FEATURE_IMAGES = {
   shopTestedBlueprints: "/lp/ted-feature-shop-tested-blueprints.png",
