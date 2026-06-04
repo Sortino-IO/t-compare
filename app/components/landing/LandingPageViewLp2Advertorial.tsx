@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
-import { ingredientImageForName } from "../../lib/lp-ingredient-images";
+import { ingredientCardImage } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
@@ -126,7 +126,7 @@ export default function LandingPageViewLp2Advertorial({ config }: { config: Land
         <h3 className="font-serif text-2xl font-bold mb-6">{config.ingredientsTitle}</h3>
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
           {config.ingredients.map((ing) => {
-            const ingImage = ingredientImageForName(ing.name);
+            const ingImage = ingredientCardImage(ing);
             return (
             <div key={ing.name} className="rounded-lg bg-white border border-stone-200 overflow-hidden shadow-sm">
               <div className="relative aspect-[16/10] bg-stone-100">

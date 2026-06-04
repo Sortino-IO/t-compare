@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
-import { ingredientImageForName } from "../../lib/lp-ingredient-images";
+import { ingredientCardImage } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import { isTestosteroneSupplementLp } from "../../lib/testosterone-lp";
 import LpCtaButton from "./LpCtaButton";
@@ -283,7 +283,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
           <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">{config.ingredientsTitle}</h2>
           <div className="grid gap-4 sm:grid-cols-3">
             {config.ingredients.map((ing, i) => {
-              const ingImage = ingredientImageForName(ing.name);
+              const ingImage = ingredientCardImage(ing);
               return (
               <div
                 key={ing.name}

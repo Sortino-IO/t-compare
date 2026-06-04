@@ -1,4 +1,5 @@
 import type { LandingPageConfig, LpOfferStack } from "./landing-pages";
+import { TED_DIFFERENTIATOR_CARDS, TED_FEATURE_IMAGES } from "./ted-feature-images";
 
 const TEDPLANS_CTA =
   "https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare";
@@ -179,14 +180,7 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
       "Lock in lifetime access for $67 before this page switches to monthly-only pricing.",
     ],
     ingredientsTitle: "What Makes These Plans Different",
-    ingredients: [
-      { name: "Shop-Tested Blueprints", benefit: "Every plan physically built before publication" },
-      { name: "Exact Cut & Materials Lists", benefit: "Buy exactly what you need — down to the last screw" },
-      { name: "Searchable Library", benefit: "Filter by category, keyword, or difficulty in minutes" },
-      { name: "Small-Shop Friendly", benefit: "Most projects need table saw, drill, clamps, sander" },
-      { name: "Monthly Plan Drops", benefit: "5+ new tested plans added free every month for life" },
-      { name: "Custom Plan Requests", benefit: "Can't find it? Ted's team drafts, builds, and delivers it" },
-    ],
+    ingredients: [...TED_DIFFERENTIATOR_CARDS],
     benefitsTitle: "Stop Searching. Start Building.",
     benefits: [
       "Finish projects instead of abandoning half-built lumber in the garage",
@@ -262,16 +256,33 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
       "The members area is searchable by keyword, category, and difficulty — find 'chicken coop' or 'corner desk' in minutes. Can't find your exact spec? Submit a custom request and we'll draft, build, test, and deliver it.",
     ],
     ingredientsTitle: "Five Things Serious Plan Libraries Must Include",
-    ingredients: BONUSES.slice(0, 5).map((b, i) => ({
-      name: ["Finished Plans", "Exact Lists", "Smart Search", "Small-Shop Builds", "Monthly Updates"][i]!,
-      benefit: [
-        "Multi-angle schematics with exploded joint views",
-        "Cut and materials lists verified to 1/16″",
-        "100+ categories, keyword search, difficulty filters",
-        "Table saw + drill + clamps — no mega tool list",
-        "New plans every month, free for life",
-      ][i]!,
-    })),
+    ingredients: [
+      {
+        name: "Finished Plans",
+        benefit: "Multi-angle schematics with exploded joint views",
+        image: TED_FEATURE_IMAGES.shopTestedBlueprints,
+      },
+      {
+        name: "Exact Lists",
+        benefit: "Cut and materials lists verified to 1/16″",
+        image: TED_FEATURE_IMAGES.exactCutMaterials,
+      },
+      {
+        name: "Smart Search",
+        benefit: "100+ categories, keyword search, difficulty filters",
+        image: TED_FEATURE_IMAGES.searchableLibrary,
+      },
+      {
+        name: "Small-Shop Builds",
+        benefit: "Table saw + drill + clamps — no mega tool list",
+        image: TED_FEATURE_IMAGES.smallShopFriendly,
+      },
+      {
+        name: "Monthly Updates",
+        benefit: "New plans every month, free for life",
+        image: TED_FEATURE_IMAGES.monthlyPlanDrops,
+      },
+    ],
     benefitsTitle: "What 54,000+ Members Report",
     benefits: [
       "Projects finished on the first try — not abandoned halfway",
@@ -379,12 +390,36 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
     ],
     ingredientsTitle: "Included With Lifetime Access",
     ingredients: [
-      { name: "16,000 Project Plans", benefit: "Furniture, outdoor, sheds, decor, kids, workshop — all categories" },
-      { name: "DWG/CAD Viewer", benefit: "Resize plans to fit your exact space" },
-      { name: "150 Video Tutorials", benefit: "Joinery basics through advanced techniques" },
-      { name: "Business Starter Guide", benefit: "Sell what you build for side income" },
-      { name: "200-Page Woodworking Manual", benefit: "Tools, joints, and fundamentals" },
-      { name: "Custom Plan Requests", benefit: "Team drafts your specific project ($250 value)" },
+      {
+        name: "16,000 Project Plans",
+        benefit: "Furniture, outdoor, sheds, decor, kids, workshop — all categories",
+        image: TED_FEATURE_IMAGES.searchableLibrary,
+      },
+      {
+        name: "DWG/CAD Viewer",
+        benefit: "Resize plans to fit your exact space",
+        image: TED_FEATURE_IMAGES.shopTestedBlueprints,
+      },
+      {
+        name: "150 Video Tutorials",
+        benefit: "Joinery basics through advanced techniques",
+        image: TED_FEATURE_IMAGES.smallShopFriendly,
+      },
+      {
+        name: "Business Starter Guide",
+        benefit: "Sell what you build for side income",
+        image: TED_FEATURE_IMAGES.monthlyPlanDrops,
+      },
+      {
+        name: "200-Page Woodworking Manual",
+        benefit: "Tools, joints, and fundamentals",
+        image: TED_FEATURE_IMAGES.exactCutMaterials,
+      },
+      {
+        name: "Custom Plan Requests",
+        benefit: "Team drafts your specific project ($250 value)",
+        image: TED_FEATURE_IMAGES.customPlanRequests,
+      },
     ],
     benefitsTitle: "Built for Real Shops",
     benefits: [

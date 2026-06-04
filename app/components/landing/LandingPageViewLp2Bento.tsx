@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
-import { ingredientImageForName } from "../../lib/lp-ingredient-images";
+import { ingredientCardImage } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
@@ -136,7 +136,7 @@ export default function LandingPageViewLp2Bento({ config }: { config: LandingPag
           <h2 className="text-2xl sm:text-3xl font-black mb-8">{config.ingredientsTitle}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {config.ingredients.map((ing) => {
-              const ingImage = ingredientImageForName(ing.name);
+              const ingImage = ingredientCardImage(ing);
               return (
               <div
                 key={ing.name}

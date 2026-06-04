@@ -59,3 +59,8 @@ export function ingredientImageForName(name: string): string {
   }
   return FALLBACK;
 }
+
+/** Prefer explicit per-card image (e.g. TedsWoodworking feature photos). */
+export function ingredientCardImage(ing: { name: string; image?: string }): string {
+  return ing.image ?? ingredientImageForName(ing.name);
+}

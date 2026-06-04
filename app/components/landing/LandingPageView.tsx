@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { LandingPageConfig } from "../../lib/landing-pages";
-import { ingredientImageForName } from "../../lib/lp-ingredient-images";
+import { ingredientCardImage } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import { isTestosteroneSupplementLp } from "../../lib/testosterone-lp";
 import LpCountdown from "./LpCountdown";
@@ -312,7 +312,7 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {config.ingredients.map((ing, i) => {
-              const ingImage = ingredientImageForName(ing.name);
+              const ingImage = ingredientCardImage(ing);
               return (
               <div
                 key={ing.name}
