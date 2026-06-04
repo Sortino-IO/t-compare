@@ -12,22 +12,45 @@ import LpStorySection from "./LpStorySection";
 import LpPricingFunnel from "./LpPricingFunnel";
 import LpProductBottle from "./LpProductBottle";
 
-function TrustRow({ theme, items }: { theme: LandingPageConfig["theme"]; items?: readonly string[] }) {
+function TrustRow({
+  theme,
+  items,
+  onDark = false,
+}: {
+  theme: LandingPageConfig["theme"];
+  items?: readonly string[];
+  onDark?: boolean;
+}) {
   const defaults = ["60-Day Guarantee", "Free Shipping Options", "Secure Checkout", "4.9★ Reviews"];
   const list = items ?? defaults;
+  const useGrid = list.length === 4;
+
   return (
-    <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+    <div
+      className={
+        useGrid
+          ? "mx-auto mt-8 grid max-w-xl grid-cols-2 gap-2 sm:max-w-2xl sm:gap-3"
+          : "mt-8 flex flex-wrap justify-center gap-2 sm:gap-3"
+      }
+    >
       {list.map((item) => (
         <span
           key={item}
-          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wide border"
+          className={
+            useGrid
+              ? "inline-flex min-h-[2.75rem] w-full items-center justify-center gap-1.5 rounded-full border px-2.5 py-2 text-center text-[10px] font-bold uppercase leading-snug tracking-wide sm:px-3 sm:text-[11px]"
+              : "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide sm:text-xs"
+          }
           style={{
-            backgroundColor: theme.cardBg,
-            borderColor: theme.accent,
-            color: theme.primary,
+            backgroundColor: onDark ? "rgba(255,255,255,0.14)" : theme.cardBg,
+            borderColor: onDark ? "rgba(255,255,255,0.28)" : theme.accent,
+            color: onDark ? "#ffffff" : theme.primary,
           }}
         >
-          <span style={{ color: theme.accent }}>✓</span> {item}
+          <span className="shrink-0" style={{ color: theme.accent }}>
+            ✓
+          </span>
+          <span className="leading-tight">{item}</span>
         </span>
       ))}
     </div>
@@ -571,7 +594,7 @@ export default function LandingPageView({ config }: { config: LandingPageConfig 
             size="xl"
             className="w-full sm:w-auto"
           />
-          <TrustRow theme={{ ...theme, cardBg: "rgba(255,255,255,0.95)" }} items={meta?.trustItems} />
+          <TrustRow theme={theme} items={meta?.trustItems} onDark />
         </div>
       </section>
 

@@ -52,7 +52,12 @@ export const TEDPLANS_OFFER_STACK: LpOfferStack = {
 
 const TEDPLANS_PRODUCT_META = {
   isDigitalProduct: true,
-  trustItems: ["60-Day Guarantee", "Instant Digital Access", "Secure ClickBank Checkout", "4.9★ Member Reviews"],
+  trustItems: [
+    "60-Day Guarantee",
+    "Instant Digital Access",
+    "Secure ClickBank Checkout",
+    "4.9★ Member Reviews",
+  ],
   galleryTitle: "Real Builds From the Library",
   heroTagline: "16,000 Shop-Tested Plans · Lifetime Access",
   heroSocialProof: "Join 54,000+ woodworkers already building from Ted's library",
