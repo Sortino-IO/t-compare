@@ -7,11 +7,18 @@ import LpFooter from "./LpFooter";
 import LpPricingFunnel from "./LpPricingFunnel";
 import LpStars from "./LpStars";
 import LpStickyBar from "./LpStickyBar";
+import LpTestimonialCarousel from "./LpTestimonialCarousel";
 
 export default function LandingPageViewLp2Bento({ config }: { config: LandingPageConfig }) {
   const { theme } = config;
   const media = getLpMedia(config.slug);
-  const testimonials = withAvatars(config.testimonials, config.slug);
+  const testimonials = withAvatars(config.testimonials, config.slug).map((t) => ({
+    name: t.name,
+    location: t.location,
+    quote: t.quote,
+    packageLabel: t.packageLabel,
+    avatarUrl: t.avatarUrl,
+  }));
   const benefits = config.benefits.slice(0, 4);
   const gallery = media.gallery;
 
@@ -168,27 +175,12 @@ export default function LandingPageViewLp2Bento({ config }: { config: LandingPag
           <h2 className="text-2xl sm:text-3xl font-black">Real Men. Real Results.</h2>
           <p className="text-xs mt-2 text-zinc-500">* Individual results vary</p>
         </div>
-        <div className="flex gap-4 overflow-x-auto px-4 sm:px-6 pb-4 snap-x">
-          {testimonials.map((t) => (
-            <blockquote
-              key={t.name}
-              className="snap-start shrink-0 w-[300px] sm:w-[340px] rounded-2xl border border-zinc-800 p-6"
-              style={{ backgroundColor: theme.cardBg }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="relative h-12 w-12 rounded-full overflow-hidden ring-2 ring-[#ff4757]">
-                  <Image src={t.avatarUrl} alt={t.name} fill className="object-cover" sizes="48px" />
-                </div>
-                <div>
-                  <p className="font-bold text-sm">{t.name}</p>
-                  <p className="text-xs text-zinc-500">{t.location}</p>
-                </div>
-              </div>
-              <LpStars />
-              <p className="mt-3 text-sm leading-relaxed text-zinc-300">&ldquo;{t.quote}&rdquo;</p>
-            </blockquote>
-          ))}
-        </div>
+        <LpTestimonialCarousel
+          testimonials={testimonials}
+          accentColor={theme.accent}
+          cardBg={theme.cardBg}
+          mutedColor={theme.muted}
+        />
       </section>
 
       {config.pricingFunnel?.layout === "supplement-funnel" ? (

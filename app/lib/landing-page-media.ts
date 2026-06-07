@@ -141,10 +141,10 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     splitImage: IMG.workoutSession,
     splitImageAlt: "Man working out with power and focus",
     gallery: [
-      { src: IMG.gymTraining, alt: "Man training at gym" },
-      { src: IMG.gymLifting, alt: "Strength training session" },
-      { src: IMG.coupleHappy, alt: "Happy man and woman with energy" },
-      { src: IMG.manPortraitSmile, alt: "Smiling confident man" },
+      { src: "/lp/erecprime-lp2-bento-stamina.png", alt: "Confident man walking outdoors — steady stamina" },
+      { src: "/lp/erecprime-lp2-bento-energy.png", alt: "Morning capsule ritual with water at home" },
+      { src: "/lp/erecprime-lp2-bento-circulation.png", alt: "Man training with dumbbells at the gym" },
+      { src: "/lp/erecprime-lp2-bento-gym.png", alt: "Man performing rows at the gym — strength and recovery" },
     ],
   },
   "nitric-boost-lp1": {
