@@ -122,10 +122,10 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     ],
   },
   "endopeak24-lp2": {
-    heroImage: IMG.manPortraitSmile,
-    heroImageAlt: "Confident man — EndoPeak men's formula",
-    splitImage: IMG.gymTraining,
-    splitImageAlt: "Man training at the gym",
+    heroImage: "/lp/endopeak-lp2-hero.png",
+    heroImageAlt: "Fit man training with dumbbells — EndoPeak men's formula",
+    splitImage: "/lp/endopeak-lp2-second-image.png",
+    splitImageAlt: "Man exercising outdoors with resistance bands",
     gallery: [
       { src: IMG.gymLifting, alt: "Man lifting in fitness center" },
       { src: IMG.workoutSession, alt: "Intense gym workout" },
@@ -222,5 +222,8 @@ export function withAvatars(
   testimonials: LpTestimonial[],
   slug?: string,
 ): (LpTestimonial & { avatarUrl: string })[] {
-  return testimonials.map((t, i) => ({ ...t, avatarUrl: testimonialAvatar(i, slug) }));
+  return testimonials.map((t, i) => ({
+    ...t,
+    avatarUrl: t.avatarImage ?? testimonialAvatar(i, slug),
+  }));
 }

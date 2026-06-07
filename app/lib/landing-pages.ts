@@ -58,6 +58,8 @@ export type LpPricingFunnelConfig = {
   footerNote?: string;
   /** Header bg for highlighted (center) column */
   highlightHeaderBg?: string;
+  /** Light card row on white (official funnel screenshot style) */
+  sectionStyle?: "dark" | "light";
 };
 
 export type LpTestimonial = {
@@ -65,6 +67,7 @@ export type LpTestimonial = {
   location: string;
   quote: string;
   packageLabel: string;
+  avatarImage?: string;
 };
 
 export type LpTimelineStep = {
