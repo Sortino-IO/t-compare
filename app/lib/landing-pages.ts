@@ -1,3 +1,4 @@
+import { ENDOPEAK_LP1_IMAGES } from "./endopeak-lp1-images";
 import { LANDING_PAGES_LP2 } from "./landing-pages-lp2";
 import { LANDING_PAGES_NITRIC_BOOST } from "./landing-pages-nitric-boost";
 import { LANDING_PAGES_TEDPLANS } from "./landing-pages-tedplans";
@@ -410,14 +411,46 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     ingredientsTitle: "Inside Every EndoPeak Capsule",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Supports male vitality and natural energy signaling" },
-      { name: "Epimedium", benefit: "Traditional botanical framed for healthy circulation support" },
-      { name: "Saw Palmetto", benefit: "Supports healthy testosterone production pathways" },
-      { name: "Hawthorn Berry", benefit: "Promotes circulation and cardiovascular support" },
-      { name: "Tribulus", benefit: "Maintains a healthy libido baseline" },
-      { name: "Magnesium", benefit: "Supports testosterone levels and recovery" },
-      { name: "Chrysin", benefit: "Supports healthy estrogen balance pathways" },
-      { name: "Winged Treebine", benefit: "Traditional vitality botanical support" },
+      {
+        name: "Tongkat Ali",
+        benefit: "Supports male vitality and natural energy signaling",
+        image: ENDOPEAK_LP1_IMAGES.tongkatAli,
+      },
+      {
+        name: "Epimedium",
+        benefit: "Traditional botanical framed for healthy circulation support",
+        image: ENDOPEAK_LP1_IMAGES.epimedium,
+      },
+      {
+        name: "Saw Palmetto",
+        benefit: "Supports healthy testosterone production pathways",
+        image: ENDOPEAK_LP1_IMAGES.sawPalmetto,
+      },
+      {
+        name: "Hawthorn Berry",
+        benefit: "Promotes circulation and cardiovascular support",
+        image: ENDOPEAK_LP1_IMAGES.hawthornBerry,
+      },
+      {
+        name: "Tribulus",
+        benefit: "Maintains a healthy libido baseline",
+        image: ENDOPEAK_LP1_IMAGES.tribulus,
+      },
+      {
+        name: "Magnesium",
+        benefit: "Supports testosterone levels and recovery",
+        image: ENDOPEAK_LP1_IMAGES.magnesium,
+      },
+      {
+        name: "Chrysin",
+        benefit: "Supports healthy estrogen balance pathways",
+        image: ENDOPEAK_LP1_IMAGES.chrysin,
+      },
+      {
+        name: "Winged Treebine",
+        benefit: "Traditional vitality botanical support",
+        image: ENDOPEAK_LP1_IMAGES.wingedTreebine,
+      },
     ],
     storySection: {
       title: "The Daily Edge",
@@ -428,8 +461,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       blocks: [
         {
           imagePosition: "right",
-          image: "/lp/couple-outdoor-together.jpg",
-          imageAlt: "Happy couple walking together outdoors in daylight",
+          image: ENDOPEAK_LP1_IMAGES.dailyEdge1,
+          imageAlt: "Active man resting after workout in the park",
           paragraphs: [
             "When circulation and stamina improve, the benefits show up at home — not just in the gym. Partners notice before you finish explaining the formula.",
             "EndoPeak is framed as consistent daily support, not a stimulant spike. That is the edge most men are actually shopping for.",
@@ -437,8 +470,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
         },
         {
           imagePosition: "left",
-          image: "/lp/gym-lifting.jpg",
-          imageAlt: "Man training with strength and focus at the gym",
+          image: ENDOPEAK_LP1_IMAGES.dailyEdge2,
+          imageAlt: "Fit man training with resistance bands outdoors",
           paragraphs: [
             "Better blood flow and recovery often translate into stronger sessions and less afternoon crash — the combination that keeps men consistent on a 90-day trial.",
             "Bulk pricing drops to about $49 per bottle on the 6-bottle tier with free US shipping — the math smart buyers use after week two feels different.",

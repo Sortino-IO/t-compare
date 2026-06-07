@@ -82,10 +82,12 @@ export const LP_MEDIA: Record<string, LpMedia> = {
   "endopeak24-lp1": {
     heroImage: IMG.heroManFitness,
     heroImageAlt: "Confident man smiling — EndoPeak vitality support",
+    heroProductImage: "/lp/endopeak-lp1-hero-product.png",
+    heroProductImageAlt: "EndoPeak dietary supplement — 60 capsules",
     heroImageCaption: "Feel the edge again.",
     heroImageSubcaption: "Join thousands of men already on EndoPeak",
-    splitImage: IMG.gymTraining,
-    splitImageAlt: "Man working out at the gym with focus",
+    splitImage: "/lp/endopeak-lp1-benefits-glance.png",
+    splitImageAlt: "Confident man at home — EndoPeak vitality support",
     gallery: [
       { src: IMG.gymLifting, alt: "Man lifting weights in gym" },
       { src: IMG.workoutSession, alt: "Man training with intensity" },
