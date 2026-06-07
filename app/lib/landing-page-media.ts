@@ -98,10 +98,12 @@ export const LP_MEDIA: Record<string, LpMedia> = {
   "erecprime24-lp1": {
     heroImage: IMG.manConfident,
     heroImageAlt: "Confident man — ErecPrime performance support",
+    heroProductImage: "/lp/erecprime-lp1-hero-product.png",
+    heroProductImageAlt: "ErecPrime dietary supplement — 60 capsules",
     heroImageCaption: "Perform with confidence.",
     heroImageSubcaption: "Join thousands of men already on ErecPrime",
-    splitImage: IMG.gymLifting,
-    splitImageAlt: "Man training hard at the gym",
+    splitImage: "/lp/erecprime-lp1-benefits-glance.png",
+    splitImageAlt: "Confident man at home — ErecPrime vitality support",
     gallery: [
       { src: IMG.workoutSession, alt: "Man mid-workout with energy" },
       { src: IMG.gymTraining, alt: "Man building strength at gym" },

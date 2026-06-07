@@ -123,7 +123,9 @@ function FunnelColumn({
             </p>
 
             {savingsLine ? (
-              <p className="mt-2 text-xs sm:text-sm font-black text-red-600 uppercase">✔ {savingsLine}</p>
+              <p className="mt-2 rounded bg-stone-100 px-2 py-1.5 text-xs sm:text-sm font-black text-emerald-700 uppercase">
+                ✔ {savingsLine}
+              </p>
             ) : null}
             {perkLines.map((line) => (
               <p key={line} className="mt-1.5 text-xs sm:text-sm font-black text-stone-900 uppercase">
@@ -297,6 +299,18 @@ export default function LpPricingFunnel({ config }: Props) {
           {funnel?.footerNote ??
             `Secure checkout · Official ${config.brandName} bundle tiers · 60-day guarantee per vendor terms`}
         </p>
+        {funnel?.trustBadges?.length ? (
+          <div className="mt-8 grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4 max-w-4xl mx-auto">
+            {funnel.trustBadges.map((label) => (
+              <div key={label} className="flex flex-col items-center gap-2 text-center">
+                <span className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border-2 border-stone-300 bg-white text-[9px] sm:text-[10px] font-black uppercase text-stone-600 shadow-sm">
+                  {label.split(" ")[0]}
+                </span>
+                <span className="text-[8px] sm:text-[9px] font-semibold leading-tight text-stone-600">{label}</span>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
     </section>
   );

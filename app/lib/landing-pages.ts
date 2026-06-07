@@ -1,4 +1,5 @@
 import { ENDOPEAK_LP1_IMAGES } from "./endopeak-lp1-images";
+import { ERECPRIME_LP1_IMAGES } from "./erecprime-lp1-images";
 import { LANDING_PAGES_LP2 } from "./landing-pages-lp2";
 import { LANDING_PAGES_NITRIC_BOOST } from "./landing-pages-nitric-boost";
 import { LANDING_PAGES_TEDPLANS } from "./landing-pages-tedplans";
@@ -60,6 +61,8 @@ export type LpPricingFunnelConfig = {
   highlightHeaderBg?: string;
   /** Light card row on white (official funnel screenshot style) */
   sectionStyle?: "dark" | "light";
+  /** Optional trust seal labels below pricing row */
+  trustBadges?: readonly string[];
 };
 
 export type LpTestimonial = {
@@ -634,14 +637,46 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     ],
     ingredientsTitle: "8 Ingredients. One Daily Ritual.",
     ingredients: [
-      { name: "Tongkat Ali", benefit: "Supports male vitality and daily energy" },
-      { name: "Epimedium", benefit: "Traditional botanical for healthy circulation support" },
-      { name: "Saw Palmetto", benefit: "Testosterone production aid & prostate support framing" },
-      { name: "Hawthorn Berry", benefit: "Promotes healthy circulation" },
-      { name: "Tribulus", benefit: "Heightens libido baseline" },
-      { name: "Magnesium", benefit: "Supports testosterone levels and muscle function" },
-      { name: "Chrysin", benefit: "Helps maintain healthy estrogen balance" },
-      { name: "Winged Treebine", benefit: "Traditional adaptogenic vitality support" },
+      {
+        name: "Tongkat Ali",
+        benefit: "Supports male vitality and daily energy",
+        image: ERECPRIME_LP1_IMAGES.ingredients.tongkatAli,
+      },
+      {
+        name: "Epimedium",
+        benefit: "Traditional botanical for healthy circulation support",
+        image: ERECPRIME_LP1_IMAGES.ingredients.epimedium,
+      },
+      {
+        name: "Saw Palmetto",
+        benefit: "Testosterone production aid & prostate support framing",
+        image: ERECPRIME_LP1_IMAGES.ingredients.sawPalmetto,
+      },
+      {
+        name: "Hawthorn Berry",
+        benefit: "Promotes healthy circulation",
+        image: ERECPRIME_LP1_IMAGES.ingredients.hawthornBerry,
+      },
+      {
+        name: "Tribulus",
+        benefit: "Heightens libido baseline",
+        image: ERECPRIME_LP1_IMAGES.ingredients.tribulus,
+      },
+      {
+        name: "Magnesium",
+        benefit: "Supports testosterone levels and muscle function",
+        image: ERECPRIME_LP1_IMAGES.ingredients.magnesium,
+      },
+      {
+        name: "Chrysin",
+        benefit: "Helps maintain healthy estrogen balance",
+        image: ERECPRIME_LP1_IMAGES.ingredients.chrysin,
+      },
+      {
+        name: "Winged Treebine",
+        benefit: "Traditional adaptogenic vitality support",
+        image: ERECPRIME_LP1_IMAGES.ingredients.wingedTreebine,
+      },
     ],
     storySection: {
       title: "Perform With Confidence",
@@ -652,8 +687,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       blocks: [
         {
           imagePosition: "right",
-          image: "/lp/couple-outdoor-together.jpg",
-          imageAlt: "Happy couple walking together outdoors in daylight",
+          image: ERECPRIME_LP1_IMAGES.perform1,
+          imageAlt: "Active man resting after workout in the park",
           paragraphs: [
             "Men who stay on ErecPrime for 90 days often describe renewed appetite for intimacy — not a jittery hour, but sustained confidence.",
             "Your partner notices the difference when stamina and mood improve together. That is the outcome this stack is marketed for.",
@@ -661,8 +696,8 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
         },
         {
           imagePosition: "left",
-          image: "/lp/workout-session.jpg",
-          imageAlt: "Man pushing through an intense gym workout",
+          image: ERECPRIME_LP1_IMAGES.perform2,
+          imageAlt: "Fit man training with resistance bands outdoors",
           paragraphs: [
             "Circulation and testosterone pathway support also show up in training — better sessions, faster recovery, less couch time after work.",
             "From $69 for a single bottle to about $49 per bottle on the 6-bottle bundle with free shipping — pick the tier that matches your trial runway.",
@@ -671,6 +706,22 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
       ],
       footerParagraph:
         "ErecPrime retails higher on single bottles; bulk tiers unlock the lowest per-capsule cost. This page mirrors official bundle structure.",
+    },
+    pricingFunnel: {
+      layout: "supplement-funnel",
+      columnOrder: ["intro", "best", "popular"],
+      sectionTitle: "Choose Your Package",
+      sectionStyle: "light",
+      highlightHeaderBg: "#f5b800",
+      footerNote: "Secure checkout · Official ErecPrime bundle tiers · 60-day empty-bottle guarantee",
+      trustBadges: [
+        "Manufactured in the USA",
+        "FDA Inspected Facility",
+        "cGMP Certified",
+        "Naturally Gluten Free",
+        "BPA Free",
+        "Non GMO",
+      ],
     },
     productMeta: {
       heroSocialProof: "Join thousands of men already on ErecPrime",
@@ -719,37 +770,46 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
         id: "intro",
         title: "Try One",
         subtitle: "30-day supply · 1 bottle",
+        funnelSubheader: "30 Day Supply",
         pricePerBottle: "$69",
         total: "$69",
         regularTotal: "$179",
-        savings: "Save $110",
+        savingsBurst: "SAVE $110!",
         shipping: "+ shipping",
-        ctaLabel: "Try 1 Bottle",
-      },
-      {
-        id: "popular",
-        title: "Most Popular",
-        subtitle: "90-day supply · 3 bottles",
-        pricePerBottle: "$59",
-        total: "$177",
-        regularTotal: "$537",
-        savings: "Save $360",
-        badge: "FREE US SHIPPING",
-        shipping: "Free US shipping",
-        highlight: true,
-        ctaLabel: "Claim 3-Bottle Package",
+        productImage: ERECPRIME_LP1_IMAGES.package1,
+        productImageAlt: "ErecPrime — 1 bottle, 30 day supply",
+        ctaLabel: "Add To Cart",
       },
       {
         id: "best",
         title: "Best Value",
         subtitle: "180-day supply · 6 bottles",
+        funnelSubheader: "180 Day Supply",
         pricePerBottle: "$49",
         total: "$294",
         regularTotal: "$1,074",
-        savings: "Save $780",
-        badge: "BIGGEST DISCOUNT",
+        savingsBurst: "SAVE $780!",
+        perkLines: ["2 FREE E-BOOKS!", "BIGGEST DISCOUNT", "60-DAYS GUARANTEE"],
         shipping: "Free US shipping",
-        ctaLabel: "Claim 6-Bottle Bundle",
+        highlight: true,
+        productImage: ERECPRIME_LP1_IMAGES.package6,
+        productImageAlt: "ErecPrime — 6 bottles plus bonuses, 180 day supply",
+        ctaLabel: "Add To Cart",
+      },
+      {
+        id: "popular",
+        title: "Most Popular",
+        subtitle: "90-day supply · 3 bottles",
+        funnelSubheader: "90 Day Supply",
+        pricePerBottle: "$59",
+        total: "$177",
+        regularTotal: "$537",
+        savingsBurst: "SAVE $360!",
+        perkLines: ["2 FREE E-BOOKS!", "60-DAYS GUARANTEE"],
+        shipping: "Free US shipping",
+        productImage: ERECPRIME_LP1_IMAGES.package3,
+        productImageAlt: "ErecPrime — 3 bottles plus bonuses, 90 day supply",
+        ctaLabel: "Add To Cart",
       },
     ],
     faq: [
