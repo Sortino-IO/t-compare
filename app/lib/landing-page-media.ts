@@ -192,16 +192,11 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     ],
   },
   "tedplansdiy-lp3": {
-    heroImage: "/lp/ted-lp3-hero-banner.png",
-    heroImageAlt: "16,000+ woodworking plans — step-by-step, cut lists, diagrams — lifetime $67",
+    heroImage: IMG.tedTableSawBlueprint,
+    heroImageAlt: "Shop-tested build at the table saw with plan pinned nearby",
     splitImage: IMG.tedLibraryTablet,
     splitImageAlt: "Searchable woodworking project library on tablet in the shop",
-    gallery: [
-      { src: IMG.tedHeroCraftsman, alt: "Craftsman with finished table and digital plan in workshop" },
-      { src: IMG.tedTableSawBlueprint, alt: "Shop-tested build at the table saw with plan pinned nearby" },
-      { src: IMG.tedMaterialsCart, alt: "Materials list and lumber ready for a weekend project" },
-      { src: IMG.tedExplodedTable, alt: "Detailed exploded assembly view of a dining table plan" },
-    ],
+    gallery: [],
   },
 };
 

@@ -180,14 +180,14 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
               </div>
             ) : meta?.isDigitalProduct ? (
               <div
-                className="relative aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-md border"
+                className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 shadow-md border"
                 style={{ borderColor: theme.border }}
               >
                 <Image
                   src={media.heroImage}
                   alt={media.heroImageAlt}
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   sizes="50vw"
                   priority
                 />
@@ -197,13 +197,19 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                 <Image src={media.heroImage} alt={media.heroImageAlt} fill className="object-cover" sizes="50vw" priority />
               </div>
             )}
-            <div className="grid grid-cols-4 gap-2">
-              {media.gallery.slice(0, 4).map((img) => (
-                <div key={img.src} className="relative aspect-square rounded-lg overflow-hidden border" style={{ borderColor: theme.border }}>
-                  <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="120px" />
-                </div>
-              ))}
-            </div>
+            {media.gallery.length > 0 ? (
+              <div className="grid grid-cols-4 gap-2">
+                {media.gallery.slice(0, 4).map((img) => (
+                  <div
+                    key={img.src}
+                    className="relative aspect-square rounded-lg overflow-hidden border"
+                    style={{ borderColor: theme.border }}
+                  >
+                    <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="120px" />
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <div className="order-2 lg:sticky lg:top-20 space-y-6">

@@ -465,8 +465,8 @@ export const LANDING_PAGES_TEDPLANS: LandingPageConfig[] = [
     packages: [
       {
         ...LIFETIME_PACKAGE,
-        productImage: "/lp/ted-lp3-product-card.png",
-        productImageAlt: "TedsWoodworking — 16,000 plans and 4 bonuses, $67 lifetime",
+        productImage: "/lp/ted-lp3-hero-banner.png",
+        productImageAlt: "16,000+ woodworking plans — step-by-step, cut lists, diagrams — lifetime $67",
       },
     ],
     faq: FAQ,
