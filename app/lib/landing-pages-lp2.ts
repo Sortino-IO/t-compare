@@ -1,3 +1,4 @@
+import { CRITICAL_T_IMAGES } from "./critical-t-images";
 import { ENDOPEAK_LP2_IMAGES } from "./endopeak-lp2-images";
 import { ERECPRIME_LP2_IMAGES } from "./erecprime-lp2-images";
 import type { LandingPageConfig } from "./landing-pages";
@@ -59,14 +60,17 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
       {
         name: "Tongkat Ali",
         benefit: "Supports luteinizing hormone and natural T signaling",
+        image: CRITICAL_T_IMAGES.tongkatAli,
       },
       {
         name: "DIM",
         benefit: "Helps convert excess estrogen into inactive forms",
+        image: CRITICAL_T_IMAGES.dim,
       },
       {
         name: "Acacetin",
         benefit: "Turnera diffusa extract for aromatase balance support",
+        image: CRITICAL_T_IMAGES.acacetin,
       },
     ],
     productMeta: {
@@ -143,9 +147,13 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
         funnelSubheader: "Subscribe & Save (1 Bottle)",
         pricePerBottle: "$55.20",
         priceDisplay: "$55.20/month",
+        priceSubline: "+ Shipping fee $5.99",
         total: "$55.20/mo",
-        shipping: "+ Shipping fee $5.99 · Delivered monthly — cancel anytime",
+        shipping: "Delivered monthly — cancel anytime",
         bottleCount: 1,
+        productImage: CRITICAL_T_IMAGES.pricingFunnel,
+        productImageAlt: "Critical T single bottle",
+        productImagePosition: CRITICAL_T_IMAGES.pricingCropStarter,
         ctaLabel: "ADD TO CART",
       },
       {
@@ -165,6 +173,9 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
         shipping: "+ $7.99 shipping fee",
         highlight: true,
         bottleCount: 4,
+        productImage: CRITICAL_T_IMAGES.pricingFunnel,
+        productImageAlt: "Critical T — Buy 1 Get 3 Free",
+        productImagePosition: CRITICAL_T_IMAGES.pricingCropBest,
         ctaLabel: "ADD TO CART",
       },
       {
@@ -183,6 +194,9 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
         perkLines: ["FAST & FREE SHIPPING"],
         shipping: "Fast & free US shipping",
         bottleCount: 3,
+        productImage: CRITICAL_T_IMAGES.pricingFunnel,
+        productImageAlt: "Critical T 90-day supply — 3 bottles",
+        productImagePosition: CRITICAL_T_IMAGES.pricingCropPopular,
         ctaLabel: "ADD TO CART",
       },
     ],

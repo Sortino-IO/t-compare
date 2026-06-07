@@ -56,36 +56,47 @@ function FunnelColumn({
       <div
         className="px-3 py-2.5 text-center border-b border-stone-100"
         style={{
-          backgroundColor: isCenter ? highlightHeaderBg : "#ffffff",
+          backgroundColor: isCenter ? highlightHeaderBg : officialStyle ? "#ffffff" : "#b8d4e8",
           color: "#0f172a",
         }}
       >
-        <p className="text-sm sm:text-base font-black leading-tight">{pkg.title}</p>
+        <p className="text-sm sm:text-base font-black leading-tight uppercase">
+          {officialStyle ? pkg.title : (pkg.funnelHeader ?? pkg.title)}
+        </p>
         <p className="text-[11px] sm:text-xs font-semibold mt-0.5">
           {pkg.funnelSubheader ?? pkg.subtitle}
         </p>
       </div>
 
-      <div className="relative px-3 pt-3 pb-2 bg-white min-h-[150px] sm:min-h-[180px] flex items-center justify-center">
+      <div
+        className="relative px-3 pt-3 pb-2 min-h-[150px] sm:min-h-[180px] flex items-center justify-center"
+        style={{ backgroundColor: officialStyle ? "#ffffff" : "#f0f4f8" }}
+      >
         {showFreeShippingBadge ? (
           <span className="absolute top-2 left-2 z-10 rounded bg-red-600 text-white text-[8px] sm:text-[9px] font-black px-2 py-1 shadow-md uppercase tracking-wide">
             Free Shipping
           </span>
         ) : null}
-        {!officialStyle && pkg.savingsBurst ? (
+        {!officialStyle && pkg.savingsBurst && !pkg.productImagePosition ? (
           <span className="absolute top-2 right-2 z-10 rounded-full bg-red-600 text-white text-[9px] sm:text-[10px] font-black px-2 py-1 shadow-md rotate-6">
             {pkg.savingsBurst}
           </span>
         ) : null}
         {pkg.productImage ? (
-          <div className="relative w-full h-36 sm:h-44">
+          <div className="relative w-full h-36 sm:h-44 overflow-hidden">
             <Image
               src={pkg.productImage}
               alt={pkg.productImageAlt ?? pkg.title}
               fill
-              className="object-contain p-1"
+              className={pkg.productImagePosition ? "object-cover scale-[2.8]" : "object-contain p-1"}
+              style={pkg.productImagePosition ? { objectPosition: pkg.productImagePosition } : undefined}
               sizes="280px"
             />
+            {(pkg.bottleCount ?? 1) > 1 && pkg.id !== "best" && !pkg.productImagePosition ? (
+              <span className="absolute bottom-1 right-2 rounded bg-white/90 px-2 py-0.5 text-[10px] font-black text-stone-800 shadow">
+                ×{pkg.bottleCount}
+              </span>
+            ) : null}
           </div>
         ) : useBottlePhoto ? (
           <div className="relative w-full h-32 sm:h-40">
@@ -203,10 +214,7 @@ function FunnelColumn({
                 key={line}
                 className="mt-2 text-[10px] sm:text-xs font-bold uppercase tracking-wide text-white py-1.5 px-2 rounded"
                 style={{
-                  backgroundColor:
-                    line.toUpperCase().includes("FREE") && line.toUpperCase().includes("SHIPPING")
-                      ? "#0d5c63"
-                      : "#c0392b",
+                  backgroundColor: line.toUpperCase().includes("SHIPPING") ? "#0d5c63" : "#c0392b",
                 }}
               >
                 ✔ {line}
