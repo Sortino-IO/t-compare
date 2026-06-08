@@ -1,11 +1,9 @@
 /** Critical T LP1/LP2 — product, ingredients, lifestyle assets */
 export const CRITICAL_T_IMAGES = {
-  /** Official funnel screenshot — crop per tier via productImagePosition */
-  pricingFunnel: "/lp/critical-t-bottles-4.png",
-  pricingCropStarter: "17% 38%",
-  pricingCropBest: "50% 38%",
-  pricingCropPopular: "83% 38%",
-  heroProduct: "/lp/supplement-bottle-hero.jpg",
+  heroProduct: "/lp/critical-t-bottle-1.png",
+  package1: "/lp/critical-t-bottle-1.png",
+  package3: "/lp/critical-t-bottles-3.png",
+  package4: "/lp/critical-t-bottles-4.png",
   benefitsGlance: "/lp/endopeak-lp1-benefits-glance.png",
   story1: "/lp/erecprime-lp1-perform-1.png",
   story2: "/lp/erecprime-lp1-perform-2.png",

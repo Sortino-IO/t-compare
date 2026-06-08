@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CRITICAL_T_IMAGES } from "../../lib/critical-t-images";
 import type { LandingPageConfig } from "../../lib/landing-pages";
 import { ingredientCardImage } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
@@ -26,7 +27,8 @@ function ProductCard({
   const popular = config.packages.find((p) => p.highlight) ?? config.packages[0]!;
   const priceLabel = config.packagePriceLabel ?? "per bottle";
   const bottleCount = popular.bottleCount;
-  const imgSrc = bottleCount ? undefined : productImage ?? popular.productImage;
+  const imgSrc = productImage ?? popular.productImage;
+  const useBottleMockup = !imgSrc && bottleCount;
 
   return (
     <div
@@ -34,7 +36,7 @@ function ProductCard({
       style={{ borderColor: theme.border }}
     >
       <div className="relative aspect-square bg-[#f0f4f8]">
-        {bottleCount ? (
+        {useBottleMockup ? (
           <div className="absolute inset-0 flex items-center justify-center bg-[#f0f4f8] p-6">
             <LpProductBottle
               productName={productName}
@@ -249,8 +251,16 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
             </div>
             <ProductCard
               config={config}
-              productImage={config.packages.find((p) => p.highlight)?.productImage ?? config.packages[0]?.productImage}
-              productImageAlt={config.packages[0]?.productImageAlt}
+              productImage={
+                config.slug.startsWith("critical-t")
+                  ? CRITICAL_T_IMAGES.package1
+                  : (config.packages.find((p) => p.highlight)?.productImage ?? config.packages[0]?.productImage)
+              }
+              productImageAlt={
+                config.slug.startsWith("critical-t")
+                  ? "Critical T dietary supplement — 60 capsules"
+                  : config.packages[0]?.productImageAlt
+              }
             />
           </div>
         </div>
