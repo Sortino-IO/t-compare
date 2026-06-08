@@ -252,14 +252,18 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
             <ProductCard
               config={config}
               productImage={
-                config.slug.startsWith("critical-t")
-                  ? CRITICAL_T_IMAGES.package1
-                  : (config.packages.find((p) => p.highlight)?.productImage ?? config.packages[0]?.productImage)
+                config.slug === "critical-t-lp2"
+                  ? CRITICAL_T_IMAGES.package4
+                  : config.slug.startsWith("critical-t")
+                    ? CRITICAL_T_IMAGES.package1
+                    : (config.packages.find((p) => p.highlight)?.productImage ?? config.packages[0]?.productImage)
               }
               productImageAlt={
-                config.slug.startsWith("critical-t")
-                  ? "Critical T dietary supplement — 60 capsules"
-                  : config.packages[0]?.productImageAlt
+                config.slug === "critical-t-lp2"
+                  ? "Critical T — Buy 1 Get 3 Free, 4 bottles"
+                  : config.slug.startsWith("critical-t")
+                    ? "Critical T dietary supplement — 60 capsules"
+                    : config.packages[0]?.productImageAlt
               }
             />
           </div>
