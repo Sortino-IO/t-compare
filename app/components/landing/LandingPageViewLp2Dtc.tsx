@@ -4,6 +4,7 @@ import type { LandingPageConfig } from "../../lib/landing-pages";
 import { ingredientCardImage } from "../../lib/lp-ingredient-images";
 import { getLpMedia, withAvatars } from "../../lib/landing-page-media";
 import { isTestosteroneSupplementLp } from "../../lib/testosterone-lp";
+import LpDtcProductGallery from "./LpDtcProductGallery";
 import LpCtaButton from "./LpCtaButton";
 import LpFooter from "./LpFooter";
 import LpPricingFunnel from "./LpPricingFunnel";
@@ -131,11 +132,17 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
           <span className="font-black text-lg tracking-tight" style={{ color: theme.primary }}>
             {config.brandName}
           </span>
-          <div className="hidden sm:flex items-center gap-6 text-xs font-semibold uppercase tracking-wide text-slate-500">
-            <span>Ingredients</span>
-            <span>Reviews</span>
-            <span>FAQ</span>
-          </div>
+          <nav className="hidden sm:flex items-center gap-6 text-xs font-semibold uppercase tracking-wide text-slate-500" aria-label="Page sections">
+            <a href="#ingredients" className="hover:text-slate-900 transition-colors">
+              Ingredients
+            </a>
+            <a href="#reviews" className="hover:text-slate-900 transition-colors">
+              Reviews
+            </a>
+            <a href="#faq" className="hover:text-slate-900 transition-colors">
+              FAQ
+            </a>
+          </nav>
           <LpCtaButton
             ctaUrl={config.ctaUrl}
             label={config.offerStack?.ctaLabel ?? "Shop Now"}
@@ -156,7 +163,9 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-10 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div className="space-y-4 order-1">
-            {isTestosteroneSupplementLp(config.slug) ? (
+            {isTestosteroneSupplementLp(config.slug) && media.gallery.length > 0 ? (
+              <LpDtcProductGallery images={media.gallery} accentColor={theme.accent} />
+            ) : isTestosteroneSupplementLp(config.slug) ? (
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#f0f4f8] shadow-md">
                 {media.heroProductImage ? (
                   <Image
@@ -199,7 +208,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
                 <Image src={media.heroImage} alt={media.heroImageAlt} fill className="object-cover" sizes="50vw" priority />
               </div>
             )}
-            {media.gallery.length > 0 ? (
+            {!isTestosteroneSupplementLp(config.slug) && media.gallery.length > 0 ? (
               <div className="grid grid-cols-4 gap-2">
                 {media.gallery.slice(0, 4).map((img) => (
                   <div
@@ -306,7 +315,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       ) : null}
 
       {/* Ingredients table */}
-      <section className="py-14 sm:py-20 bg-white">
+      <section id="ingredients" className="py-14 sm:py-20 bg-white scroll-mt-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">{config.ingredientsTitle}</h2>
           <div className="grid gap-4 sm:grid-cols-3">
@@ -351,7 +360,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       </section>
 
       {/* Reviews */}
-      <section className="py-14 sm:py-20 bg-white">
+      <section id="reviews" className="py-14 sm:py-20 bg-white scroll-mt-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-black text-center mb-10">Verified Customer Reviews</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -427,7 +436,7 @@ export default function LandingPageViewLp2Dtc({ config }: { config: LandingPageC
       ) : null}
 
       {/* FAQ */}
-      <section className="py-14 sm:py-20 bg-white">
+      <section id="faq" className="py-14 sm:py-20 bg-white scroll-mt-16">
         <div className="mx-auto max-w-2xl px-4 sm:px-6">
           <h2 className="text-2xl font-black text-center mb-8">FAQ</h2>
           <div className="divide-y" style={{ borderColor: theme.border }}>

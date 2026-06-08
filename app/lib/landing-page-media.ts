@@ -114,10 +114,8 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     ],
   },
   "critical-t-lp2": {
-    heroImage: IMG.manPortraitSmile,
-    heroImageAlt: "Confident man — Critical T natural support",
-    heroProductImage: "/lp/critical-t-bottles-4.png",
-    heroProductImageAlt: "Critical T — Buy 1 Get 3 Free, 4 bottles",
+    heroImage: IMG.gymLifting,
+    heroImageAlt: "Man lifting weights in gym — Critical T",
     splitImage: IMG.gymTraining,
     splitImageAlt: "Man training at the gym",
     gallery: [
