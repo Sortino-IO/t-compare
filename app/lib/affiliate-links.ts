@@ -1,8 +1,14 @@
 /** Hosts that should receive T-Compare affiliate UTM parameters on outbound links. */
 const TTIME_HOST = "ttime.men";
 
+export const ERECPRIME_AFFILIATE_URL =
+  "https://af3f4qzpqenm3wfb1cff-atz7n.hop.clickbank.net/?&traffic_source=google&traffic_type=paid&campaign=sortino";
+
 const CLICKBANK_AFFILIATE_BY_HOST: Record<string, string> = {
-  "erecprime24.com": "https://accd7grbpfnm6m186ded0bo9dw.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+  "erecprime24.com": ERECPRIME_AFFILIATE_URL,
+  "www.erecprime24.com": ERECPRIME_AFFILIATE_URL,
+  "af3f4qzpqenm3wfb1cff-atz7n.hop.clickbank.net": ERECPRIME_AFFILIATE_URL,
+  "accd7grbpfnm6m186ded0bo9dw.hop.clickbank.net": ERECPRIME_AFFILIATE_URL,
   "www.criticaltboost.com": "https://9dcacr3eqbms0qez2408eyse51.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
   "criticaltboost.com": "https://9dcacr3eqbms0qez2408eyse51.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
   "heroichustle.com": "https://b0d9bkvcsibq9yawuhqvyty0tn.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",

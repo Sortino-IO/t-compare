@@ -1,3 +1,4 @@
+import { ERECPRIME_AFFILIATE_URL } from "./affiliate-links";
 import { CRITICAL_T_IMAGES } from "./critical-t-images";
 import { ENDOPEAK_LP2_IMAGES } from "./endopeak-lp2-images";
 import { ERECPRIME_LP2_IMAGES } from "./erecprime-lp2-images";
@@ -457,8 +458,7 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
     lp2Style: "bento",
     brandName: "ErecPrime",
     productName: "ErecPrime",
-    ctaUrl:
-      "https://erecprime24.com/c/order-now.php?hop=sorela1&hopId=976f8585-4681-4e04-8126-a9a68e7c372b&&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    ctaUrl: ERECPRIME_AFFILIATE_URL,
     seoTitle: "ErecPrime — Performance Formula | Modern Men's Stack",
     seoDescription:
       "ErecPrime: 8-ingredient daily capsule for stamina, blood flow & drive. From $49/bottle on bulk. 60-day guarantee.",

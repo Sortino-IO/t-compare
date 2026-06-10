@@ -1,3 +1,4 @@
+import { ERECPRIME_AFFILIATE_URL } from "./affiliate-links";
 import { CRITICAL_T_IMAGES } from "./critical-t-images";
 import { ENDOPEAK_LP1_IMAGES } from "./endopeak-lp1-images";
 import { ERECPRIME_LP1_IMAGES } from "./erecprime-lp1-images";
@@ -621,8 +622,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     slug: "erecprime24-lp1",
     brandName: "ErecPrime",
     productName: "ErecPrime",
-    ctaUrl:
-      "https://erecprime24.com/c/order-now.php?hop=sorela1&hopId=976f8585-4681-4e04-8126-a9a68e7c372b&&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    ctaUrl: ERECPRIME_AFFILIATE_URL,
     seoTitle: "ErecPrime — Men's Performance Formula From $49/Bottle",
     seoDescription:
       "ErecPrime: 8-ingredient capsule for stamina, blood flow & drive. Single bottle $69 or bulk from $49/bottle. 60-day guarantee on this page.",
