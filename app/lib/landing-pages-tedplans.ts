@@ -1,3 +1,4 @@
+import { TEDPLANS_AFFILIATE_URL } from "./affiliate-links";
 import type { LandingPageConfig, LpOfferStack } from "./landing-pages";
 import {
   TED_DIFFERENTIATOR_CARDS,
@@ -6,8 +7,7 @@ import {
   TED_LP3_INCLUDED_IMAGES,
 } from "./ted-feature-images";
 
-const TEDPLANS_CTA =
-  "https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare";
+const TEDPLANS_CTA = TEDPLANS_AFFILIATE_URL;
 
 export const TEDPLANS_OFFER_STACK: LpOfferStack = {
   preHeadline: "Hit the **ADD TO CART** button below and I'll see you on the inside...",

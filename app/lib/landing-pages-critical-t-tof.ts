@@ -1,3 +1,4 @@
+import { CRITICAL_T_AFFILIATE_URL } from "./affiliate-links";
 import { CRITICAL_T_IMAGES } from "./critical-t-images";
 import type { LandingPageConfig } from "./landing-pages";
 import { SUPPLEMENT_FACILITY_BULLET, SUPPLEMENT_FACILITY_FAQ } from "./lp-robots";
@@ -9,8 +10,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
     lp2Style: "tof",
     brandName: "Critical T",
     productName: "Critical T",
-    ctaUrl:
-      "https://9dcacr3eqbms0qez2408eyse51.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    ctaUrl: CRITICAL_T_AFFILIATE_URL,
     seoTitle: "Critical T — Natural Testosterone Support | Limited Bundle Offer",
     seoDescription:
       "Critical T: Tongkat Ali, DIM & Acacetin daily stack. Support energy, drive & training recovery from ~$0.56/day on bulk. 60-day guarantee.",

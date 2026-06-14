@@ -1,7 +1,7 @@
+import { NITRIC_BOOST_AFFILIATE_URL } from "./affiliate-links";
 import type { LandingPageConfig } from "./landing-pages";
 
-const NITRIC_BOOST_CTA =
-  "https://getnitricboost.com/?traffic_source=blog&traffic_type=paid&campaign=t-compare#order";
+const NITRIC_BOOST_CTA = NITRIC_BOOST_AFFILIATE_URL;
 
 export const LANDING_PAGES_NITRIC_BOOST: LandingPageConfig[] = [
   {

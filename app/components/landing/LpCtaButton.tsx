@@ -1,5 +1,6 @@
 "use client";
 
+import { useTrackedHopUrl } from "../../hooks/useTrackedHopUrl";
 import type { LandingPageConfig } from "../../lib/landing-pages";
 
 type Props = {
@@ -19,6 +20,7 @@ export default function LpCtaButton({
   size = "lg",
   pulse = true,
 }: Props) {
+  const href = useTrackedHopUrl(ctaUrl);
   const sizeClass =
     size === "xl"
       ? "px-6 py-5 sm:px-10 sm:py-5 text-base sm:text-xl"
@@ -28,7 +30,7 @@ export default function LpCtaButton({
 
   return (
     <a
-      href={ctaUrl}
+      href={href}
       target="_blank"
       rel="noopener noreferrer sponsored"
       className={`inline-flex items-center justify-center rounded-md font-extrabold uppercase tracking-wide border-2 border-[#b8860b] ${pulse ? "lp-cta-pulse" : "shadow-xl"} transition-transform hover:scale-[1.03] active:scale-[0.98] ${sizeClass} ${className}`}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { LandingPageConfig, LpOfferStack } from "../../lib/landing-pages";
+import TrackedHopLink from "../TrackedHopLink";
 import LpCtaButton from "./LpCtaButton";
 
 function renderBoldText(text: string) {
@@ -120,14 +121,14 @@ export default function LpOfferStackBlock({ stack, config, className = "" }: Pro
 
           {stack.secondaryLinkLabel ? (
             <p className="mt-5">
-              <a
+              <TrackedHopLink
                 href={ctaUrl}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="text-blue-600 underline font-semibold text-sm sm:text-base hover:text-blue-800"
               >
                 {stack.secondaryLinkLabel}
-              </a>
+              </TrackedHopLink>
             </p>
           ) : null}
 

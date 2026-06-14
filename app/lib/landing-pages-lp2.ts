@@ -1,4 +1,8 @@
-import { ERECPRIME_AFFILIATE_URL } from "./affiliate-links";
+import {
+  CRITICAL_T_AFFILIATE_URL,
+  ENDOPEAK_AFFILIATE_URL,
+  ERECPRIME_AFFILIATE_URL,
+} from "./affiliate-links";
 import { CRITICAL_T_IMAGES } from "./critical-t-images";
 import { ENDOPEAK_LP2_IMAGES } from "./endopeak-lp2-images";
 import { ERECPRIME_LP2_IMAGES } from "./erecprime-lp2-images";
@@ -12,8 +16,7 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
     lp2Style: "dtc",
     brandName: "Critical T",
     productName: "Critical T",
-    ctaUrl:
-      "https://9dcacr3eqbms0qez2408eyse51.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    ctaUrl: CRITICAL_T_AFFILIATE_URL,
     seoTitle: "Critical T — Natural T Support | Official Product Page",
     seoDescription:
       "Shop Critical T: clinically dosed Tongkat Ali, DIM & Acacetin. See the Day 7–90 timeline, ingredient breakdown, and bundle pricing from $55/mo.",
@@ -222,8 +225,7 @@ export const LANDING_PAGES_LP2: LandingPageConfig[] = [
     lp2Style: "advertorial",
     brandName: "EndoPeak",
     productName: "EndoPeak",
-    ctaUrl:
-      "https://42ad2cskk5msam5atc1eq2ur5a.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    ctaUrl: ENDOPEAK_AFFILIATE_URL,
     seoTitle: "EndoPeak Review — 8-Ingredient Men's Vitality Formula Explained",
     seoDescription:
       "Independent-style breakdown of EndoPeak: circulation botanicals, libido support, bulk pricing from $49/bottle, and what men report after 90 days.",

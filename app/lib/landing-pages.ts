@@ -1,4 +1,8 @@
-import { ERECPRIME_AFFILIATE_URL } from "./affiliate-links";
+import {
+  CRITICAL_T_AFFILIATE_URL,
+  ENDOPEAK_AFFILIATE_URL,
+  ERECPRIME_AFFILIATE_URL,
+} from "./affiliate-links";
 import { CRITICAL_T_IMAGES } from "./critical-t-images";
 import { ENDOPEAK_LP1_IMAGES } from "./endopeak-lp1-images";
 import { ERECPRIME_LP1_IMAGES } from "./erecprime-lp1-images";
@@ -259,8 +263,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     slug: "critical-t-lp1",
     brandName: "Critical T",
     productName: "Critical T",
-    ctaUrl:
-      "https://9dcacr3eqbms0qez2408eyse51.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    ctaUrl: CRITICAL_T_AFFILIATE_URL,
     seoTitle: "Critical T — Support Natural Testosterone From $55/mo",
     seoDescription:
       "Try Critical T: Tongkat Ali, DIM & Acacetin in a daily two-capsule stack. Subscribe from $55/mo, 60-day guarantee. Limited pricing on this page.",
@@ -481,8 +484,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
     slug: "endopeak24-lp1",
     brandName: "EndoPeak",
     productName: "EndoPeak",
-    ctaUrl:
-      "https://42ad2cskk5msam5atc1eq2ur5a.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    ctaUrl: ENDOPEAK_AFFILIATE_URL,
     seoTitle: "EndoPeak — Men's Vitality Stack From $49/Bottle Bulk",
     seoDescription:
       "EndoPeak: 8-ingredient men's wellness formula. Try intro or bulk bundles with 60-day guarantee. Limited offer on this private page.",
