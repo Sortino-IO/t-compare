@@ -18,13 +18,16 @@ export type LpDirectoryGroup = {
 function lpVariantLabel(page: LandingPageConfig): string {
   const variant = page.variant ?? (page.slug.endsWith("-lp2") ? "lp2" : "lp1");
   if (page.slug.endsWith("-lp3")) return "LP3";
-  if (variant === "lp2" && page.lp2Style) {
-    const style =
-      page.lp2Style === "dtc"
-        ? "DTC"
-        : page.lp2Style === "advertorial"
-          ? "Advertorial"
-          : "Bento";
+    if (page.lp2Style === "tof") return "LP3 · TOF";
+    if (variant === "lp2" && page.lp2Style) {
+      const style =
+        page.lp2Style === "dtc"
+          ? "DTC"
+          : page.lp2Style === "advertorial"
+            ? "Advertorial"
+            : page.lp2Style === "bento"
+              ? "Bento"
+              : "TOF";
     return `LP2 · ${style}`;
   }
   return variant === "lp2" ? "LP2" : "LP1";
@@ -73,7 +76,7 @@ export function getLandingPagesDirectory(): LpDirectoryGroup[] {
   groups.push({
     id: "testosterone",
     label: "Testosterone supplements",
-    description: "Critical T, EndoPeak, and ErecPrime — LP1 and LP2 variants.",
+    description: "Critical T, EndoPeak, and ErecPrime — LP1, LP2, and long-form TOF variants.",
     entries: supplementBrands.flatMap((brand) => {
       const pages = byBrand.get(brand) ?? [];
       return [...pages].sort(sortPages).map((page) => ({

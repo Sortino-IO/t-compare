@@ -2,6 +2,7 @@
 export const TESTOSTERONE_SUPPLEMENT_LP_SLUGS = [
   "critical-t-lp1",
   "critical-t-lp2",
+  "critical-t-lp3",
   "endopeak24-lp1",
   "endopeak24-lp2",
   "erecprime24-lp1",

@@ -2,6 +2,7 @@ import type { LandingPageConfig } from "../../lib/landing-pages";
 import LandingPageView from "./LandingPageView";
 import LandingPageViewLp2Advertorial from "./LandingPageViewLp2Advertorial";
 import LandingPageViewLp2Bento from "./LandingPageViewLp2Bento";
+import LandingPageViewTof from "./LandingPageViewTof";
 import LandingPageViewLp2Dtc from "./LandingPageViewLp2Dtc";
 
 export default function LandingPageRouter({ config }: { config: LandingPageConfig }) {
@@ -12,6 +13,8 @@ export default function LandingPageRouter({ config }: { config: LandingPageConfi
   }
 
   switch (config.lp2Style) {
+    case "tof":
+      return <LandingPageViewTof config={config} />;
     case "dtc":
       return <LandingPageViewLp2Dtc config={config} />;
     case "advertorial":

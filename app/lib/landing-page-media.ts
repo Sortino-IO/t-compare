@@ -116,6 +116,8 @@ export const LP_MEDIA: Record<string, LpMedia> = {
   "critical-t-lp2": {
     heroImage: IMG.gymLifting,
     heroImageAlt: "Man lifting weights in gym — Critical T",
+    heroProductImage: "/lp/critical-t-bottles-4.png",
+    heroProductImageAlt: "Critical T — Buy 1 Get 3 Free, 4 bottles",
     splitImage: IMG.gymTraining,
     splitImageAlt: "Man training at the gym",
     gallery: [
@@ -123,6 +125,20 @@ export const LP_MEDIA: Record<string, LpMedia> = {
       { src: IMG.workoutSession, alt: "Man working out with intensity" },
       { src: IMG.manConfident, alt: "Confident man feeling strong" },
       { src: IMG.gymStrength, alt: "Strength training at the gym" },
+    ],
+  },
+  "critical-t-lp3": {
+    heroImage: IMG.heroManFitness,
+    heroImageAlt: "Fit man training — Critical T vitality support",
+    heroProductImage: "/lp/critical-t-bottles-4.png",
+    heroProductImageAlt: "Critical T Best Value — 4 bottles",
+    splitImage: "/lp/endopeak-lp1-benefits-glance.png",
+    splitImageAlt: "Confident man at home — Critical T daily support",
+    gallery: [
+      { src: IMG.gymLifting, alt: "Man lifting weights in gym" },
+      { src: IMG.manRunning, alt: "Fit man running outdoors" },
+      { src: IMG.couplePartner, alt: "Happy couple outdoors together" },
+      { src: IMG.workoutSession, alt: "Man training with intensity" },
     ],
   },
   "endopeak24-lp2": {

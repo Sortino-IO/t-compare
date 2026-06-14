@@ -2,6 +2,7 @@ import { ERECPRIME_AFFILIATE_URL } from "./affiliate-links";
 import { CRITICAL_T_IMAGES } from "./critical-t-images";
 import { ENDOPEAK_LP1_IMAGES } from "./endopeak-lp1-images";
 import { ERECPRIME_LP1_IMAGES } from "./erecprime-lp1-images";
+import { LANDING_PAGES_CRITICAL_T_TOF } from "./landing-pages-critical-t-tof";
 import { LANDING_PAGES_LP2 } from "./landing-pages-lp2";
 import { LANDING_PAGES_NITRIC_BOOST } from "./landing-pages-nitric-boost";
 import { LANDING_PAGES_TEDPLANS } from "./landing-pages-tedplans";
@@ -131,7 +132,83 @@ export type LpProductMeta = {
 };
 
 export type LpLayoutVariant = "lp1" | "lp2";
-export type Lp2Style = "dtc" | "advertorial" | "bento";
+export type Lp2Style = "dtc" | "advertorial" | "bento" | "tof";
+
+export type LpTofPillar = {
+  badge: string;
+  title: string;
+  body: string;
+};
+
+export type LpTofBenefitBlock = {
+  title: string;
+  paragraphs: string[];
+  result: string;
+};
+
+export type LpTofCostItem = {
+  label: string;
+  price: string;
+};
+
+export type LpTofGuaranteeCard = {
+  title: string;
+  body: string;
+};
+
+export type LpTofCompareRow = {
+  label: string;
+  criticalT: string;
+  trt: string;
+  randomBooster: string;
+};
+
+export type LpTofConfig = {
+  offerBadge: string;
+  trustLine: string;
+  pricePerDay: string;
+  heroKicker: string;
+  pillars: LpTofPillar[];
+  researchQuote: { text: string; attribution: string };
+  declineSection: {
+    title: string;
+    statLine: string;
+    paragraphs: string[];
+    closingLines: string[];
+  };
+  sideEffectsHeadline: string;
+  sideEffectsSubhead: string;
+  benefitBlocks: LpTofBenefitBlock[];
+  featuredStory: {
+    title: string;
+    intro: string;
+    quote: string;
+    attribution: string;
+  };
+  visionTitle: string;
+  visionIntro: string;
+  visionBullets: string[];
+  visionClosing: string;
+  ingredientDeepTitle: string;
+  ingredientDeepIntro: string;
+  costStack: {
+    title: string;
+    subtitle: string;
+    items: LpTofCostItem[];
+    stackTotal: string;
+    productTotal: string;
+    productPerDay: string;
+    stackPerDay: string;
+  };
+  compareTitle: string;
+  compareRows: LpTofCompareRow[];
+  guaranteeCards: LpTofGuaranteeCard[];
+  ctaStrip: {
+    headline: string;
+    perks: string[];
+    buttonLabel: string;
+  };
+};
 
 export type LandingPageConfig = {
   slug: string;
@@ -173,6 +250,8 @@ export type LandingPageConfig = {
   /** Replaces lifestyle gallery grid (e.g. Magic Morning narrative) */
   storySection?: LpStorySection;
   pricingFunnel?: LpPricingFunnelConfig;
+  /** Long-form TOF / advertorial scroll (Mountain Drop style) */
+  tof?: LpTofConfig;
 };
 
 export const LANDING_PAGES_LP1: LandingPageConfig[] = [
@@ -869,6 +948,7 @@ export const LANDING_PAGES_LP1: LandingPageConfig[] = [
 export const LANDING_PAGES: LandingPageConfig[] = [
   ...LANDING_PAGES_LP1,
   ...LANDING_PAGES_LP2,
+  ...LANDING_PAGES_CRITICAL_T_TOF,
   ...LANDING_PAGES_NITRIC_BOOST,
   ...LANDING_PAGES_TEDPLANS,
 ];
