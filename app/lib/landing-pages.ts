@@ -172,8 +172,15 @@ export type LpTofConfig = {
   trustLine: string;
   pricePerDay: string;
   heroKicker: string;
+  /** Mountain Drop–style lead-in above the main headline */
+  heroPreheadline?: string;
+  /** Offer detail line under headline (e.g. BOGO + supply length) */
+  heroOfferLine?: string;
   pillars: LpTofPillar[];
+  researchSectionTitle?: string;
   researchQuote: { text: string; attribution: string };
+  testimonialsTitle?: string;
+  testimonialsSubtitle?: string;
   declineSection: {
     title: string;
     statLine: string;

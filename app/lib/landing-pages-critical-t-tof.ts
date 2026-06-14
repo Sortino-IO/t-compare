@@ -29,7 +29,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
     },
     urgencyHeadline: "LIMITED OFFER — BUY 1 GET 3 FREE ON 4-BOTTLE BUNDLE",
     heroHeadline:
-      "The Calibrated Natural Testosterone Stack Big Pharma Hopes You Never Discover",
+      "The 100% Natural Testosterone Stack That Supercharges Focus, Energy & Drive — The Pharmaceutical Giants Hope You Never Find It",
     heroSubheadline:
       "Critical T combines Tongkat Ali, DIM, and Acacetin in one two-capsule morning ritual — built to support healthy T signaling and estrogen balance without needles, clinics, or $500/mo TRT bills.",
     heroBullets: [
@@ -268,39 +268,50 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       trustLine: "⭐ 4.9/5 verified buyers · GMP-certified facility · 60-day guarantee",
       pricePerDay: "~$0.56/day",
       heroKicker: "LIMITED TIME OFFER",
+      heroPreheadline:
+        "Critical T Is Arguably The Greatest Natural Testosterone Breakthrough Of Our Generation:",
+      heroOfferLine: "Limited Time Offer: Buy 1 Get 3 Free on the 4-bottle bundle · 120-day supply",
       pillars: [
         {
           badge: "So Safe",
-          title: "Made In A US GMP-Certified Facility",
-          body: "Critical T is manufactured in a US facility registered with the FDA for dietary supplements. Two capsules daily — no needles, no prescriptions, no clinic visits.",
+          title: "Made In A US GMP-Certified Facility — Zero Needles, Zero Prescriptions",
+          body: "Critical T is manufactured in a US facility registered with the FDA for dietary supplements. Two capsules each morning — no clinic visits, no injections, no lifetime TRT contracts.",
         },
         {
           badge: "So Effective",
-          title: "You Can Actually Feel The Difference",
+          title: "You Can Actually FEEL The Difference — Not Just Read About It",
           body: "Tongkat Ali, DIM, and Acacetin target testosterone signaling and estrogen balance together — the dual-pathway gap most boosters ignore. Thousands of men plan a 60–90 day runway for a fair read.",
         },
         {
           badge: "So Affordable",
-          title: "Pennies A Day On Bulk Pricing",
-          body: "The Best Value bundle breaks down to roughly $0.56 per day — a fraction of TRT monthly costs and less than stacking three separate boutique ingredients yourself.",
+          title: "It's JUST PENNIES A Day On The Best Value Bundle",
+          body: "The 4-bottle Best Value tier breaks down to roughly $0.56 per day — a fraction of TRT monthly costs and less than stacking three separate boutique ingredients yourself.",
         },
       ],
+      researchSectionTitle:
+        "The Astonishing Testosterone Stack Thousands Of Grateful Men Are Testing Instead Of Random Boosters",
       researchQuote: {
         text: "Men searching for natural testosterone support often buy single-ingredient formulas that ignore estrogen metabolism. Critical T was built around the opposite idea: support natural T signaling and help process excess estrogen in the same daily stack — the same structure shown on the official Critical Nutrition Labs offer.",
         attribution: "— Men's supplement category analysis, T-Compare research desk",
       },
+      testimonialsTitle:
+        "Over Thousands Of Men Have Reclaimed Energy, Drive & Confidence Thanks To Critical T",
+      testimonialsSubtitle:
+        "Find out how men all over the world are ditching random Amazon boosters and $500/mo TRT bills — reclaiming their edge with a simple two-capsule morning ritual.",
       declineSection: {
-        title: "What Happened To Men?",
+        title: "What Happened To Men?!",
         statLine:
-          "Most men over 35 notice energy, drive, and recovery slipping — not because they stopped trying, but because hormones shift slowly until \"normal\" feels like surrender.",
+          "Studies show testosterone can decline roughly 1% per year after 30 — and over 40% of men over 45 report low energy, fading drive, and recovery that never quite bounces back.",
         paragraphs: [
           "The statistics are brutal. But they are not destiny.",
           "Most men slide. Energy drops. Drive fades. Performance dips. Then they accept it.",
           "That is how you become a statistic — negotiating with your alarm clock, skipping workouts, crashing on the couch by 8pm.",
+          "Seventy-two hours ago this was just another supplement ad. Now it's a line in the sand. No lifetime prescriptions. No chemical crutches. No quiet surrender.",
         ],
         closingLines: [
           "Three named actives. One morning decision.",
-          "You either drift into decline… or you fight back with a stack you can actually stick to.",
+          "You either drift into decline…",
+          "or you fight back and take control.",
         ],
       },
       sideEffectsHeadline: "Side Effects? Yes Please!",
