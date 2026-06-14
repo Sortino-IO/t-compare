@@ -190,6 +190,21 @@ export type LpTofConfig = {
   sideEffectsHeadline: string;
   sideEffectsSubhead: string;
   benefitBlocks: LpTofBenefitBlock[];
+  /** Trust badge row under hero (Mountain Drop style) */
+  trustBadges?: { icon: string; label: string }[];
+  /** Persistent CTA perk triple (Guarantee / BOGO / Shipping) */
+  ctaPerkTriple?: string[];
+  /** Story-driven transformation blocks with lifestyle images */
+  storyResults?: {
+    title: string;
+    mechanism: string;
+    quote: string;
+    attribution: string;
+    image: string;
+    imageAlt: string;
+  }[];
+  storyResultsTitle?: string;
+  storyResultsIntro?: string;
   featuredStory: {
     title: string;
     intro: string;

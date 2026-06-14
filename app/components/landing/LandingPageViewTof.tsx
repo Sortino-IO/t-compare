@@ -20,6 +20,7 @@ function TofCtaStrip({
   dark?: boolean;
 }) {
   const { theme } = config;
+  const perks = tof.ctaPerkTriple ?? tof.ctaStrip.perks;
   return (
     <section
       className={`py-12 sm:py-16 px-4 text-center ${dark ? "text-white" : ""}`}
@@ -27,13 +28,20 @@ function TofCtaStrip({
     >
       <div className="mx-auto max-w-4xl">
         <p
-          className="text-base sm:text-xl lg:text-2xl font-black uppercase tracking-wide mb-4 leading-snug"
+          className="text-base sm:text-xl lg:text-2xl font-black uppercase tracking-wide mb-6 leading-snug"
           style={{ color: dark ? theme.accent : theme.primary }}
         >
           {tof.ctaStrip.headline}
         </p>
-        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mb-8 text-sm sm:text-base font-bold">
-          {tof.ctaStrip.perks.map((p) => (
+        <LpCtaButton
+          ctaUrl={config.ctaUrl}
+          label={tof.ctaStrip.buttonLabel}
+          theme={theme}
+          size="xl"
+          className="w-full sm:w-auto min-w-[300px] !text-lg sm:!text-xl"
+        />
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-7 text-sm sm:text-base font-bold">
+          {perks.map((p) => (
             <span key={p} className="inline-flex items-center gap-2">
               <span className="text-lg" style={{ color: theme.accent }}>
                 ✔
@@ -42,13 +50,35 @@ function TofCtaStrip({
             </span>
           ))}
         </div>
-        <LpCtaButton
-          ctaUrl={config.ctaUrl}
-          label={tof.ctaStrip.buttonLabel}
-          theme={theme}
-          size="xl"
-          className="w-full sm:w-auto min-w-[300px] !text-lg sm:!text-xl"
-        />
+      </div>
+    </section>
+  );
+}
+
+function TofTrustBadges({
+  config,
+  tof,
+}: {
+  config: LandingPageConfig;
+  tof: NonNullable<LandingPageConfig["tof"]>;
+}) {
+  if (!tof.trustBadges?.length) return null;
+  const { theme } = config;
+  return (
+    <section className="bg-white border-b" style={{ borderColor: theme.border }}>
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-6 sm:py-8">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 sm:gap-6">
+          {tof.trustBadges.map((b) => (
+            <div key={b.label} className="flex flex-col items-center text-center gap-2">
+              <span className="text-2xl sm:text-3xl" aria-hidden>
+                {b.icon}
+              </span>
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wide leading-tight" style={{ color: theme.muted }}>
+                {b.label}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -147,6 +177,8 @@ export default function LandingPageViewTof({ config }: { config: LandingPageConf
           </p>
         </div>
       </header>
+
+      <TofTrustBadges config={config} tof={tof} />
 
       {/* Three pillars — full-width stacked (Mountain Drop style) */}
       <section className="divide-y" style={{ borderColor: theme.border }}>
@@ -252,6 +284,55 @@ export default function LandingPageViewTof({ config }: { config: LandingPageConf
         </div>
       </section>
 
+      {/* Transformation stories — alternating image/text (Mountain Drop signature) */}
+      {tof.storyResults?.length ? (
+        <section className="py-14 sm:py-20 bg-white">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <SectionTitle className="mb-4" style={{ color: theme.primary }}>
+              {tof.storyResultsTitle ?? "Real Transformation Stories"}
+            </SectionTitle>
+            {tof.storyResultsIntro ? (
+              <p className="text-center text-base sm:text-lg max-w-3xl mx-auto mb-12" style={{ color: theme.muted }}>
+                {tof.storyResultsIntro}
+              </p>
+            ) : null}
+            <div className="space-y-12 sm:space-y-16">
+              {tof.storyResults.map((story, i) => (
+                <article
+                  key={story.title}
+                  className={`grid lg:grid-cols-2 gap-8 sm:gap-10 items-center ${
+                    i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+                  }`}
+                >
+                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                    <Image src={story.image} alt={story.imageAlt} fill className="object-cover" sizes="50vw" />
+                  </div>
+                  <div>
+                    <h3 className="font-black text-xl sm:text-2xl lg:text-3xl mb-4 leading-snug" style={{ color: theme.primary }}>
+                      {story.title}
+                    </h3>
+                    <p className="text-base sm:text-lg leading-relaxed mb-5" style={{ color: theme.muted }}>
+                      {story.mechanism}
+                    </p>
+                    <blockquote
+                      className="rounded-2xl border-l-4 p-5 sm:p-6 text-base sm:text-lg leading-relaxed italic"
+                      style={{ borderColor: theme.accent, backgroundColor: theme.sectionBg, color: theme.text }}
+                    >
+                      &ldquo;{story.quote}&rdquo;
+                      <footer className="mt-4 not-italic text-sm font-bold" style={{ color: theme.muted }}>
+                        {story.attribution}
+                      </footer>
+                    </blockquote>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <TofCtaStrip config={config} tof={tof} dark />
+
       {/* Side effects you want */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
@@ -289,7 +370,7 @@ export default function LandingPageViewTof({ config }: { config: LandingPageConf
         </div>
       </section>
 
-      <TofCtaStrip config={config} tof={tof} dark />
+      <TofCtaStrip config={config} tof={tof} />
 
       {/* Featured story */}
       <section className="py-14 sm:py-20" style={{ backgroundColor: theme.sectionBg }}>

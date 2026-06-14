@@ -314,6 +314,50 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
           "or you fight back and take control.",
         ],
       },
+      trustBadges: [
+        { icon: "🇺🇸", label: "Made In The USA" },
+        { icon: "🏭", label: "GMP-Certified Facility" },
+        { icon: "🧪", label: "Third-Party Lab Tested" },
+        { icon: "🌿", label: "Non-GMO · Zero Fillers" },
+        { icon: "💊", label: "No Prescription Needed" },
+        { icon: "🛡️", label: "60-Day Guarantee" },
+      ],
+      ctaPerkTriple: ["60-Day Money-Back Guarantee", "Buy 1 Get 3 Free", "Fast & Free US Shipping"],
+      storyResultsTitle: "True Life-Changing Stories By The Men Who Lived Them",
+      storyResultsIntro:
+        "From flat energy and dead drive at 50, to training harder than they did at 35 — these are real reads men shared after giving Critical T a fair 60–90 day runway. (Verified purchaser feedback · results may vary.)",
+      storyResults: [
+        {
+          title: "Anatomy Of A Reclaimed Morning Drive",
+          mechanism:
+            "Low free testosterone quietly drains the motivation, confidence, and physical readiness men used to take for granted — and most boosters never touch the estrogen side that keeps free T flat.",
+          quote:
+            "I hadn't felt 'switched on' in the morning for years — my wife and I had basically become roommates. I started Critical T in the spring. By the second or third week I noticed it: I was waking up with energy and actual drive again, not dragging myself out of bed. My focus at work sharpened too. It honestly feels like I got a part of myself back.",
+          attribution: "— Jeroen V., 54, verified purchaser",
+          image: "/lp/man-confident.jpg",
+          imageAlt: "Confident man feeling renewed drive — Critical T daily support",
+        },
+        {
+          title: "Cuts Through The Afternoon Crash Better Than Coffee",
+          mechanism:
+            "When energy pathways run on empty, 2 PM brain fog and the desperate sugar-or-caffeine hit become 'normal.' Supporting healthy T signaling and estrogen balance changes the baseline you operate from.",
+          quote:
+            "I started Critical T just hoping for a little energy. I didn't expect much. But within a month the midday crash that plagued me for a decade simply… faded. I'm training four days a week again, recovering faster, and I'm not negotiating with my alarm clock every morning. Two capsules with my coffee — that's the whole routine.",
+          attribution: "— Anthony F., 46, verified purchaser",
+          image: "/lp/gym-lifting.jpg",
+          imageAlt: "Man training hard at the gym with steady energy — Critical T",
+        },
+        {
+          title: "Unrelenting Motivation & Focus Returned",
+          mechanism:
+            "Low testosterone doesn't just hit your body — it dulls your mind. Brain fog, weak decision-making, and that constant 'flat' feeling all track with declining T and rising estrogen drag.",
+          quote:
+            "The modern world beats men down into a low-energy, low-drive version of themselves — and Critical T helped me feel the opposite. The effects built over the first 60 days. I work with more focus and intensity than I have in years, and I feel like I can take on challenges that used to quietly scare me. It's like a fire I thought had gone out came back.",
+          attribution: "— Holden A., 41, verified purchaser",
+          image: "/lp/man-running.jpg",
+          imageAlt: "Energized man running outdoors with renewed motivation — Critical T",
+        },
+      ],
       sideEffectsHeadline: "Side Effects? Yes Please!",
       sideEffectsSubhead: "Critical T ONLY delivers side effects you want",
       benefitBlocks: [
