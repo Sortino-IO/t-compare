@@ -7,7 +7,7 @@ export const CRITICAL_T_IMAGES = {
   benefitsGlance: "/lp/endopeak-lp1-benefits-glance.png",
   story1: "/lp/erecprime-lp1-perform-1.png",
   story2: "/lp/erecprime-lp1-perform-2.png",
-  tongkatAli: "/lp/ingredient-tongkat.jpg",
-  dim: "/lp/ingredient-dim.jpg",
-  acacetin: "/lp/ingredient-acacetin.jpg",
+  tongkatAli: "/lp/endopeak-lp1-tongkat-ali.png",
+  dim: "/lp/ingredient-dim.png",
+  acacetin: "/lp/ingredient-acacetin.png",
 } as const;

@@ -103,6 +103,11 @@ function SectionTitle({
   );
 }
 
+/** Keep multi-word product names (e.g. "Critical T") from orphaning the last letter. */
+function keepBrandTogether(text: string): string {
+  return text.replace(/Critical T\b/g, "Critical\u00A0T");
+}
+
 export default function LandingPageViewTof({ config }: { config: LandingPageConfig }) {
   const { theme } = config;
   const tof = config.tof!;
@@ -143,7 +148,7 @@ export default function LandingPageViewTof({ config }: { config: LandingPageConf
               {tof.heroPreheadline}
             </p>
           ) : null}
-          <h1 className="lp-tof-display font-black mb-5 lp-headline-shadow">{config.heroHeadline}</h1>
+          <h1 className="lp-tof-display font-black mb-5 lp-headline-shadow">{keepBrandTogether(config.heroHeadline)}</h1>
           <p className="text-xl sm:text-2xl lg:text-3xl font-black mb-3" style={{ color: theme.accent }}>
             (And it&apos;s just {tof.pricePerDay})
           </p>
@@ -222,13 +227,59 @@ export default function LandingPageViewTof({ config }: { config: LandingPageConf
         </div>
       </section>
 
+      {/* Product showcase — the bundle (spreads page, reinforces offer) */}
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="relative aspect-square rounded-3xl overflow-hidden" style={{ backgroundColor: theme.sectionBg }}>
+            <Image
+              src={media.heroProductImage ?? "/lp/critical-t-bottles-4.png"}
+              alt={media.heroProductImageAlt ?? `${config.productName} bundle`}
+              fill
+              className="object-contain p-6 drop-shadow-2xl"
+              sizes="(max-width: 1024px) 90vw, 480px"
+            />
+            <span
+              className="absolute top-5 left-5 rounded-full px-4 py-2 text-xs sm:text-sm font-black uppercase tracking-wide shadow-lg"
+              style={{ backgroundColor: theme.accent, color: theme.accentText }}
+            >
+              {tof.offerBadge}
+            </span>
+          </div>
+          <div>
+            <SectionTitle className="text-left mb-5" style={{ color: theme.primary }}>
+              Meet Critical T — Your 2-Capsule Morning Stack
+            </SectionTitle>
+            <p className="text-base sm:text-lg leading-relaxed mb-7" style={{ color: theme.muted }}>
+              {tof.heroOfferLine ?? config.heroSubheadline}
+            </p>
+            <ul className="space-y-4 mb-8">
+              {config.heroBullets.map((b) => (
+                <li key={b} className="flex gap-3 text-base sm:text-lg">
+                  <span className="text-xl shrink-0" style={{ color: theme.accent }}>
+                    ✔
+                  </span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <LpCtaButton
+              ctaUrl={config.ctaUrl}
+              label={tof.ctaStrip.buttonLabel}
+              theme={theme}
+              size="xl"
+              className="w-full sm:w-auto min-w-[280px] !text-lg sm:!text-xl"
+            />
+          </div>
+        </div>
+      </section>
+
       <TofCtaStrip config={config} tof={tof} />
 
       {/* Testimonials grid */}
       <section className="py-14 sm:py-20" style={{ backgroundColor: theme.sectionBg }}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionTitle className="mb-4" style={{ color: theme.primary }}>
-            {tof.testimonialsTitle ?? "Real Critical T Users — Real Results"}
+            {keepBrandTogether(tof.testimonialsTitle ?? "Real Critical T Users — Real Results")}
           </SectionTitle>
           <p className="text-center text-base sm:text-lg max-w-3xl mx-auto mb-12" style={{ color: theme.muted }}>
             {tof.testimonialsSubtitle ?? "Verified purchaser feedback · * Results may vary"}
@@ -266,16 +317,16 @@ export default function LandingPageViewTof({ config }: { config: LandingPageConf
       <section className="py-16 sm:py-24 text-white" style={{ background: theme.heroBg }}>
         <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
           <h2 className="lp-tof-section-title font-black mb-8 uppercase">{tof.declineSection.title}</h2>
-          <p className="text-xl sm:text-2xl font-bold mb-8 leading-relaxed">{tof.declineSection.statLine}</p>
+          <p className="lp-balance text-xl sm:text-2xl font-bold mb-8 leading-relaxed">{tof.declineSection.statLine}</p>
           {tof.declineSection.paragraphs.map((p) => (
-            <p key={p.slice(0, 24)} className="text-base sm:text-lg lg:text-xl leading-relaxed mb-5 opacity-95">
+            <p key={p.slice(0, 24)} className="lp-balance text-base sm:text-lg lg:text-xl leading-relaxed mb-5 opacity-95">
               {p}
             </p>
           ))}
           {tof.declineSection.closingLines.map((line) => (
             <p
               key={line}
-              className="text-lg sm:text-xl lg:text-2xl font-black mt-5 leading-snug"
+              className="lp-balance text-lg sm:text-xl lg:text-2xl font-black mt-5 leading-snug"
               style={{ color: theme.accent }}
             >
               {line}
@@ -639,7 +690,7 @@ export default function LandingPageViewTof({ config }: { config: LandingPageConf
       {/* Final CTA — no countdown */}
       <section className="py-16 sm:py-24 text-center text-white" style={{ background: theme.heroBg }}>
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="lp-tof-section-title font-black mb-10">{config.finalCtaHeadline}</h2>
+          <h2 className="lp-tof-section-title font-black mb-10">{keepBrandTogether(config.finalCtaHeadline)}</h2>
           <LpCtaButton
             ctaUrl={config.ctaUrl}
             label={tof.ctaStrip.buttonLabel}

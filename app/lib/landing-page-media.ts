@@ -60,8 +60,11 @@ const IMG = {
   tedCutList: "/lp/ted-cut-list-clipboard.png",
 } as const;
 
-/** Male-presenting faces for supplement LPs (avoid mismatched stock portraits). */
-const SUPPLEMENT_AVATARS = [IMG.avatar2, IMG.avatar3, IMG.avatar4];
+/**
+ * Male-presenting faces for supplement LPs (avoid mismatched stock portraits).
+ * Mature men first (avatar-1 ≈45, avatar-3 ≈55) — Critical T targets 40+.
+ */
+const SUPPLEMENT_AVATARS = [IMG.avatar1, IMG.avatar3, IMG.avatar2, IMG.avatar4];
 const AVATARS = [IMG.avatar1, IMG.avatar2, IMG.avatar3, IMG.avatar4];
 
 export const LP_MEDIA: Record<string, LpMedia> = {
@@ -132,8 +135,8 @@ export const LP_MEDIA: Record<string, LpMedia> = {
     heroImageAlt: "Fit man training — Critical T vitality support",
     heroProductImage: "/lp/critical-t-bottles-4.png",
     heroProductImageAlt: "Critical T Best Value — 4 bottles",
-    splitImage: "/lp/endopeak-lp1-benefits-glance.png",
-    splitImageAlt: "Confident man at home — Critical T daily support",
+    splitImage: "/lp/critical-t-lifestyle-hero.png",
+    splitImageAlt: "Confident mature man enjoying life outdoors — Critical T daily support",
     gallery: [
       { src: IMG.gymLifting, alt: "Man lifting weights in gym" },
       { src: IMG.manRunning, alt: "Fit man running outdoors" },

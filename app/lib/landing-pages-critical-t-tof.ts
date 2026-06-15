@@ -87,6 +87,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       {
         name: "Marcus T.",
         location: "Colorado, USA",
+        avatarImage: "/lp/critical-t-face-2.png",
         quote:
           "I tried three Amazon boosters before Critical T. Week two is when I noticed more morning energy — I'm back to training four days a week without feeling wrecked the next day.",
         packageLabel: "90-day supply",
@@ -94,6 +95,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       {
         name: "Daniel R.",
         location: "Florida, USA",
+        avatarImage: "/lp/critical-t-face-1.png",
         quote:
           "Subscribe pricing made it a no-brainer to test. Sixty days in, my wife noticed before I did — more energy after work and I'm not crashing on the couch by 8pm.",
         packageLabel: "Subscribe & Save",
@@ -101,6 +103,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       {
         name: "Kevin L.",
         location: "Ohio, USA",
+        avatarImage: "/lp/critical-t-face-4.png",
         quote:
           "The bulk bundle math finally made sense. Lowest per-capsule cost on the 4-bottle tier — and the guarantee meant zero risk running the full trial.",
         packageLabel: "Best value bundle",
@@ -108,6 +111,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       {
         name: "James P.",
         location: "Texas, USA",
+        avatarImage: "/lp/critical-t-face-6.png",
         quote:
           "Two capsules with coffee every morning. No jitters, no afternoon crash — just steadier focus through long workdays and better sessions at the gym.",
         packageLabel: "Subscribe & Save",
@@ -115,6 +119,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       {
         name: "Robert M.",
         location: "Arizona, USA",
+        avatarImage: "/lp/critical-t-face-3.png",
         quote:
           "I was skeptical of another booster. Critical T's ingredient list is transparent — Tongkat, DIM, Acacetin with a clear role for each. That sold me more than the hype.",
         packageLabel: "90-day supply",
@@ -122,6 +127,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       {
         name: "Chris W.",
         location: "Georgia, USA",
+        avatarImage: "/lp/critical-t-face-8.png",
         quote:
           "Energy and drive improved gradually over the first month. By day 60 I felt like I had a fair read on whether it was working — and I ordered another bulk bundle.",
         packageLabel: "Best value bundle",
@@ -129,6 +135,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       {
         name: "Brian H.",
         location: "Michigan, USA",
+        avatarImage: "/lp/critical-t-face-5.png",
         quote:
           "TRT felt like overkill for where I was. Critical T gave me a structured OTC stack to test first — morning ritual, consistent dosing, no clinic visits.",
         packageLabel: "90-day supply",
@@ -136,6 +143,7 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
       {
         name: "Eric S.",
         location: "Washington, USA",
+        avatarImage: "/lp/critical-t-face-7.png",
         quote:
           "Recovery between workouts improved noticeably. I'm 47 and finally pushing harder without negotiating with my alarm clock every morning.",
         packageLabel: "Subscribe & Save",
@@ -334,8 +342,8 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
           quote:
             "I hadn't felt 'switched on' in the morning for years — my wife and I had basically become roommates. I started Critical T in the spring. By the second or third week I noticed it: I was waking up with energy and actual drive again, not dragging myself out of bed. My focus at work sharpened too. It honestly feels like I got a part of myself back.",
           attribution: "— Jeroen V., 54, verified purchaser",
-          image: "/lp/man-confident.jpg",
-          imageAlt: "Confident man feeling renewed drive — Critical T daily support",
+          image: "/lp/critical-t-story-1.png",
+          imageAlt: "Mature man waking up energized and stretching at home — Critical T morning drive",
         },
         {
           title: "Cuts Through The Afternoon Crash Better Than Coffee",
@@ -344,8 +352,8 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
           quote:
             "I started Critical T just hoping for a little energy. I didn't expect much. But within a month the midday crash that plagued me for a decade simply… faded. I'm training four days a week again, recovering faster, and I'm not negotiating with my alarm clock every morning. Two capsules with my coffee — that's the whole routine.",
           attribution: "— Anthony F., 46, verified purchaser",
-          image: "/lp/gym-lifting.jpg",
-          imageAlt: "Man training hard at the gym with steady energy — Critical T",
+          image: "/lp/critical-t-story-2.png",
+          imageAlt: "Fit man in his 40s training with dumbbells at the gym — Critical T steady energy",
         },
         {
           title: "Unrelenting Motivation & Focus Returned",
@@ -354,8 +362,8 @@ export const LANDING_PAGES_CRITICAL_T_TOF: LandingPageConfig[] = [
           quote:
             "The modern world beats men down into a low-energy, low-drive version of themselves — and Critical T helped me feel the opposite. The effects built over the first 60 days. I work with more focus and intensity than I have in years, and I feel like I can take on challenges that used to quietly scare me. It's like a fire I thought had gone out came back.",
           attribution: "— Holden A., 41, verified purchaser",
-          image: "/lp/man-running.jpg",
-          imageAlt: "Energized man running outdoors with renewed motivation — Critical T",
+          image: "/lp/critical-t-story-3.png",
+          imageAlt: "Focused mature man working with sharp clarity at the office — Critical T motivation",
         },
       ],
       sideEffectsHeadline: "Side Effects? Yes Please!",
