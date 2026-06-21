@@ -24,7 +24,7 @@ export interface BlogPost {
   content: BlogBlock[];
 }
 
-export const BLOG_POSTS_PER_PAGE = 4;
+export const BLOG_POSTS_PER_PAGE = 15;
 
 /** Always listed first on /blog (chronological sort applies to all other posts). */
 const PINNED_FIRST_SLUG = "how-ttime-cut-enclomiphene-costs";

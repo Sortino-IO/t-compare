@@ -43,7 +43,7 @@ export default async function BlogArchivePage({ searchParams }: Props) {
   const { posts, totalPages, currentPage, total } = getPostsPage(page);
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-12 sm:py-16">
+    <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
       <nav className="mb-10 flex items-center gap-2 text-sm text-[#b5b0a8]">
         <Link href="/" className="transition-colors hover:text-[#1c1917]">
           Home
@@ -67,7 +67,7 @@ export default async function BlogArchivePage({ searchParams }: Props) {
         <p className="mt-2 text-sm text-[#b5b0a8]">{total} articles</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
         {posts.map((post) => (
           <BlogCard key={post.slug} post={post} />
         ))}
