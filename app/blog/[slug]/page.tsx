@@ -93,7 +93,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
-  const featuredAbsolute = absoluteImageUrl(post.featuredImage);
   const metadataTitle =
     post.seoTitle && post.seoTitle.trim().length > 0
       ? post.seoTitle
@@ -119,20 +118,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: pageUrl,
       type: "article",
       publishedTime: post.publishedAt,
-      images: [
-        {
-          url: featuredAbsolute,
-          width: 1200,
-          height: 630,
-          alt: post.featuredImageAlt,
-        },
-      ],
+      modifiedTime: post.updatedAt ?? post.publishedAt,
     },
     twitter: {
       card: "summary_large_image",
       title: metadataTitle,
       description: metadataDescription,
-      images: [featuredAbsolute],
     },
   };
 }
@@ -166,6 +157,7 @@ export default async function BlogPostPage({ params }: Props) {
       headline: post.title,
       description: post.seoDescription,
       datePublished: post.publishedAt,
+      dateModified: post.updatedAt ?? post.publishedAt,
       url: pageUrl,
       image: absoluteImageUrl(post.featuredImage),
       author: {

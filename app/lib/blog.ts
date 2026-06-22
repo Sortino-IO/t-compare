@@ -19,6 +19,8 @@ export interface BlogPost {
   featuredImage: string;
   featuredImageAlt: string;
   publishedAt: string;
+  /** Optional last-updated date; falls back to publishedAt for sitemap + JSON-LD. */
+  updatedAt?: string;
   seoTitle: string;
   seoDescription: string;
   content: BlogBlock[];
