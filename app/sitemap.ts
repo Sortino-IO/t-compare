@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getBrandPairs, getBrandsByCategory } from "./lib/brands";
-import { getAllPosts } from "./lib/blog";
+import { getAllPosts, getPostsByTopic, getUsedTopicSlugs } from "./lib/blog";
+import { BLOG_TOPICS } from "./lib/blog-topics";
 import { discoverStaticAppRoutes } from "./lib/sitemap-routes";
 import { SITE_URL } from "./lib/site";
 
@@ -20,6 +21,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.75,
   }));
+
+  const topicEntries: MetadataRoute.Sitemap = getUsedTopicSlugs()
+    .filter((slug) => BLOG_TOPICS[slug])
+    .map((slug) => {
+      const posts = getPostsByTopic(slug);
+      const latest = posts.reduce<Date>((acc, p) => {
+        const d = new Date(p.updatedAt ?? p.publishedAt);
+        return d > acc ? d : acc;
+      }, new Date(0));
+      return {
+        url: `${SITE_URL}/blog/topics/${slug}`,
+        lastModified: latest,
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      };
+    });
 
   const brandEntries: MetadataRoute.Sitemap = [];
   const comparisonEntries: MetadataRoute.Sitemap = [];
@@ -73,6 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticEntries,
     ...blogEntries,
+    ...topicEntries,
     ...brandEntries,
     ...comparisonEntries,
   ];

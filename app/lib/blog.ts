@@ -21,6 +21,8 @@ export interface BlogPost {
   publishedAt: string;
   /** Optional last-updated date; falls back to publishedAt for sitemap + JSON-LD. */
   updatedAt?: string;
+  /** Topic slugs used to group posts into browsable hubs (e.g. "critical-t"). */
+  topics?: string[];
   seoTitle: string;
   seoDescription: string;
   content: BlogBlock[];
@@ -66,14 +68,44 @@ export function getPostsPage(page: number): {
   return { posts, totalPages, total, currentPage };
 }
 
-/** Related articles by recency (pinned ordering does not apply here). */
+/**
+ * Related articles, prioritizing posts that share a topic with the given post,
+ * then filling the rest by recency. Pinned ordering does not apply here.
+ */
 export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
   const all = postsData as BlogPost[];
-  return all
-    .filter((p) => p.slug !== slug)
+  const current = all.find((p) => p.slug === slug);
+  const currentTopics = new Set(current?.topics ?? []);
+
+  const byRecency = (a: BlogPost, b: BlogPost) =>
+    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+
+  const candidates = all.filter((p) => p.slug !== slug);
+  const sameTopic = candidates
+    .filter((p) => (p.topics ?? []).some((t) => currentTopics.has(t)))
+    .sort(byRecency);
+  const rest = candidates
+    .filter((p) => !sameTopic.includes(p))
+    .sort(byRecency);
+
+  return [...sameTopic, ...rest].slice(0, Math.max(1, limit));
+}
+
+/** All posts tagged with a topic slug, newest first. */
+export function getPostsByTopic(topic: string): BlogPost[] {
+  return (postsData as BlogPost[])
+    .filter((p) => (p.topics ?? []).includes(topic))
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    )
-    .slice(0, Math.max(1, limit));
+    );
+}
+
+/** Distinct topic slugs that are actually used by at least one post. */
+export function getUsedTopicSlugs(): string[] {
+  const set = new Set<string>();
+  for (const p of postsData as BlogPost[]) {
+    for (const t of p.topics ?? []) set.add(t);
+  }
+  return [...set];
 }

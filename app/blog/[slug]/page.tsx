@@ -7,6 +7,7 @@ import BlogContent from "../../components/BlogContent";
 import BlogPostRelated from "../../components/BlogPostRelated";
 import type { BlogBlock } from "../../lib/blog";
 import { getAllSlugs, getPostBySlug, getRelatedPosts } from "../../lib/blog";
+import { resolvePrimaryTopic } from "../../lib/blog-topics";
 import { SITE_URL } from "../../lib/site";
 
 function absoluteImageUrl(src: string): string {
@@ -252,7 +253,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         <div className="mx-auto max-w-5xl px-6">
-          <BlogContent blocks={post.content} />
+          <BlogContent blocks={post.content} cta={resolvePrimaryTopic(post.topics)?.cta} />
         </div>
 
         <div className="mx-auto max-w-5xl px-6">

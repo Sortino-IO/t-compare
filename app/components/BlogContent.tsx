@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { BlogBlock, ParagraphSegment } from "../lib/blog";
 import { createLinkifyCounters, linkifyPlainText, type LinkifyCounters } from "../lib/blog-linkify";
 import { withTtimeAffiliateParams } from "../lib/affiliate-links";
-import BlogComparisonBanner from "./BlogComparisonBanner";
+import BlogComparisonBanner, { type BannerCta } from "./BlogComparisonBanner";
 
 function isExternalHref(href: string): boolean {
   return href.startsWith("https://") || href.startsWith("http://");
@@ -166,7 +166,13 @@ function findMidBannerInsertIndex(blocks: BlogBlock[]): number {
   return mid;
 }
 
-export default function BlogContent({ blocks }: { blocks: BlogBlock[] }) {
+export default function BlogContent({
+  blocks,
+  cta,
+}: {
+  blocks: BlogBlock[];
+  cta?: BannerCta;
+}) {
   const ctx: RenderCtx = { seenFirstH2: false, linkify: createLinkifyCounters() };
   const n = blocks.length;
   const mid = findMidBannerInsertIndex(blocks);
@@ -176,10 +182,10 @@ export default function BlogContent({ blocks }: { blocks: BlogBlock[] }) {
 
   for (let i = 0; i < n; i++) {
     if (mid !== -1 && i === mid) {
-      nodes.push(<BlogComparisonBanner key={`compare-mid-${i}`} />);
+      nodes.push(<BlogComparisonBanner key={`compare-mid-${i}`} cta={cta} />);
     }
     if (blocks[i].type === "disclaimer" && !endBannerPlaced) {
-      nodes.push(<BlogComparisonBanner key="compare-end" variant="end" />);
+      nodes.push(<BlogComparisonBanner key="compare-end" variant="end" cta={cta} />);
       endBannerPlaced = true;
     }
     const el = renderBlock(blocks[i], i, ctx);
@@ -187,7 +193,7 @@ export default function BlogContent({ blocks }: { blocks: BlogBlock[] }) {
   }
 
   if (n > 0 && !endBannerPlaced) {
-    nodes.push(<BlogComparisonBanner key="compare-end" variant="end" />);
+    nodes.push(<BlogComparisonBanner key="compare-end" variant="end" cta={cta} />);
   }
 
   return <div className="mx-auto max-w-3xl">{nodes}</div>;

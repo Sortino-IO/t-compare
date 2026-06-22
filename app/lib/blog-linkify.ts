@@ -7,6 +7,7 @@ export type LinkifyCounters = {
   testosterone: number;
   comparisons: number;
   hypogonadism: number;
+  criticalt: number;
 };
 
 export function createLinkifyCounters(): LinkifyCounters {
@@ -16,6 +17,7 @@ export function createLinkifyCounters(): LinkifyCounters {
     testosterone: 0,
     comparisons: 0,
     hypogonadism: 0,
+    criticalt: 0,
   };
 }
 
@@ -58,6 +60,12 @@ const RULES: Rule[] = [
     pattern: /\bhypogonadism\b/gi,
     href: "https://medlineplus.gov/ency/article/003707.htm",
     external: true,
+  },
+  {
+    key: "criticalt",
+    max: 2,
+    pattern: /\bCritical T\b/g,
+    href: "/t-supplements/critical-t",
   },
 ];
 

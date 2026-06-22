@@ -1,12 +1,34 @@
 import Link from "next/link";
 
-const COMPARE_PATH = "/testosterone/enclomiphene";
+const DEFAULT_CTA = {
+  eyebrow: "Compare providers",
+  title: "Visit our enclomiphene comparison page",
+  body: "Review pricing, onboarding, and program details side by side, then choose the option that fits you best.",
+  buttonLabel: "Open comparison page",
+  href: "/testosterone/enclomiphene",
+};
 
-export default function BlogComparisonBanner({ variant = "inline" }: { variant?: "inline" | "end" }) {
+export type BannerCta = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  buttonLabel: string;
+  href: string;
+};
+
+export default function BlogComparisonBanner({
+  variant = "inline",
+  cta,
+}: {
+  variant?: "inline" | "end";
+  cta?: BannerCta;
+}) {
   const margin =
     variant === "end"
       ? "mt-12 sm:mt-14 mb-2"
       : "my-12 sm:my-14";
+
+  const c = cta ?? DEFAULT_CTA;
 
   return (
     <aside
@@ -18,19 +40,19 @@ export default function BlogComparisonBanner({ variant = "inline" }: { variant?:
       />
       <div className="relative">
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6daa87]">
-          Compare providers
+          {c.eyebrow}
         </p>
         <p className="mt-3 font-[family-name:var(--font-playfair)] text-xl font-semibold leading-snug text-[#1c1917] sm:text-2xl">
-          Visit our enclomiphene comparison page
+          {c.title}
         </p>
         <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#57534e] sm:text-base">
-          Review pricing, onboarding, and program details side by side, then choose the option that fits you best.
+          {c.body}
         </p>
         <Link
-          href={COMPARE_PATH}
+          href={c.href}
           className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#2a6e47] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
         >
-          Open comparison page
+          {c.buttonLabel}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
             <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

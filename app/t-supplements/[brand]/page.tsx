@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import BrandSourceLinks from "../../components/BrandSourceLinks";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
+import { getPostsByTopic } from "../../lib/blog";
+import { getBlogTopic } from "../../lib/blog-topics";
 import {
   BRAND_CATEGORY_CONFIG,
   getBrandBySlug,
@@ -63,6 +65,10 @@ export default async function TSupplementBrandPage({ params }: Props) {
   const config = BRAND_CATEGORY_CONFIG.supplement;
   const categoryPath = getCategoryIndexPath("supplement");
   const pageUrl = `${SITE_URL}/t-supplements/${brand.slug}`;
+
+  // If this brand has a matching blog topic hub, surface its guides for internal linking.
+  const brandTopic = getBlogTopic(brand.slug);
+  const topicPosts = brandTopic ? getPostsByTopic(brand.slug).slice(0, 8) : [];
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -183,6 +189,33 @@ export default async function TSupplementBrandPage({ params }: Props) {
                     </details>
                   ))}
                 </div>
+              </section>
+            ) : null}
+
+            {brandTopic && topicPosts.length > 0 ? (
+              <section className="mt-10 max-w-2xl">
+                <h2 className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-5">
+                  {brand.name} guides
+                </h2>
+                <ul className="flex flex-col divide-y divide-[#f0ece4] rounded-xl border border-[#e3dfd6] bg-white shadow-sm">
+                  {topicPosts.map((post) => (
+                    <li key={post.slug}>
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="flex items-start gap-3 px-4 py-3 text-sm text-[#44403c] transition-colors hover:bg-[#faf9f6] hover:text-[#1c1917]"
+                      >
+                        <span className="mt-0.5 shrink-0 text-[#2a6e47]">→</span>
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={`/blog/topics/${brandTopic.slug}`}
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#2a6e47] transition-colors hover:text-[#1c1917]"
+                >
+                  See all {brand.name} guides →
+                </Link>
               </section>
             ) : null}
 
