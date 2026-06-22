@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import BlogArticleTrust from "../../components/BlogArticleTrust";
 import BlogContent from "../../components/BlogContent";
 import BlogPostRelated from "../../components/BlogPostRelated";
+import type { BlogBlock } from "../../lib/blog";
 import { getAllSlugs, getPostBySlug, getRelatedPosts } from "../../lib/blog";
 import { SITE_URL } from "../../lib/site";
 
@@ -12,6 +13,67 @@ function absoluteImageUrl(src: string): string {
   if (src.startsWith("https://") || src.startsWith("http://")) return src;
   const path = src.startsWith("/") ? src : `/${src}`;
   return `${SITE_URL}${path}`;
+}
+
+/** Flatten a paragraph block (plain text or segmented) into a single string. */
+function paragraphToPlainText(block: BlogBlock): string {
+  if (block.type !== "paragraph") return "";
+  if ("text" in block) return block.text;
+  return block.segments
+    .map((seg) => (seg.type === "text" ? seg.text : seg.label))
+    .join("");
+}
+
+/**
+ * Extract Q&A pairs from a content array. A FAQ section starts at a level-2
+ * heading whose text is "FAQ"; each subsequent level-3 heading is a question
+ * and the paragraphs that follow (until the next heading/disclaimer) are its
+ * answer. Returns an empty array when no FAQ section is present.
+ */
+function extractFaq(blocks: BlogBlock[]): { question: string; answer: string }[] {
+  const faqs: { question: string; answer: string }[] = [];
+  let inFaq = false;
+  let current: { question: string; answer: string[] } | null = null;
+
+  const flush = () => {
+    if (current && current.answer.length > 0) {
+      faqs.push({ question: current.question, answer: current.answer.join(" ") });
+    }
+    current = null;
+  };
+
+  for (const block of blocks) {
+    if (block.type === "heading" && block.level !== 3) {
+      const isFaqStart = block.text.trim().toLowerCase() === "faq";
+      if (isFaqStart) {
+        flush();
+        inFaq = true;
+        continue;
+      }
+      // A non-FAQ level-2 heading ends the FAQ section.
+      flush();
+      inFaq = false;
+      continue;
+    }
+    if (!inFaq) continue;
+
+    if (block.type === "heading" && block.level === 3) {
+      flush();
+      current = { question: block.text.trim(), answer: [] };
+      continue;
+    }
+    if (block.type === "paragraph" && current) {
+      const text = paragraphToPlainText(block).trim();
+      if (text) current.answer.push(text);
+      continue;
+    }
+    if (block.type === "disclaimer") {
+      flush();
+      inFaq = false;
+    }
+  }
+  flush();
+  return faqs;
 }
 
 type Props = {
@@ -32,15 +94,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
   const featuredAbsolute = absoluteImageUrl(post.featuredImage);
-  const metadataTitle = `${post.title} | T-Compare`;
+  const metadataTitle =
+    post.seoTitle && post.seoTitle.trim().length > 0
+      ? post.seoTitle
+      : `${post.title} | T-Compare`;
   const metadataDescription =
-    post.excerpt.length > 155 ? `${post.excerpt.slice(0, 152).trimEnd()}...` : post.excerpt;
+    post.seoDescription && post.seoDescription.trim().length > 0
+      ? post.seoDescription
+      : post.excerpt.length > 155
+        ? `${post.excerpt.slice(0, 152).trimEnd()}...`
+        : post.excerpt;
 
   return {
     title: {
       absolute: metadataTitle,
     },
     description: metadataDescription,
+    alternates: {
+      canonical: pageUrl,
+    },
     openGraph: {
       title: metadataTitle,
       description: metadataDescription,
@@ -86,31 +158,62 @@ export default async function BlogPostPage({ params }: Props) {
   const related = getRelatedPosts(post.slug, 3);
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.seoDescription,
-    datePublished: post.publishedAt,
-    url: pageUrl,
-    image: absoluteImageUrl(post.featuredImage),
-    author: {
-      "@type": "Organization",
-      name: "T-Compare",
+
+  const jsonLd: Record<string, unknown>[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.seoDescription,
+      datePublished: post.publishedAt,
+      url: pageUrl,
+      image: absoluteImageUrl(post.featuredImage),
+      author: {
+        "@type": "Organization",
+        name: "T-Compare",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "T-Compare",
+        url: SITE_URL,
+      },
     },
-    publisher: {
-      "@type": "Organization",
-      name: "T-Compare",
-      url: SITE_URL,
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+        { "@type": "ListItem", position: 3, name: post.title, item: pageUrl },
+      ],
     },
-  };
+  ];
+
+  const faqs = extractFaq(post.content);
+  if (faqs.length > 0) {
+    jsonLd.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    });
+  }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {jsonLd.map((block, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+        />
+      ))}
 
       <article className="pb-16 sm:pb-24">
         <div className="border-b border-[#e3dfd6] bg-[#faf9f6]">
