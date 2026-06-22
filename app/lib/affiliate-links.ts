@@ -21,14 +21,20 @@ export const NITRIC_BOOST_AFFILIATE_URL =
 
 const BLOG_AFFILIATE_QUERY = "traffic_source=blog&traffic_type=paid&campaign=t-compare";
 
+/** Canonical Critical T hop link with on-site (organic) segmentation query. */
+const CRITICAL_T_BLOG_URL =
+  `https://8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`;
+
 const CLICKBANK_AFFILIATE_BY_HOST: Record<string, string> = {
   "erecprime24.com": ERECPRIME_AFFILIATE_URL,
   "www.erecprime24.com": ERECPRIME_AFFILIATE_URL,
   "af3f4qzpqenm3wfb1cff-atz7n.hop.clickbank.net": ERECPRIME_AFFILIATE_URL,
   "accd7grbpfnm6m186ded0bo9dw.hop.clickbank.net": ERECPRIME_AFFILIATE_URL,
-  "www.criticaltboost.com": `https://8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`,
-  "criticaltboost.com": `https://8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`,
-  "8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net": CRITICAL_T_AFFILIATE_URL,
+  "www.criticaltboost.com": CRITICAL_T_BLOG_URL,
+  "criticaltboost.com": CRITICAL_T_BLOG_URL,
+  "8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net": CRITICAL_T_BLOG_URL,
+  // Legacy/incorrect Critical T hop link — rewrite to the correct one so no clicks are lost.
+  "9dcacr3eqbms0qez2408eyse51.hop.clickbank.net": CRITICAL_T_BLOG_URL,
   "heroichustle.com": `https://b0d9bkvcsibq9yawuhqvyty0tn.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`,
   "endopeak24.com": `https://42ad2cskk5msam5atc1eq2ur5a.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`,
   "getnitricboost.com": `https://getnitricboost.com/?${BLOG_AFFILIATE_QUERY}`,
