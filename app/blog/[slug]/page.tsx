@@ -147,7 +147,8 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound();
 
-  const related = getRelatedPosts(post.slug, 3);
+  const primaryTopic = resolvePrimaryTopic(post.topics);
+  const related = getRelatedPosts(post.slug, primaryTopic ? 4 : 3);
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
 
@@ -253,12 +254,12 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         <div className="mx-auto max-w-5xl px-6">
-          <BlogContent blocks={post.content} cta={resolvePrimaryTopic(post.topics)?.cta} />
+          <BlogContent blocks={post.content} cta={primaryTopic?.cta} />
         </div>
 
         <div className="mx-auto max-w-5xl px-6">
           <BlogArticleTrust />
-          <BlogPostRelated posts={related} />
+          <BlogPostRelated posts={related} topic={primaryTopic} />
         </div>
 
         <div className="mx-auto mt-16 max-w-3xl border-t border-[#e3dfd6] px-6 pt-10 text-center">

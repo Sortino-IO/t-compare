@@ -25,6 +25,8 @@ export type BlogTopic = {
   seoDescription: string;
   /** Optional CTA banner shown inside posts tagged with this topic. */
   cta?: BlogTopicCta;
+  /** Optional ordered "start here" slugs surfaced at the top of the hub. */
+  cornerstoneSlugs?: string[];
 };
 
 export const BLOG_TOPICS: Record<string, BlogTopic> = {
@@ -44,6 +46,12 @@ export const BLOG_TOPICS: Record<string, BlogTopic> = {
       buttonLabel: "View Critical T details",
       href: "/t-supplements/critical-t",
     },
+    cornerstoneSlugs: [
+      "critical-t-review-2026",
+      "critical-t-ingredients-explained",
+      "does-critical-t-work",
+      "critical-t-price-where-to-buy",
+    ],
   },
 };
 

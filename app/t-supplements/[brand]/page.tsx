@@ -156,6 +156,24 @@ export default async function TSupplementBrandPage({ params }: Props) {
               Visit {brand.name}
             </a>
 
+            <dl className="mt-8 grid gap-3 sm:grid-cols-3">
+              {[
+                { label: config.whyLabels.onboarding, value: brand.why.onboarding },
+                { label: config.whyLabels.pricing, value: brand.why.pricing },
+                { label: config.whyLabels.positioning, value: brand.why.positioning },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl border border-[#e3dfd6] bg-white px-5 py-4 shadow-sm"
+                >
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#a8a29e]">
+                    {item.label}
+                  </dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-[#44403c]">{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+
             {brand.ctaBelowParagraphs.length > 0 ? (
               <section className="mt-8 max-w-2xl">
                 <h2 className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-4">
@@ -219,6 +237,26 @@ export default async function TSupplementBrandPage({ params }: Props) {
               </section>
             ) : null}
 
+            <section className="mt-10 max-w-2xl overflow-hidden rounded-3xl border border-[#c6e0d0] bg-[#f3f8f4] px-7 py-7 sm:px-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2a6e47]">
+                Ready to decide?
+              </p>
+              <h2 className="mt-2 font-[family-name:var(--font-playfair)] text-xl font-semibold text-[#1c1917] sm:text-2xl">
+                Check current {brand.name} pricing &amp; the live offer
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-[#57534e]">
+                Promos and bundle totals change often. Confirm the latest price and guarantee terms on the official checkout before you order.
+              </p>
+              <a
+                href={withTtimeAffiliateParams(brand.affiliateUrl)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center justify-center rounded-xl bg-[#2a6e47] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
+              >
+                Visit {brand.name}
+              </a>
+            </section>
+
             <details className="mt-8 group">
               <summary className="cursor-pointer list-none flex items-center gap-1.5 text-xs font-medium text-[#b5b0a8] hover:text-[#78716c] transition-colors select-none">
                 <svg
@@ -241,7 +279,7 @@ export default async function TSupplementBrandPage({ params }: Props) {
           </div>
 
           <div>
-            <div className="rounded-2xl bg-white border border-[#e3dfd6] p-7 shadow-sm">
+            <div className="rounded-2xl bg-white border border-[#e3dfd6] p-7 shadow-sm lg:sticky lg:top-24">
               <p className="text-[11px] font-semibold tracking-[0.2em] text-[#b5b0a8] uppercase mb-5">Starting price</p>
               <div className="flex items-baseline gap-1 mb-4">
                 <span className="font-[family-name:var(--font-playfair)] text-5xl font-bold text-[#2a6e47] tabular-nums leading-none">
@@ -250,6 +288,21 @@ export default async function TSupplementBrandPage({ params }: Props) {
                 <span className="text-base text-[#78716c]">/mo</span>
               </div>
               <p className="text-xs text-[#44403c] leading-relaxed">{brand.priceLabel}</p>
+
+              <a
+                href={withTtimeAffiliateParams(brand.affiliateUrl)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 flex w-full items-center justify-center rounded-xl bg-[#2a6e47] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
+              >
+                Visit {brand.name}
+              </a>
+              <p className="mt-3 flex items-center gap-2 text-xs text-[#78716c]">
+                <span className="text-[#2a6e47]" aria-hidden>
+                  ✓
+                </span>
+                {brand.why.onboarding}
+              </p>
             </div>
           </div>
         </div>
