@@ -168,8 +168,8 @@ export default function HomeLanding() {
       <section className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#e3dfd6]">
         <SectionHeader
           eyebrow="Head-to-head"
-          title="Supplement comparisons"
-          intro="Supplement funnels often hide the real cost behind multi-bottle bundles. These comparisons normalize price, guarantee length, and ingredients so you can pick the better value before checkout."
+          title="Testosterone Supplement comparisons"
+          intro="Testosterone Supplement funnels often hide the real cost behind multi-bottle bundles. These comparisons normalize price, guarantee length, and ingredients so you can pick the better value before checkout."
         />
 
         <ComparisonPairsGrid pairs={suppPairs} />
