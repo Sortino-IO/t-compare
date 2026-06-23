@@ -75,7 +75,7 @@ export default async function TSupplementBrandPage({ params }: Props) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "T-Supplements", item: `${SITE_URL}${categoryPath}` },
+      { "@type": "ListItem", position: 2, name: "Testosterone Supplements", item: `${SITE_URL}${categoryPath}` },
       { "@type": "ListItem", position: 3, name: brand.name, item: pageUrl },
     ],
   };
@@ -98,7 +98,7 @@ export default async function TSupplementBrandPage({ params }: Props) {
           <Link href="/" className="hover:text-[#1c1917] transition-colors">Home</Link>
           <span>/</span>
           <Link href={categoryPath} className="hover:text-[#1c1917] transition-colors">
-            T-Supplements
+            Testosterone Supplements
           </Link>
           <span>/</span>
           <span className="text-[#78716c]">{brand.name}</span>
@@ -309,7 +309,7 @@ export default async function TSupplementBrandPage({ params }: Props) {
 
         <div className="mt-12 pt-8 border-t border-[#e3dfd6]">
           <Link href={categoryPath} className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
-            ← Back to T-Supplements
+            ← Back to Testosterone Supplements
           </Link>
         </div>
       </div>

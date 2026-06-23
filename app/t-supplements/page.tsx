@@ -73,7 +73,7 @@ export default function TSupplementsPage() {
 
         <div className="mb-4 flex items-center justify-between">
           <h2 className="font-[family-name:var(--font-playfair)] text-xl sm:text-2xl font-semibold text-[#1c1917]">
-            T-Supplements
+            Testosterone Supplements
           </h2>
           <span className="text-sm text-[#b5b0a8]">{brands.length} listed</span>
         </div>
@@ -94,7 +94,7 @@ export default function TSupplementsPage() {
             href="/t-supplements/comparisons"
             className="text-sm font-medium text-[#2a6e47] hover:underline"
           >
-            View head-to-head T-Supplements comparisons →
+            View head-to-head Testosterone Supplement comparisons →
           </Link>
         </p>
       </div>

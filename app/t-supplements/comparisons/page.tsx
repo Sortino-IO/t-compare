@@ -7,11 +7,11 @@ import { SITE_URL } from "../../lib/site";
 const PAGE_URL = `${SITE_URL}/t-supplements/comparisons`;
 
 export const metadata: Metadata = {
-  title: "T-Supplements Comparisons: Price, Bulk & Guarantees",
+  title: "Testosterone Supplement Comparisons: Price, Bulk & Guarantees",
   description:
     "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
   openGraph: {
-    title: "T-Supplements Comparisons: Price, Bulk & Guarantees | T-Compare",
+    title: "Testosterone Supplement Comparisons: Price, Bulk & Guarantees | T-Compare",
     description:
       "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
     url: PAGE_URL,
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
         url: "/t-supplements/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "T-Supplements Comparisons",
+        alt: "Testosterone Supplement Comparisons",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "T-Supplements Comparisons: Price, Bulk & Guarantees | T-Compare",
+    title: "Testosterone Supplement Comparisons: Price, Bulk & Guarantees | T-Compare",
     description:
       "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
     images: ["/t-supplements/opengraph-image"],
@@ -49,14 +49,14 @@ export default function TSupplementsComparisonsPage() {
           </Link>
           <span>/</span>
           <Link href="/t-supplements" className="hover:text-[#1c1917] transition-colors">
-            T-Supplements
+            Testosterone Supplements
           </Link>
           <span>/</span>
           <span className="text-[#78716c]">Comparisons</span>
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-[#1c1917] font-[family-name:var(--font-playfair)]">
-          T-Supplements Comparisons
+          Testosterone Supplement Comparisons
         </h1>
         <p className="mt-3 text-sm sm:text-base text-[#57534e] max-w-3xl leading-relaxed">
           OTC booster funnels often hide the real cost behind multi-bottle bundles.
@@ -104,7 +104,7 @@ export default function TSupplementsComparisonsPage() {
 
         <p className="mt-10 text-center">
           <Link href="/t-supplements" className="text-sm font-medium text-[#2a6e47] hover:underline">
-            ← Back to all T-Supplements
+            ← Back to all Testosterone Supplements
           </Link>
         </p>
       </div>
