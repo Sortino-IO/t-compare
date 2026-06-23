@@ -47,10 +47,12 @@ export default function BrandCard({ brand, highlight = false }: BrandCardProps) 
           <span className="text-[9px] sm:text-[11px] font-semibold text-[#6daa87] tracking-widest uppercase">
             From
           </span>
-          <span className="font-[family-name:var(--font-playfair)] text-[1.6rem] sm:text-[2.6rem] font-bold text-[#2a6e47] tabular-nums leading-none">
-            ${brand.priceFromMonthly}
-          </span>
-          <span className="text-[11px] sm:text-sm text-[#a8a29e]">/mo</span>
+          <div className="flex items-baseline gap-0.5">
+            <span className="font-[family-name:var(--font-playfair)] text-[1.6rem] sm:text-[2.6rem] font-bold text-[#2a6e47] tabular-nums leading-none">
+              ${brand.priceFromMonthly}
+            </span>
+            <span className="text-[11px] sm:text-sm text-[#a8a29e]">/mo</span>
+          </div>
         </div>
       </Link>
 

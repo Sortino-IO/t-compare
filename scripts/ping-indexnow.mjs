@@ -10,7 +10,7 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const SITE_URL = "https://www.t-compare.com";
-const KEY = "76720b3b006c4b5d26c39230025ae665";
+const KEY = "28a3b57c4bf84d6d8433296f0e7696f8";
 const KEY_LOCATION = `${SITE_URL}/${KEY}.txt`;
 
 // Read sitemap and extract URLs
