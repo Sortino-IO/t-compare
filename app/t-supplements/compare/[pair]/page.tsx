@@ -116,6 +116,57 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
 
   const [a, b] = [leftBrand, rightBrand].sort(byName);
 
+  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
+
+  const faqs = [
+    {
+      question: `Does this page pick a "winner" between ${a.name} and ${b.name}?`,
+      answer:
+        "No. It summarizes publicly framed pricing, bulk tiers, and guarantee language so you can compare honestly. Results vary by individual health, adherence, and expectations—not brand logos.",
+    },
+    {
+      question: "What is the biggest mistake when comparing supplement prices?",
+      answer:
+        "Stopping at the single-bottle headline. Many funnels require multi-bottle bundles to unlock the advertised per-bottle rate. Normalize both brands to the same package size and include shipping before you decide.",
+    },
+    {
+      question: "Where should I verify the numbers?",
+      answer:
+        "On each brand's official checkout page the day you buy. Promotions, bundle requirements, and guarantee terms change frequently; stale comparison tables are unreliable.",
+    },
+    {
+      question:
+        "Common misconception: do testosterone boosters treat clinically low testosterone?",
+      answer:
+        "OTC supplements are not FDA-approved to diagnose or treat hypogonadism. If you have symptoms or abnormal labs, talk to a clinician before relying on booster funnels instead of medical evaluation.",
+    },
+    {
+      question: "What should I check before paying?",
+      answer:
+        "Confirm the money-back guarantee window, whether you must return unused bottles, shipping costs on your bundle size, and the full ingredient list for allergens or medication interactions.",
+    },
+  ];
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Testosterone Supplement Comparisons", item: `${SITE_URL}${COMPARISONS_INDEX}` },
+      { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: canonicalUrl },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
   const pairExtras = getPairComparisonExtras(canonicalPairSlug);
 
   const rows: ComparisonRow[] = [
@@ -154,6 +205,14 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
 
   return (
     <div className="bg-[#f5f3ee]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>
@@ -268,52 +327,12 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
             on official sites before checkout.
           </p>
           <dl className="mt-6 space-y-6">
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Does this page pick a “winner” between {a.name} and {b.name}?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                No. It summarizes publicly framed pricing, bulk tiers, and guarantee language so you can compare
-                honestly. Results vary by individual health, adherence, and expectations—not brand logos.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                What is the biggest mistake when comparing supplement prices?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Stopping at the single-bottle headline. Many funnels require multi-bottle bundles to unlock the
-                advertised per-bottle rate. Normalize both brands to the same package size and include shipping
-                before you decide.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Where should I verify the numbers?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                On each brand’s official checkout page the day you buy. Promotions, bundle requirements, and guarantee
-                terms change frequently; stale comparison tables are unreliable.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Common misconception: do testosterone boosters treat clinically low testosterone?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                OTC supplements are not FDA-approved to diagnose or treat hypogonadism. If you have symptoms or
-                abnormal labs, talk to a clinician before relying on booster funnels instead of medical evaluation.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                What should I check before paying?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Confirm the money-back guarantee window, whether you must return unused bottles, shipping costs on
-                your bundle size, and the full ingredient list for allergens or medication interactions.
-              </dd>
-            </div>
+            {faqs.map((faq) => (
+              <div key={faq.question}>
+                <dt className="text-sm font-semibold text-[#1c1917]">{faq.question}</dt>
+                <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">{faq.answer}</dd>
+              </div>
+            ))}
           </dl>
         </section>
       </div>

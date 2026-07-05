@@ -125,6 +125,57 @@ export default async function ComparePairPage({ params }: PageProps) {
 
   const [a, b] = [leftBrand, rightBrand].sort(byName);
 
+  const canonicalUrl = `${SITE_URL}/compare/${canonicalPairSlug}`;
+
+  const faqs = [
+    {
+      question: `Does this page pick a "winner" between ${a.name} and ${b.name}?`,
+      answer:
+        "No. It summarizes publicly framed pricing and onboarding language so you can ask sharper questions. Outcomes depend on diagnosis, monitoring, and adherence—not logos.",
+    },
+    {
+      question: "What is the biggest mistake when comparing monthly prices?",
+      answer:
+        "Ignoring plan length and lab cadence. Normalize both brands to the same time horizon (for example 90 days) and include shipping, kits, and repeat labs when advertised separately.",
+    },
+    {
+      question: "Where should I verify the numbers?",
+      answer:
+        "Use each provider's official checkout or FAQ pages for your state on the day you enroll. This snapshot can drift when promotions or regulations change.",
+    },
+    {
+      question:
+        "Common misconception: if two brands list testosterone, are they the same therapy?",
+      answer:
+        "Not necessarily. Enclomiphene-first programs and injectable TRT carry different monitoring expectations and risks. Your clinician helps match therapy class to labs and goals.",
+    },
+    {
+      question: "What should I ask before paying?",
+      answer:
+        "Ask what is included if your dose changes, what labs repeat and when, and how urgent symptoms are triaged after hours.",
+    },
+  ];
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Comparisons", item: `${SITE_URL}/comparisons` },
+      { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: canonicalUrl },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
   const pairExtras = getPairComparisonExtras(canonicalPairSlug);
 
   const rows: ComparisonRow[] = [
@@ -179,6 +230,14 @@ export default async function ComparePairPage({ params }: PageProps) {
 
   return (
     <div className="bg-[#f5f3ee]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>
@@ -293,51 +352,12 @@ export default async function ComparePairPage({ params }: PageProps) {
             pricing on official sites.
           </p>
           <dl className="mt-6 space-y-6">
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Does this page pick a “winner” between {a.name} and {b.name}?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                No. It summarizes publicly framed pricing and onboarding language so you can ask sharper questions.
-                Outcomes depend on diagnosis, monitoring, and adherence—not logos.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                What is the biggest mistake when comparing monthly prices?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Ignoring plan length and lab cadence. Normalize both brands to the same time horizon (for example 90
-                days) and include shipping, kits, and repeat labs when advertised separately.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Where should I verify the numbers?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Use each provider’s official checkout or FAQ pages for your state on the day you enroll. This snapshot
-                can drift when promotions or regulations change.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Common misconception: if two brands list testosterone, are they the same therapy?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Not necessarily. Enclomiphene-first programs and injectable TRT carry different monitoring expectations
-                and risks. Your clinician helps match therapy class to labs and goals.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                What should I ask before paying?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Ask what is included if your dose changes, what labs repeat and when, and how urgent symptoms are
-                triaged after hours.
-              </dd>
-            </div>
+            {faqs.map((faq) => (
+              <div key={faq.question}>
+                <dt className="text-sm font-semibold text-[#1c1917]">{faq.question}</dt>
+                <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">{faq.answer}</dd>
+              </div>
+            ))}
           </dl>
         </section>
       </div>

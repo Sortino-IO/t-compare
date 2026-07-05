@@ -80,6 +80,37 @@ export default async function TSupplementBrandPage({ params }: Props) {
     ],
   };
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: brand.name,
+    description: brand.seoDescription || brand.overview,
+    category: "Testosterone Support Supplement",
+    brand: { "@type": "Brand", name: brand.name },
+    image: `${SITE_URL}/t-supplements/opengraph-image`,
+    url: pageUrl,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: brand.priceFromMonthly,
+      availability: "https://schema.org/InStock",
+      url: pageUrl,
+    },
+  };
+
+  const faqPageSchema =
+    brand.faqItems.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: brand.faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }
+      : null;
+
   const formattedDate = new Date(brand.lastReviewed).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -92,6 +123,16 @@ export default async function TSupplementBrandPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      {faqPageSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
+        />
+      ) : null}
 
       <div className="mx-auto max-w-5xl px-6 py-10 sm:py-16">
         <nav className="flex items-center gap-2 text-sm text-[#b5b0a8] mb-10 sm:mb-14 flex-wrap">
