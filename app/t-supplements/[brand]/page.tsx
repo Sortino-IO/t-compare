@@ -8,8 +8,11 @@ import { getBlogTopic } from "../../lib/blog-topics";
 import {
   BRAND_CATEGORY_CONFIG,
   getBrandBySlug,
+  getBrandPairs,
   getBrandsByCategory,
   getCategoryIndexPath,
+  getComparePairPath,
+  getComparisonsIndexPath,
 } from "../../lib/brands";
 import { SITE_URL } from "../../lib/site";
 
@@ -69,6 +72,15 @@ export default async function TSupplementBrandPage({ params }: Props) {
   // If this brand has a matching blog topic hub, surface its guides for internal linking.
   const brandTopic = getBlogTopic(brand.slug);
   const topicPosts = brandTopic ? getPostsByTopic(brand.slug).slice(0, 8) : [];
+
+  // Head-to-head comparisons involving this brand (interlinks product page <-> money pages).
+  const comparisonsIndexPath = getComparisonsIndexPath("supplement");
+  const comparePairs = getBrandPairs("supplement")
+    .filter((p) => p.a.slug === brand.slug || p.b.slug === brand.slug)
+    .map((p) => {
+      const other = p.a.slug === brand.slug ? p.b : p.a;
+      return { other, href: getComparePairPath("supplement", brand.slug, other.slug) };
+    });
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -274,6 +286,41 @@ export default async function TSupplementBrandPage({ params }: Props) {
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#2a6e47] transition-colors hover:text-[#1c1917]"
                 >
                   See all {brand.name} guides →
+                </Link>
+              </section>
+            ) : null}
+
+            {comparePairs.length > 0 ? (
+              <section className="mt-10 max-w-2xl">
+                <h2 className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-2">
+                  {brand.name} head-to-head comparisons
+                </h2>
+                <p className="text-sm text-[#57534e] leading-relaxed mb-5">
+                  See how {brand.name} stacks up against other testosterone supplements on
+                  price, formula, and guarantee terms.
+                </p>
+                <ul className="grid gap-2 sm:grid-cols-2">
+                  {comparePairs.map(({ other, href }) => (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        className="flex items-center justify-between gap-2 rounded-xl border border-[#e3dfd6] bg-white px-4 py-3 text-sm font-medium text-[#44403c] shadow-sm transition-colors hover:border-[#2a6e47]/30 hover:text-[#1c1917]"
+                      >
+                        <span>
+                          {brand.name} vs {other.name}
+                        </span>
+                        <span className="shrink-0 text-[#2a6e47]" aria-hidden>
+                          →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={comparisonsIndexPath}
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#2a6e47] transition-colors hover:text-[#1c1917]"
+                >
+                  See all supplement comparisons →
                 </Link>
               </section>
             ) : null}
