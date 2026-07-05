@@ -2,10 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import AskAssistant from "./AskAssistant";
 import MobileNav from "./MobileNav";
+
+// Floating helper widget — not needed for first paint, so keep it out of the
+// initial hydration bundle and load it on the client after mount.
+const AskAssistant = dynamic(() => import("./AskAssistant"), { ssr: false });
 import {
   ENCLO_PROVIDERS,
   SUPP_BRANDS,

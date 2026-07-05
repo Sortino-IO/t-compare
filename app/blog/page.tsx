@@ -68,8 +68,8 @@ export default async function BlogArchivePage({ searchParams }: Props) {
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
-        {posts.map((post) => (
-          <BlogCard key={post.slug} post={post} />
+        {posts.map((post, i) => (
+          <BlogCard key={post.slug} post={post} priority={i === 0} />
         ))}
       </div>
 

@@ -2,7 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import type { BlogPost } from "../lib/blog";
 
-export default function BlogCard({ post }: { post: BlogPost }) {
+export default function BlogCard({
+  post,
+  priority = false,
+}: {
+  post: BlogPost;
+  priority?: boolean;
+}) {
   return (
     <article>
       <Link
@@ -16,6 +22,8 @@ export default function BlogCard({ post }: { post: BlogPost }) {
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            priority={priority}
+            fetchPriority={priority ? "high" : "auto"}
           />
         </div>
         <div className="flex flex-1 flex-col p-5 sm:p-6">
