@@ -214,6 +214,20 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="mx-auto max-w-5xl px-6 py-12">
+        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">
+          <Link href="/" className="transition-colors hover:text-[#1c1917]">
+            Home
+          </Link>
+          <span>/</span>
+          <Link href={COMPARISONS_INDEX} className="transition-colors hover:text-[#1c1917]">
+            Testosterone Supplement Comparisons
+          </Link>
+          <span>/</span>
+          <span className="text-[#78716c]">
+            {a.name} vs {b.name}
+          </span>
+        </nav>
+
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>
             <h1 className="text-3xl sm:text-4xl font-bold text-[#1c1917] font-[family-name:var(--font-playfair)]">
@@ -236,14 +250,22 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
               <div className="mt-1 text-sm text-[#57534e] leading-relaxed">
                 {brand.shortLabel} · {brand.priceLabel}
               </div>
-              <a
-                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#2a6e47] hover:underline"
-                href={withTtimeAffiliateParams(brand.affiliateUrl)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit {brand.name} →
-              </a>
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <Link
+                  className="inline-flex items-center gap-1 text-sm font-medium text-[#2a6e47] hover:underline"
+                  href={getBrandDetailPath(brand)}
+                >
+                  Read our {brand.name} review →
+                </Link>
+                <a
+                  className="inline-flex items-center gap-1 text-sm text-[#78716c] hover:text-[#1c1917] hover:underline"
+                  href={withTtimeAffiliateParams(brand.affiliateUrl)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit {brand.name} →
+                </a>
+              </div>
             </div>
           ))}
         </div>

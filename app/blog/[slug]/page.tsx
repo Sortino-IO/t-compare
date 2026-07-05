@@ -242,7 +242,9 @@ export default async function BlogPostPage({ params }: Props) {
 
           <header className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e]">
-              {formatDate(post.publishedAt)}
+              {post.updatedAt && post.updatedAt !== post.publishedAt
+                ? `Updated ${formatDate(post.updatedAt)}`
+                : formatDate(post.publishedAt)}
             </p>
             <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-semibold leading-[1.15] text-[#1c1917] sm:text-4xl sm:leading-tight lg:text-5xl">
               {post.title}
