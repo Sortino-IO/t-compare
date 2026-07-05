@@ -167,6 +167,18 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
     })),
   };
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${a.name} vs ${b.name}`,
+    itemListElement: [a, b].map((brand, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: brand.name,
+      url: `${SITE_URL}${getBrandDetailPath(brand)}`,
+    })),
+  };
+
   const pairExtras = getPairComparisonExtras(canonicalPairSlug);
 
   const rows: ComparisonRow[] = [
@@ -212,6 +224,10 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <div className="mx-auto max-w-5xl px-6 py-12">
         <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">

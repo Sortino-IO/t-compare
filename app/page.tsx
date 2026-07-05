@@ -34,8 +34,12 @@ const organizationSchema = {
   "@type": "Organization",
   name: "T-Compare",
   url: SITE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo.png`,
+  },
   description:
-    "T-Compare is an informational website that helps users browse and compare testosterone-related providers and programs.",
+    "T-Compare is an independent, informational website that helps users browse and compare testosterone-related providers, enclomiphene programs, and testosterone supplements.",
 };
 
 const websiteSchema = {

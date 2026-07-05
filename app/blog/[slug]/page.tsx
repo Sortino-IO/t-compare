@@ -170,6 +170,10 @@ export default async function BlogPostPage({ params }: Props) {
         "@type": "Organization",
         name: "T-Compare",
         url: SITE_URL,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/logo.png`,
+        },
       },
     },
     {
