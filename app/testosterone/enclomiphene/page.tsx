@@ -43,7 +43,7 @@ export default function EnclomiphenePage() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "T Providers", item: PAGE_URL },
+      { "@type": "ListItem", position: 2, name: "Enclomiphene Providers", item: PAGE_URL },
     ],
   };
 
@@ -80,7 +80,7 @@ export default function EnclomiphenePage() {
             Home
           </Link>
           <span>/</span>
-          <span className="text-[#78716c]">T Providers</span>
+          <span className="text-[#78716c]">Enclomiphene Providers</span>
         </nav>
 
         {/* Header */}

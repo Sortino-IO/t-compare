@@ -58,6 +58,14 @@ export default function TSupplementsPage() {
       />
 
       <div className="mx-auto max-w-5xl px-6 py-8 sm:py-20">
+        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">
+          <Link href="/" className="transition-colors hover:text-[#1c1917]">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-[#78716c]">Testosterone Supplements</span>
+        </nav>
+
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
           <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-3 sm:mb-4">
             Informational Comparison

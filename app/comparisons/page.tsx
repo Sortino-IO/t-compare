@@ -39,11 +39,80 @@ function allEnclomiphenePairs() {
   }));
 }
 
+const FAQS = [
+  {
+    question: "Is the cheapest monthly price always the cheapest total cost?",
+    answer:
+      "Often no. Many plans front-load labs, kits, or memberships. Compare the same window (for example 90 days or 12 months) and include shipping, required retesting, and whether messaging visits count as extras.",
+  },
+  {
+    question: "Why do two brands feel incomparable even when both mention testosterone?",
+    answer:
+      "Therapy class differs: oral enclomiphene pathways versus injections or gels target different goals, risks, and monitoring. Holding therapy type constant makes comparisons honest.",
+  },
+  {
+    question: "Where should I verify pricing and eligibility?",
+    answer:
+      "On each provider's official checkout flow for your state today. Third-party tables age quickly; rely on primary sources before you pay.",
+  },
+  {
+    question: "Common misconception: is telehealth always async-only care?",
+    answer:
+      "Not always. Some states or protocols require synchronous visits for certain prescriptions or escalations. Read each program's intake rules rather than assuming text-only care forever.",
+  },
+  {
+    question: "What should I ask about labs before I subscribe?",
+    answer:
+      "Ask which panels are required at baseline, what triggers follow-up testing, and whether phlebotomy is in-network with your insurance when that matters to you.",
+  },
+  {
+    question: "How does T-Compare stay useful if prices change?",
+    answer:
+      "We link to official pages so you can re-check details. Use comparison pages to structure questions, then confirm numbers on the provider site the day you enroll.",
+  },
+];
+
 export default function ComparisonsIndexPage() {
   const pairs = allEnclomiphenePairs();
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Comparisons", item: `${SITE_URL}/comparisons` },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
   return (
     <div className="bg-[#f5f3ee]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="mx-auto max-w-5xl px-6 py-12">
+        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">
+          <Link href="/" className="transition-colors hover:text-[#1c1917]">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-[#78716c]">Comparisons</span>
+        </nav>
+
         <h1 className="text-3xl sm:text-4xl font-bold text-[#1c1917] font-[family-name:var(--font-playfair)]">
           Comparisons
         </h1>
@@ -104,61 +173,12 @@ export default function ComparisonsIndexPage() {
             follow your clinician’s plan.
           </p>
           <dl className="mt-6 space-y-6">
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Is the cheapest monthly price always the cheapest total cost?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Often no. Many plans front-load labs, kits, or memberships. Compare the same window (for example 90
-                days or 12 months) and include shipping, required retesting, and whether messaging visits count as
-                extras.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Why do two brands feel incomparable even when both mention testosterone?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Therapy class differs: oral enclomiphene pathways versus injections or gels target different goals,
-                risks, and monitoring. Holding therapy type constant makes comparisons honest.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Where should I verify pricing and eligibility?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                On each provider’s official checkout flow for your state today. Third-party tables age quickly; rely on
-                primary sources before you pay.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                Common misconception: is telehealth always async-only care?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Not always. Some states or protocols require synchronous visits for certain prescriptions or escalations.
-                Read each program’s intake rules rather than assuming text-only care forever.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                What should I ask about labs before I subscribe?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                Ask which panels are required at baseline, what triggers follow-up testing, and whether phlebotomy is
-                in-network with your insurance when that matters to you.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-semibold text-[#1c1917]">
-                How does T-Compare stay useful if prices change?
-              </dt>
-              <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">
-                We link to official pages so you can re-check details. Use comparison pages to structure questions,
-                then confirm numbers on the provider site the day you enroll.
-              </dd>
-            </div>
+            {FAQS.map((faq) => (
+              <div key={faq.question}>
+                <dt className="text-sm font-semibold text-[#1c1917]">{faq.question}</dt>
+                <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">{faq.answer}</dd>
+              </div>
+            ))}
           </dl>
         </section>
       </div>

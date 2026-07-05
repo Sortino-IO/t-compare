@@ -4,20 +4,24 @@ import type { ParagraphSegment } from "./blog";
 export type LinkifyCounters = {
   tcompare: number;
   enclomiphene: number;
+  tsupplements: number;
   testosterone: number;
   comparisons: number;
   hypogonadism: number;
   criticalt: number;
+  ttime: number;
 };
 
 export function createLinkifyCounters(): LinkifyCounters {
   return {
     tcompare: 0,
     enclomiphene: 0,
+    tsupplements: 0,
     testosterone: 0,
     comparisons: 0,
     hypogonadism: 0,
     criticalt: 0,
+    ttime: 0,
   };
 }
 
@@ -43,6 +47,13 @@ const RULES: Rule[] = [
     href: "/testosterone/enclomiphene",
   },
   {
+    // Must run before the "testosterone" rule so the longer phrase wins.
+    key: "tsupplements",
+    max: 2,
+    pattern: /\btestosterone supplements\b/gi,
+    href: "/t-supplements",
+  },
+  {
     key: "testosterone",
     max: 3,
     pattern: /\btestosterone\b/gi,
@@ -66,6 +77,12 @@ const RULES: Rule[] = [
     max: 2,
     pattern: /\bCritical T\b/g,
     href: "/t-supplements/critical-t",
+  },
+  {
+    key: "ttime",
+    max: 2,
+    pattern: /\bTTime\b/g,
+    href: "/testosterone/enclomiphene/ttime",
   },
 ];
 
