@@ -5,36 +5,48 @@ import BlogPagination from "../components/BlogPagination";
 import { getPostsPage } from "../lib/blog";
 import { SITE_URL } from "../lib/site";
 
-export const metadata: Metadata = {
-  title: "Testosterone & Enclomiphene Blog: Guides That Help You Choose",
-  description:
-    "Get practical guides on TRT, enclomiphene, symptoms, fertility, and real treatment costs so you can ask better questions and choose providers with confidence.",
-  openGraph: {
-    title: "Testosterone & Enclomiphene Blog: Guides That Help You Choose",
-    description:
-      "Get practical guides on TRT, enclomiphene, symptoms, fertility, and real treatment costs so you can ask better questions and choose providers with confidence.",
-    url: `${SITE_URL}/blog`,
-    images: [
-      {
-        url: "/blog/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Testosterone and Enclomiphene Blog Guides",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Testosterone & Enclomiphene Blog: Guides That Help You Choose",
-    description:
-      "Get practical guides on TRT, enclomiphene, symptoms, fertility, and real treatment costs so you can ask better questions and choose providers with confidence.",
-    images: ["/blog/opengraph-image"],
-  },
-};
-
 type Props = {
   searchParams: Promise<{ page?: string }>;
 };
+
+const BLOG_TITLE = "Testosterone & Enclomiphene Blog: Guides That Help You Choose";
+const BLOG_DESCRIPTION =
+  "Get practical guides on TRT, enclomiphene, symptoms, fertility, and real treatment costs so you can ask better questions and choose providers with confidence.";
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const { page: pageStr } = await searchParams;
+  const parsed = parseInt(pageStr ?? "1", 10);
+  const page = Number.isFinite(parsed) && parsed > 1 ? parsed : 1;
+  // Self-referencing canonical for each page of the series (fixes "Duplicate
+  // without user-selected canonical" on /blog?page=N).
+  const canonical = page > 1 ? `${SITE_URL}/blog?page=${page}` : `${SITE_URL}/blog`;
+  const title = page > 1 ? `${BLOG_TITLE} — Page ${page}` : BLOG_TITLE;
+
+  return {
+    title,
+    description: BLOG_DESCRIPTION,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description: BLOG_DESCRIPTION,
+      url: canonical,
+      images: [
+        {
+          url: "/blog/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: "Testosterone and Enclomiphene Blog Guides",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: BLOG_DESCRIPTION,
+      images: ["/blog/opengraph-image"],
+    },
+  };
+}
 
 export default async function BlogArchivePage({ searchParams }: Props) {
   const { page: pageStr } = await searchParams;

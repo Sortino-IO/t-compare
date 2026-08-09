@@ -43,6 +43,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Stray URL Google constructed from "$XX/mo" pricing text — send it somewhere useful.
+        source: "/mo",
+        destination: "/t-supplements",
+        permanent: true,
+      },
+      {
         source: "/testosterone/supplement",
         destination: "/t-supplements",
         permanent: true,
