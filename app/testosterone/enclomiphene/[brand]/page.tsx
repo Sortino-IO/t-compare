@@ -21,8 +21,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!brand) return { title: "Provider not found" };
 
   const pageUrl = `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`;
-  const seoTitle = `${brand.name} Enclomiphene Review: Price, Labs & Onboarding`;
-  const seoDescription = `Thinking about ${brand.name}? Compare enclomiphene pricing, lab requirements, onboarding speed, and plan details before you choose a provider.`;
+  // Concise, intent-matched title (cost/review) + per-brand description with the
+  // price anchor so each provider page has unique, click-worthy SERP copy.
+  const seoTitle = `${brand.name} Enclomiphene Cost & Review (2026)`;
+  const priceAnchor = brand.priceLabel.replace(/^From\s+/i, "from ");
+  const seoDescription = `${brand.name} enclomiphene ${priceAnchor} — compare the real 90-day cost, lab requirements, onboarding speed, and plan details before you choose a provider.`;
 
   return {
     title: seoTitle,
