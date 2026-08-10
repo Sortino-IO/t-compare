@@ -114,6 +114,24 @@ export default function EnclomiphenePage() {
           </div>
         </div>
 
+        {/* Cost calculator callout */}
+        <Link
+          href="/tools/enclomiphene-cost-calculator"
+          className="group mb-10 sm:mb-12 flex items-center justify-between gap-4 rounded-2xl border border-[#c6e0d0] bg-[#f3f8f4] px-5 py-4 sm:px-6 transition-colors hover:border-[#2a6e47]/40"
+        >
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#2a6e47]">
+              Free tool
+            </p>
+            <p className="mt-1 text-sm font-medium text-[#1c1917] sm:text-base">
+              Estimate your real 90-day &amp; annual cost — medication, labs &amp; shipping
+            </p>
+          </div>
+          <span className="shrink-0 text-lg text-[#2a6e47] transition-transform group-hover:translate-x-0.5" aria-hidden>
+            →
+          </span>
+        </Link>
+
         {/* List header */}
         <div className="mb-4 sm:mb-5 flex items-center justify-between">
           <h2 className="font-[family-name:var(--font-playfair)] text-xl font-semibold text-[#1c1917]">

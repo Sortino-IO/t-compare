@@ -292,6 +292,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
                 ))}
                 <FooterLinkDivider />
                 <FooterLink href="/testosterone/enclomiphene">All providers →</FooterLink>
+                <FooterLink href="/tools/enclomiphene-cost-calculator">Cost calculator</FooterLink>
               </nav>
             </FooterSection>
 
