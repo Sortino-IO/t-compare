@@ -21,7 +21,7 @@ import {
 } from "../../lib/brands";
 import { getPairComparisonExtras } from "../../lib/pair-comparison-extras";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
-import { SITE_URL } from "../../lib/site";
+import { OG_BASE, SITE_URL } from "../../lib/site";
 
 type Params = { pair: string };
 type PageProps = { params: Params | Promise<Params> };
@@ -88,23 +88,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: pageTitle,
     description,
     openGraph: {
+      ...OG_BASE,
       title: `${pageTitle} | T-Compare`,
       description,
       url: canonicalUrl,
-      images: [
-        {
-          url: "/comparisons/opengraph-image",
-          width: 1200,
-          height: 630,
-          alt: `${title} comparison`,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${pageTitle} | T-Compare`,
       description,
-      images: ["/comparisons/opengraph-image"],
     },
   };
 }

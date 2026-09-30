@@ -3,7 +3,7 @@ import Link from "next/link";
 import BlogCard from "../components/BlogCard";
 import BlogPagination from "../components/BlogPagination";
 import { getPostsPage } from "../lib/blog";
-import { SITE_URL } from "../lib/site";
+import { OG_BASE, SITE_URL } from "../lib/site";
 
 type Props = {
   searchParams: Promise<{ page?: string }>;
@@ -27,23 +27,15 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     description: BLOG_DESCRIPTION,
     alternates: { canonical },
     openGraph: {
+      ...OG_BASE,
       title,
       description: BLOG_DESCRIPTION,
       url: canonical,
-      images: [
-        {
-          url: "/blog/opengraph-image",
-          width: 1200,
-          height: 630,
-          alt: "Testosterone and Enclomiphene Blog Guides",
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: BLOG_DESCRIPTION,
-      images: ["/blog/opengraph-image"],
     },
   };
 }

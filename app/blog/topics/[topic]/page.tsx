@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import BlogCard from "../../../components/BlogCard";
 import { getPostsByTopic, getUsedTopicSlugs } from "../../../lib/blog";
 import { BLOG_TOPICS, getBlogTopic } from "../../../lib/blog-topics";
-import { SITE_URL } from "../../../lib/site";
+import { OG_BASE, SITE_URL } from "../../../lib/site";
 
 type Props = {
   params: Promise<{ topic: string }>;
@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: topic.seoDescription,
     alternates: { canonical: pageUrl },
     openGraph: {
+      ...OG_BASE,
       title: topic.seoTitle,
       description: topic.seoDescription,
       url: pageUrl,

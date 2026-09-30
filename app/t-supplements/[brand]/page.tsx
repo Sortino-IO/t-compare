@@ -18,7 +18,7 @@ import {
   getComparePairPath,
   getComparisonsIndexPath,
 } from "../../lib/brands";
-import { SITE_URL } from "../../lib/site";
+import { OG_BASE, SITE_URL } from "../../lib/site";
 
 type Props = {
   params: Promise<{ brand: string }>;
@@ -42,23 +42,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: seoTitle,
     description: seoDescription,
     openGraph: {
+      ...OG_BASE,
       title: seoTitle,
       description: seoDescription,
       url: pageUrl,
-      images: [
-        {
-          url: "/t-supplements/opengraph-image",
-          width: 1200,
-          height: 630,
-          alt: `${brand.name} testosterone supplement review`,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: seoTitle,
       description: seoDescription,
-      images: ["/t-supplements/opengraph-image"],
     },
   };
 }

@@ -5,7 +5,7 @@ import EvidenceNotes from "../../components/EvidenceNotes";
 import { getBrandsByCategory, getBrandDetailPath } from "../../lib/brands";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 import { hasPublishedPrice } from "../../lib/provider-facts";
-import { SITE_URL } from "../../lib/site";
+import { OG_BASE, SITE_URL } from "../../lib/site";
 
 const PAGE_URL = `${SITE_URL}/tools/enclomiphene-cost-calculator`;
 
@@ -15,25 +15,17 @@ export const metadata: Metadata = {
     "Estimate the real cost of enclomiphene or TRT over 3, 6, or 12 months — medication, labs, and shipping combined. Compare providers by true total, not just the monthly headline.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
+    ...OG_BASE,
     title: "Enclomiphene & TRT Cost Calculator (2026) | T-Compare",
     description:
       "Estimate the real cost of enclomiphene or TRT over 3, 6, or 12 months — medication, labs, and shipping combined. Compare providers by true total cost.",
     url: PAGE_URL,
-    images: [
-      {
-        url: "/testosterone/enclomiphene/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Enclomiphene & TRT Cost Calculator",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Enclomiphene & TRT Cost Calculator (2026) | T-Compare",
     description:
       "Estimate the real cost of enclomiphene or TRT over 3, 6, or 12 months — medication, labs, and shipping combined.",
-    images: ["/testosterone/enclomiphene/opengraph-image"],
   },
 };
 

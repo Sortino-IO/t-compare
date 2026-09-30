@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ComparisonPairsGrid from "../../components/ComparisonPairsGrid";
 import { getBrandPairs, getComparePairPath } from "../../lib/brands";
-import { SITE_URL } from "../../lib/site";
+import { OG_BASE, SITE_URL } from "../../lib/site";
 
 const PAGE_URL = `${SITE_URL}/t-supplements/comparisons`;
 
@@ -11,25 +11,17 @@ export const metadata: Metadata = {
   description:
     "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
   openGraph: {
+    ...OG_BASE,
     title: "Testosterone Supplement Comparisons: Price, Bulk & Guarantees | T-Compare",
     description:
       "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
     url: PAGE_URL,
-    images: [
-      {
-        url: "/t-supplements/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Testosterone Supplement Comparisons",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Testosterone Supplement Comparisons: Price, Bulk & Guarantees | T-Compare",
     description:
       "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
-    images: ["/t-supplements/opengraph-image"],
   },
 };
 

@@ -1,31 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL } from "../lib/site";
+import { OG_BASE, SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Medical Disclaimer",
   description:
     "Read T-Compare's medical disclaimer, content limitations, and why all provider details should be verified directly before making health decisions.",
   openGraph: {
+    ...OG_BASE,
     title: "Medical Disclaimer | T-Compare",
     description:
       "Read T-Compare's medical disclaimer, content limitations, and why all provider details should be verified directly before making health decisions.",
     url: `${SITE_URL}/disclaimer`,
-    images: [
-      {
-        url: "/disclaimer/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "T-Compare Medical Disclaimer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Medical Disclaimer | T-Compare",
     description:
       "Read T-Compare's medical disclaimer, content limitations, and why all provider details should be verified directly before making health decisions.",
-    images: ["/disclaimer/opengraph-image"],
   },
 };
 

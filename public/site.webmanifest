@@ -3,8 +3,8 @@
   "short_name": "T-Compare",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f3ee",
-  "theme_color": "#f5f3ee",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

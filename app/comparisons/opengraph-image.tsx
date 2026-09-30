@@ -1,90 +1,14 @@
-import { ImageResponse } from "next/og";
-import { SITE_URL } from "../lib/site";
+import { OG_CONTENT_TYPE, OG_SIZE, renderOgCard, siteChips } from "../lib/og-card";
 
-const siteHost = new URL(SITE_URL).host;
-
-export const alt = "TRT Provider Comparisons: Cost, Labs and Plans";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const alt = "TRT provider comparisons: cost, labs and plans";
+export const size = OG_SIZE;
+export const contentType = OG_CONTENT_TYPE;
 
 export default function Image() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          background: "#f4f8fa",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "80px",
-          position: "relative",
-        }}
-      >
-        <p
-          style={{
-            fontSize: "22px",
-            color: "#5f757f",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            margin: "0 0 24px 0",
-            fontFamily: "sans-serif",
-          }}
-        >
-          Head-to-Head
-        </p>
-
-        <p
-          style={{
-            fontSize: "86px",
-            fontWeight: "700",
-            color: "#142b3a",
-            margin: "0 0 20px 0",
-            lineHeight: 1.05,
-            fontFamily: "sans-serif",
-            textAlign: "center",
-          }}
-        >
-          TRT Comparisons
-        </p>
-
-        <p
-          style={{
-            fontSize: "34px",
-            color: "#53666e",
-            margin: 0,
-            fontFamily: "sans-serif",
-          }}
-        >
-          Cost, Labs, Plan Terms
-        </p>
-
-        <div
-          style={{
-            position: "absolute",
-            bottom: "48px",
-            display: "flex",
-            alignItems: "center",
-            gap: "16px",
-          }}
-        >
-          <div style={{ width: "40px", height: "2px", background: "#e3e3e3" }} />
-          <p
-            style={{
-              fontSize: "20px",
-              color: "#5f757f",
-              margin: 0,
-              fontFamily: "sans-serif",
-            }}
-          >
-            {siteHost}
-          </p>
-          <div style={{ width: "40px", height: "2px", background: "#e3e3e3" }} />
-        </div>
-      </div>
-    ),
-    { ...size }
-  );
+  return renderOgCard({
+    eyebrow: "Head-to-head",
+    title: "TRT Provider Comparisons",
+    subtitle: "Every provider pair: cost, labs and plan terms",
+    chips: siteChips(),
+  });
 }

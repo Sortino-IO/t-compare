@@ -1,31 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL } from "../lib/site";
+import { OG_BASE, SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "About T-Compare: How We Compare Providers",
   description:
     "Learn how T-Compare researches testosterone and enclomiphene providers, how listings are built, and how to use our comparisons to make smarter decisions.",
   openGraph: {
+    ...OG_BASE,
     title: "About T-Compare: How We Compare Providers",
     description:
       "Learn how T-Compare researches testosterone and enclomiphene providers, how listings are built, and how to use our comparisons to make smarter decisions.",
     url: `${SITE_URL}/about`,
-    images: [
-      {
-        url: "/about/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "About T-Compare",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "About T-Compare: How We Compare Providers",
     description:
       "Learn how T-Compare researches testosterone and enclomiphene providers, how listings are built, and how to use our comparisons to make smarter decisions.",
-    images: ["/about/opengraph-image"],
   },
 };
 

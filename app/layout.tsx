@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import SiteChrome from "./components/SiteChrome";
 import GoogleTagManager from "./components/GoogleTagManager";
-import { SITE_URL } from "./lib/site";
+import { OG_BASE, SITE_URL } from "./lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,23 +40,11 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    siteName: "T-Compare",
-    type: "website",
-    locale: "en_US",
+    ...OG_BASE,
     url: SITE_URL,
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "T-Compare - Compare Testosterone Providers",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@tcompare",
-    images: ["/opengraph-image.png"],
   },
   robots: {
     index: true,

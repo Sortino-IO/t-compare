@@ -4,32 +4,24 @@ import { getBrandsByCategory } from "../lib/brands";
 import QuickCostEstimator from "../components/QuickCostEstimator";
 import EvidenceNotes from "../components/EvidenceNotes";
 import { buildEstimatorRows } from "../lib/cost-estimator";
-import { SITE_URL } from "../lib/site";
+import { OG_BASE, SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Enclomiphene Providers: Compare by Category",
   description:
     "Compare enclomiphene telehealth providers by pricing, onboarding, labs, and plan structure before you choose.",
   openGraph: {
+    ...OG_BASE,
     title: "Enclomiphene Providers: Compare by Category | T-Compare",
     description:
       "Compare enclomiphene telehealth providers by pricing, onboarding, labs, and plan structure before you choose.",
     url: `${SITE_URL}/testosterone`,
-    images: [
-      {
-        url: "/testosterone/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Testosterone Treatment Options: Compare by Category",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Enclomiphene Providers: Compare by Category | T-Compare",
     description:
       "Compare enclomiphene telehealth providers by pricing, onboarding, labs, and plan structure before you choose.",
-    images: ["/testosterone/opengraph-image"],
   },
 };
 

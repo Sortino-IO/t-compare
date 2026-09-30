@@ -10,7 +10,7 @@ import type { BlogBlock } from "../../lib/blog";
 import { getAllSlugs, getPostBySlug, getRelatedPosts } from "../../lib/blog";
 import { extractTopLevelHeadings } from "../../lib/blog-headings";
 import { resolvePrimaryTopic } from "../../lib/blog-topics";
-import { SITE_URL } from "../../lib/site";
+import { OG_BASE, SITE_URL } from "../../lib/site";
 import QuickCostEstimator from "../../components/QuickCostEstimator";
 import EvidenceNotes from "../../components/EvidenceNotes";
 import { getBrandsByCategory } from "../../lib/brands";
@@ -124,6 +124,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: pageUrl,
     },
     openGraph: {
+      ...OG_BASE,
       title: metadataTitle,
       description: metadataDescription,
       url: pageUrl,

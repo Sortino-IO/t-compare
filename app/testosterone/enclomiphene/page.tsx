@@ -14,7 +14,7 @@ import ClinicalContext from "../../components/ClinicalContext";
 import QuickCompareTable from "../../components/QuickCompareTable";
 import TrustStrip from "../../components/TrustStrip";
 import VerdictTiles from "../../components/VerdictTiles";
-import { SITE_URL } from "../../lib/site";
+import { OG_BASE, SITE_URL } from "../../lib/site";
 
 const PAGE_URL = `${SITE_URL}/testosterone/enclomiphene`;
 
@@ -23,25 +23,17 @@ export const metadata: Metadata = {
   description:
     "Compare enclomiphene providers by starting price, onboarding flow, labs, and plan structure. Shortlist the best fit, then verify details on official sites.",
   openGraph: {
+    ...OG_BASE,
     title: "Top Enclomiphene Providers Compared (2026) | T-Compare",
     description:
       "Compare enclomiphene providers by starting price, onboarding flow, labs, and plan structure. Shortlist the best fit, then verify details on official sites.",
     url: PAGE_URL,
-    images: [
-      {
-        url: "/testosterone/enclomiphene/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Top Enclomiphene Providers Compared",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Top Enclomiphene Providers Compared (2026) | T-Compare",
     description:
       "Compare enclomiphene providers by starting price, onboarding flow, labs, and plan structure. Shortlist the best fit, then verify details on official sites.",
-    images: ["/testosterone/enclomiphene/opengraph-image"],
   },
 };
 
