@@ -15,3 +15,6 @@ export const OG_BASE = {
   type: "website",
   locale: "en_US",
 } as const;
+
+/** Stable homepage share image (no query string — Slack and others cache more reliably). */
+export const HOME_OG_IMAGE_PATH = "/og/home.png";

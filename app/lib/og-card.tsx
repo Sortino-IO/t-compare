@@ -82,15 +82,21 @@ export function renderPairCard(pair: string, category: "enclomiphene" | "supplem
 
 export type OgCardProps = {
   eyebrow: string;
-  title: string;
+  /** One line, or explicit lines (avoids bad wraps in the OG renderer). */
+  title: string | readonly string[];
   subtitle?: string;
   chips?: string[];
 };
 
-function titleSize(title: string): number {
-  if (title.length > 70) return 50;
-  if (title.length > 48) return 60;
-  if (title.length > 30) return 70;
+function titleLines(title: string | readonly string[]): readonly string[] {
+  return typeof title === "string" ? [title] : title;
+}
+
+function titleSize(lines: readonly string[]): number {
+  const n = Math.max(...lines.map((l) => l.length));
+  if (n > 70) return 50;
+  if (n > 48) return 60;
+  if (n > 30) return 70;
   return 82;
 }
 
@@ -145,21 +151,29 @@ export function renderOgCard({ eyebrow, title, subtitle, chips = [] }: OgCardPro
             </div>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {/* Block layout for text — Satori treats each word as a flex item if display:flex */}
-            <div
-              style={{
-                display: "block",
-                maxWidth: "100%",
-                fontSize: `${titleSize(title)}px`,
-                fontWeight: 700,
-                color: "#142b3a",
-                lineHeight: 1.08,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {title}
-            </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "6px",
+              maxWidth: "100%",
+            }}
+          >
+            {titleLines(title).map((line) => (
+              <div
+                key={line}
+                style={{
+                  display: "block",
+                  fontSize: `${titleSize(titleLines(title))}px`,
+                  fontWeight: 700,
+                  color: "#142b3a",
+                  lineHeight: 1.08,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {line}
+              </div>
+            ))}
             {subtitle ? (
               <div
                 style={{

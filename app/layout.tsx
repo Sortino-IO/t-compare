@@ -62,6 +62,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} h-full`}>
       <head>
+        {/* Slack reads only the first ~32KB; site-wide OG fields belong early in head. */}
+        <meta property="og:site_name" content="T-Compare" />
+        <meta property="og:locale" content="en_US" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>

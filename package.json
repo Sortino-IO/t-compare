@@ -6,6 +6,7 @@
     "dev": "next dev",
     "prebuild": "npm run check:blog-images:all && npm run check:lp-images",
     "build": "next build",
+    "postbuild": "tsx scripts/export-static-og-home.ts",
     "start": "next start",
     "lint": "eslint",
     "check:blog-images": "node scripts/validate-blog-images.mjs",
@@ -37,6 +38,7 @@
     "png-to-ico": "^3.0.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
+    "tsx": "^4.19.4",
     "typescript": "^5"
   }
 }

@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import HomeLanding from "./components/HomeLanding";
-import { OG_BASE, SITE_URL } from "./lib/site";
+import { HOME_OG_IMAGE_PATH, OG_BASE, SITE_URL } from "./lib/site";
+
+const homeOgImage = {
+  url: HOME_OG_IMAGE_PATH,
+  width: 1200,
+  height: 630,
+  type: "image/png" as const,
+  alt: "T-Compare: compare testosterone providers and supplements",
+};
 
 export const metadata: Metadata = {
   title: "Compare Testosterone Providers & Supplements: Prices & Plans",
@@ -12,12 +20,14 @@ export const metadata: Metadata = {
     description:
       "Compare enclomiphene telehealth providers and testosterone supplements in minutes. Review pricing, labs, onboarding, guarantees, and formulas side by side before you choose.",
     url: SITE_URL,
+    images: [homeOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "Compare Testosterone Providers & Supplements | T-Compare",
     description:
       "Compare enclomiphene telehealth providers and testosterone supplements in minutes. Review pricing, labs, onboarding, guarantees, and formulas side by side before you choose.",
+    images: [HOME_OG_IMAGE_PATH],
   },
 };
 
