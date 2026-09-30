@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CostCalculator, { type CalcProvider } from "../../components/CostCalculator";
+import EvidenceNotes from "../../components/EvidenceNotes";
 import { getBrandsByCategory, getBrandDetailPath } from "../../lib/brands";
+import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
+import { hasPublishedPrice } from "../../lib/provider-facts";
 import { SITE_URL } from "../../lib/site";
 
 const PAGE_URL = `${SITE_URL}/tools/enclomiphene-cost-calculator`;
@@ -66,13 +69,23 @@ const FAQS = [
 ];
 
 export default function EnclomipheneCostCalculatorPage() {
-  const providers: CalcProvider[] = getBrandsByCategory("enclomiphene").map((b) => ({
+  const providers: CalcProvider[] = getBrandsByCategory("enclomiphene")
+    .filter(hasPublishedPrice)
+    .map((b) => ({
     slug: b.slug,
     name: b.name,
-    monthly: b.priceFromMonthly,
+    // Verified providers split medication from membership; the list price
+    // combines them, so using it here would double-count the membership.
+    monthly: b.facts?.billing.headlineMonthly ?? b.priceFromMonthly,
+    membershipMonthly: b.facts?.billing.membershipMonthly,
     priceLabel: b.priceLabel,
     href: getBrandDetailPath(b),
-    billingIntervalMonths: BIMONTHLY_SLUGS.has(b.slug) ? 2 : 1,
+    affiliateHref: withTtimeAffiliateParams(b.affiliateUrl),
+    billingIntervalMonths:
+      b.facts?.billing.cadenceMonths ?? (BIMONTHLY_SLUGS.has(b.slug) ? 2 : 1),
+    initialLab: b.facts?.labs.initialCost,
+    followupIncluded: b.facts?.labs.followupIncluded,
+    verified: Boolean(b.facts),
   }));
 
   const breadcrumbSchema = {
@@ -108,30 +121,30 @@ export default function EnclomipheneCostCalculatorPage() {
 
       <div className="mx-auto max-w-5xl px-6 py-10 sm:py-14">
         {/* Breadcrumb */}
-        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">
-          <Link href="/" className="transition-colors hover:text-[#1c1917]">
+        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#5f757f]">
+          <Link href="/" className="hover:text-[#176b87] hover:underline">
             Home
           </Link>
           <span>/</span>
-          <Link href="/testosterone/enclomiphene" className="transition-colors hover:text-[#1c1917]">
+          <Link href="/testosterone/enclomiphene" className="hover:text-[#176b87] hover:underline">
             Enclomiphene Providers
           </Link>
           <span>/</span>
-          <span className="text-[#78716c]">Cost Calculator</span>
+          <span className="text-[#53666e]">Cost Calculator</span>
         </nav>
 
         {/* Header */}
         <div className="max-w-2xl">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e]">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
             Free Tool
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-semibold leading-tight text-[#1c1917] sm:text-4xl lg:text-5xl">
+          <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl">
             Enclomiphene &amp; TRT Cost Calculator
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-[#78716c]">
+          <p className="mt-4 text-base leading-relaxed text-[#53666e]">
             The &quot;$X/mo&quot; headline rarely reflects what you actually pay. This calculator
             adds medication, initial and follow-up labs, and shipping across 3, 6, or 12 months so
-            you can compare providers by <span className="font-medium text-[#57534e]">true total cost</span>.
+            you can compare providers by <span className="font-medium text-[#53666e]">true total cost</span>.
           </p>
         </div>
 
@@ -140,25 +153,30 @@ export default function EnclomipheneCostCalculatorPage() {
           <CostCalculator providers={providers} />
         </div>
 
+        <EvidenceNotes
+          ids={["aua-diagnosis", "enclomiphene-sperm", "enclomiphene-not-approved"]}
+          className="mt-10"
+        />
+
         {/* Explainer */}
         <section className="mt-14 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl border border-[#e3dfd6] bg-white p-5 shadow-sm">
-            <div className="text-sm font-semibold text-[#1c1917]">Medication</div>
-            <p className="mt-2 text-sm leading-relaxed text-[#57534e]">
+          <div className="rounded-xl border border-[#e3e3e3] bg-white p-5">
+            <div className="text-sm font-semibold text-[#142b3a]">Medication</div>
+            <p className="mt-2 text-sm leading-relaxed text-[#53666e]">
               The monthly (or per-cycle) prescription price. Longer plans often lower the effective
               rate, so check the commitment length behind any &quot;starting at&quot; number.
             </p>
           </div>
-          <div className="rounded-2xl border border-[#e3dfd6] bg-white p-5 shadow-sm">
-            <div className="text-sm font-semibold text-[#1c1917]">Labs</div>
-            <p className="mt-2 text-sm leading-relaxed text-[#57534e]">
+          <div className="rounded-xl border border-[#e3e3e3] bg-white p-5">
+            <div className="text-sm font-semibold text-[#142b3a]">Labs</div>
+            <p className="mt-2 text-sm leading-relaxed text-[#53666e]">
               Baseline bloodwork plus periodic follow-ups (testosterone, LH/FSH, estradiol, and
               more). Some programs bundle labs; others bill each draw separately.
             </p>
           </div>
-          <div className="rounded-2xl border border-[#e3dfd6] bg-white p-5 shadow-sm">
-            <div className="text-sm font-semibold text-[#1c1917]">Shipping &amp; fees</div>
-            <p className="mt-2 text-sm leading-relaxed text-[#57534e]">
+          <div className="rounded-xl border border-[#e3e3e3] bg-white p-5">
+            <div className="text-sm font-semibold text-[#142b3a]">Shipping &amp; fees</div>
+            <p className="mt-2 text-sm leading-relaxed text-[#53666e]">
               Per-order shipping and any membership fees add up over a year. Bimonthly billing
               means fewer shipments but a larger charge each cycle.
             </p>
@@ -166,23 +184,23 @@ export default function EnclomipheneCostCalculatorPage() {
         </section>
 
         {/* Internal links */}
-        <section className="mt-12 rounded-2xl border border-[#c6e0d0] bg-[#f3f8f4] p-6 sm:p-8">
-          <h2 className="font-[family-name:var(--font-playfair)] text-xl font-semibold text-[#1c1917] sm:text-2xl">
+        <section className="mt-12 rounded-xl border border-[#bcd9e4] bg-[#eef6f9] p-6 sm:p-8">
+          <h2 className="tc-display text-xl font-semibold text-[#142b3a] sm:text-2xl">
             Next steps
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-[#57534e]">
+          <p className="mt-2 text-sm leading-relaxed text-[#53666e]">
             Once you have a shortlist, dig into the details and see head-to-head breakdowns.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
               href="/testosterone/enclomiphene"
-              className="inline-flex items-center rounded-xl bg-[#2a6e47] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
+              className="inline-flex items-center rounded-xl bg-[#176b87] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#10556d]"
             >
               Compare all providers →
             </Link>
             <Link
               href="/comparisons"
-              className="inline-flex items-center rounded-xl border border-[#2a6e47]/30 bg-white px-6 py-3 text-sm font-semibold text-[#2a6e47] transition-colors hover:bg-[#f5f3ee]"
+              className="inline-flex items-center rounded-xl border border-[#176b87]/30 bg-white px-6 py-3 text-sm font-semibold text-[#176b87] transition-colors hover:bg-[#f4f8fa]"
             >
               Head-to-head comparisons →
             </Link>
@@ -191,20 +209,20 @@ export default function EnclomipheneCostCalculatorPage() {
 
         {/* FAQ */}
         <section className="mt-14">
-          <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-semibold text-[#1c1917]">
+          <h2 className="tc-display text-2xl font-semibold text-[#142b3a]">
             Frequently asked questions
           </h2>
           <dl className="mt-6 space-y-6">
             {FAQS.map((faq) => (
               <div key={faq.question}>
-                <dt className="text-sm font-semibold text-[#1c1917]">{faq.question}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-[#57534e]">{faq.answer}</dd>
+                <dt className="text-sm font-semibold text-[#142b3a]">{faq.question}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-[#53666e]">{faq.answer}</dd>
               </div>
             ))}
           </dl>
         </section>
 
-        <p className="mt-10 text-xs leading-relaxed text-[#b5b0a8]">
+        <p className="mt-10 text-xs leading-relaxed text-[#5f757f]">
           Informational only; not medical or financial advice. Estimates are based on publicly
           available pricing and general lab-cadence assumptions and may not reflect your plan.
           Confirm all costs directly with the provider.

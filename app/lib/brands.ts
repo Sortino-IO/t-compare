@@ -13,6 +13,46 @@ export interface BrandFaqItem {
   answer: string;
 }
 
+/**
+ * Decision facts verified against a provider's own public pages. Anything the
+ * provider does not publish stays "unknown" rather than being estimated —
+ * these values drive the comparison table and the cost calculator.
+ */
+export type LabsIncluded = "included" | "extra" | "partial" | "unknown";
+export type Prescriber = "physician" | "clinician" | "unknown";
+
+export interface ProviderFacts {
+  checkedOn: string;
+  billing: {
+    /** Advertised medication/program price per month; omitted when the provider does not publish one. */
+    headlineMonthly?: number;
+    /** Separate mandatory membership billed on top (e.g. Hone). */
+    membershipMonthly?: number;
+    /** How many months each charge covers. */
+    cadenceMonths: number;
+    /** Months you are locked into for the headline price; 0 = cancel anytime. */
+    commitmentMonths: number;
+    /** What is charged on day one, when the provider publishes it. */
+    upfrontCharge?: number;
+    short: string;
+    source: string;
+  };
+  labs: {
+    required: "yes" | "no" | "unknown";
+    included: LabsIncluded;
+    /** Cheapest published initial lab option, in USD. */
+    initialCost?: number;
+    /** True when repeat monitoring labs are covered by the plan. */
+    followupIncluded?: boolean;
+    short: string;
+    source: string;
+  };
+  prescriber: { value: Prescriber; short: string; source: string };
+  states: { count?: number; short: string; source: string };
+  cancellation: { short: string; source: string };
+  limitation: { text: string; source: string };
+}
+
 export interface Brand {
   slug: string;
   name: string;
@@ -33,6 +73,7 @@ export interface Brand {
   /** Short paragraphs shown under the primary CTA; written for clarity and brand-name discovery in search. */
   ctaBelowParagraphs: string[];
   faqItems: BrandFaqItem[];
+  facts?: ProviderFacts;
 }
 
 export const BRAND_CATEGORY_CONFIG: Record<
@@ -73,9 +114,12 @@ export const BRAND_CATEGORY_CONFIG: Record<
 };
 
 export function getAllBrands(): Brand[] {
-  return [...(brandsData as Brand[])].sort(
-    (a, b) => a.priceFromMonthly - b.priceFromMonthly
-  );
+  // Providers that do not publish a price sort after every priced one.
+  const sortPrice = (b: Brand) =>
+    b.facts && b.facts.billing.headlineMonthly === undefined
+      ? Number.POSITIVE_INFINITY
+      : b.priceFromMonthly;
+  return [...(brandsData as Brand[])].sort((a, b) => sortPrice(a) - sortPrice(b));
 }
 
 export function getBrandsByCategory(category: BrandCategory): Brand[] {

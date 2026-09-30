@@ -16,7 +16,7 @@
     ],
     "affiliateUrl": "https://ttime.men/",
     "sourceUrls": ["https://ttime.men/"],
-    "lastReviewed": "2026-03-01",
+    "lastReviewed": "2026-09-29",
     "seoTitle": "TTime Enclomiphene & Testosterone Program | T-Compare",
     "seoDescription": "Compare pricing, onboarding, and details for TTime's testosterone-related program.",
     "why": {
@@ -49,7 +49,43 @@
         "question": "How long before TTime enclomiphene shows results on labs?",
         "answer": "Clinicians often recheck testosterone and symptom response on a 6-12 week horizon for SERMs, though your plan may differ. Early changes in LH/FSH can precede symptom shifts; follow the lab schedule TTime’s provider assigns rather than guessing intervals."
       }
-    ]
+    ],
+    "facts": {
+      "checkedOn": "2026-09-29",
+      "billing": {
+        "headlineMonthly": 69,
+        "cadenceMonths": 3,
+        "commitmentMonths": 3,
+        "upfrontCharge": 207,
+        "short": "$207 billed every 90 days",
+        "source": "https://ttime.men/lp-enclomiphene"
+      },
+      "labs": {
+        "required": "yes",
+        "included": "extra",
+        "initialCost": 49,
+        "followupIncluded": false,
+        "short": "Extra: $49 Quest or $79 at-home; recent labs accepted",
+        "source": "https://ttime.men/lp-enclomiphene"
+      },
+      "prescriber": {
+        "value": "physician",
+        "short": "Licensed M.D.",
+        "source": "https://ttime.men/"
+      },
+      "states": {
+        "short": "US only; no state list published",
+        "source": "https://ttime.men/terms-conditions"
+      },
+      "cancellation": {
+        "short": "$40 fee once physician review starts; final once sent to pharmacy",
+        "source": "https://ttime.men/return-policy"
+      },
+      "limitation": {
+        "text": "The 90-day charge is final once it reaches the pharmacy, and missing your labs does not pause the auto-renewal.",
+        "source": "https://ttime.men/return-policy"
+      }
+    }
   },
   {
     "slug": "hims",
@@ -68,7 +104,7 @@
     ],
     "affiliateUrl": "https://www.hims.com/",
     "sourceUrls": ["https://www.hims.com/testosterone/enclomiphene"],
-    "lastReviewed": "2026-03-01",
+    "lastReviewed": "2026-09-29",
     "seoTitle": "Hims Enclomiphene & Testosterone Program | T-Compare",
     "seoDescription": "Compare pricing, onboarding, and details for Hims testosterone-related program.",
     "why": {
@@ -101,7 +137,43 @@
         "question": "Is Hims enclomiphene compounded?",
         "answer": "Enclomiphene in U.S. consumer telehealth is often fulfilled through compounding pharmacies when commercially branded options are not used; formulation and sourcing disclosures appear at prescription and pharmacy handoff. Read the label and pharmacy materials Hims provides for your specific fill."
       }
-    ]
+    ],
+    "facts": {
+      "checkedOn": "2026-09-29",
+      "billing": {
+        "headlineMonthly": 99,
+        "cadenceMonths": 10,
+        "commitmentMonths": 10,
+        "upfrontCharge": 990,
+        "short": "$990 upfront for a 10-month plan",
+        "source": "https://www.hims.com/testosterone"
+      },
+      "labs": {
+        "required": "yes",
+        "included": "extra",
+        "initialCost": 94,
+        "followupIncluded": false,
+        "short": "Extra: $94 initial lab kit",
+        "source": "https://www.hims.com/blog/enclomiphene-price"
+      },
+      "prescriber": {
+        "value": "clinician",
+        "short": "Licensed provider (not necessarily an MD)",
+        "source": "https://www.hims.com/testosterone/enclomiphene"
+      },
+      "states": {
+        "short": "Not all 50 states; no list published",
+        "source": "https://www.hims.com/testosterone"
+      },
+      "cancellation": {
+        "short": "Ends at close of prepaid period; no partial refunds",
+        "source": "https://www.hims.com/terms-and-conditions"
+      },
+      "limitation": {
+        "text": "The $99/mo price means paying $990 upfront plus a $94 lab kit, and partially used periods are not refunded.",
+        "source": "https://www.hims.com/terms-and-conditions"
+      }
+    }
   },
   {
     "slug": "maximus-tribe",
@@ -120,7 +192,7 @@
     ],
     "affiliateUrl": "https://maximustribe.com",
     "sourceUrls": ["https://maximustribe.com"],
-    "lastReviewed": "2026-03-01",
+    "lastReviewed": "2026-09-29",
     "seoTitle": "Maximus Tribe Enclomiphene & Testosterone Program | T-Compare",
     "seoDescription": "Compare pricing, onboarding, and details for Maximus Tribe's testosterone-related program.",
     "why": {
@@ -153,14 +225,50 @@
         "question": "Does Maximus Tribe include coaching or only medication?",
         "answer": "Higher Maximus tiers advertise human coaching and education layers beyond shipping capsules. Whether coaching is included depends on the tier you purchase; review the checkout page for your selected program."
       }
-    ]
+    ],
+    "facts": {
+      "checkedOn": "2026-09-29",
+      "billing": {
+        "headlineMonthly": 99.99,
+        "cadenceMonths": 1,
+        "commitmentMonths": 12,
+        "short": "$99.99/mo on a 12-month commitment ($199.99 month-to-month)",
+        "source": "https://www.maximustribe.com/testosterone/enclomiphene-only"
+      },
+      "labs": {
+        "required": "yes",
+        "included": "extra",
+        "initialCost": 49.99,
+        "followupIncluded": false,
+        "short": "Extra: at-home kit $49.99 (list $99.99)",
+        "source": "https://www.maximustribe.com/at-home-testosterone-test"
+      },
+      "prescriber": {
+        "value": "physician",
+        "short": "Board-certified physician",
+        "source": "https://www.maximustribe.com/"
+      },
+      "states": {
+        "count": 47,
+        "short": "47 states (not AL, AK, IN or DC)",
+        "source": "https://www.maximustribe.com/science"
+      },
+      "cancellation": {
+        "short": "Committed plans cannot be ended early or partly refunded",
+        "source": "https://www.maximustribe.com/subscription-terms"
+      },
+      "limitation": {
+        "text": "The headline price locks you into 12 months you cannot exit early. Maximus itself recommends starting month-to-month at $199.99.",
+        "source": "https://www.maximustribe.com/subscription-terms"
+      }
+    }
   },
   {
     "slug": "hone-health",
     "name": "Hone Health",
     "category": "enclomiphene",
-    "priceFromMonthly": 149,
-    "priceLabel": "From $149/mo",
+    "priceFromMonthly": 177,
+    "priceLabel": "From ~$177/mo",
     "onboardingType": "standard",
     "shortLabel": "Enclomiphene program",
     "shortDescription": "Standard onboarding process",
@@ -172,7 +280,7 @@
     ],
     "affiliateUrl": "https://honehealth.com",
     "sourceUrls": ["https://honehealth.com"],
-    "lastReviewed": "2026-03-01",
+    "lastReviewed": "2026-09-29",
     "seoTitle": "Hone Health Enclomiphene & Testosterone Program | T-Compare",
     "seoDescription": "Compare pricing, onboarding, and details for Hone Health's testosterone-related program.",
     "why": {
@@ -205,7 +313,44 @@
         "question": "How often does Hone Health order follow-up labs on hormone therapy?",
         "answer": "Cadence depends on medication, risk factors, and response-many programs use quarterly or semi-annual monitoring once stable, with earlier draws after dose changes. Hone’s care plan documents your next lab window; irregular testing can miss estradiol, hematocrit, or lipid shifts that matter on testosterone-related care."
       }
-    ]
+    ],
+    "facts": {
+      "checkedOn": "2026-09-29",
+      "billing": {
+        "headlineMonthly": 42,
+        "membershipMonthly": 135,
+        "cadenceMonths": 1,
+        "commitmentMonths": 0,
+        "short": "$42/mo medication + $135/mo required membership",
+        "source": "https://help.honehealth.com/hc/en-us/articles/40161781101335-Hone-Health-Membership-Overview-Compare-Basic-Plus-Premium-Plans"
+      },
+      "labs": {
+        "required": "yes",
+        "included": "partial",
+        "initialCost": 45,
+        "followupIncluded": true,
+        "short": "Initial $45; quarterly follow-ups included",
+        "source": "https://help.honehealth.com/hc/en-us/articles/40162135091991-Men-s-Plus-HRT-Lab-Testing-Schedule-for-Clomiphene-and-Non-TRT-Therapies"
+      },
+      "prescriber": {
+        "value": "physician",
+        "short": "Physician (MD or DO)",
+        "source": "https://honehealth.com/edge/hone-vs-hims-trt/"
+      },
+      "states": {
+        "count": 35,
+        "short": "35 states (Plus tier)",
+        "source": "https://help.honehealth.com/hc/en-us/articles/40162108823319-Hone-Health-Service-Availability-by-State-2026"
+      },
+      "cancellation": {
+        "short": "Month-to-month; cancel anytime, no partial-month refunds",
+        "source": "https://help.honehealth.com/hc/en-us/articles/40162125713815-Hone-Health-Order-Cancellation-and-Refund-Policy"
+      },
+      "limitation": {
+        "text": "The $42 headline is medication only. The $135/mo membership bills separately, even in months no medication ships.",
+        "source": "https://help.honehealth.com/hc/en-us/articles/40162104966423-Understanding-Your-Hone-Membership-Fee-Medication-Billing"
+      }
+    }
   },
   {
     "slug": "joi-blokes",
@@ -216,9 +361,9 @@
     "onboardingType": "standard",
     "shortLabel": "Enclomiphene program",
     "shortDescription": "Standard onboarding process",
-    "overview": "Joi + Blokes offers a men’s telehealth pathway with enclomiphene positioned as an oral alternative to some traditional testosterone approaches, with clinician oversight and follow-up labs on a subscription cadence.",
+    "overview": "Joi + Blokes offers a men’s telehealth pathway with enclomiphene positioned as an oral alternative to some traditional testosterone approaches, with provider oversight. The $99/mo rate requires $1,188 paid upfront for 12 months; a 3-month plan costs $597.",
     "notes": [
-      "Public pricing summaries often cite a starting monthly anchor; verify current membership, labs, and medication costs on joiandblokes.com.",
+      "The first lab panel costs $149 and includes a clinician visit; follow-up labs are included. Subscriptions and labs are non-refundable.",
       "Program details may vary based on consultation, eligibility, and location.",
       "Users should verify all details directly with the provider before making decisions."
     ],
@@ -226,40 +371,76 @@
     "sourceUrls": [
       "https://joiandblokes.com/enclomiphene/"
     ],
-    "lastReviewed": "2026-04-19",
+    "lastReviewed": "2026-09-29",
     "seoTitle": "Joi + Blokes Enclomiphene & Testosterone Program | T-Compare",
     "seoDescription": "Compare pricing, onboarding, and details for Joi + Blokes enclomiphene and men’s hormone telehealth.",
     "why": {
       "onboarding": "Standard onboarding process",
-      "pricing": "Monthly subscription",
+      "pricing": "$1,188 upfront for 12 months ($99/mo), or $597 for 3 months",
       "positioning": "Consumer telehealth with enclomiphene-focused men’s pathway"
     },
     "ctaBelowParagraphs": [
-      "Joi + Blokes is the men’s vertical of the Joi telehealth ecosystem, focused on testosterone optimization and related care. The enclomiphene program positions oral enclomiphene as an alternative to some forms of testosterone replacement for men who qualify after lab review, with clinician oversight and subscription refills.",
-      "Public materials often quote a starting price near $99 per month with quarterly lab cycles in many summaries-exact bundles (visit count, lab panels, shipping) are defined at joiandblokes.com and can change with promotions or dosing."
+      "Joi + Blokes is the men’s vertical of the Joi telehealth ecosystem, focused on testosterone optimization and related care. The enclomiphene program positions oral enclomiphene as an alternative to some forms of testosterone replacement for men who qualify after lab review, with oversight from a licensed provider. The site does not state the provider’s credentials.",
+      "The $99 per month price means paying $1,188 upfront for a 12-month plan. A 3-month plan costs $597. The first lab panel is $149 and includes a clinician visit; follow-up labs are included. The terms set a 3-month minimum, and subscriptions and labs are non-refundable. The site also says the medication may be compounded and not FDA-approved."
     ],
     "faqItems": [
       {
         "question": "How much does Joi + Blokes enclomiphene cost?",
-        "answer": "Marketing and third-party reviews frequently cite starting rates near $99 per month for the men’s enclomiphene subscription, but your dose and lab schedule change the all-in cost. If quarterly labs run, for example, ~$80-$120 per draw in some telehealth stacks, budgeting $99×3 months + one lab (~$297 + lab) beats looking only at $99."
+        "answer": "The $99 per month rate applies only to the 12-month plan, which is billed as $1,188 upfront. The 3-month plan costs $597. Add $149 for the first lab panel. Both the subscription and the labs are non-refundable."
       },
       {
         "question": "What services does Joi + Blokes bundle with enclomiphene?",
-        "answer": "Typical DTC enclomiphene stacks include telehealth visits, lab orders, messaging, and pharmacy fulfillment. Joi + Blokes outlines which visits are included per billing cycle on its enclomiphene page-confirm whether follow-up labs are bundled or billed separately."
+        "answer": "The first lab panel costs $149 and includes a clinician visit. Joi + Blokes says follow-up labs are included in the plan. A licensed provider reviews your case, but the site does not state their credentials. Check the enclomiphene page for current plan details."
       },
       {
         "question": "How does Joi + Blokes compare to Hims for enclomiphene pricing?",
-        "answer": "Both brands often land near the same headline tier (~$99 per month on this comparison grid), so differentiation is mostly labs and plan length: Hims sometimes shows multi-tier plan pricing ($99-$175 in third-party writeups) while Joi + Blokes emphasizes a single men’s brand experience. Compare 90-day totals with real lab quotes-not sticker monthly prices."
+        "answer": "Both list $99 per month on this page, but the terms differ. Joi + Blokes charges $1,188 upfront for 12 months to reach that rate, or $597 for 3 months. Compare how each brand bills, what labs cost, and what you can cancel before you choose."
       },
       {
         "question": "Can I compare Joi + Blokes with Hims or TTime on price alone?",
-        "answer": "No. On this page Joi + Blokes and Hims both list about $99 per month versus TTime at about $69. A $30 monthly difference is only $90 over three months-smaller than a single extra lab draw or rush shipping fee. If TTime bundles different visit access or Joi bills labs separately, rank brands by three-month all-in cost, not one field in a table."
+        "answer": "No. Joi + Blokes and Hims both list $99 per month here, and TTime lists $69. But Joi + Blokes’ $99 rate needs a $1,188 upfront payment, plus $149 for the first lab panel. Compare the upfront charge, lab costs, and refund terms, not just the monthly figure."
       },
       {
         "question": "Is Joi + Blokes only enclomiphene or does it offer TRT too?",
         "answer": "Joi + Blokes markets multiple men’s hormone pathways; enclomiphene is one option when clinically appropriate. Your provider may discuss testosterone therapies or adjuncts depending on symptoms, fertility goals, and cardiovascular risk-review the brand’s full testosterone menu if enclomiphene is not the right fit."
       }
-    ]
+    ],
+    "facts": {
+      "checkedOn": "2026-09-29",
+      "billing": {
+        "headlineMonthly": 99,
+        "cadenceMonths": 12,
+        "commitmentMonths": 12,
+        "upfrontCharge": 1188,
+        "short": "$1,188 upfront for 12 months (or $597 for a 3-month plan)",
+        "source": "https://joiandblokes.com/shop/men/hormone-health/enclomiphene/"
+      },
+      "labs": {
+        "required": "yes",
+        "included": "partial",
+        "initialCost": 149,
+        "followupIncluded": true,
+        "short": "First panel $149 (includes a clinician visit); follow-up labs included",
+        "source": "https://joiandblokes.com/mens-labs/"
+      },
+      "prescriber": {
+        "value": "unknown",
+        "short": "A licensed provider (credentials not stated)",
+        "source": "https://joiandblokes.com/terms/"
+      },
+      "states": {
+        "short": "Help center says all 50 states; enclomiphene list not published",
+        "source": "https://joi-and-blokes.frontkb.com/en/articles/4510081"
+      },
+      "cancellation": {
+        "short": "3-month minimum in the terms; subscriptions and labs are non-refundable",
+        "source": "https://joiandblokes.com/terms/"
+      },
+      "limitation": {
+        "text": "The $99/mo price means paying $1,188 upfront for a year, non-refundable. The site also discloses that medication may be compounded and not FDA-approved.",
+        "source": "https://joiandblokes.com/shop/men/hormone-health/enclomiphene/"
+      }
+    }
   },
   {
     "slug": "petermd",
@@ -270,63 +451,98 @@
     "onboardingType": "standard",
     "shortLabel": "Enclomiphene program",
     "shortDescription": "Structured onboarding process",
-    "overview": "PeterMD lists enclomiphene as an oral TRT alternative with subscription billing, bundled physician access, and separate baseline lab costs in many published breakdowns.",
+    "overview": "PeterMD lists enclomiphene as an oral TRT alternative billed at $278 every 2 months, prescribed by a physician, with a required Quest lab panel.",
     "notes": [
-      "PeterMD often prices enclomiphene on a bimonthly subscription; the effective monthly anchor is approximate until you confirm at checkout.",
-      "Initial blood work is commonly billed separately from subscription pricing; confirm current lab fees and state availability on getpetermd.com.",
+      "PeterMD bills enclomiphene at $278 every 2 months, which works out to about $139 per month.",
+      "A Quest lab panel is required. The plan does not say whether it is included; PeterMD sells panels from $247.",
       "Users should verify all details directly with the provider before making decisions."
     ],
     "affiliateUrl": "https://getpetermd.com/enclomiphene/",
     "sourceUrls": [
       "https://getpetermd.com/enclomiphene/"
     ],
-    "lastReviewed": "2026-04-19",
+    "lastReviewed": "2026-09-29",
     "seoTitle": "PeterMD Enclomiphene Program | T-Compare",
     "seoDescription": "Compare PeterMD enclomiphene pricing context, onboarding, and notes versus other U.S. telehealth providers.",
     "why": {
       "onboarding": "Structured onboarding process",
-      "pricing": "Bimonthly subscription (effective monthly estimate)",
-      "positioning": "Oral enclomiphene pathway with separate lab costs in many cases"
+      "pricing": "$278 billed every 2 months (about $139/mo)",
+      "positioning": "Oral enclomiphene pathway; lab inclusion not stated"
     },
     "ctaBelowParagraphs": [
-      "PeterMD is a direct-to-consumer men’s health clinic selling prescription therapies online, including enclomiphene marketed as an oral alternative to injectable TRT for qualifying patients. Pricing is commonly structured as a multi-week subscription (often billed every two months) with separate baseline laboratory panels.",
-      "Independent writeups frequently cite roughly $278 per two-month medication cycle (~$139 per month) plus approximately $190 for initial labs-those add-ons mean PeterMD’s true “month one” cost can exceed a brand that lists $99 inclusive. State eligibility lists and commitment terms appear on getpetermd.com."
+      "PeterMD is a direct-to-consumer men’s health clinic selling prescription therapies online, including enclomiphene marketed as an oral alternative to injectable TRT for qualifying patients. A physician prescribes, and PeterMD bills $278 every 2 months.",
+      "A Quest lab panel is required. The plan page does not say whether it is included, and PeterMD sells panels from $247. Enclomiphene is not available in Alabama or Idaho, and the page also lists North Carolina and Michigan. You must cancel by email at least 48 hours before renewal, and there are no refunds once medication ships."
     ],
     "faqItems": [
       {
         "question": "Why does PeterMD bill enclomiphene every two months?",
-        "answer": "PeterMD aligns billing and shipping with a 60-day medication supply cycle, so the charge hits every two months instead of monthly. To compare with $99-per-month brands, divide the two-month total by two-e.g., $278 ÷ 2 ≈ $139 per month for medication before labs."
+        "answer": "PeterMD charges $278 every 2 months instead of billing monthly. Divide by two to compare with monthly brands: about $139 per month. That figure does not settle lab costs, which the plan page does not address."
       },
       {
         "question": "How much are PeterMD labs on top of the subscription?",
-        "answer": "Third-party breakdowns often place baseline labs near $190 before medication ships, with follow-up labs on a schedule you should confirm in checkout. If medication is ~$139 per month ($278 bimonthly) and month one adds ~$190 labs, your first 30 days can land near $329 before tax-far above a $99 headline from a competitor that rolled labs into a promo."
+        "answer": "PeterMD requires a Quest lab panel, but the plan does not say whether it is included. Its blood-work page sells panels from $247. Follow-up labs are not listed as included. Ask PeterMD before you pay whether your plan covers the panel."
       },
       {
         "question": "Can I compare PeterMD with a $99-per-month brand on price alone?",
-        "answer": "No. PeterMD’s ~$139 effective medication rate is already about $40 per month higher than a $99 grid price ($480 extra over a year), and adding ~$190 baseline labs in month one widens the gap further. Only after you know whether another brand charges labs separately (or $50-$150 per draw) can you rank true first-quarter spend."
+        "answer": "No. PeterMD works out to about $139 per month, but it bills $278 at a time. Lab panels may add cost; PeterMD sells them from $247 and does not say if the plan covers them. Compare billing terms, lab costs, and refund rules across brands, not just the monthly figure."
       },
       {
         "question": "Which states does PeterMD exclude for enclomiphene?",
-        "answer": "PeterMD publishes an exclusion list that has included states such as Alabama, Arkansas, California, Idaho, Michigan, and North Carolina in some periods-lists change with licensure. Check getpetermd.com for the live map before assuming eligibility."
+        "answer": "PeterMD’s enclomiphene page says it is not available in Alabama or Idaho. The same page also lists North Carolina and Michigan. Check getpetermd.com before you sign up, since the list can change."
       },
       {
         "question": "Is PeterMD enclomiphene the same strength as other clinics?",
-        "answer": "PeterMD advertises common enclomiphene strengths (for example 12.5 mg capsules in public product pages). Dose and titration are clinician-specific; do not match doses across brands without a prescription."
+        "answer": "Dose is set by the prescribing physician, so it can differ from other clinics. Ask PeterMD which strength you would receive. Do not match doses across brands without a prescription."
       }
-    ]
+    ],
+    "facts": {
+      "checkedOn": "2026-09-29",
+      "billing": {
+        "headlineMonthly": 139,
+        "cadenceMonths": 2,
+        "commitmentMonths": 2,
+        "upfrontCharge": 278,
+        "short": "$278 billed every 2 months",
+        "source": "https://getpetermd.com/enclomiphene/"
+      },
+      "labs": {
+        "required": "yes",
+        "included": "unknown",
+        "followupIncluded": false,
+        "short": "Quest panel required; the plan doesn't say if it's included (panels sold from $247)",
+        "source": "https://getpetermd.com/blood-work/"
+      },
+      "prescriber": {
+        "value": "physician",
+        "short": "A physician (per PeterMD's site)",
+        "source": "https://getpetermd.com/enclomiphene/"
+      },
+      "states": {
+        "short": "Not available in AL or ID (the page also lists NC and MI)",
+        "source": "https://getpetermd.com/enclomiphene/"
+      },
+      "cancellation": {
+        "short": "Cancel by email 48 hours before renewal; no refunds once shipped",
+        "source": "https://getpetermd.com/refund-autobill-policy"
+      },
+      "limitation": {
+        "text": "Strict no-refund policy once medication arrives, and cancellations are by email only, at least 48 hours before each renewal.",
+        "source": "https://getpetermd.com/refund-autobill-policy"
+      }
+    }
   },
   {
     "slug": "defy-medical",
     "name": "Defy Medical",
     "category": "enclomiphene",
     "priceFromMonthly": 180,
-    "priceLabel": "From ~$180/mo",
+    "priceLabel": "Price not published",
     "onboardingType": "standard",
     "shortLabel": "Enclomiphene program",
-    "shortDescription": "Physician-led onboarding",
-    "overview": "Defy Medical is a physician-led specialty clinic that offers enclomiphene as a stand-alone or combination protocol with deeper lab monitoring than typical mass-market telehealth.",
+    "shortDescription": "Clinician-led onboarding",
+    "overview": "Defy Medical is a specialty hormone clinic where an MD, NP or PA prescribes. It offers enclomiphene alone or with other therapies, on a pay-per-service basis with no membership.",
     "notes": [
-      "Third-party comparisons often cite a wide monthly range (~$180-$450) depending on monitoring intensity and medications; we use the lower end as a “from” anchor-confirm your scenario with Defy.",
+      "Defy does not publish an enclomiphene price; prices show only after login. Labs cost extra, and an at-home draw adds $125.",
       "Program details may vary based on consultation, eligibility, and location.",
       "Users should verify all details directly with the provider before making decisions."
     ],
@@ -334,26 +550,26 @@
     "sourceUrls": [
       "https://www.defymedical.com/"
     ],
-    "lastReviewed": "2026-04-19",
+    "lastReviewed": "2026-09-29",
     "seoTitle": "Defy Medical Enclomiphene & Hormone Program | T-Compare",
     "seoDescription": "Compare Defy Medical’s specialist telehealth model and enclomiphene pricing context with other providers.",
     "why": {
-      "onboarding": "Physician-led onboarding",
-      "pricing": "Monthly program (range varies by case complexity)",
+      "onboarding": "Clinician-led onboarding",
+      "pricing": "Pay per service; price not published",
       "positioning": "Specialty hormone clinic with comprehensive monitoring options"
     },
     "ctaBelowParagraphs": [
-      "Defy Medical is a Florida-headquartered hormone and men’s health clinic with national telehealth reach for qualifying patients, known for physician-led protocols, broad lab panels, and experience with prior TRT, fertility considerations, and polypharmacy. Enclomiphene may be prescribed alone or alongside other therapies when clinically appropriate.",
-      "Pricing is individualized: public comparisons often span roughly $180-$450 per month depending on medications, follow-up intensity, and add-on services. Defy is rarely the lowest sticker price versus mass-market apps, but patients often choose it for clinical depth-verify quotes after intake."
+      "Defy Medical is a hormone and men’s health clinic that serves 49 states (all except Mississippi). A Defy clinician (MD, NP or PA) handles care. Enclomiphene may be prescribed alone or alongside other therapies when clinically appropriate.",
+      "Defy has no membership and no contract; you pay per service. It does not publish an enclomiphene price, and prices show only after login. Labs cost extra, and an at-home draw adds $125. Orders ship through partner pharmacies, and standard shipping takes 13-16 business days. Medication can’t be refunded once dispensed."
     ],
     "faqItems": [
       {
         "question": "What does Defy Medical charge for enclomiphene programs?",
-        "answer": "Because Defy customizes monitoring, monthly totals vary widely-third-party guides cite roughly $180 at the low end up to about $450 for complex cases. That $270 swing matters: over six months the difference between $180 and $450 is $1,620, so insist on an itemized quote that lists consults, labs, and drug costs."
+        "answer": "Defy does not publish an enclomiphene price. It charges per service with no membership, and prices show only after you log in. Labs are extra, and an at-home draw adds $125. Ask for an itemized quote that lists consults, labs, and medication."
       },
       {
         "question": "How is Defy Medical different from Hims or TTime?",
-        "answer": "Hims and TTime are scaled consumer telehealth flows with standardized pricing tiers; Defy operates more like a specialty clinic with longer visits and broader labs. On this grid TTime lists ~$69, Hims ~$99, and Defy ~$180-Defy costs roughly $111 more per month than Hims before labs, which may be justified if you need granular titration or have complicated history."
+        "answer": "Hims and TTime are scaled consumer telehealth flows with standardized pricing tiers; Defy operates more like a specialty clinic and bills per service. TTime lists $69 and Hims $99 per month here, but Defy publishes no enclomiphene price, so a direct price comparison is not possible. Defy’s shipping is also slower, at 13-16 business days."
       },
       {
         "question": "Does Defy Medical prescribe enclomiphene without testosterone?",
@@ -361,13 +577,47 @@
       },
       {
         "question": "Is Defy Medical worth it if I only care about the lowest monthly price?",
-        "answer": "Usually no: if your case is straightforward secondary hypogonadism and you tolerate standard monitoring, lower-tier brands on this page (for example ~$69-$99) may suffice-saving about $81-$111 per month versus Defy’s ~$180 anchor ($972-$1,332 per year). Defy’s value shows up when simpler programs fail or your labs require specialist interpretation."
+        "answer": "Hard to say, because Defy does not publish its enclomiphene price. Other brands on this page list monthly prices up front. If price is your main concern, get Defy’s quote after login and add lab costs before you compare. Defy may suit you better if simpler programs have not worked."
       },
       {
         "question": "What labs does Defy Medical typically order with enclomiphene?",
-        "answer": "Specialty clinics often expand beyond total testosterone to include LH, FSH, estradiol, SHBG, CBC, metabolic panels, and sometimes thyroid markers-more draws mean higher spend but tighter safety. Ask Defy for a sample panel list and cash-pay lab pricing."
+        "answer": "Specialty clinics often expand beyond total testosterone to include LH, FSH, estradiol, SHBG, CBC, metabolic panels, and sometimes thyroid markers-more draws mean higher spend but tighter safety. Defy bills labs separately and does not publish their price; an at-home draw adds $125. Ask Defy for a sample panel list and lab pricing."
       }
-    ]
+    ],
+    "facts": {
+      "checkedOn": "2026-09-29",
+      "billing": {
+        "cadenceMonths": 1,
+        "commitmentMonths": 0,
+        "short": "No membership; pay per service. Enclomiphene prices show only after login",
+        "source": "https://www.defymedical.com/faq/how-much-does-trt-cost-with-defy-medical/"
+      },
+      "labs": {
+        "required": "yes",
+        "included": "extra",
+        "followupIncluded": false,
+        "short": "Extra, price not public; at-home draw adds $125",
+        "source": "https://www.defymedical.com/faq/do-i-have-to-go-to-a-laboratory-to-get-my-blood-work-completed/"
+      },
+      "prescriber": {
+        "value": "clinician",
+        "short": "A Defy clinician (MD, NP or PA)",
+        "source": "https://www.defymedical.com/about-us/team-bios/"
+      },
+      "states": {
+        "count": 49,
+        "short": "49 states (all except Mississippi)",
+        "source": "https://www.defymedical.com/faq/what-states-does-defy-medical-serve/"
+      },
+      "cancellation": {
+        "short": "No contract; medication can't be refunded once dispensed",
+        "source": "https://www.defymedical.com/about-us/terms-of-service/"
+      },
+      "limitation": {
+        "text": "Slow to ship: orders go through partner pharmacies, and standard shipping takes 13-16 business days.",
+        "source": "https://www.defymedical.com/faq/what-are-defy-medicals-shipping-times/"
+      }
+    }
   },
   {
     "slug": "concierge-md",
@@ -378,9 +628,9 @@
     "onboardingType": "standard",
     "shortLabel": "Enclomiphene program",
     "shortDescription": "Structured onboarding process",
-    "overview": "ConciergeMD advertises an online enclomiphene program with bundled consultation, lab testing, and home delivery in a monthly subscription format on its public pages.",
+    "overview": "ConciergeMD offers an online enclomiphene program at $199/mo with a 3-4 month minimum. Its page says it will order lab testing but does not state who pays for the test.",
     "notes": [
-      "Public pricing summaries often cite a $199/month figure for the enclomiphene program; confirm what is bundled (labs, shipping, messaging) on conciergemdla.com.",
+      "The terms set a 3-4 month minimum. You get a full refund if you are not approved, but no returns once medication leaves the pharmacy.",
       "Program details may vary based on consultation, eligibility, and location.",
       "Users should verify all details directly with the provider before making decisions."
     ],
@@ -388,40 +638,74 @@
     "sourceUrls": [
       "https://conciergemdla.com/testosterone-therapy/enclomiphene/"
     ],
-    "lastReviewed": "2026-04-19",
+    "lastReviewed": "2026-09-29",
     "seoTitle": "ConciergeMD Enclomiphene Program | T-Compare",
     "seoDescription": "Compare ConciergeMD enclomiphene subscription pricing and onboarding with other U.S. telehealth providers.",
     "why": {
       "onboarding": "Structured onboarding process",
-      "pricing": "Monthly subscription",
-      "positioning": "All-in style monthly program in public marketing materials"
+      "pricing": "$199/mo with a 3-4 month minimum",
+      "positioning": "Monthly program; who pays for labs is not stated"
     },
     "ctaBelowParagraphs": [
-      "ConciergeMD (Concierge MD) markets a U.S. telehealth testosterone program that includes an enclomiphene track: virtual evaluation, lab testing, and home delivery of medication when prescribed. The brand highlights bundled monthly pricing in public creative-often near $199-positioned as an all-in-style fee versus à la carte labs.",
-      "ConciergeMD is frequently associated with Los Angeles-area telehealth operations but typically serves patients in multiple states subject to licensure. Confirm which services ship to your ZIP, whether labs are at-home or walk-in, and how refills are timed on conciergemdla.com."
+      "ConciergeMD (Concierge MD) markets a U.S. telehealth testosterone program that includes an enclomiphene track: virtual evaluation, a lab order, and home delivery of medication when prescribed. The price is $199 per month with a 3-4 month minimum. The page does not say who pays for the lab test, and it names the prescriber only as a medical provider.",
+      "ConciergeMD lists 38 states plus DC for its testosterone program, but it has not confirmed enclomiphene coverage in each. Confirm your state, lab costs, and how refills are timed on conciergemdla.com."
     ],
     "faqItems": [
       {
         "question": "How much is ConciergeMD enclomiphene per month?",
-        "answer": "Public landing pages often quote about $199 per month for the enclomiphene program, which may bundle consultation, labs, and medication-verify whether taxes, follow-up labs, or expedited shipping are extra. On this grid $199 is the highest headline anchor among listed brands ($130 per month above TTime’s ~$69), so small add-ons add up fast."
+        "answer": "ConciergeMD charges $199 per month, with a 3-4 month minimum in its terms. The page says it will order lab testing but does not say who pays for the test. Follow-up labs are not listed as included, so ask before you sign up."
       },
       {
         "question": "What is included in ConciergeMD’s enclomiphene subscription?",
-        "answer": "Marketing copy typically lists clinician evaluation, hormone labs, prescription, and delivery; exact panel codes and visit counts should be read in the terms at signup. If two follow-up labs per year are required, budget those even if month one looks bundled."
+        "answer": "The page lists an evaluation by a medical provider, a lab order, a prescription, and home delivery. It does not say who pays for the lab test or name the provider’s credentials. Read the terms at signup and budget for labs unless ConciergeMD confirms they are covered."
       },
       {
         "question": "Can I compare ConciergeMD with Hims on monthly price alone?",
-        "answer": "No. ConciergeMD lists ~$199 versus Hims ~$99 here-a $100 monthly gap ($300 per quarter). If ConciergeMD truly bundles labs that Hims bills separately at, say, $75-$150 per draw, the net gap narrows: $199 vs $99 + $100 labs = $199 vs $199 in a lab-heavy quarter. Model your actual lab cadence before picking the “cheaper” brand."
+        "answer": "No. ConciergeMD lists $199 per month versus Hims at $99 here. ConciergeMD also has a 3-4 month minimum, so you commit to at least three months of payments before you can cancel. Neither figure settles lab costs, since ConciergeMD does not say who pays for the test. Compare full terms before choosing."
       },
       {
         "question": "How does ConciergeMD differ from Maximus Tribe for enclomiphene?",
-        "answer": "Both advertise structured men’s programs, but Maximus often tiers coaching and lab cadence differently. Numerically, this page shows ConciergeMD ~$199 versus Maximus ~$99; closing that $100 gap requires Maximus add-ons (extra labs ~$70+ each in many writeups) or annual plans-run both carts to 90 days."
+        "answer": "Both advertise structured men’s programs, but their terms differ. ConciergeMD charges $199 per month with a 3-4 month minimum and does not say who pays for labs. Check Maximus’ current price and lab terms on its own profile, then compare the full cost over the same period."
       },
       {
         "question": "Does ConciergeMD offer refunds if enclomiphene is not a fit?",
-        "answer": "Refund and cancellation rules are contract-specific-read ConciergeMD’s terms at checkout. Medically, if labs do not support enclomiphene or you do not tolerate the medication, your clinician may pivot to another therapy; that is a clinical decision, not a money-back guarantee unless explicitly stated."
+        "answer": "ConciergeMD’s terms give a full refund if you are not approved. Once approved, there is a 3-4 month minimum, and there are no returns or guaranteed refunds once medication leaves the pharmacy. Medically, if labs do not support enclomiphene or you do not tolerate the medication, your clinician may pivot to another therapy; that is a clinical decision, not a money-back guarantee unless explicitly stated."
       }
-    ]
+    ],
+    "facts": {
+      "checkedOn": "2026-09-29",
+      "billing": {
+        "headlineMonthly": 199,
+        "cadenceMonths": 1,
+        "commitmentMonths": 3,
+        "short": "$199/mo with a 3-4 month minimum",
+        "source": "https://conciergemdla.com/terms-of-service/"
+      },
+      "labs": {
+        "required": "yes",
+        "included": "unknown",
+        "followupIncluded": false,
+        "short": "Lab order included; who pays for the test isn't stated",
+        "source": "https://conciergemdla.com/testosterone-therapy/enclomiphene/"
+      },
+      "prescriber": {
+        "value": "unknown",
+        "short": "A medical provider (credentials not named)",
+        "source": "https://conciergemdla.com/testosterone-therapy/enclomiphene/"
+      },
+      "states": {
+        "short": "Lists 38 states + DC; enclomiphene coverage not confirmed",
+        "source": "https://conciergemdla.com/testosterone-therapy/"
+      },
+      "cancellation": {
+        "short": "3-4 month minimum; full refund if you're not approved",
+        "source": "https://conciergemdla.com/terms-of-service/"
+      },
+      "limitation": {
+        "text": "Subscriptions carry a 3-4 month minimum, and there are no returns or guaranteed refunds once medication leaves the pharmacy.",
+        "source": "https://conciergemdla.com/terms-of-service/"
+      }
+    }
   },
   {
     "slug": "critical-t",
@@ -439,7 +723,7 @@
       "Bulk promos (including multi-bottle bundles) can drop per-bottle cost sharply; verify live checkout totals.",
       "Statements have not been evaluated by the FDA; results vary and are not guaranteed."
     ],
-    "affiliateUrl": "https://8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    "affiliateUrl": "https://8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net/?&traffic_source=blog&traffic_type=organic&campaign=t-compare",
     "sourceUrls": ["https://www.criticaltboost.com/offer"],
     "lastReviewed": "2026-05-21",
     "seoTitle": "Critical T Review: From $55/mo Subscribe & Ingredients",
@@ -537,7 +821,7 @@
       "60-day money-back guarantee advertised on checkout pages.",
       "Marketing emphasizes sexual wellness and stamina; verify ingredient label independently."
     ],
-    "affiliateUrl": "https://42ad2cskk5msam5atc1eq2ur5a.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    "affiliateUrl": "https://42ad2cskk5msam5atc1eq2ur5a.hop.clickbank.net/?&traffic_source=blog&traffic_type=organic&campaign=t-compare",
     "sourceUrls": ["https://endopeak24.com/c/order-now.php"],
     "lastReviewed": "2026-05-21",
     "seoTitle": "EndoPeak Review: Real Bundle Cost & 8 Ingredients",
@@ -586,7 +870,7 @@
       "60-day money-back guarantee advertised on checkout pages.",
       "OTC dietary supplement - not prescription testosterone therapy."
     ],
-    "affiliateUrl": "https://af3f4qzpqenm3wfb1cff-atz7n.hop.clickbank.net/?&traffic_source=google&traffic_type=paid&campaign=sortino",
+    "affiliateUrl": "https://af3f4qzpqenm3wfb1cff-atz7n.hop.clickbank.net/?&traffic_source=google&traffic_type=organic&campaign=sortino",
     "sourceUrls": ["https://erecprime24.com/c/order-now.php"],
     "lastReviewed": "2026-05-21",
     "seoTitle": "ErecPrime Review: $69 Entry, Bulk Savings & Ingredients",
@@ -736,7 +1020,7 @@
       "90-day money-back guarantee advertised.",
       "High-intensity marketing copy; verify label and expectations carefully."
     ],
-    "affiliateUrl": "https://b0d9bkvcsibq9yawuhqvyty0tn.hop.clickbank.net/?&traffic_source=blog&traffic_type=paid&campaign=t-compare",
+    "affiliateUrl": "https://b0d9bkvcsibq9yawuhqvyty0tn.hop.clickbank.net/?&traffic_source=blog&traffic_type=organic&campaign=t-compare",
     "sourceUrls": ["https://heroichustle.com/c/order-now.php"],
     "lastReviewed": "2026-05-21",
     "seoTitle": "Alpha Surge Review: Gummy Booster Price & Bundles",
