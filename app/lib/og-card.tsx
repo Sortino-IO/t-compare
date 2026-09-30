@@ -146,9 +146,11 @@ export function renderOgCard({ eyebrow, title, subtitle, chips = [] }: OgCardPro
           </div>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
+            {/* Block layout for text — Satori treats each word as a flex item if display:flex */}
             <div
               style={{
-                display: "flex",
+                display: "block",
+                maxWidth: "100%",
                 fontSize: `${titleSize(title)}px`,
                 fontWeight: 700,
                 color: "#142b3a",
@@ -161,7 +163,8 @@ export function renderOgCard({ eyebrow, title, subtitle, chips = [] }: OgCardPro
             {subtitle ? (
               <div
                 style={{
-                  display: "flex",
+                  display: "block",
+                  maxWidth: "100%",
                   marginTop: "22px",
                   fontSize: "32px",
                   color: "#53666e",
