@@ -9,7 +9,7 @@ export const AUTHORITY_SOURCES = [
     href: "https://www.auanet.org/guidelines-and-quality/guidelines/testosterone-deficiency-guideline",
   },
   {
-    label: "NIH MedlinePlus: low testosterone overview",
+    label: "NIH MedlinePlus: testosterone blood test explained",
     href: "https://medlineplus.gov/ency/article/003707.htm",
   },
   {
