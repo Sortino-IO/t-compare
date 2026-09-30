@@ -19,17 +19,25 @@ export const TEDPLANS_AFFILIATE_URL =
 export const NITRIC_BOOST_AFFILIATE_URL =
   `https://getnitricboost.com/?${LP_PAID_QUERY}#order`;
 
-const BLOG_AFFILIATE_QUERY = "traffic_source=blog&traffic_type=paid&campaign=t-compare";
+/** On-site links are SEO traffic, not ad traffic — mislabelling them as paid corrupts ClickBank segmentation. */
+const BLOG_AFFILIATE_QUERY = "traffic_source=blog&traffic_type=organic&campaign=t-compare";
 
 /** Canonical Critical T hop link with on-site (organic) segmentation query. */
 const CRITICAL_T_BLOG_URL =
   `https://8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`;
 
+/** On-site variants of the paid-LP links, so organic clicks are not reported as ad clicks. */
+const ERECPRIME_BLOG_URL =
+  `https://af3f4qzpqenm3wfb1cff-atz7n.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`;
+
+const TEDPLANS_BLOG_URL =
+  `https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`;
+
 const CLICKBANK_AFFILIATE_BY_HOST: Record<string, string> = {
-  "erecprime24.com": ERECPRIME_AFFILIATE_URL,
-  "www.erecprime24.com": ERECPRIME_AFFILIATE_URL,
-  "af3f4qzpqenm3wfb1cff-atz7n.hop.clickbank.net": ERECPRIME_AFFILIATE_URL,
-  "accd7grbpfnm6m186ded0bo9dw.hop.clickbank.net": ERECPRIME_AFFILIATE_URL,
+  "erecprime24.com": ERECPRIME_BLOG_URL,
+  "www.erecprime24.com": ERECPRIME_BLOG_URL,
+  "af3f4qzpqenm3wfb1cff-atz7n.hop.clickbank.net": ERECPRIME_BLOG_URL,
+  "accd7grbpfnm6m186ded0bo9dw.hop.clickbank.net": ERECPRIME_BLOG_URL,
   "www.criticaltboost.com": CRITICAL_T_BLOG_URL,
   "criticaltboost.com": CRITICAL_T_BLOG_URL,
   "8cf8ej-qngjwdt32x53bo30mdg.hop.clickbank.net": CRITICAL_T_BLOG_URL,
@@ -39,9 +47,9 @@ const CLICKBANK_AFFILIATE_BY_HOST: Record<string, string> = {
   "endopeak24.com": `https://42ad2cskk5msam5atc1eq2ur5a.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`,
   "getnitricboost.com": `https://getnitricboost.com/?${BLOG_AFFILIATE_QUERY}`,
   "www.getnitricboost.com": `https://getnitricboost.com/?${BLOG_AFFILIATE_QUERY}`,
-  "tedplansdiy.com": `https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`,
-  "www.tedplansdiy.com": `https://8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net/?&${BLOG_AFFILIATE_QUERY}`,
-  "8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net": TEDPLANS_AFFILIATE_URL,
+  "tedplansdiy.com": TEDPLANS_BLOG_URL,
+  "www.tedplansdiy.com": TEDPLANS_BLOG_URL,
+  "8a4d3jpqq6py4refm24ow8ul9y.hop.clickbank.net": TEDPLANS_BLOG_URL,
 };
 
 const UTM = {
