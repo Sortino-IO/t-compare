@@ -1,4 +1,8 @@
 User-agent: *
 Disallow: /internal/
 
+User-agent: Slackbot
+Allow: /
+Allow: /og/
+
 Sitemap: https://www.t-compare.com/sitemap.xml

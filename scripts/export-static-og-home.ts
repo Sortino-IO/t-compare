@@ -1,10 +1,11 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import sharp from "sharp";
 import { renderOgCard, siteChips } from "../app/lib/og-card";
 
 async function main() {
-  const outPath = join(process.cwd(), "public/og/home.png");
-  mkdirSync(join(process.cwd(), "public/og"), { recursive: true });
+  const dir = join(process.cwd(), "public/og");
+  mkdirSync(dir, { recursive: true });
 
   const res = await renderOgCard({
     eyebrow: "Independent comparison",
@@ -13,9 +14,14 @@ async function main() {
     chips: siteChips(),
   });
 
-  const buf = Buffer.from(await res.arrayBuffer());
-  writeFileSync(outPath, buf);
-  console.log(`Wrote ${outPath} (${buf.byteLength} bytes)`);
+  const png = Buffer.from(await res.arrayBuffer());
+  writeFileSync(join(dir, "home.png"), png);
+
+  const jpg = await sharp(png).flatten({ background: "#ffffff" }).jpeg({ quality: 88 }).toBuffer();
+  writeFileSync(join(dir, "share.jpg"), jpg);
+
+  console.log(`Wrote public/og/home.png (${png.byteLength} bytes)`);
+  console.log(`Wrote public/og/share.jpg (${jpg.byteLength} bytes)`);
 }
 
 main().catch((err) => {

@@ -16,5 +16,6 @@ export const OG_BASE = {
   locale: "en_US",
 } as const;
 
-/** Stable homepage share image (no query string — Slack and others cache more reliably). */
-export const HOME_OG_IMAGE_PATH = "/og/home.png";
+/** Stable homepage share image (JPEG, no query string — Slack imgproxy is picky about PNG alpha). */
+export const HOME_OG_IMAGE_PATH = "/og/share.jpg";
+export const HOME_OG_IMAGE_URL = `${SITE_URL}${HOME_OG_IMAGE_PATH}`;

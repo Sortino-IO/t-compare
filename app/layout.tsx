@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { headers } from "next/headers";
 import SiteChrome from "./components/SiteChrome";
 import GoogleTagManager from "./components/GoogleTagManager";
-import { OG_BASE, SITE_URL } from "./lib/site";
+import { HOME_OG_IMAGE_URL, OG_BASE, SITE_URL } from "./lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,14 +55,28 @@ export const metadata: Metadata = {
   verification: siteVerification(),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = (await headers()).get("x-pathname") ?? "";
+  const isHome = pathname === "/";
+
   return (
     <html lang="en" className={`${geistSans.variable} h-full`}>
       <head>
+        {isHome ? (
+          <>
+            <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+            <meta property="og:image:secure_url" content={HOME_OG_IMAGE_URL} />
+            <meta property="og:image:type" content="image/jpeg" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
+            <link rel="image_src" href={HOME_OG_IMAGE_URL} />
+          </>
+        ) : null}
         {/* Slack reads only the first ~32KB; site-wide OG fields belong early in head. */}
         <meta property="og:site_name" content="T-Compare" />
         <meta property="og:locale" content="en_US" />
