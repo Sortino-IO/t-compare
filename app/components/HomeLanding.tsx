@@ -1,7 +1,14 @@
 import Link from "next/link";
+import AffiliateDisclosure from "./AffiliateDisclosure";
 import BrandCard from "./BrandCard";
 import BlogCard from "./BlogCard";
 import ComparisonPairsGrid from "./ComparisonPairsGrid";
+import EvidenceNotes from "./EvidenceNotes";
+import FaqSection, { type FaqItem } from "./FaqSection";
+import QuickCostEstimator from "./QuickCostEstimator";
+import TrustStrip from "./TrustStrip";
+import { buildEstimatorRows } from "../lib/cost-estimator";
+import { formatReviewedDate, latestReviewedDate } from "../lib/brand-display";
 import { getBrandsByCategory } from "../lib/brands";
 import { getPostBySlug } from "../lib/blog";
 import {
@@ -32,26 +39,21 @@ function SectionHeader({
 }) {
   return (
     <div className="max-w-2xl">
-      <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-2.5">
+      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
         {eyebrow}
       </p>
-      <h2 className="font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl font-semibold text-[#1c1917] leading-tight">
+      <h2 className="tc-display text-xl font-bold leading-tight sm:text-2xl">
         {title}
       </h2>
-      <p className="mt-3 text-sm sm:text-base text-[#78716c] leading-relaxed">
-        {intro}
-      </p>
+      <p className="mt-2 text-[15px] leading-relaxed text-[#53666e]">{intro}</p>
     </div>
   );
 }
 
 function SectionCta({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <div className="mt-7 flex justify-center sm:justify-start">
-      <Link
-        href={href}
-        className="inline-flex items-center gap-2 rounded-xl border border-[#cfcabf] bg-white px-6 py-3 text-sm font-semibold text-[#1c1917] shadow-sm transition-colors hover:border-[#2a6e47] hover:text-[#2a6e47]"
-      >
+    <div className="mt-6">
+      <Link href={href} className="tc-btn tc-btn-secondary">
         {children}
         <span aria-hidden>→</span>
       </Link>
@@ -59,11 +61,46 @@ function SectionCta({ href, children }: { href: string; children: React.ReactNod
   );
 }
 
+const HOME_FAQ: FaqItem[] = [
+  {
+    question: "How does T-Compare make money?",
+    answer:
+      "Some providers and brands pay us a commission when you sign up or buy through our links. Your price is the same either way, and every provider in a table is described using the same published terms.",
+    link: { href: "/about", label: "How we work" },
+  },
+  {
+    question: "What is the difference between enclomiphene and testosterone supplements?",
+    answer:
+      "Enclomiphene is a prescription medication that needs a clinician and blood tests. Over-the-counter testosterone supplements are herbal or nutrient formulas sold without a prescription, and they are not FDA-approved to treat low testosterone.",
+  },
+  {
+    question: "Is enclomiphene the same as testosterone replacement therapy (TRT)?",
+    answer:
+      "No. TRT supplies testosterone directly. Enclomiphene signals the pituitary gland to release more LH and FSH, which prompts the testes to make more of their own testosterone.",
+    link: { href: "/blog/enclomiphene-vs-trt-difference", label: "Enclomiphene vs TRT explained" },
+  },
+  {
+    question: "How do I know if I have low testosterone?",
+    answer:
+      "Only a blood test can tell. The American Urological Association diagnoses low testosterone when two early-morning total testosterone tests come back below 300 ng/dL and there are symptoms such as low libido or fatigue.",
+    link: {
+      href: "https://www.auanet.org/guidelines-and-quality/guidelines/testosterone-deficiency-guideline",
+      label: "AUA guideline",
+    },
+  },
+  {
+    question: "How current are the prices on T-Compare?",
+    answer:
+      "We check each provider's own website and show the review date on every listing. Prices and promotions change, so confirm the final total on the provider's checkout before you pay.",
+  },
+];
+
 export default function HomeLanding() {
   const providers = getBrandsByCategory("enclomiphene");
   const supplements = getBrandsByCategory("supplement");
   const featuredProviders = providers.slice(0, FEATURED_PROVIDER_COUNT);
   const featuredSupplements = supplements.slice(0, FEATURED_SUPPLEMENT_COUNT);
+  const reviewedOn = latestReviewedDate([...providers, ...supplements]);
 
   const encloPairs = ENCLO_COMPARISONS.slice(0, 4).map((c) => ({
     title: c.label,
@@ -82,50 +119,69 @@ export default function HomeLanding() {
     .slice(0, 3);
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-10 sm:py-16">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       {/* ── Hero ── */}
-      <section className="text-center max-w-3xl mx-auto">
-        <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-3 sm:mb-4">
-          Independent Informational Comparisons
+      <section className="max-w-3xl">
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
+          Independent informational comparisons
         </p>
-        <h1 className="font-[family-name:var(--font-playfair)] text-[2rem] sm:text-5xl lg:text-6xl font-semibold text-[#1c1917] leading-[1.08] tracking-tight mb-4 sm:mb-5">
+        <h1 className="tc-display text-[1.875rem] font-bold leading-[1.15] sm:text-[2.75rem]">
           Compare Testosterone Providers &amp; Supplements
         </h1>
-        <p className="text-sm sm:text-lg text-[#78716c] leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#53666e] sm:text-lg">
           Enclomiphene telehealth programs and over-the-counter testosterone
           supplements, side by side. Review pricing, labs, onboarding, guarantees,
           and formulas in one place — then verify directly with each brand before you decide.
         </p>
 
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/testosterone/enclomiphene"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#2a6e47] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
-          >
-            Enclomiphene providers <span aria-hidden>→</span>
+        <div className="mt-5 flex flex-wrap items-center gap-2.5">
+          <Link href="/testosterone/enclomiphene" className="tc-btn tc-btn-primary">
+            Compare enclomiphene providers <span aria-hidden>→</span>
           </Link>
-          <Link
-            href="/t-supplements"
-            className="inline-flex items-center gap-2 rounded-xl border border-[#cfcabf] bg-white px-6 py-3 text-sm font-semibold text-[#1c1917] shadow-sm transition-colors hover:border-[#2a6e47] hover:text-[#2a6e47]"
-          >
-            Testosterone supplements <span aria-hidden>→</span>
+          <Link href="/t-supplements" className="tc-btn tc-btn-secondary">
+            Compare supplements <span aria-hidden>→</span>
           </Link>
         </div>
       </section>
 
+      <TrustStrip
+        className="mt-7"
+        items={[
+          { label: "Providers listed", value: String(providers.length) },
+          { label: "Supplements listed", value: String(supplements.length) },
+          ...(reviewedOn
+            ? [
+                {
+                  label: "Listings last reviewed",
+                  value: formatReviewedDate(reviewedOn),
+                },
+              ]
+            : []),
+        ]}
+      />
+
+      <AffiliateDisclosure className="mt-3" />
+
       {/* ── Enclomiphene providers ── */}
-      <section className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#e3dfd6]">
+      <section className="mt-12 border-t border-[#e3e3e3] pt-10">
         <SectionHeader
           eyebrow="Telehealth programs"
           title="Enclomiphene providers"
           intro="Enclomiphene is a prescription option some men use to support their body's own testosterone production. Compare the leading telehealth providers by monthly price, lab requirements, and how fast you can start."
         />
 
-        <div className="mt-8 flex flex-col gap-3">
+        <div className="mt-5 flex flex-col gap-3">
           {featuredProviders.map((brand, i) => (
             <BrandCard key={brand.slug} brand={brand} highlight={i === 0} />
           ))}
         </div>
+
+        <QuickCostEstimator rows={buildEstimatorRows(providers)} className="mt-6" />
+
+        <EvidenceNotes
+          ids={["enclomiphene-sperm", "t-trials-sexual-function", "traverse-heart"]}
+          className="mt-6"
+        />
 
         <SectionCta href="/testosterone/enclomiphene">
           View all {providers.length} enclomiphene providers
@@ -133,7 +189,7 @@ export default function HomeLanding() {
       </section>
 
       {/* ── Enclomiphene comparisons ── */}
-      <section className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#e3dfd6]">
+      <section className="mt-12 border-t border-[#e3e3e3] pt-10">
         <SectionHeader
           eyebrow="Head-to-head"
           title="Enclomiphene comparisons"
@@ -146,14 +202,14 @@ export default function HomeLanding() {
       </section>
 
       {/* ── Testosterone supplements ── */}
-      <section className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#e3dfd6]">
+      <section className="mt-12 border-t border-[#e3e3e3] pt-10">
         <SectionHeader
           eyebrow="Over-the-counter"
           title="Testosterone supplements"
           intro="OTC testosterone boosters use ingredients like Tongkat Ali, fenugreek, and DAA. Compare the most-searched supplements on entry price, bulk-bundle math, money-back guarantees, and formula focus."
         />
 
-        <div className="mt-8 flex flex-col gap-3">
+        <div className="mt-5 flex flex-col gap-3">
           {featuredSupplements.map((brand, i) => (
             <BrandCard key={brand.slug} brand={brand} highlight={i === 0} />
           ))}
@@ -165,7 +221,7 @@ export default function HomeLanding() {
       </section>
 
       {/* ── Supplement comparisons ── */}
-      <section className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#e3dfd6]">
+      <section className="mt-12 border-t border-[#e3e3e3] pt-10">
         <SectionHeader
           eyebrow="Head-to-head"
           title="Testosterone Supplement comparisons"
@@ -181,14 +237,14 @@ export default function HomeLanding() {
 
       {/* ── From the blog ── */}
       {blogPosts.length > 0 && (
-        <section className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#e3dfd6]">
+        <section className="mt-12 border-t border-[#e3e3e3] pt-10">
           <SectionHeader
             eyebrow="Guides & research"
             title="From the blog"
             intro="In-depth, independent guides on testosterone therapy, enclomiphene, and supplement ingredients — written to answer the questions men actually search for."
           />
 
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
+          <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
             {blogPosts.map((post) => (
               <BlogCard key={post.slug} post={post} />
             ))}
@@ -198,18 +254,21 @@ export default function HomeLanding() {
         </section>
       )}
 
+      <FaqSection items={HOME_FAQ} className="mt-12 border-t border-[#e3e3e3] pt-10" />
+
       {/* ── Trust / closing ── */}
-      <section className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#e3dfd6] text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-[family-name:var(--font-playfair)] text-2xl sm:text-4xl lg:text-5xl font-bold text-[#1c1917] leading-[1.1] tracking-tight mb-5 sm:mb-7">
-            Built to make comparison easier.
+      <section className="mt-12 border-t border-[#e3e3e3] pt-10">
+        <div className="max-w-3xl">
+          <h2 className="tc-display text-xl font-bold leading-tight sm:text-2xl">
+            Built to make comparison easier
           </h2>
-          <p className="text-base sm:text-xl text-[#78716c] leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#53666e]">
             T-Compare gathers publicly available information about testosterone-related
             providers and supplements into one place, so you can review pricing, onboarding
             style, and formula differences more clearly before verifying directly with each brand.
+            We do not run clinical testing, collect user reviews, or assign star ratings.
           </p>
-          <p className="mt-6 text-xs text-[#b5b0a8] leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-4 max-w-2xl text-xs leading-relaxed text-[#5f757f]">
             This site is for informational purposes only and does not constitute medical
             advice. Pricing is indicative and subject to change — always confirm details with
             the provider. Supplements are not FDA-approved to treat low testosterone.

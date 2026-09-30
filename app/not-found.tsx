@@ -32,13 +32,13 @@ const QUICK_LINKS = [
 export default function NotFound() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-20 sm:py-28 text-center">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e] mb-3">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87] mb-3">
         Error 404
       </p>
-      <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl font-semibold text-[#1c1917] leading-tight">
+      <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl">
         We couldn&apos;t find that page
       </h1>
-      <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#78716c]">
+      <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#53666e]">
         The link may be broken or the page may have moved. Try one of the sections
         below, or head back to the homepage.
       </p>
@@ -48,17 +48,17 @@ export default function NotFound() {
           <Link
             key={link.href}
             href={link.href}
-            className="group rounded-2xl border border-[#e3dfd6] bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#2a6e47]/30 hover:shadow-md"
+            className="group rounded-xl border border-[#e3e3e3] bg-white p-5 transition-all hover:border-[#176b87]/30"
           >
             <div className="flex items-center justify-between">
-              <span className="text-base font-semibold text-[#1c1917] group-hover:text-[#2a6e47]">
+              <span className="text-base font-semibold text-[#142b3a] group-hover:text-[#176b87]">
                 {link.title}
               </span>
-              <span className="text-[#c8c2bb] transition-transform group-hover:translate-x-0.5 group-hover:text-[#2a6e47]" aria-hidden>
+              <span className="text-[#9db0ba] transition-transform group-hover:translate-x-0.5 group-hover:text-[#176b87]" aria-hidden>
                 →
               </span>
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-[#78716c]">
+            <p className="mt-2 text-sm leading-relaxed text-[#53666e]">
               {link.description}
             </p>
           </Link>
@@ -68,7 +68,7 @@ export default function NotFound() {
       <div className="mt-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-xl bg-[#2a6e47] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
+          className="inline-flex items-center gap-2 rounded-xl bg-[#176b87] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#10556d]"
         >
           Back to homepage
         </Link>

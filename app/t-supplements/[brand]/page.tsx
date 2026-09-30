@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import BrandSourceLinks from "../../components/BrandSourceLinks";
+import CommercialHero from "../../components/CommercialHero";
+import MobileStickyCta from "../../components/MobileStickyCta";
+import ExternalCta from "../../components/ui/ExternalCta";
+import { formatReviewedDate, merchantCtaLabel } from "../../lib/brand-display";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 import { getPostsByTopic } from "../../lib/blog";
 import { getBlogTopic } from "../../lib/blog-topics";
@@ -68,6 +72,8 @@ export default async function TSupplementBrandPage({ params }: Props) {
   const config = BRAND_CATEGORY_CONFIG.supplement;
   const categoryPath = getCategoryIndexPath("supplement");
   const pageUrl = `${SITE_URL}/t-supplements/${brand.slug}`;
+  const affiliateHref = withTtimeAffiliateParams(brand.affiliateUrl);
+  const ctaLabel = merchantCtaLabel(brand);
 
   // If this brand has a matching blog topic hub, surface its guides for internal linking.
   const brandTopic = getBlogTopic(brand.slug);
@@ -123,11 +129,7 @@ export default async function TSupplementBrandPage({ params }: Props) {
         }
       : null;
 
-  const formattedDate = new Date(brand.lastReviewed).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatReviewedDate(brand.lastReviewed);
 
   return (
     <>
@@ -146,261 +148,287 @@ export default async function TSupplementBrandPage({ params }: Props) {
         />
       ) : null}
 
-      <div className="mx-auto max-w-5xl px-6 py-10 sm:py-16">
-        <nav className="flex items-center gap-2 text-sm text-[#b5b0a8] mb-10 sm:mb-14 flex-wrap">
-          <Link href="/" className="hover:text-[#1c1917] transition-colors">Home</Link>
-          <span>/</span>
-          <Link href={categoryPath} className="hover:text-[#1c1917] transition-colors">
+      <div className="mx-auto max-w-5xl px-4 pb-24 pt-8 sm:px-6 sm:pb-16 sm:pt-10">
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#5f757f]"
+        >
+          <Link href="/" className="hover:text-[#176b87] hover:underline">
+            Home
+          </Link>
+          <span aria-hidden>/</span>
+          <Link href={categoryPath} className="hover:text-[#176b87] hover:underline">
             Testosterone Supplements
           </Link>
-          <span>/</span>
-          <span className="text-[#78716c]">{brand.name}</span>
+          <span aria-hidden>/</span>
+          <span className="text-[#3c535e]">{brand.name}</span>
         </nav>
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_300px] items-start">
-          <div>
-            <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-4">
-              Informational Comparison · {config.detailBadge}
-            </p>
-            <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl font-semibold text-[#1c1917] leading-tight mb-2">
-              {brand.name}
-            </h1>
-            <p className="text-xs text-[#b5b0a8] mb-5">Last reviewed: {formattedDate}</p>
-            <p className="text-base text-[#78716c] leading-relaxed mb-8 max-w-lg">
-              Considering {brand.name}? This page breaks down what you&apos;ll
-              actually pay, what the formula emphasizes, and how its guarantee
-              works-so you can decide if it fits your goals before checkout.
-            </p>
+        <CommercialHero
+          brand={brand}
+          affiliateHref={affiliateHref}
+          intro={`Considering ${brand.name}? This page breaks down what you'll actually pay, what the formula emphasizes, and how its guarantee works — so you can decide before checkout.`}
+        />
 
-            <div className="rounded-2xl bg-white border border-[#e3dfd6] overflow-hidden shadow-sm mb-8">
-              <div className="px-7 py-5 border-b border-[#f0ece4]">
-                <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">Overview</p>
-                <p className="text-sm text-[#44403c] leading-relaxed">{brand.overview}</p>
-              </div>
-              <div className="px-7 py-5 border-b border-[#f0ece4]">
-                <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">Pricing</p>
-                <p className="text-sm text-[#44403c] leading-relaxed">
-                  {brand.priceLabel}.{" "}
-                  <span className="font-semibold text-[#2a6e47]">
-                    Headline anchor ~${brand.priceFromMonthly}/mo equivalent.
-                  </span>{" "}
-                  Verify on the official checkout page.
-                </p>
-              </div>
-              <div className="px-7 py-5">
-                <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">Notes</p>
-                <ul className="flex flex-col gap-1.5">
-                  {brand.notes.map((note, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-[#44403c] leading-relaxed">
-                      <span className="text-[#b5b0a8] mt-0.5 shrink-0">-</span>
-                      {note}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+        {/* Pricing + formula detail */}
+        <section className="mt-8" aria-labelledby="pricing-formula">
+          <h2
+            id="pricing-formula"
+            className="tc-display text-xl font-bold sm:text-2xl"
+          >
+            Pricing, guarantee and formula
+          </h2>
 
-            <a
-              href={withTtimeAffiliateParams(brand.affiliateUrl)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-xl bg-[#2a6e47] px-8 py-4 text-sm font-semibold text-white hover:bg-[#22593a] transition-colors shadow-sm"
-            >
-              Visit {brand.name}
-            </a>
-
-            <dl className="mt-8 grid gap-3 sm:grid-cols-3">
-              {[
-                { label: config.whyLabels.onboarding, value: brand.why.onboarding },
-                { label: config.whyLabels.pricing, value: brand.why.pricing },
-                { label: config.whyLabels.positioning, value: brand.why.positioning },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-[#e3dfd6] bg-white px-5 py-4 shadow-sm"
+          <dl className="mt-3 grid gap-3 sm:grid-cols-3">
+            {[
+              {
+                label: config.whyLabels.onboarding,
+                value: brand.why.onboarding,
+                positive: true,
+              },
+              { label: config.whyLabels.pricing, value: brand.why.pricing },
+              {
+                label: config.whyLabels.positioning,
+                value: brand.why.positioning,
+              },
+            ].map((item) => (
+              <div key={item.label} className="tc-card p-4 sm:p-5">
+                <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#3c535e]">
+                  {item.label}
+                </dt>
+                <dd
+                  className={`mt-2 text-sm leading-relaxed ${
+                    item.positive ? "text-[#1a6249]" : "text-[#3c535e]"
+                  }`}
                 >
-                  <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#a8a29e]">
-                    {item.label}
-                  </dt>
-                  <dd className="mt-2 text-sm leading-relaxed text-[#44403c]">{item.value}</dd>
-                </div>
+                  {item.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className="tc-card mt-3 p-4 sm:p-5">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#3c535e]">
+              Notes
+            </p>
+            <ul className="mt-2 flex flex-col gap-1.5">
+              {brand.notes.map((note, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-sm leading-relaxed text-[#3c535e]"
+                >
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#9db0ba]" aria-hidden />
+                  {note}
+                </li>
               ))}
-            </dl>
-
-            {brand.ctaBelowParagraphs.length > 0 ? (
-              <section className="mt-8 max-w-2xl">
-                <h2 className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-4">
-                  About {brand.name}
-                </h2>
-                <div className="flex flex-col gap-4 text-sm text-[#57534e] leading-relaxed">
-                  {brand.ctaBelowParagraphs.map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            {brand.faqItems.length > 0 ? (
-              <section className="mt-10 max-w-2xl">
-                <h2 className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-5">
-                  Frequently asked questions
-                </h2>
-                <div className="flex flex-col gap-3">
-                  {brand.faqItems.map((item, i) => (
-                    <details
-                      key={i}
-                      className="group rounded-xl border border-[#e3dfd6] bg-white px-4 py-1 shadow-sm open:pb-3"
-                    >
-                      <summary className="cursor-pointer list-none py-3 text-sm font-medium text-[#44403c]">
-                        {item.question}
-                      </summary>
-                      <p className="text-sm text-[#57534e] leading-relaxed pb-1 border-t border-[#f0ece4] pt-3">
-                        {item.answer}
-                      </p>
-                    </details>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            {brandTopic && topicPosts.length > 0 ? (
-              <section className="mt-10 max-w-2xl">
-                <h2 className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-5">
-                  {brand.name} guides
-                </h2>
-                <ul className="flex flex-col divide-y divide-[#f0ece4] rounded-xl border border-[#e3dfd6] bg-white shadow-sm">
-                  {topicPosts.map((post) => (
-                    <li key={post.slug}>
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="flex items-start gap-3 px-4 py-3 text-sm text-[#44403c] transition-colors hover:bg-[#faf9f6] hover:text-[#1c1917]"
-                      >
-                        <span className="mt-0.5 shrink-0 text-[#2a6e47]">→</span>
-                        {post.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={`/blog/topics/${brandTopic.slug}`}
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#2a6e47] transition-colors hover:text-[#1c1917]"
-                >
-                  See all {brand.name} guides →
-                </Link>
-              </section>
-            ) : null}
-
-            {comparePairs.length > 0 ? (
-              <section className="mt-10 max-w-2xl">
-                <h2 className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-2">
-                  {brand.name} head-to-head comparisons
-                </h2>
-                <p className="text-sm text-[#57534e] leading-relaxed mb-5">
-                  See how {brand.name} stacks up against other testosterone supplements on
-                  price, formula, and guarantee terms.
-                </p>
-                <ul className="grid gap-2 sm:grid-cols-2">
-                  {comparePairs.map(({ other, href }) => (
-                    <li key={href}>
-                      <Link
-                        href={href}
-                        className="flex items-center justify-between gap-2 rounded-xl border border-[#e3dfd6] bg-white px-4 py-3 text-sm font-medium text-[#44403c] shadow-sm transition-colors hover:border-[#2a6e47]/30 hover:text-[#1c1917]"
-                      >
-                        <span>
-                          {brand.name} vs {other.name}
-                        </span>
-                        <span className="shrink-0 text-[#2a6e47]" aria-hidden>
-                          →
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={comparisonsIndexPath}
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#2a6e47] transition-colors hover:text-[#1c1917]"
-                >
-                  See all supplement comparisons →
-                </Link>
-              </section>
-            ) : null}
-
-            <section className="mt-10 max-w-2xl overflow-hidden rounded-3xl border border-[#c6e0d0] bg-[#f3f8f4] px-7 py-7 sm:px-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2a6e47]">
-                Ready to decide?
-              </p>
-              <h2 className="mt-2 font-[family-name:var(--font-playfair)] text-xl font-semibold text-[#1c1917] sm:text-2xl">
-                Check current {brand.name} pricing &amp; the live offer
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#57534e]">
-                Promos and bundle totals change often. Confirm the latest price and guarantee terms on the official checkout before you order.
-              </p>
-              <a
-                href={withTtimeAffiliateParams(brand.affiliateUrl)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center justify-center rounded-xl bg-[#2a6e47] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
-              >
-                Visit {brand.name}
-              </a>
-            </section>
-
-            <details className="mt-8 group">
-              <summary className="cursor-pointer list-none flex items-center gap-1.5 text-xs font-medium text-[#b5b0a8] hover:text-[#78716c] transition-colors select-none">
-                <svg
-                  width="12" height="12" viewBox="0 0 12 12" fill="none"
-                  className="transition-transform duration-150 group-open:rotate-90"
-                  aria-hidden="true"
-                >
-                  <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Sources
-              </summary>
-              <div className="mt-3 pl-4 border-l border-[#e3dfd6]">
-                <BrandSourceLinks
-                  brand={brand}
-                  className="flex flex-col gap-1.5"
-                  linkClassName="text-xs text-[#78716c] hover:text-[#2a6e47] hover:underline transition-colors font-normal"
-                />
-              </div>
-            </details>
+            </ul>
           </div>
 
-          <div>
-            <div className="rounded-2xl bg-white border border-[#e3dfd6] p-7 shadow-sm lg:sticky lg:top-24">
-              <p className="text-[11px] font-semibold tracking-[0.2em] text-[#b5b0a8] uppercase mb-5">Starting price</p>
-              <div className="flex items-baseline gap-1 mb-4">
-                <span className="font-[family-name:var(--font-playfair)] text-5xl font-bold text-[#2a6e47] tabular-nums leading-none">
-                  ${brand.priceFromMonthly}
-                </span>
-                <span className="text-base text-[#78716c]">/mo</span>
-              </div>
-              <p className="text-xs text-[#44403c] leading-relaxed">{brand.priceLabel}</p>
+          {/* CTA repeated after pricing */}
+          <div className="mt-4 flex flex-col gap-3 rounded-xl border border-[#bcd9e4] bg-[#eef6f9] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+            <p className="text-sm leading-relaxed text-[#3c535e]">
+              Promos and bundle totals change often. Confirm the latest price and
+              guarantee terms on the official checkout before you order.
+            </p>
+            <ExternalCta
+              href={affiliateHref}
+              brand={brand.name}
+              position="pricing"
+              label={ctaLabel}
+              className="sm:shrink-0"
+            />
+          </div>
+        </section>
 
-              <a
-                href={withTtimeAffiliateParams(brand.affiliateUrl)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 flex w-full items-center justify-center rounded-xl bg-[#2a6e47] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
-              >
-                Visit {brand.name}
-              </a>
-              <p className="mt-3 flex items-center gap-2 text-xs text-[#78716c]">
-                <span className="text-[#2a6e47]" aria-hidden>
-                  ✓
-                </span>
-                {brand.why.onboarding}
-              </p>
+        {brand.ctaBelowParagraphs.length > 0 ? (
+          <section className="mt-10" aria-labelledby={`about-${brand.slug}`}>
+            <h2
+              id={`about-${brand.slug}`}
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              About {brand.name}
+            </h2>
+            <div className="mt-3 flex max-w-2xl flex-col gap-4 text-[15px] leading-relaxed text-[#53666e]">
+              {brand.ctaBelowParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
-          </div>
-        </div>
+          </section>
+        ) : null}
 
-        <div className="mt-12 pt-8 border-t border-[#e3dfd6]">
-          <Link href={categoryPath} className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors">
+        {brand.faqItems.length > 0 ? (
+          <section className="mt-10" aria-labelledby={`faq-${brand.slug}`}>
+            <h2
+              id={`faq-${brand.slug}`}
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              Frequently asked questions
+            </h2>
+            <div className="mt-3 flex max-w-2xl flex-col gap-2">
+              {brand.faqItems.map((item, i) => (
+                <details
+                  key={i}
+                  className="group rounded-lg border border-[#e3e3e3] bg-white px-4 open:pb-3"
+                >
+                  <summary className="relative cursor-pointer list-none select-none py-3 pr-7 text-sm font-semibold text-[#142b3a]">
+                    {item.question}
+                    <span
+                      className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#5f757f] transition-transform group-open:rotate-180"
+                      aria-hidden
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M6 9l6 6 6-6"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="border-t border-[#ededed] pt-3 text-sm leading-relaxed text-[#53666e]">
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {brandTopic && topicPosts.length > 0 ? (
+          <section className="mt-10" aria-labelledby="brand-guides">
+            <h2
+              id="brand-guides"
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              {brand.name} guides
+            </h2>
+            <ul className="tc-card mt-3 flex max-w-2xl flex-col divide-y divide-[#ededed]">
+              {topicPosts.map((post) => (
+                <li key={post.slug}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="flex items-start gap-3 px-4 py-3 text-sm text-[#3c535e] transition-colors hover:bg-[#f4f8fa] hover:text-[#176b87]"
+                  >
+                    <span className="mt-0.5 shrink-0 text-[#176b87]" aria-hidden>
+                      →
+                    </span>
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={`/blog/topics/${brandTopic.slug}`}
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#176b87] hover:text-[#10556d] hover:underline"
+            >
+              See all {brand.name} guides →
+            </Link>
+          </section>
+        ) : null}
+
+        {comparePairs.length > 0 ? (
+          <section className="mt-10" aria-labelledby="head-to-head">
+            <h2
+              id="head-to-head"
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              {brand.name} head-to-head comparisons
+            </h2>
+            <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-[#53666e]">
+              See how {brand.name} stacks up against other testosterone
+              supplements on price, formula, and guarantee terms.
+            </p>
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+              {comparePairs.map(({ other, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="flex items-center justify-between gap-2 rounded-lg border border-[#e3e3e3] bg-white px-4 py-3 text-sm font-medium text-[#3c535e] transition-colors hover:border-[#a9cbd8] hover:text-[#176b87]"
+                  >
+                    <span>
+                      {brand.name} vs {other.name}
+                    </span>
+                    <span className="shrink-0 text-[#176b87]" aria-hidden>
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={comparisonsIndexPath}
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#176b87] hover:text-[#10556d] hover:underline"
+            >
+              See all supplement comparisons →
+            </Link>
+          </section>
+        ) : null}
+
+        {/* Methodology + sources */}
+        <section className="mt-10" aria-labelledby="sources">
+          <h2 id="sources" className="tc-display text-xl font-bold sm:text-2xl">
+            Sources &amp; how this listing is built
+          </h2>
+          <div className="tc-card mt-3 p-4 sm:p-5">
+            <p className="text-sm leading-relaxed text-[#53666e]">
+              Pricing, guarantee and formula details are taken from{" "}
+              {brand.name}&apos;s own public pages and last reviewed on{" "}
+              {formattedDate}. T-Compare does not run product testing, aggregate
+              user reviews, or assign star ratings — listings summarize what each
+              brand publishes so you can verify it at the source.
+            </p>
+            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#3c535e]">
+              Sources
+            </p>
+            <BrandSourceLinks
+              brand={brand}
+              className="mt-2 flex flex-col gap-1.5"
+              linkClassName="text-sm text-[#176b87] underline decoration-[#176b87]/30 underline-offset-2 hover:text-[#10556d]"
+            />
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <section className="mt-8 rounded-xl border border-[#e3e3e3] bg-white p-5 sm:p-6">
+          <h2 className="tc-display text-lg font-bold sm:text-xl">
+            Check current {brand.name} pricing
+          </h2>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#53666e]">
+            Confirm the latest bundle price, shipping, and guarantee window on the
+            official checkout before you order.
+          </p>
+          <div className="mt-4 flex flex-col gap-2.5 sm:flex-row sm:items-center">
+            <ExternalCta
+              href={affiliateHref}
+              brand={brand.name}
+              position="footer"
+              label={ctaLabel}
+            />
+            <Link href={categoryPath} className="tc-btn tc-btn-secondary">
+              Compare all supplements
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </section>
+
+        <div className="mt-10 border-t border-[#e3e3e3] pt-6">
+          <Link
+            href={categoryPath}
+            className="text-sm font-semibold text-[#176b87] hover:text-[#10556d] hover:underline"
+          >
             ← Back to Testosterone Supplements
           </Link>
         </div>
       </div>
+
+      <MobileStickyCta
+        href={affiliateHref}
+        brand={brand.name}
+        label={ctaLabel}
+        priceLabel={brand.priceLabel}
+      />
     </>
   );
 }

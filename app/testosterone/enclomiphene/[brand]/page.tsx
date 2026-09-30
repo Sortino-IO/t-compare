@@ -2,8 +2,22 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import BrandSourceLinks from "../../../components/BrandSourceLinks";
+import CommercialHero from "../../../components/CommercialHero";
+import MobileStickyCta from "../../../components/MobileStickyCta";
+import ProviderNextSteps from "../../../components/ProviderNextSteps";
+import QuickCostEstimator from "../../../components/QuickCostEstimator";
+import EvidenceNotes from "../../../components/EvidenceNotes";
+import { buildEstimatorRows } from "../../../lib/cost-estimator";
+import ExternalCta from "../../../components/ui/ExternalCta";
+import { formatReviewedDate, merchantCtaLabel } from "../../../lib/brand-display";
 import { withTtimeAffiliateParams } from "../../../lib/affiliate-links";
-import { getBrandBySlug, getBrandsByCategory } from "../../../lib/brands";
+import { hasPublishedPrice } from "../../../lib/provider-facts";
+import {
+  getBrandBySlug,
+  getBrandPairs,
+  getBrandsByCategory,
+  getComparePairPath,
+} from "../../../lib/brands";
 import { SITE_URL } from "../../../lib/site";
 
 type Props = {
@@ -24,7 +38,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Concise, intent-matched title (cost/review) + per-brand description with the
   // price anchor so each provider page has unique, click-worthy SERP copy.
   const seoTitle = `${brand.name} Enclomiphene Cost & Review (2026)`;
-  const priceAnchor = brand.priceLabel.replace(/^From\s+/i, "from ");
+  const priceAnchor = hasPublishedPrice(brand)
+    ? brand.priceLabel.replace(/^From\s+/i, "from ")
+    : "pricing and terms";
   const seoDescription = `${brand.name} enclomiphene ${priceAnchor} — compare the real 90-day cost, lab requirements, onboarding speed, and plan details before you choose a provider.`;
 
   return {
@@ -59,6 +75,20 @@ export default async function BrandPage({ params }: Props) {
   if (!brand) notFound();
 
   const pageUrl = `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`;
+  const affiliateHref = withTtimeAffiliateParams(brand.affiliateUrl);
+  const ctaLabel = merchantCtaLabel(brand);
+  const estimatorRows = buildEstimatorRows(getBrandsByCategory("enclomiphene"));
+
+  // Head-to-head pages featuring this provider, for internal navigation.
+  const comparePairs = getBrandPairs("enclomiphene")
+    .filter((p) => p.a.slug === brand.slug || p.b.slug === brand.slug)
+    .map((p) => {
+      const other = p.a.slug === brand.slug ? p.b : p.a;
+      return {
+        other,
+        href: getComparePairPath("enclomiphene", brand.slug, other.slug),
+      };
+    });
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -80,11 +110,7 @@ export default async function BrandPage({ params }: Props) {
     breadcrumb: breadcrumbSchema,
   };
 
-  const formattedDate = new Date(brand.lastReviewed).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatReviewedDate(brand.lastReviewed);
 
   const faqPageSchema =
     brand.faqItems.length > 0
@@ -120,221 +146,275 @@ export default async function BrandPage({ params }: Props) {
         />
       ) : null}
 
-      <div className="mx-auto max-w-5xl px-6 py-10 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4 pb-24 pt-8 sm:px-6 sm:pb-16 sm:pt-10">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-[#b5b0a8] mb-10 sm:mb-14 flex-wrap">
-          <Link href="/" className="hover:text-[#1c1917] transition-colors">Home</Link>
-          <span>/</span>
-          <Link href="/testosterone/enclomiphene" className="hover:text-[#1c1917] transition-colors">
-            T Providers
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#5f757f]"
+        >
+          <Link href="/" className="hover:text-[#176b87] hover:underline">
+            Home
           </Link>
-          <span>/</span>
-          <span className="text-[#78716c]">{brand.name}</span>
-        </nav>
-
-        <div className="grid gap-8 lg:grid-cols-[1fr_300px] items-start">
-          {/* Left column */}
-          <div>
-            <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-4">
-              Informational Comparison · Enclomiphene Provider
-            </p>
-            <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl font-semibold text-[#1c1917] leading-tight mb-2">
-              {brand.name}
-            </h1>
-
-            {/* Last reviewed */}
-            <p className="text-xs text-[#b5b0a8] mb-5">
-              Last reviewed: {formattedDate}
-            </p>
-
-            {/* Intro */}
-            <p className="text-base text-[#78716c] leading-relaxed mb-8 max-w-lg">
-              This page provides an overview of {brand.name}&apos;s enclomiphene
-              and testosterone-related program, including publicly available
-              pricing and onboarding details.
-            </p>
-
-            {/* Info card */}
-            <div className="rounded-2xl bg-white border border-[#e3dfd6] overflow-hidden shadow-sm mb-8">
-              {/* Overview */}
-              <div className="px-7 py-5 border-b border-[#f0ece4]">
-                <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">
-                  Overview
-                </p>
-                <p className="text-sm text-[#44403c] leading-relaxed">
-                  {brand.overview}
-                </p>
-              </div>
-
-              {/* Pricing */}
-              <div className="px-7 py-5 border-b border-[#f0ece4]">
-                <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">
-                  Pricing
-                </p>
-                <p className="text-sm text-[#44403c] leading-relaxed">
-                  Starting from{" "}
-                  <span className="font-semibold text-[#2a6e47]">
-                    ${brand.priceFromMonthly}/mo.
-                  </span>{" "}
-                  Final pricing may vary based on consultation, dosage, and
-                  location. Verify directly with the provider.
-                </p>
-              </div>
-
-              {/* Notes */}
-              <div className="px-7 py-5">
-                <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-2">
-                  Notes
-                </p>
-                <ul className="flex flex-col gap-1.5">
-                  {brand.notes.map((note, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-[#44403c] leading-relaxed">
-                      <span className="text-[#b5b0a8] mt-0.5 shrink-0">-</span>
-                      {note}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <a
-              href={withTtimeAffiliateParams(brand.affiliateUrl)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-xl bg-[#2a6e47] px-8 py-4 text-sm font-semibold text-white hover:bg-[#22593a] transition-colors shadow-sm"
-            >
-              Visit {brand.name}
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
-            <p className="mt-3 text-xs text-[#b5b0a8]">
-              Prices shown are the same as going direct.
-            </p>
-
-            {brand.ctaBelowParagraphs.length > 0 ? (
-              <section
-                className="mt-8 max-w-2xl"
-                aria-labelledby={`about-${brand.slug}`}
-              >
-                <h2
-                  id={`about-${brand.slug}`}
-                  className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-4"
-                >
-                  About {brand.name}
-                </h2>
-                <div className="flex flex-col gap-4 text-sm text-[#57534e] leading-relaxed">
-                  {brand.ctaBelowParagraphs.map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            {brand.faqItems.length > 0 ? (
-              <section
-                className="mt-10 max-w-2xl"
-                aria-labelledby={`faq-${brand.slug}`}
-              >
-                <h2
-                  id={`faq-${brand.slug}`}
-                  className="text-lg font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)] mb-5"
-                >
-                  Frequently asked questions
-                </h2>
-                <div className="flex flex-col gap-3">
-                  {brand.faqItems.map((item, i) => (
-                    <details
-                      key={i}
-                      className="group rounded-xl border border-[#e3dfd6] bg-white px-4 py-1 shadow-sm open:pb-3"
-                    >
-                      <summary className="cursor-pointer list-none py-3 text-sm font-medium text-[#44403c] pr-6 relative select-none">
-                        {item.question}
-                        <span
-                          className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#b5b0a8] transition-transform group-open:rotate-180"
-                          aria-hidden
-                        >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path
-                              d="M6 9l6 6 6-6"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </span>
-                      </summary>
-                      <p className="text-sm text-[#57534e] leading-relaxed pb-1 border-t border-[#f0ece4] pt-3">
-                        {item.answer}
-                      </p>
-                    </details>
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            {/* Sources - collapsed */}
-            <details className="mt-8 group">
-              <summary className="cursor-pointer list-none flex items-center gap-1.5 text-xs font-medium text-[#b5b0a8] hover:text-[#78716c] transition-colors select-none">
-                <svg
-                  width="12" height="12" viewBox="0 0 12 12" fill="none"
-                  className="transition-transform duration-150 group-open:rotate-90"
-                  aria-hidden="true"
-                >
-                  <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Sources
-              </summary>
-              <div className="mt-3 pl-4 border-l border-[#e3dfd6]">
-                <BrandSourceLinks
-                  brand={brand}
-                  className="flex flex-col gap-1.5"
-                  linkClassName="text-xs text-[#78716c] hover:text-[#2a6e47] hover:underline transition-colors font-normal"
-                />
-              </div>
-            </details>
-          </div>
-
-          {/* Right column - pricing card */}
-          <div>
-            <div className="rounded-2xl bg-white border border-[#e3dfd6] p-7 shadow-sm">
-              <p className="text-[11px] font-semibold tracking-[0.2em] text-[#b5b0a8] uppercase mb-5">
-                Monthly pricing
-              </p>
-              <div className="mb-2">
-                <span className="text-sm text-[#78716c]">From</span>
-              </div>
-              <div className="flex items-baseline gap-1 mb-4">
-                <span className="font-[family-name:var(--font-playfair)] text-5xl font-bold text-[#2a6e47] tabular-nums leading-none">
-                  ${brand.priceFromMonthly}
-                </span>
-                <span className="text-base text-[#78716c]">/mo</span>
-              </div>
-              <p className="text-xs text-[#b5b0a8] leading-relaxed border-t border-[#f0ece4] pt-4">
-                Program details may vary by consultation, eligibility, and
-                location.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer row */}
-        <div className="mt-12 sm:mt-14 pt-8 border-t border-[#e3dfd6] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <span aria-hidden>/</span>
           <Link
             href="/testosterone/enclomiphene"
-            className="text-sm text-[#78716c] hover:text-[#1c1917] transition-colors"
+            className="hover:text-[#176b87] hover:underline"
+          >
+            T Providers
+          </Link>
+          <span aria-hidden>/</span>
+          <span className="text-[#3c535e]">{brand.name}</span>
+        </nav>
+
+        <CommercialHero
+          brand={brand}
+          affiliateHref={affiliateHref}
+          intro={`This page summarizes ${brand.name}'s enclomiphene and testosterone-related program: publicly available pricing, how onboarding works, and the plan details worth checking before you enroll.`}
+        />
+
+        <ProviderNextSteps brand={brand} />
+
+        {estimatorRows.some((r) => r.slug === brand.slug) ? (
+          <QuickCostEstimator rows={estimatorRows} initialSlug={brand.slug} className="mt-6" />
+        ) : null}
+
+        <EvidenceNotes ids={["enclomiphene-sperm", "enclomiphene-not-approved"]} className="mt-6" />
+
+        {/* Program details */}
+        <section className="mt-8" aria-labelledby="program-details">
+          <h2
+            id="program-details"
+            className="tc-display text-xl font-bold sm:text-2xl"
+          >
+            Pricing and program details
+          </h2>
+
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            <div className="tc-card p-4 sm:p-5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#3c535e]">
+                Pricing
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-[#3c535e]">
+                {hasPublishedPrice(brand) ? (
+                  <>
+                    Starting from{" "}
+                    <span className="font-semibold text-[#142b3a]">
+                      ${brand.priceFromMonthly}/mo
+                    </span>
+                    {brand.facts ? ` — ${brand.facts.billing.short}. ` : ". "}
+                  </>
+                ) : (
+                  `${brand.facts?.billing.short}. `
+                )}
+                Final pricing may vary based on consultation, dosage, and location. Verify
+                directly with the provider.
+              </p>
+            </div>
+
+            <div className="tc-card p-4 sm:p-5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#3c535e]">
+                Onboarding
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-[#3c535e]">
+                {brand.onboardingType === "faster-start"
+                  ? "Marketed as a faster-start flow. A clinician review and eligibility rules still apply."
+                  : "Standard onboarding flow, including clinician review and eligibility checks."}{" "}
+                {brand.why.onboarding}.
+              </p>
+            </div>
+          </div>
+
+          <div className="tc-card mt-3 p-4 sm:p-5">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#3c535e]">
+              Notes
+            </p>
+            <ul className="mt-2 flex flex-col gap-1.5">
+              {brand.notes.map((note, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-sm leading-relaxed text-[#3c535e]"
+                >
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#9db0ba]" aria-hidden />
+                  {note}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CTA repeated after pricing */}
+          <div className="mt-4 flex flex-col gap-3 rounded-xl border border-[#bcd9e4] bg-[#eef6f9] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+            <p className="text-sm leading-relaxed text-[#3c535e]">
+              Pricing and state availability change often. Check the live figures
+              for your state on {brand.name}&apos;s official site.
+            </p>
+            <ExternalCta
+              href={affiliateHref}
+              brand={brand.name}
+              position="pricing"
+              label={ctaLabel}
+              className="sm:shrink-0"
+            />
+          </div>
+        </section>
+
+        {brand.ctaBelowParagraphs.length > 0 ? (
+          <section className="mt-10" aria-labelledby={`about-${brand.slug}`}>
+            <h2
+              id={`about-${brand.slug}`}
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              About {brand.name}
+            </h2>
+            <div className="mt-3 flex max-w-2xl flex-col gap-4 text-[15px] leading-relaxed text-[#53666e]">
+              {brand.ctaBelowParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {comparePairs.length > 0 ? (
+          <section className="mt-10" aria-labelledby="head-to-head">
+            <h2
+              id="head-to-head"
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              {brand.name} head-to-head comparisons
+            </h2>
+            <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-[#53666e]">
+              See how {brand.name} lines up against other enclomiphene programs on
+              price, onboarding, and plan terms.
+            </p>
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+              {comparePairs.map(({ other, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="flex items-center justify-between gap-2 rounded-lg border border-[#e3e3e3] bg-white px-4 py-3 text-sm font-medium text-[#3c535e] transition-colors hover:border-[#a9cbd8] hover:text-[#176b87]"
+                  >
+                    <span>
+                      {brand.name} vs {other.name}
+                    </span>
+                    <span className="shrink-0 text-[#176b87]" aria-hidden>
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
+        {brand.faqItems.length > 0 ? (
+          <section className="mt-10" aria-labelledby={`faq-${brand.slug}`}>
+            <h2
+              id={`faq-${brand.slug}`}
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              Frequently asked questions
+            </h2>
+            <div className="mt-3 flex max-w-2xl flex-col gap-2">
+              {brand.faqItems.map((item, i) => (
+                <details
+                  key={i}
+                  className="group rounded-lg border border-[#e3e3e3] bg-white px-4 open:pb-3"
+                >
+                  <summary className="relative cursor-pointer list-none select-none py-3 pr-7 text-sm font-semibold text-[#142b3a]">
+                    {item.question}
+                    <span
+                      className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-[#5f757f] transition-transform group-open:rotate-180"
+                      aria-hidden
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M6 9l6 6 6-6"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="border-t border-[#ededed] pt-3 text-sm leading-relaxed text-[#53666e]">
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {/* Methodology + sources */}
+        <section className="mt-10" aria-labelledby="sources">
+          <h2 id="sources" className="tc-display text-xl font-bold sm:text-2xl">
+            Sources &amp; how this listing is built
+          </h2>
+          <div className="tc-card mt-3 p-4 sm:p-5">
+            <p className="text-sm leading-relaxed text-[#53666e]">
+              Pricing and program attributes on this page are taken from{" "}
+              {brand.name}&apos;s own public pages and last reviewed on{" "}
+              {formattedDate}. T-Compare does not run clinical testing, collect
+              user reviews, or assign star ratings — listings summarize what each
+              provider publishes so you can verify it at the source.
+            </p>
+            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#3c535e]">
+              Sources
+            </p>
+            <BrandSourceLinks
+              brand={brand}
+              className="mt-2 flex flex-col gap-1.5"
+              linkClassName="text-sm text-[#176b87] underline decoration-[#176b87]/30 underline-offset-2 hover:text-[#10556d]"
+            />
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <section className="mt-8 rounded-xl border border-[#e3e3e3] bg-white p-5 sm:p-6">
+          <h2 className="tc-display text-lg font-bold sm:text-xl">
+            Ready to check {brand.name}?
+          </h2>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#53666e]">
+            Confirm the current price, eligibility for your state, and what the
+            plan includes on the official site before you enroll.
+          </p>
+          <div className="mt-4 flex flex-col gap-2.5 sm:flex-row sm:items-center">
+            <ExternalCta
+              href={affiliateHref}
+              brand={brand.name}
+              position="footer"
+              label={ctaLabel}
+            />
+            <Link
+              href="/testosterone/enclomiphene"
+              className="tc-btn tc-btn-secondary"
+            >
+              Compare all providers
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Footer row */}
+        <div className="mt-10 flex flex-col gap-3 border-t border-[#e3e3e3] pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <Link
+            href="/testosterone/enclomiphene"
+            className="text-sm font-semibold text-[#176b87] hover:text-[#10556d] hover:underline"
           >
             ← Back to provider comparison
           </Link>
-          <p className="text-xs text-[#b5b0a8] sm:text-right max-w-sm leading-relaxed">
+          <p className="max-w-sm text-xs leading-relaxed text-[#5f757f] sm:text-right">
             Verify current information directly with the provider.
           </p>
         </div>
       </div>
+
+      <MobileStickyCta
+        href={affiliateHref}
+        brand={brand.name}
+        label={ctaLabel}
+        priceLabel={brand.priceLabel}
+      />
     </>
   );
 }

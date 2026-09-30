@@ -61,39 +61,39 @@ const sections = [
 export default function DisclaimerPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-12 sm:py-16">
-      <nav className="flex items-center gap-2 text-sm text-[#b5b0a8] mb-10">
-        <Link href="/" className="hover:text-[#1c1917] transition-colors">Home</Link>
+      <nav className="flex items-center gap-2 text-sm text-[#5f757f] mb-10">
+        <Link href="/" className="hover:text-[#176b87] hover:underline">Home</Link>
         <span>/</span>
-        <span className="text-[#78716c]">Disclaimer</span>
+        <span className="text-[#53666e]">Disclaimer</span>
       </nav>
 
       <div className="max-w-2xl">
-        <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-4">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87] mb-4">
           Legal
         </p>
-        <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl font-semibold text-[#1c1917] leading-tight mb-10">
+        <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl mb-10">
           Disclaimer
         </h1>
 
-        <div className="rounded-2xl bg-white border border-[#e3dfd6] overflow-hidden shadow-sm">
+        <div className="rounded-xl bg-white border border-[#e3e3e3] overflow-hidden">
           {sections.map((section, i) => (
             <div
               key={section.heading}
-              className={`px-7 py-6 ${i < sections.length - 1 ? "border-b border-[#f0ece4]" : ""}`}
+              className={`px-7 py-6 ${i < sections.length - 1 ? "border-b border-[#ededed]" : ""}`}
             >
-              <p className="text-[11px] font-semibold text-[#b5b0a8] uppercase tracking-[0.12em] mb-3">
+              <p className="text-[11px] font-semibold text-[#5f757f] uppercase tracking-[0.12em] mb-3">
                 {section.heading}
               </p>
               {section.body && (
-                <p className="text-sm text-[#44403c] leading-relaxed">
+                <p className="text-sm text-[#3c535e] leading-relaxed">
                   {section.body}
                 </p>
               )}
               {section.bullets && (
                 <ul className="flex flex-col gap-2">
                   {section.bullets.map((bullet, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-[#44403c] leading-relaxed">
-                      <span className="text-[#b5b0a8] mt-0.5 shrink-0">-</span>
+                    <li key={j} className="flex items-start gap-2 text-sm text-[#3c535e] leading-relaxed">
+                      <span className="text-[#5f757f] mt-0.5 shrink-0">-</span>
                       {bullet}
                     </li>
                   ))}

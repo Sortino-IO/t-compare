@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import { Playfair_Display } from "next/font/google";
 import SiteChrome from "./components/SiteChrome";
 import GoogleTagManager from "./components/GoogleTagManager";
 import { SITE_URL } from "./lib/site";
@@ -9,12 +8,7 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  display: "swap",
 });
 
 function siteVerification(): Metadata["verification"] | undefined {
@@ -78,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${playfair.variable} h-full`}>
+    <html lang="en" className={`${geistSans.variable} h-full`}>
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />

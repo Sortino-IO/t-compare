@@ -28,7 +28,7 @@ export function SupplementsNavDesktop() {
       <button
         type="button"
         className={`inline-flex items-center gap-1 text-sm transition-colors ${
-          active ? "text-[#1c1917] font-medium" : "text-[#78716c] group-hover/nav:text-[#1c1917]"
+          active ? "text-[#142b3a] font-medium" : "text-[#53666e] group-hover/nav:text-[#142b3a]"
         }`}
         aria-haspopup="true"
       >
@@ -49,7 +49,7 @@ export function SupplementsNavDesktop() {
         className="absolute top-full left-0 z-50 pt-2 min-w-[240px] opacity-0 invisible translate-y-1 pointer-events-none transition-all duration-150 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:pointer-events-auto group-focus-within/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:translate-y-0 group-focus-within/nav:pointer-events-auto"
         role="menu"
       >
-        <div className="rounded-xl border border-[#e3dfd6] bg-white py-1.5 shadow-lg">
+        <div className="rounded-xl border border-[#e3e3e3] bg-white py-1.5">
           {SUB_LINKS.map((item) => (
             <Link
               key={item.href}
@@ -57,8 +57,8 @@ export function SupplementsNavDesktop() {
               role="menuitem"
               className={`block px-4 py-2.5 text-sm transition-colors ${
                 subLinkActive(pathname, item.href)
-                  ? "bg-[#f0f7f3] text-[#2a6e47] font-medium"
-                  : "text-[#44403c] hover:bg-[#f5f3ee] hover:text-[#2a6e47]"
+                  ? "bg-[#eef6f9] text-[#176b87] font-medium"
+                  : "text-[#3c535e] hover:bg-[#f4f8fa] hover:text-[#176b87]"
               }`}
             >
               {item.label}
@@ -75,10 +75,10 @@ export function SupplementsNavMobile({ onNavigate }: { onNavigate?: () => void }
   const active = isSupplementsActive(pathname);
 
   return (
-    <div className="rounded-xl bg-white/80 border border-[#e3dfd6] px-3 py-2">
+    <div className="rounded-xl bg-white/80 border border-[#e3e3e3] px-3 py-2">
       <p
         className={`px-2 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.12em] ${
-          active ? "text-[#2a6e47]" : "text-[#a8a29e]"
+          active ? "text-[#176b87]" : "text-[#5f757f]"
         }`}
       >
         T-Supplements
@@ -93,8 +93,8 @@ export function SupplementsNavMobile({ onNavigate }: { onNavigate?: () => void }
               onClick={onNavigate}
               className={`rounded-lg px-3 py-3 text-[15px] transition-colors ${
                 isActive
-                  ? "bg-[#f0f7f3] text-[#2a6e47] font-medium"
-                  : "text-[#44403c] hover:bg-[#f5f3ee] hover:text-[#2a6e47]"
+                  ? "bg-[#eef6f9] text-[#176b87] font-medium"
+                  : "text-[#3c535e] hover:bg-[#f4f8fa] hover:text-[#176b87]"
               }`}
             >
               {item.label}

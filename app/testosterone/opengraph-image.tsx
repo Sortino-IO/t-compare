@@ -12,7 +12,7 @@ export default function Image() {
     (
       <div
         style={{
-          background: "#f5f3ee",
+          background: "#f4f8fa",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -26,11 +26,11 @@ export default function Image() {
         <p
           style={{
             fontSize: "22px",
-            color: "#a8a29e",
+            color: "#5f757f",
             letterSpacing: "0.2em",
             textTransform: "uppercase",
             margin: "0 0 24px 0",
-            fontFamily: "serif",
+            fontFamily: "sans-serif",
           }}
         >
           Category Guide
@@ -39,10 +39,10 @@ export default function Image() {
           style={{
             fontSize: "86px",
             fontWeight: "700",
-            color: "#1c1917",
+            color: "#142b3a",
             margin: "0 0 18px 0",
             lineHeight: 1.05,
-            fontFamily: "serif",
+            fontFamily: "sans-serif",
             textAlign: "center",
           }}
         >
@@ -51,7 +51,7 @@ export default function Image() {
         <p
           style={{
             fontSize: "34px",
-            color: "#78716c",
+            color: "#53666e",
             margin: 0,
             fontFamily: "sans-serif",
           }}
@@ -63,7 +63,7 @@ export default function Image() {
             position: "absolute",
             bottom: "44px",
             fontSize: "20px",
-            color: "#b5b0a8",
+            color: "#5f757f",
             margin: 0,
             fontFamily: "sans-serif",
           }}

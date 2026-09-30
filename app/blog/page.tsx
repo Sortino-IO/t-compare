@@ -56,27 +56,27 @@ export default async function BlogArchivePage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
-      <nav className="mb-10 flex items-center gap-2 text-sm text-[#b5b0a8]">
-        <Link href="/" className="transition-colors hover:text-[#1c1917]">
+      <nav className="mb-10 flex items-center gap-2 text-sm text-[#5f757f]">
+        <Link href="/" className="hover:text-[#176b87] hover:underline">
           Home
         </Link>
         <span>/</span>
-        <span className="text-[#78716c]">Blog</span>
+        <span className="text-[#53666e]">Blog</span>
       </nav>
 
       <div className="mb-10 max-w-2xl">
-        <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e]">
+        <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
           T-Compare
         </p>
-        <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-semibold leading-tight text-[#1c1917] sm:text-5xl">
+        <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl">
           Blog
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-[#78716c] sm:text-lg">
+        <p className="mt-4 text-base leading-relaxed text-[#53666e] sm:text-lg">
           Evidence-style education on enclomiphene and TRT, testosterone symptoms,
           fertility, telehealth access, therapy costs, and how to use T-Compare
           comparisons without replacing medical advice.
         </p>
-        <p className="mt-2 text-sm text-[#b5b0a8]">{total} articles</p>
+        <p className="mt-2 text-sm text-[#5f757f]">{total} articles</p>
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">

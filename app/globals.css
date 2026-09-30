@@ -1,33 +1,233 @@
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────────────────────────────────
+   T-Compare design tokens
+   Single source of truth for color, radius and elevation. Component files
+   reference these via Tailwind's arbitrary-value syntax or the `tc-*`
+   utilities below, so a palette change happens here and nowhere else.
+   ────────────────────────────────────────────────────────────────────────── */
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-playfair);
+  /* Headings share the body sans stack; `tc-display` adds the display tracking. */
+  --font-display: var(--font-geist-sans);
 
-  --color-cream: #f5f3ee;
-  --color-cream-dark: #edeae2;
-  --color-price-green: #2a6e47;
-  --color-price-green-bg: #eaf3ee;
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f4f8fa;
   --color-card: #ffffff;
-  --color-border: #e3dfd6;
-  --color-ink: #1c1917;
-  --color-muted: #78716c;
+
+  /* Lines */
+  --color-line: #e3e3e3;
+  --color-line-soft: #ededed;
+
+  /* Text */
+  --color-heading: #142b3a;
+  --color-body: #53666e;
+  --color-body-strong: #3c535e;
+  --color-muted: #5f757f;
+  --color-faint: #9db0ba;
+
+  /* Actions — blue is the only CTA color */
+  --color-action: #176b87;
+  --color-action-hover: #10556d;
+  --color-action-soft: #eef6f9;
+  --color-link: #287fa3;
+
+  /* Positive — reserved for savings, guarantees and included features */
+  --color-positive: #1f7a5a;
+  --color-positive-bg: #eaf6f0;
+  --color-positive-line: #bfe3d3;
+
+  /* Qualifications and warnings */
+  --color-warn: #a96812;
+  --color-warn-text: #8f5810; /* AA-safe variant of --color-warn for small text */
+  --color-warn-bg: #fdf4e6;
+  --color-warn-line: #f0dcbd;
+
+  --radius-tc: 0.75rem;
+}
+
+:root {
+  /* Raised by the mobile sticky CTA so floating UI never sits underneath it. */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #f5f3ee;
-  color: #1c1917;
+  background-color: #ffffff;
+  color: #53666e;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Card highlight pulse - triggered by AskAssistant scroll */
-@keyframes cardPulse {
-  0%   { outline: 2px solid transparent; outline-offset: 3px; }
-  25%  { outline: 2px solid #2a6e47;     outline-offset: 3px; }
-  100% { outline: 2px solid transparent; outline-offset: 3px; }
+/* ── Typography helpers ──────────────────────────────────────────────────── */
+
+/* Applied to every heading that previously used the serif display face. */
+.tc-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.018em;
+  color: #142b3a;
+  text-wrap: balance;
 }
 
-.card-highlight-pulse {
-  animation: cardPulse 2s ease-out forwards;
+/* ── Focus visibility ────────────────────────────────────────────────────── */
+
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #176b87;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Reusable action styles ─────────────────────────────────────────────────
+   Filled blue = outbound merchant/provider action.
+   Outlined   = internal T-Compare navigation.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.tc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 0.75rem 1.25rem;
+  min-height: 44px;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.tc-btn-primary {
+  background-color: #176b87;
+  color: #ffffff;
+  border: 1px solid #176b87;
+}
+
+.tc-btn-primary:hover {
+  background-color: #10556d;
+  border-color: #10556d;
+}
+
+.tc-btn-secondary {
+  background-color: #ffffff;
+  color: #176b87;
+  border: 1px solid #a9cbd8;
+}
+
+.tc-btn-secondary:hover {
+  border-color: #176b87;
+  background-color: #f4f8fa;
+}
+
+.tc-btn-sm {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.8125rem;
+  min-height: 38px;
+}
+
+/* ── Card surface ────────────────────────────────────────────────────────── */
+
+.tc-card {
+  background-color: #ffffff;
+  border: 1px solid #e3e3e3;
+  border-radius: 0.75rem;
+}
+
+/* ── Tag / pill ──────────────────────────────────────────────────────────── */
+
+.tc-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 999px;
+  border: 1px solid #e3e3e3;
+  background-color: #ffffff;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #3c535e;
+  white-space: nowrap;
+}
+
+.tc-tag-positive {
+  border-color: #bfe3d3;
+  background-color: #eaf6f0;
+  color: #1a6249;
+}
+
+/*
+ * Semantic fact tones — used only to carry meaning in comparison data
+ * (included / costs extra / not verified), never as decoration.
+ */
+.tc-fact {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #3c535e;
+}
+
+.tc-fact::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  transform: translateY(-0.05rem);
+  background-color: #9aa5aa;
+}
+
+.tc-fact-good::before {
+  background-color: #1f8a55;
+}
+
+.tc-fact-warn::before {
+  background-color: #c98a26;
+}
+
+.tc-fact-muted {
+  color: #5f6b70;
+  font-style: italic;
+}
+
+.tc-tag-warn {
+  border-color: #f0dcbd;
+  background-color: #fdf4e6;
+  color: #8f5810;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Browser spinner arrows on number fields clash with the flat inputs. */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

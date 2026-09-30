@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getBrandPairs, getComparePairPath } from "../lib/brands";
+import { getBrandPairs, getBrandsByCategory, getComparePairPath } from "../lib/brands";
+import EvidenceNotes from "../components/EvidenceNotes";
+import QuickCostEstimator from "../components/QuickCostEstimator";
+import { buildEstimatorRows } from "../lib/cost-estimator";
 import ComparisonPairsGrid from "../components/ComparisonPairsGrid";
 import { SITE_URL } from "../lib/site";
 
@@ -95,7 +98,7 @@ export default function ComparisonsIndexPage() {
   };
 
   return (
-    <div className="bg-[#f5f3ee]">
+    <div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -104,47 +107,53 @@ export default function ComparisonsIndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div className="mx-auto max-w-5xl px-6 py-12">
-        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">
-          <Link href="/" className="transition-colors hover:text-[#1c1917]">
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#5f757f]"
+        >
+          <Link href="/" className="hover:text-[#176b87] hover:underline">
             Home
           </Link>
-          <span>/</span>
-          <span className="text-[#78716c]">Comparisons</span>
+          <span aria-hidden>/</span>
+          <span className="text-[#3c535e]">Comparisons</span>
         </nav>
 
-        <h1 className="text-3xl sm:text-4xl font-bold text-[#1c1917] font-[family-name:var(--font-playfair)]">
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
+          Independent comparison
+        </p>
+        <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl">
           Comparisons
         </h1>
-        <p className="mt-3 text-sm sm:text-base text-[#57534e] max-w-3xl leading-relaxed">
+        <p className="mt-3 max-w-3xl text-base leading-relaxed text-[#53666e]">
           If you’re comparing testosterone-related telehealth providers, the “$X/mo” headline is only a
           starting point. The real differences usually show up in total 90‑day cost, lab/testing requirements,
           commitment length, what’s included (medication, follow‑ups, messaging, shipping), and how flexible
           the program is if your plan needs adjustments.
         </p>
 
-        <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="rounded-2xl border border-[#e3dfd6] bg-white p-5">
-            <div className="text-sm font-semibold text-[#1c1917]">What to compare first</div>
-            <ul className="mt-3 list-disc pl-5 text-sm text-[#57534e] space-y-2">
+        <div className="mt-6 grid grid-cols-1 gap-3 lg:grid-cols-3">
+          <div className="tc-card p-4 sm:p-5">
+            <div className="text-sm font-bold text-[#142b3a]">What to compare first</div>
+            <ul className="mt-3 list-disc pl-5 text-sm text-[#53666e] space-y-2">
               <li>
-                <span className="font-medium text-[#1c1917]">Total cost over 90 days</span> (not just monthly)
+                <span className="font-medium text-[#142b3a]">Total cost over 90 days</span> (not just monthly)
               </li>
               <li>
-                <span className="font-medium text-[#1c1917]">Labs & testing</span> (initial kit, follow‑ups, cadence)
+                <span className="font-medium text-[#142b3a]">Labs & testing</span> (initial kit, follow‑ups, cadence)
               </li>
               <li>
-                <span className="font-medium text-[#1c1917]">Plan length</span> (3 vs 10 months vs annual commitment)
+                <span className="font-medium text-[#142b3a]">Plan length</span> (3 vs 10 months vs annual commitment)
               </li>
               <li>
-                <span className="font-medium text-[#1c1917]">What’s included</span> (visits, messaging, shipping)
+                <span className="font-medium text-[#142b3a]">What’s included</span> (visits, messaging, shipping)
               </li>
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-[#e3dfd6] bg-white p-5">
-            <div className="text-sm font-semibold text-[#1c1917]">Questions worth asking</div>
-            <ul className="mt-3 list-disc pl-5 text-sm text-[#57534e] space-y-2">
+          <div className="tc-card p-4 sm:p-5">
+            <div className="text-sm font-bold text-[#142b3a]">Questions worth asking</div>
+            <ul className="mt-3 list-disc pl-5 text-sm text-[#53666e] space-y-2">
               <li>What does “starting at” assume (commitment, promos, dose)?</li>
               <li>Are labs included or billed separately (and how often)?</li>
               <li>What happens if you need a dose change: does the pricing reset?</li>
@@ -152,31 +161,39 @@ export default function ComparisonsIndexPage() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-[#e3dfd6] bg-white p-5">
-            <div className="text-sm font-semibold text-[#1c1917]">A quick reality check</div>
-            <p className="mt-3 text-sm text-[#57534e] leading-relaxed">
-              Most people are better served by comparing <span className="font-medium text-[#1c1917]">the same time horizon</span>{" "}
+          <div className="tc-card p-4 sm:p-5">
+            <div className="text-sm font-bold text-[#142b3a]">A quick reality check</div>
+            <p className="mt-3 text-sm text-[#53666e] leading-relaxed">
+              Most people are better served by comparing <span className="font-medium text-[#142b3a]">the same time horizon</span>{" "}
               across providers (e.g., 90 days or 12 months) and reading the fine print for what the plan actually
               includes. Our pages link out so you can verify details on the provider’s site.
             </p>
           </div>
         </div>
 
+        <QuickCostEstimator
+          rows={buildEstimatorRows(getBrandsByCategory("enclomiphene"))}
+          className="mt-6"
+        />
+
         <ComparisonPairsGrid pairs={pairs} />
 
-        <section className="mt-12 rounded-2xl border border-[#e3dfd6] bg-white p-6 sm:p-8">
-          <h2 className="text-xl sm:text-2xl font-semibold text-[#1c1917] font-[family-name:var(--font-playfair)]">
-            FAQ
-          </h2>
-          <p className="mt-2 text-sm text-[#57534e] max-w-3xl leading-relaxed">
+        <EvidenceNotes
+          ids={["enclomiphene-sperm", "enclomiphene-not-approved", "aua-diagnosis"]}
+          className="mt-10"
+        />
+
+        <section className="tc-card mt-10 p-5 sm:p-6">
+          <h2 className="tc-display text-xl font-bold sm:text-2xl">FAQ</h2>
+          <p className="mt-2 text-sm text-[#53666e] max-w-3xl leading-relaxed">
             Short answers to how people actually search when comparing online hormone programs. Not medical advice;
             follow your clinician’s plan.
           </p>
           <dl className="mt-6 space-y-6">
             {FAQS.map((faq) => (
               <div key={faq.question}>
-                <dt className="text-sm font-semibold text-[#1c1917]">{faq.question}</dt>
-                <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">{faq.answer}</dd>
+                <dt className="text-sm font-semibold text-[#142b3a]">{faq.question}</dt>
+                <dd className="mt-2 text-sm text-[#53666e] leading-relaxed">{faq.answer}</dd>
               </div>
             ))}
           </dl>

@@ -17,25 +17,25 @@ export default function BlogPostRelated({ posts, topic }: Props) {
     : "More articles on T-Compare, plus quick links to our comparison tools.";
 
   return (
-    <section className="mx-auto mt-12 max-w-3xl border-t border-[#e3dfd6] pt-12">
-      <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-semibold text-[#1c1917] sm:text-3xl">
+    <section className="mx-auto mt-12 max-w-3xl border-t border-[#e3e3e3] pt-12">
+      <h2 className="tc-display text-2xl font-semibold text-[#142b3a] sm:text-3xl">
         {heading}
       </h2>
-      <p className="mt-2 text-sm text-[#78716c]">{subtext}</p>
+      <p className="mt-2 text-sm text-[#53666e]">{subtext}</p>
 
       <ul className="mt-8 space-y-6">
         {posts.map((p) => (
-          <li key={p.slug} className="border-b border-[#ede9e0] pb-6 last:border-b-0 last:pb-0">
+          <li key={p.slug} className="border-b border-[#ededed] pb-6 last:border-b-0 last:pb-0">
             <Link
               href={`/blog/${p.slug}`}
-              className="font-[family-name:var(--font-playfair)] text-lg font-semibold text-[#1c1917] transition-colors hover:text-[#2a6e47]"
+              className="tc-display text-lg font-semibold text-[#142b3a] transition-colors hover:text-[#176b87]"
             >
               {p.title}
             </Link>
-            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#57534e]">{p.excerpt}</p>
+            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#53666e]">{p.excerpt}</p>
             <Link
               href={`/blog/${p.slug}`}
-              className="mt-3 inline-flex text-sm font-semibold text-[#2a6e47] hover:underline"
+              className="mt-3 inline-flex text-sm font-semibold text-[#176b87] hover:underline"
             >
               Read article →
             </Link>
@@ -47,26 +47,26 @@ export default function BlogPostRelated({ posts, topic }: Props) {
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           <Link
             href={`/blog/topics/${topic.slug}`}
-            className="rounded-2xl border border-[#e3dfd6] bg-white px-5 py-4 transition-colors hover:border-[#c6e0d0]"
+            className="rounded-xl border border-[#e3e3e3] bg-white px-5 py-4 transition-colors hover:border-[#bcd9e4]"
           >
-            <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#a8a29e]">
+            <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5f757f]">
               Topic hub
             </div>
-            <div className="mt-2 font-semibold text-[#1c1917]">All {topic.label} guides</div>
-            <div className="mt-1 text-sm text-[#57534e]">
+            <div className="mt-2 font-semibold text-[#142b3a]">All {topic.label} guides</div>
+            <div className="mt-1 text-sm text-[#53666e]">
               Reviews, ingredients, comparisons & cost in one place.
             </div>
           </Link>
           {topic.cta ? (
             <Link
               href={topic.cta.href}
-              className="rounded-2xl border border-[#c6e0d0] bg-[#f3f8f4] px-5 py-4 transition-colors hover:border-[#2a6e47]"
+              className="rounded-xl border border-[#bcd9e4] bg-[#eef6f9] px-5 py-4 transition-colors hover:border-[#176b87]"
             >
-              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2a6e47]">
+              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#176b87]">
                 {topic.cta.eyebrow}
               </div>
-              <div className="mt-2 font-semibold text-[#1c1917]">{topic.cta.title}</div>
-              <div className="mt-1 text-sm font-semibold text-[#2a6e47]">
+              <div className="mt-2 font-semibold text-[#142b3a]">{topic.cta.title}</div>
+              <div className="mt-1 text-sm font-semibold text-[#176b87]">
                 {topic.cta.buttonLabel} →
               </div>
             </Link>
@@ -76,23 +76,23 @@ export default function BlogPostRelated({ posts, topic }: Props) {
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           <Link
             href="/testosterone/enclomiphene"
-            className="rounded-2xl border border-[#e3dfd6] bg-white px-5 py-4 transition-colors hover:border-[#c6e0d0]"
+            className="rounded-xl border border-[#e3e3e3] bg-white px-5 py-4 transition-colors hover:border-[#bcd9e4]"
           >
-            <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#a8a29e]">
+            <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5f757f]">
               Rankings & grid
             </div>
-            <div className="mt-2 font-semibold text-[#1c1917]">Enclomiphene provider comparison</div>
-            <div className="mt-1 text-sm text-[#57534e]">Browse all listed programs side by side.</div>
+            <div className="mt-2 font-semibold text-[#142b3a]">Enclomiphene provider comparison</div>
+            <div className="mt-1 text-sm text-[#53666e]">Browse all listed programs side by side.</div>
           </Link>
           <Link
             href="/comparisons"
-            className="rounded-2xl border border-[#e3dfd6] bg-white px-5 py-4 transition-colors hover:border-[#c6e0d0]"
+            className="rounded-xl border border-[#e3e3e3] bg-white px-5 py-4 transition-colors hover:border-[#bcd9e4]"
           >
-            <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#a8a29e]">
+            <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5f757f]">
               Pairwise
             </div>
-            <div className="mt-2 font-semibold text-[#1c1917]">Head-to-head comparisons</div>
-            <div className="mt-1 text-sm text-[#57534e]">Open A‑vs‑B pages built from the same brand data.</div>
+            <div className="mt-2 font-semibold text-[#142b3a]">Head-to-head comparisons</div>
+            <div className="mt-1 text-sm text-[#53666e]">Open A‑vs‑B pages built from the same brand data.</div>
           </Link>
         </div>
       )}

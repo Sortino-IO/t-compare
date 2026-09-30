@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AffiliateDisclosure from "../components/AffiliateDisclosure";
 import BrandCard from "../components/BrandCard";
+import QuickCompareTable from "../components/QuickCompareTable";
+import TrustStrip from "../components/TrustStrip";
+import { formatReviewedDate, latestReviewedDate } from "../lib/brand-display";
 import { getBrandDetailPath, getBrandsByCategory } from "../lib/brands";
 import { SITE_URL } from "../lib/site";
 
@@ -35,6 +39,9 @@ export const metadata: Metadata = {
 
 export default function TSupplementsPage() {
   const brands = getBrandsByCategory("supplement");
+  const lowestPrice = brands[0]!.priceFromMonthly;
+  const highestPrice = brands[brands.length - 1]!.priceFromMonthly;
+  const reviewedOn = latestReviewedDate(brands);
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -57,33 +64,76 @@ export default function TSupplementsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
 
-      <div className="mx-auto max-w-5xl px-6 py-8 sm:py-20">
-        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">
-          <Link href="/" className="transition-colors hover:text-[#1c1917]">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#5f757f]"
+        >
+          <Link href="/" className="hover:text-[#176b87] hover:underline">
             Home
           </Link>
-          <span>/</span>
-          <span className="text-[#78716c]">Testosterone Supplements</span>
+          <span aria-hidden>/</span>
+          <span className="text-[#3c535e]">Testosterone Supplements</span>
         </nav>
 
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
-          <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-3 sm:mb-4">
-            Informational Comparison
+        <div className="max-w-3xl">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
+            Independent comparison
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-[1.9rem] sm:text-5xl lg:text-6xl font-semibold text-[#1c1917] leading-[1.1] tracking-tight mb-3 sm:mb-5">
+          <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl">
             Compare Testosterone Supplements
           </h1>
-          <p className="text-sm sm:text-lg text-[#78716c] leading-relaxed max-w-xl mx-auto">
+          <p className="mt-3 text-base leading-relaxed text-[#53666e]">
             Browse pricing, bulk bundle math, and guarantee terms for OTC
             testosterone boosters in one place. Sorted by monthly cost.
           </p>
         </div>
 
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="font-[family-name:var(--font-playfair)] text-xl sm:text-2xl font-semibold text-[#1c1917]">
-            Testosterone Supplements
+        <TrustStrip
+          className="mt-6"
+          items={[
+            { label: "Supplements listed", value: String(brands.length) },
+            {
+              label: "Published price range",
+              value: `$${lowestPrice}–$${highestPrice} entry`,
+            },
+            ...(reviewedOn
+              ? [
+                  {
+                    label: "Listings last reviewed",
+                    value: formatReviewedDate(reviewedOn),
+                  },
+                ]
+              : []),
+          ]}
+        />
+
+        <AffiliateDisclosure className="mt-3" />
+
+        <section className="mt-8" aria-labelledby="quick-comparison">
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <h2
+              id="quick-comparison"
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              Quick comparison
+            </h2>
+            <span className="text-xs text-[#5f757f]">
+              Sorted by entry price, low to high
+            </span>
+          </div>
+          <QuickCompareTable
+            brands={brands}
+            lowestSlug={brands[0]!.slug}
+            caption="Publicly advertised entry prices, guarantee windows, and bulk-pricing structure. Bundle requirements and promos change often — confirm on each brand's official checkout."
+          />
+        </section>
+
+        <div className="mb-4 mt-10 flex flex-wrap items-baseline justify-between gap-2">
+          <h2 className="tc-display text-xl font-bold sm:text-2xl">
+            All supplements
           </h2>
-          <span className="text-sm text-[#b5b0a8]">{brands.length} listed</span>
+          <span className="text-xs text-[#5f757f]">{brands.length} listed</span>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -92,19 +142,20 @@ export default function TSupplementsPage() {
           ))}
         </div>
 
-        <p className="mt-5 text-xs text-[#b5b0a8] text-center leading-relaxed">
+        <p className="mt-5 text-xs leading-relaxed text-[#5f757f]">
           OTC supplements are not prescription therapy. Pricing varies by bundle
           size and promos-verify on each brand&apos;s official site before you buy.
         </p>
 
-        <p className="mt-8 text-center">
+        <div className="mt-8">
           <Link
             href="/t-supplements/comparisons"
-            className="text-sm font-medium text-[#2a6e47] hover:underline"
+            className="tc-btn tc-btn-secondary"
           >
-            View head-to-head Testosterone Supplement comparisons →
+            View head-to-head supplement comparisons
+            <span aria-hidden>→</span>
           </Link>
-        </p>
+        </div>
       </div>
     </>
   );

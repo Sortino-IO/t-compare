@@ -2,14 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import MobileNav from "./MobileNav";
 
-// Floating helper widget — not needed for first paint, so keep it out of the
-// initial hydration bundle and load it on the client after mount.
-const AskAssistant = dynamic(() => import("./AskAssistant"), { ssr: false });
 import {
   ENCLO_PROVIDERS,
   SUPP_BRANDS,
@@ -54,47 +50,62 @@ interface DropdownProps {
 function NavDropdown({ label, links, allHref, allLabel, activePrefix }: DropdownProps) {
   const pathname = usePathname();
   const isActive = pathname === activePrefix || pathname.startsWith(`${activePrefix}/`);
+  // Hover and focus keep the panel open after a click, so a chosen link
+  // dismisses it until the pointer leaves the menu.
+  const [dismissed, setDismissed] = useState(false);
+  const dismiss = () => {
+    setDismissed(true);
+    (document.activeElement as HTMLElement | null)?.blur();
+  };
 
   return (
-    <div className="relative group/nd">
+    <div className="relative group/nd" onMouseLeave={() => setDismissed(false)}>
       <button
         type="button"
         aria-haspopup="true"
-        className={`inline-flex items-center gap-1 text-[13px] font-medium transition-colors ${
+        className={`inline-flex items-center gap-1 whitespace-nowrap rounded-md px-2 py-1.5 text-[13px] font-medium transition-colors ${
           isActive
-            ? "text-[#1c1917]"
-            : "text-[#78716c] group-hover/nd:text-[#1c1917]"
+            ? "bg-[#eef6f9] text-[#176b87]"
+            : "text-[#3c535e] group-hover/nd:bg-[#f4f8fa] group-hover/nd:text-[#142b3a]"
         }`}
       >
         {label}
-        <Chevron className="transition-transform duration-150 group-hover/nd:rotate-180 group-focus-within/nd:rotate-180" />
+        <Chevron
+          className={`transition-transform duration-150 group-hover/nd:rotate-180 group-focus-within/nd:rotate-180 ${
+            dismissed ? "rotate-0!" : ""
+          }`}
+        />
       </button>
 
       {/* Dropdown panel */}
       <div
         role="menu"
-        className="absolute top-full left-0 z-50 pt-2 min-w-[220px] pointer-events-none opacity-0 invisible translate-y-1 transition-all duration-150 group-hover/nd:pointer-events-auto group-hover/nd:opacity-100 group-hover/nd:visible group-hover/nd:translate-y-0 group-focus-within/nd:pointer-events-auto group-focus-within/nd:opacity-100 group-focus-within/nd:visible group-focus-within/nd:translate-y-0"
+        className={`absolute top-full left-0 z-50 pt-2 min-w-[228px] pointer-events-none opacity-0 invisible translate-y-1 transition-all duration-150 group-hover/nd:pointer-events-auto group-hover/nd:opacity-100 group-hover/nd:visible group-hover/nd:translate-y-0 group-focus-within/nd:pointer-events-auto group-focus-within/nd:opacity-100 group-focus-within/nd:visible group-focus-within/nd:translate-y-0 ${
+          dismissed ? "pointer-events-none! invisible! opacity-0!" : ""
+        }`}
       >
-        <div className="rounded-xl border border-[#e3dfd6] bg-white py-1.5 shadow-lg">
+        <div className="rounded-xl border border-[#e3e3e3] bg-white py-1.5 shadow-[0_8px_24px_-12px_rgba(20,43,58,0.25)]">
           {links.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               role="menuitem"
+              onClick={dismiss}
               className={`block px-4 py-2 text-[13px] transition-colors ${
                 pathname === item.href || pathname.startsWith(`${item.href}/`)
-                  ? "bg-[#f0f7f3] text-[#2a6e47] font-medium"
-                  : "text-[#44403c] hover:bg-[#f5f3ee] hover:text-[#2a6e47]"
+                  ? "bg-[#eef6f9] text-[#176b87] font-medium"
+                  : "text-[#3c535e] hover:bg-[#f4f8fa] hover:text-[#176b87]"
               }`}
             >
               {item.label}
             </Link>
           ))}
-          <div className="mx-4 my-1.5 border-t border-[#f0ece4]" />
+          <div className="mx-4 my-1.5 border-t border-[#ededed]" />
           <Link
             href={allHref}
             role="menuitem"
-            className="block px-4 py-2 text-[13px] font-semibold text-[#2a6e47] hover:bg-[#f5f3ee]"
+            onClick={dismiss}
+            className="block px-4 py-2 text-[13px] font-semibold text-[#176b87] hover:bg-[#f4f8fa]"
           >
             {allLabel} →
           </Link>
@@ -119,18 +130,19 @@ function FooterSection({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between border-t border-[#e3dfd6] py-4 text-left xl:hidden"
+        className="flex w-full items-center justify-between border-t border-[#e3e3e3] py-4 text-left xl:hidden"
+        aria-expanded={open}
       >
-        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#b5b0a8]">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3c535e]">
           {title}
         </span>
         <Chevron
-          className={`text-[#b5b0a8] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`text-[#5f757f] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
       </button>
 
       {/* Desktop header (static) */}
-      <div className="hidden xl:block mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#b5b0a8]">
+      <div className="hidden xl:block mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3c535e]">
         {title}
       </div>
 
@@ -147,7 +159,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="block text-sm text-[#78716c] hover:text-[#1c1917] transition-colors leading-relaxed py-0.5"
+      className="block text-sm text-[#53666e] hover:text-[#176b87] transition-colors leading-relaxed py-1"
     >
       {children}
     </Link>
@@ -155,7 +167,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 }
 
 function FooterLinkDivider() {
-  return <div className="my-2 border-t border-[#f0ece4]" />;
+  return <div className="my-2 border-t border-[#ededed]" />;
 }
 
 // ── Main SiteChrome ───────────────────────────────────────────────────────────
@@ -169,9 +181,16 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-[#176b87] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+      >
+        Skip to content
+      </a>
+
       {/* ── Header ── */}
-      <header className="sticky top-0 z-50 border-b border-[#e3dfd6] bg-[#f5f3ee] [--site-header-height:4.25rem] sm:[--site-header-height:4.5rem]">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between gap-6">
+      <header className="sticky top-0 z-50 border-b border-[#e3e3e3] bg-white [--site-header-height:3.75rem] sm:[--site-header-height:4rem]">
+        <div className="mx-auto flex h-[3.75rem] max-w-7xl items-center justify-between gap-6 px-4 sm:h-16 sm:px-6">
           {/* Logo */}
           <Link
             href="/"
@@ -183,24 +202,26 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
               alt="T-Compare"
               width={200}
               height={44}
-              className="h-9 w-auto max-h-9 sm:h-10 sm:max-h-10"
+              className="h-8 w-auto max-h-8 sm:h-9 sm:max-h-9"
               priority
             />
           </Link>
 
           {/* Desktop nav — visible on xl (≥1280px) */}
-          <nav className="hidden xl:flex items-center gap-4 flex-wrap">
+          <nav className="hidden xl:flex items-center gap-1" aria-label="Primary">
             <Link
               href="/"
-              className={`text-[13px] font-medium transition-colors ${
-                pathname === "/" ? "text-[#1c1917]" : "text-[#78716c] hover:text-[#1c1917]"
+              className={`whitespace-nowrap rounded-md px-2 py-1.5 text-[13px] font-medium transition-colors ${
+                pathname === "/"
+                  ? "bg-[#eef6f9] text-[#176b87]"
+                  : "text-[#3c535e] hover:bg-[#f4f8fa] hover:text-[#142b3a]"
               }`}
             >
               Home
             </Link>
 
             <NavDropdown
-              label="Enclomiphene Providers"
+              label="Providers"
               links={ENCLO_PROVIDERS}
               allHref="/testosterone/enclomiphene"
               allLabel="All providers"
@@ -208,7 +229,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
             />
 
             <NavDropdown
-              label="Testosterone Supplements"
+              label="Supplements"
               links={SUPP_BRANDS}
               allHref="/t-supplements"
               allLabel="All supplements"
@@ -216,7 +237,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
             />
 
             <NavDropdown
-              label="Enclomiphene Comparisons"
+              label="Provider comparisons"
               links={ENCLO_COMPARISONS}
               allHref="/comparisons"
               allLabel="All comparisons"
@@ -224,7 +245,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
             />
 
             <NavDropdown
-              label="Supplement Comparisons"
+              label="Supplement comparisons"
               links={SUPP_COMPARISONS}
               allHref="/t-supplements/comparisons"
               allLabel="All comparisons"
@@ -241,11 +262,20 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
 
             <Link
               href="/about"
-              className={`text-[13px] font-medium transition-colors ${
-                pathname === "/about" ? "text-[#1c1917]" : "text-[#78716c] hover:text-[#1c1917]"
+              className={`whitespace-nowrap rounded-md px-2 py-1.5 text-[13px] font-medium transition-colors ${
+                pathname === "/about"
+                  ? "bg-[#eef6f9] text-[#176b87]"
+                  : "text-[#3c535e] hover:bg-[#f4f8fa] hover:text-[#142b3a]"
               }`}
             >
               About
+            </Link>
+
+            <Link
+              href="/tools/enclomiphene-cost-calculator"
+              className="ml-2 tc-btn tc-btn-secondary tc-btn-sm whitespace-nowrap"
+            >
+              Cost calculator
             </Link>
           </nav>
 
@@ -255,11 +285,13 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
       </header>
 
       {/* ── Page content ── */}
-      <main className="flex-1">{children}</main>
+      <main id="main-content" className="flex-1">
+        {children}
+      </main>
 
       {/* ── Footer ── */}
-      <footer className="border-t border-[#e3dfd6] bg-[#f5f3ee] mt-auto">
-        <div className="mx-auto max-w-7xl px-6 pt-10 pb-6">
+      <footer className="border-t border-[#e3e3e3] bg-white mt-auto">
+        <div className="mx-auto max-w-7xl px-4 pt-10 pb-6 sm:px-6">
 
           {/* Brand row */}
           <div className="mb-8">
@@ -272,10 +304,14 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="mt-3 text-xs text-[#a8a29e] leading-relaxed max-w-md">
+            <p className="mt-3 text-xs text-[#53666e] leading-relaxed max-w-md">
               Independent, informational comparisons of testosterone-related telehealth
               programs and supplements. Not medical advice — always confirm eligibility,
               pricing, and inclusions with the provider.
+            </p>
+            <p className="mt-3 text-xs text-[#53666e] leading-relaxed max-w-md">
+              Some links on this site are affiliate links. T-Compare may earn a commission
+              if you purchase through them, at no additional cost to you.
             </p>
           </div>
 
@@ -312,7 +348,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
             {/* Comparisons */}
             <FooterSection title="Comparisons">
               <nav className="flex flex-col">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#c8c2bb] py-1">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#5f757f] py-1">
                   Enclomiphene
                 </span>
                 {ENCLO_COMPARISONS.map((link) => (
@@ -324,7 +360,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
 
                 <FooterLinkDivider />
 
-                <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#c8c2bb] py-1">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#5f757f] py-1">
                   Supplements
                 </span>
                 {SUPP_COMPARISONS.map((link) => (
@@ -362,11 +398,11 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
           </div>
 
           {/* Bottom disclaimer */}
-          <div className="mt-8 border-t border-[#e3dfd6] pt-6 space-y-3">
-            <p className="text-xs text-[#b5b0a8] leading-relaxed">
+          <div className="mt-8 border-t border-[#e3e3e3] pt-6 space-y-3">
+            <p className="text-xs text-[#53666e] leading-relaxed">
               Information is based on publicly available sources and may change over time.
             </p>
-            <p className="text-xs text-[#b5b0a8] leading-relaxed">
+            <p className="text-xs text-[#53666e] leading-relaxed">
               This site is for informational purposes only and does not constitute medical
               advice, diagnosis, or treatment. Always consult a qualified healthcare provider.
               Prices shown are approximate and subject to change.
@@ -374,8 +410,6 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
           </div>
         </div>
       </footer>
-
-      <AskAssistant />
     </>
   );
 }

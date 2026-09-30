@@ -27,8 +27,8 @@ export default function BlogPagination({ currentPage, totalPages }: Props) {
               href={href}
               className={`flex min-h-10 min-w-10 items-center justify-center rounded-lg px-3 text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-[#2a6e47] text-white"
-                  : "border border-[#e3dfd6] bg-white text-[#78716c] hover:border-[#2a6e47]/40 hover:text-[#1c1917]"
+                  ? "bg-[#176b87] text-white"
+                  : "border border-[#e3e3e3] bg-white text-[#53666e] hover:border-[#176b87]/40 hover:text-[#142b3a]"
               }`}
               aria-current={isActive ? "page" : undefined}
             >
@@ -41,10 +41,10 @@ export default function BlogPagination({ currentPage, totalPages }: Props) {
       <div className="flex items-center gap-3">
         <Link
           href={prevHref}
-          className={`rounded-lg border border-[#e3dfd6] bg-white px-4 py-2 text-sm font-medium transition-colors ${
+          className={`rounded-lg border border-[#e3e3e3] bg-white px-4 py-2 text-sm font-medium transition-colors ${
             currentPage <= 1
               ? "pointer-events-none opacity-40"
-              : "text-[#78716c] hover:border-[#2a6e47]/40 hover:text-[#1c1917]"
+              : "text-[#53666e] hover:border-[#176b87]/40 hover:text-[#142b3a]"
           }`}
           aria-disabled={currentPage <= 1}
           tabIndex={currentPage <= 1 ? -1 : undefined}
@@ -53,10 +53,10 @@ export default function BlogPagination({ currentPage, totalPages }: Props) {
         </Link>
         <Link
           href={nextHref}
-          className={`rounded-lg border border-[#e3dfd6] bg-white px-4 py-2 text-sm font-medium transition-colors ${
+          className={`rounded-lg border border-[#e3e3e3] bg-white px-4 py-2 text-sm font-medium transition-colors ${
             currentPage >= totalPages
               ? "pointer-events-none opacity-40"
-              : "text-[#78716c] hover:border-[#2a6e47]/40 hover:text-[#1c1917]"
+              : "text-[#53666e] hover:border-[#176b87]/40 hover:text-[#142b3a]"
           }`}
           aria-disabled={currentPage >= totalPages}
           tabIndex={currentPage >= totalPages ? -1 : undefined}

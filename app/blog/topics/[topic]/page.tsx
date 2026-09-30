@@ -91,34 +91,34 @@ export default async function BlogTopicPage({ params }: Props) {
       />
 
       <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
-        <nav className="mb-10 flex items-center gap-2 text-sm text-[#b5b0a8]">
-          <Link href="/" className="transition-colors hover:text-[#1c1917]">
+        <nav className="mb-10 flex items-center gap-2 text-sm text-[#5f757f]">
+          <Link href="/" className="hover:text-[#176b87] hover:underline">
             Home
           </Link>
           <span>/</span>
-          <Link href="/blog" className="transition-colors hover:text-[#1c1917]">
+          <Link href="/blog" className="hover:text-[#176b87] hover:underline">
             Blog
           </Link>
           <span>/</span>
-          <span className="text-[#78716c]">{topic.label}</span>
+          <span className="text-[#53666e]">{topic.label}</span>
         </nav>
 
         <div className="mb-10 max-w-2xl">
-          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e]">
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
             Topic hub
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-semibold leading-tight text-[#1c1917] sm:text-5xl">
+          <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl">
             {topic.heading}
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-[#78716c] sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-[#53666e] sm:text-lg">
             {topic.intro}
           </p>
-          <p className="mt-2 text-sm text-[#b5b0a8]">{posts.length} articles</p>
+          <p className="mt-2 text-sm text-[#5f757f]">{posts.length} articles</p>
         </div>
 
         {cornerstone.length > 0 ? (
           <div className="mb-12">
-            <h2 className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e]">
+            <h2 className="mb-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
               Start here
             </h2>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -126,16 +126,16 @@ export default async function BlogTopicPage({ params }: Props) {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group flex items-start gap-4 rounded-2xl border border-[#e3dfd6] bg-white px-5 py-4 transition-colors hover:border-[#c6e0d0]"
+                  className="group flex items-start gap-4 rounded-xl border border-[#e3e3e3] bg-white px-5 py-4 transition-colors hover:border-[#bcd9e4]"
                 >
-                  <span className="font-[family-name:var(--font-playfair)] text-2xl font-bold tabular-nums text-[#c6c0b4]">
+                  <span className="tc-display text-2xl font-bold tabular-nums text-[#9db0ba]">
                     {i + 1}
                   </span>
                   <span>
-                    <span className="block font-semibold leading-snug text-[#1c1917] transition-colors group-hover:text-[#2a6e47]">
+                    <span className="block font-semibold leading-snug text-[#142b3a] transition-colors group-hover:text-[#176b87]">
                       {post.title}
                     </span>
-                    <span className="mt-1 line-clamp-2 block text-sm leading-relaxed text-[#57534e]">
+                    <span className="mt-1 line-clamp-2 block text-sm leading-relaxed text-[#53666e]">
                       {post.excerpt}
                     </span>
                   </span>
@@ -145,7 +145,7 @@ export default async function BlogTopicPage({ params }: Props) {
           </div>
         ) : null}
 
-        <h2 className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e]">
+        <h2 className="mb-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
           All {topic.label} articles
         </h2>
         <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
@@ -155,20 +155,20 @@ export default async function BlogTopicPage({ params }: Props) {
         </div>
 
         {topic.cta ? (
-          <div className="mt-14 overflow-hidden rounded-3xl border border-[#c6e0d0] bg-[#f3f8f4]">
+          <div className="mt-14 overflow-hidden rounded-xl border border-[#bcd9e4] bg-[#eef6f9]">
             <div className="flex flex-col gap-5 px-7 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10">
               <div className="max-w-xl">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2a6e47]">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#176b87]">
                   {topic.cta.eyebrow}
                 </p>
-                <h2 className="mt-2 font-[family-name:var(--font-playfair)] text-2xl font-semibold text-[#1c1917]">
+                <h2 className="mt-2 tc-display text-2xl font-semibold text-[#142b3a]">
                   {topic.cta.title}
                 </h2>
-                <p className="mt-2 text-sm leading-relaxed text-[#57534e]">{topic.cta.body}</p>
+                <p className="mt-2 text-sm leading-relaxed text-[#53666e]">{topic.cta.body}</p>
               </div>
               <Link
                 href={topic.cta.href}
-                className="inline-flex shrink-0 items-center justify-center rounded-xl bg-[#2a6e47] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#22593a]"
+                className="inline-flex shrink-0 items-center justify-center rounded-xl bg-[#176b87] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#10556d]"
               >
                 {topic.cta.buttonLabel}
               </Link>
@@ -176,10 +176,10 @@ export default async function BlogTopicPage({ params }: Props) {
           </div>
         ) : null}
 
-        <div className="mt-14 border-t border-[#e3dfd6] pt-8">
+        <div className="mt-14 border-t border-[#e3e3e3] pt-8">
           <Link
             href="/blog"
-            className="text-sm font-semibold text-[#2a6e47] transition-colors hover:text-[#1c1917]"
+            className="text-sm font-semibold text-[#176b87] transition-colors hover:text-[#142b3a]"
           >
             ← All articles
           </Link>

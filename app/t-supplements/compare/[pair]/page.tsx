@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import AffiliateDisclosure from "../../../components/AffiliateDisclosure";
 import BrandSourceLinks from "../../../components/BrandSourceLinks";
+import ComparePicksCta from "../../../components/ComparePicksCta";
 import ComparisonTable, { type ComparisonRow } from "../../../components/ComparisonTable";
+import ExternalTextLink from "../../../components/ui/ExternalTextLink";
+import ExternalCta from "../../../components/ui/ExternalCta";
+import { brandMonogram, merchantCtaLabel } from "../../../lib/brand-display";
 import {
   getBrandBySlug,
   getBrandDetailPath,
@@ -216,7 +221,7 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
   ];
 
   return (
-    <div className="bg-[#f5f3ee]">
+    <div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -229,58 +234,79 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
-      <div className="mx-auto max-w-5xl px-6 py-12">
-        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">
-          <Link href="/" className="transition-colors hover:text-[#1c1917]">
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-[#5f757f]"
+        >
+          <Link href="/" className="hover:text-[#176b87] hover:underline">
             Home
           </Link>
-          <span>/</span>
-          <Link href={COMPARISONS_INDEX} className="transition-colors hover:text-[#1c1917]">
+          <span aria-hidden>/</span>
+          <Link href={COMPARISONS_INDEX} className="hover:text-[#176b87] hover:underline">
             Testosterone Supplement Comparisons
           </Link>
-          <span>/</span>
-          <span className="text-[#78716c]">
+          <span aria-hidden>/</span>
+          <span className="text-[#3c535e]">
             {a.name} vs {b.name}
           </span>
         </nav>
 
-        <div className="flex items-center justify-between gap-4 flex-wrap">
+        <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-[#1c1917] font-[family-name:var(--font-playfair)]">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
+              Head-to-head comparison
+            </p>
+            <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl">
               {a.name} vs {b.name}
             </h1>
-            <p className="mt-3 text-sm sm:text-base text-[#57534e] max-w-2xl leading-relaxed">
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#53666e]">
               Side-by-side snapshot of supplement pricing anchors, guarantee terms, and formula positioning from
               public checkout pages. Always verify the live cart before you pay.
             </p>
           </div>
-          <Link href={COMPARISONS_INDEX} className="text-sm font-medium text-[#2a6e47] hover:underline">
+          <Link
+            href={COMPARISONS_INDEX}
+            className="text-sm font-semibold text-[#176b87] hover:text-[#10556d] hover:underline"
+          >
             ← All comparisons
           </Link>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <AffiliateDisclosure className="mt-4" />
+
+        <div className="mt-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
           {[a, b].map((brand) => (
-            <div key={brand.slug} className="rounded-2xl border border-[#e3dfd6] bg-white p-5">
-              <div className="font-semibold text-[#1c1917]">{brand.name}</div>
-              <div className="mt-1 text-sm text-[#57534e] leading-relaxed">
-                {brand.shortLabel} · {brand.priceLabel}
+            <div key={brand.slug} className="tc-card flex flex-col p-4 sm:p-5">
+              <div className="flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#e3e3e3] bg-white text-xs font-bold text-[#176b87]"
+                >
+                  {brandMonogram(brand.name)}
+                </span>
+                <div className="min-w-0">
+                  <div className="tc-display text-lg font-bold">{brand.name}</div>
+                  <div className="mt-0.5 text-sm leading-relaxed text-[#53666e]">
+                    {brand.shortLabel} · {brand.priceLabel}
+                  </div>
+                </div>
               </div>
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-                <Link
-                  className="inline-flex items-center gap-1 text-sm font-medium text-[#2a6e47] hover:underline"
-                  href={getBrandDetailPath(brand)}
-                >
-                  Read our {brand.name} review →
-                </Link>
-                <a
-                  className="inline-flex items-center gap-1 text-sm text-[#78716c] hover:text-[#1c1917] hover:underline"
+              <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
+                <ExternalCta
                   href={withTtimeAffiliateParams(brand.affiliateUrl)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  brand={brand.name}
+                  position="comparison"
+                  label={merchantCtaLabel(brand)}
+                  size="sm"
+                />
+                <Link
+                  href={getBrandDetailPath(brand)}
+                  className="tc-btn tc-btn-secondary tc-btn-sm"
                 >
-                  Visit {brand.name} →
-                </a>
+                  Read our {brand.name} review
+                  <span aria-hidden>→</span>
+                </Link>
               </div>
             </div>
           ))}
@@ -294,27 +320,32 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
           rows={rows}
         />
 
-        <div className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6">
-          <h2 className="text-lg font-semibold text-[#1c1917]">Objective summary</h2>
+        <ComparePicksCta
+          brands={[a, b]}
+          note="Both anchors above are public snapshots. Bundle size, shipping, and promos change the total — confirm the live cart and guarantee window before you order."
+        />
+
+        <div className="tc-card mt-8 p-5 sm:p-6">
+          <h2 className="tc-display text-lg font-bold sm:text-xl">Objective summary</h2>
           <div className="mt-3 grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
-              <div className="text-sm font-semibold text-[#1c1917]">Compare the same bundle size</div>
-              <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
+            <div className="rounded-xl border border-[#ededed] bg-white p-4">
+              <div className="text-sm font-semibold text-[#142b3a]">Compare the same bundle size</div>
+              <p className="mt-2 text-sm text-[#53666e] leading-relaxed">
                 A $49/bottle headline often requires buying six bottles upfront. Normalize both products to the same
                 commitment (single bottle, 3-pack, or 6-pack) before picking a winner.
               </p>
             </div>
-            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
-              <div className="text-sm font-semibold text-[#1c1917]">Model your “all-in” cost</div>
-              <ul className="mt-2 list-disc pl-5 text-sm text-[#57534e] space-y-1.5">
+            <div className="rounded-xl border border-[#ededed] bg-white p-4">
+              <div className="text-sm font-semibold text-[#142b3a]">Model your “all-in” cost</div>
+              <ul className="mt-2 list-disc pl-5 text-sm text-[#53666e] space-y-1.5">
                 <li>Entry price vs bulk per-bottle math</li>
                 <li>Shipping thresholds and free-shipping minimums</li>
                 <li>Money-back guarantee length and return terms</li>
               </ul>
             </div>
-            <div className="rounded-xl border border-[#ede9e0] bg-[#fbfaf7] p-4">
-              <div className="text-sm font-semibold text-[#1c1917]">Use sources for the final check</div>
-              <p className="mt-2 text-sm text-[#57534e] leading-relaxed">
+            <div className="rounded-xl border border-[#ededed] bg-white p-4">
+              <div className="text-sm font-semibold text-[#142b3a]">Use sources for the final check</div>
+              <p className="mt-2 text-sm text-[#53666e] leading-relaxed">
                 Checkout funnels change often. Use the links below to confirm the exact bundle pricing, guarantee
                 window, and ingredient list you would purchase today.
               </p>
@@ -322,35 +353,33 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
           </div>
         </div>
 
-        <div className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6">
-          <h2 className="text-lg font-semibold text-[#1c1917]">Sources</h2>
+        <div className="tc-card mt-8 p-5 sm:p-6">
+          <h2 className="tc-display text-lg font-bold sm:text-xl">Sources</h2>
           <div className="mt-3 grid grid-cols-1 lg:grid-cols-2 gap-6">
             {[a, b].map((brand) => (
               <div key={brand.slug}>
-                <div className="text-sm font-semibold text-[#1c1917]">{brand.name}</div>
+                <div className="text-sm font-semibold text-[#142b3a]">{brand.name}</div>
                 <BrandSourceLinks brand={brand} />
               </div>
             ))}
           </div>
-          <p className="mt-4 text-xs text-[#78716c] leading-relaxed">
+          <p className="mt-4 text-xs text-[#53666e] leading-relaxed">
             Not medical advice. Supplements are not FDA-approved to treat low testosterone. Pricing, availability,
             and guarantee terms can change over time.
           </p>
 
           {pairExtras?.extraSources?.length ? (
-            <div className="mt-8 border-t border-[#ede9e0] pt-6">
-              <h3 className="text-sm font-semibold text-[#1c1917]">Additional references (pair-specific)</h3>
-              <ul className="mt-3 space-y-2 text-sm text-[#57534e]">
+            <div className="mt-8 border-t border-[#ededed] pt-6">
+              <h3 className="text-sm font-semibold text-[#142b3a]">Additional references (pair-specific)</h3>
+              <ul className="mt-3 space-y-2 text-sm text-[#53666e]">
                 {pairExtras.extraSources.map((s) => (
                   <li key={s.href}>
-                    <a
-                      className="text-[#2a6e47] hover:underline font-medium"
+                    <ExternalTextLink
+                      className="text-[#176b87] hover:underline font-medium"
                       href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
                     >
                       {s.label}
-                    </a>
+                    </ExternalTextLink>
                   </li>
                 ))}
               </ul>
@@ -358,17 +387,17 @@ export default async function TSupplementComparePairPage({ params }: PageProps) 
           ) : null}
         </div>
 
-        <section className="mt-8 rounded-2xl border border-[#e3dfd6] bg-white p-6 sm:p-8">
-          <h2 className="text-lg font-semibold text-[#1c1917]">FAQ</h2>
-          <p className="mt-2 text-sm text-[#57534e] max-w-3xl leading-relaxed">
+        <section className="tc-card mt-8 p-5 sm:p-6">
+          <h2 className="tc-display text-lg font-bold sm:text-xl">FAQ</h2>
+          <p className="mt-2 text-sm text-[#53666e] max-w-3xl leading-relaxed">
             Quick answers for comparing {a.name} and {b.name}. Educational only; confirm pricing and supplement facts
             on official sites before checkout.
           </p>
           <dl className="mt-6 space-y-6">
             {faqs.map((faq) => (
               <div key={faq.question}>
-                <dt className="text-sm font-semibold text-[#1c1917]">{faq.question}</dt>
-                <dd className="mt-2 text-sm text-[#57534e] leading-relaxed">{faq.answer}</dd>
+                <dt className="text-sm font-semibold text-[#142b3a]">{faq.question}</dt>
+                <dd className="mt-2 text-sm text-[#53666e] leading-relaxed">{faq.answer}</dd>
               </div>
             ))}
           </dl>

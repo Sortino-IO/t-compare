@@ -2,13 +2,23 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ArticleToc from "../../components/ArticleToc";
 import BlogArticleTrust from "../../components/BlogArticleTrust";
 import BlogContent from "../../components/BlogContent";
 import BlogPostRelated from "../../components/BlogPostRelated";
 import type { BlogBlock } from "../../lib/blog";
 import { getAllSlugs, getPostBySlug, getRelatedPosts } from "../../lib/blog";
+import { extractTopLevelHeadings } from "../../lib/blog-headings";
 import { resolvePrimaryTopic } from "../../lib/blog-topics";
 import { SITE_URL } from "../../lib/site";
+import QuickCostEstimator from "../../components/QuickCostEstimator";
+import EvidenceNotes from "../../components/EvidenceNotes";
+import { getBrandsByCategory } from "../../lib/brands";
+import { buildEstimatorRows } from "../../lib/cost-estimator";
+
+/** Posts where readers are weighing prescription programs, so a cost check helps them decide. */
+const PROVIDER_COST_POST = /enclomiphene|ttime|hims|(^|-)trt(-|$)/;
+const PROVIDER_IN_SLUG = /^(ttime|hims)-/;
 
 function absoluteImageUrl(src: string): string {
   if (src.startsWith("https://") || src.startsWith("http://")) return src;
@@ -149,6 +159,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   const primaryTopic = resolvePrimaryTopic(post.topics);
   const related = getRelatedPosts(post.slug, primaryTopic ? 4 : 3);
+  const tocEntries = extractTopLevelHeadings(post.content);
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
 
@@ -213,65 +224,108 @@ export default async function BlogPostPage({ params }: Props) {
         />
       ))}
 
-      <article className="pb-16 sm:pb-24">
-        <div className="border-b border-[#e3dfd6] bg-[#faf9f6]">
-          <div className="relative mx-auto aspect-[21/9] max-h-[min(52vh,520px)] w-full max-w-6xl overflow-hidden sm:aspect-[2.4/1]">
+      <article className="pb-16 sm:pb-20">
+        <div className="mx-auto max-w-[45rem] px-4 pt-6 sm:px-6 sm:pt-8">
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-5 flex flex-wrap items-center gap-2 text-[13px] text-[#5f757f]"
+          >
+            <Link href="/" className="hover:text-[#176b87] hover:underline">
+              Home
+            </Link>
+            <span aria-hidden>/</span>
+            <Link href="/blog" className="hover:text-[#176b87] hover:underline">
+              Blog
+            </Link>
+            <span aria-hidden>/</span>
+            <span className="line-clamp-1 text-[#3c535e]">{post.title}</span>
+          </nav>
+
+          <header className="mb-6">
+            {primaryTopic ? (
+              <Link
+                href={`/blog/topics/${primaryTopic.slug}`}
+                className="tc-tag mb-3 uppercase hover:border-[#a9cbd8] hover:text-[#176b87]"
+              >
+                {primaryTopic.label}
+              </Link>
+            ) : null}
+            <h1 className="tc-display text-[1.75rem] font-bold leading-[1.2] sm:text-[2.25rem]">
+              {post.title}
+            </h1>
+
+            {/* Byline: T-Compare publishes editorially as an organization; no
+                individual author or medical reviewer is claimed. */}
+            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-y border-[#ededed] py-3 text-[13px] text-[#5f757f]">
+              <span className="font-semibold text-[#3c535e]">
+                T-Compare Editorial
+              </span>
+              <span aria-hidden>·</span>
+              <span>
+                {post.updatedAt && post.updatedAt !== post.publishedAt
+                  ? `Updated ${formatDate(post.updatedAt)}`
+                  : `Published ${formatDate(post.publishedAt)}`}
+              </span>
+              <span aria-hidden>·</span>
+              <span>Informational, not medical advice</span>
+            </div>
+          </header>
+        </div>
+
+        <div className="mx-auto max-w-[45rem] px-4 sm:px-6">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-[#e3e3e3] bg-[#ededed] sm:aspect-[2.2/1]">
             <Image
               src={post.featuredImage}
               alt={post.featuredImageAlt}
               fill
               priority
-              sizes="100vw"
+              sizes="(max-width: 720px) 100vw, 720px"
               className="object-cover object-center"
-            />
-            <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1c1917]/50 to-transparent sm:from-[#1c1917]/30"
-              aria-hidden
             />
           </div>
         </div>
 
-        <div className="mx-auto max-w-5xl px-6 pt-10 sm:pt-14">
-          <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#b5b0a8]">
-            <Link href="/" className="transition-colors hover:text-[#1c1917]">
-              Home
-            </Link>
-            <span>/</span>
-            <Link href="/blog" className="transition-colors hover:text-[#1c1917]">
-              Blog
-            </Link>
-            <span>/</span>
-            <span className="line-clamp-1 text-[#78716c]">{post.title}</span>
-          </nav>
-
-          <header className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#a8a29e]">
-              {post.updatedAt && post.updatedAt !== post.publishedAt
-                ? `Updated ${formatDate(post.updatedAt)}`
-                : formatDate(post.publishedAt)}
+        <div className="mx-auto max-w-[45rem] px-4 pt-8 sm:px-6">
+          {/* Quick answer — the article standfirst, surfaced as a scannable summary. */}
+          <div className="mb-8 rounded-xl border border-[#bcd9e4] bg-[#eef6f9] p-4 sm:p-5">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#176b87]">
+              Quick answer
             </p>
-            <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-semibold leading-[1.15] text-[#1c1917] sm:text-4xl sm:leading-tight lg:text-5xl">
-              {post.title}
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#78716c] sm:text-lg">
+            <p className="mt-1.5 text-[15px] leading-relaxed text-[#3c535e]">
               {post.excerpt}
             </p>
-          </header>
+          </div>
+
+          <ArticleToc entries={tocEntries} />
         </div>
 
-        <div className="mx-auto max-w-5xl px-6">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <BlogContent blocks={post.content} cta={primaryTopic?.cta} />
         </div>
 
-        <div className="mx-auto max-w-5xl px-6">
+        {PROVIDER_COST_POST.test(post.slug) ? (
+          <div className="mx-auto max-w-[45rem] px-4 sm:px-6">
+            <QuickCostEstimator
+              rows={buildEstimatorRows(getBrandsByCategory("enclomiphene"))}
+              initialSlug={PROVIDER_IN_SLUG.exec(post.slug)?.[1]}
+              className="mt-10"
+            />
+            <EvidenceNotes
+              ids={["enclomiphene-sperm", "enclomiphene-not-approved"]}
+              className="mt-6"
+            />
+          </div>
+        ) : null}
+
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <BlogArticleTrust />
           <BlogPostRelated posts={related} topic={primaryTopic} />
         </div>
 
-        <div className="mx-auto mt-16 max-w-3xl border-t border-[#e3dfd6] px-6 pt-10 text-center">
+        <div className="mx-auto mt-12 max-w-[45rem] border-t border-[#e3e3e3] px-4 pt-8 sm:px-6">
           <Link
             href="/blog"
-            className="inline-flex items-center text-sm font-semibold text-[#2a6e47] transition-colors hover:text-[#1c1917]"
+            className="inline-flex items-center text-sm font-semibold text-[#176b87] hover:text-[#10556d] hover:underline"
           >
             ← Back to all articles
           </Link>

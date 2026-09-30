@@ -13,29 +13,29 @@ export default function BlogCard({
     <article>
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#e3dfd6] bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2a6e47]/25 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2a6e47]"
+        className="group flex h-full flex-col overflow-hidden rounded-xl border border-[#e3e3e3] bg-white transition-colors hover:border-[#a9cbd8]"
       >
-        <div className="relative aspect-[16/10] overflow-hidden bg-[#edeae2]">
+        <div className="relative aspect-[16/10] overflow-hidden bg-[#ededed]">
           <Image
             src={post.featuredImage}
             alt={post.featuredImageAlt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            className="object-cover"
             priority={priority}
             fetchPriority={priority ? "high" : "auto"}
           />
         </div>
-        <div className="flex flex-1 flex-col p-5 sm:p-6">
-          <h2 className="font-[family-name:var(--font-playfair)] text-xl font-semibold leading-snug text-[#1c1917] transition-colors line-clamp-2 group-hover:text-[#2a6e47]">
+        <div className="flex flex-1 flex-col p-4 sm:p-5">
+          <h2 className="tc-display line-clamp-2 text-base font-bold leading-snug transition-colors group-hover:text-[#176b87] sm:text-lg">
             {post.title}
           </h2>
-          <p className="mt-3 flex-1 text-sm leading-relaxed text-[#78716c] line-clamp-3">
+          <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-[#53666e]">
             {post.excerpt}
           </p>
-          <span className="mt-5 inline-flex items-center text-sm font-semibold text-[#2a6e47]">
-            Read more
-            <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1" aria-hidden>
+          <span className="mt-4 inline-flex items-center text-sm font-semibold text-[#176b87]">
+            Read article
+            <span className="ml-1 transition-transform group-hover:translate-x-0.5" aria-hidden>
               →
             </span>
           </span>

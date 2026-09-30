@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BRAND_CATEGORY_CONFIG, getBrandsByCategory } from "../../lib/brands";
+import { formatReviewedDate, latestReviewedDate } from "../../lib/brand-display";
+import { buildEstimatorRows } from "../../lib/cost-estimator";
+import { hasPublishedPrice } from "../../lib/provider-facts";
+import QuickCostEstimator from "../../components/QuickCostEstimator";
+import FaqSection from "../../components/FaqSection";
+import EvidenceNotes from "../../components/EvidenceNotes";
+import { buildEnclomipheneFaq } from "../../lib/enclomiphene-faq";
+import AffiliateDisclosure from "../../components/AffiliateDisclosure";
 import BrandCard from "../../components/BrandCard";
+import ClinicalContext from "../../components/ClinicalContext";
+import QuickCompareTable from "../../components/QuickCompareTable";
+import TrustStrip from "../../components/TrustStrip";
+import VerdictTiles from "../../components/VerdictTiles";
 import { SITE_URL } from "../../lib/site";
 
 const PAGE_URL = `${SITE_URL}/testosterone/enclomiphene`;
@@ -36,7 +48,12 @@ export const metadata: Metadata = {
 export default function EnclomiphenePage() {
   const brands = getBrandsByCategory("enclomiphene");
   const config = BRAND_CATEGORY_CONFIG.enclomiphene;
-  const lowestPrice = brands[0]!.priceFromMonthly;
+  const priced = brands.filter(hasPublishedPrice);
+  const lowestPrice = priced[0]!.priceFromMonthly;
+  const highestPrice = priced[priced.length - 1]!.priceFromMonthly;
+  const reviewedOn = latestReviewedDate(brands);
+
+  const estimatorRows = buildEstimatorRows(brands);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -73,86 +90,135 @@ export default function EnclomiphenePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
 
-      <div className="mx-auto max-w-5xl px-6 py-10 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-[#b5b0a8] mb-10 sm:mb-14">
-          <Link href="/" className="hover:text-[#1c1917] transition-colors">
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-6 flex items-center gap-2 text-[13px] text-[#5f757f]"
+        >
+          <Link href="/" className="hover:text-[#176b87] hover:underline">
             Home
           </Link>
-          <span>/</span>
-          <span className="text-[#78716c]">Enclomiphene Providers</span>
+          <span aria-hidden>/</span>
+          <span className="text-[#3c535e]">Enclomiphene Providers</span>
         </nav>
 
         {/* Header */}
-        <div className="max-w-2xl mb-10 sm:mb-12">
-          <p className="text-[11px] font-semibold tracking-[0.2em] text-[#a8a29e] uppercase mb-4">
-            Informational Comparison
+        <div className="max-w-3xl">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#176b87]">
+            Independent comparison
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1c1917] mb-4 leading-tight">
+          <h1 className="tc-display text-[1.75rem] font-bold leading-tight sm:text-4xl">
             Compare Enclomiphene Providers
           </h1>
-          <p className="text-base text-[#78716c] leading-relaxed">
+          <p className="mt-3 text-base leading-relaxed text-[#53666e]">
             Browse pricing and program details for enclomiphene providers in one
             place. All providers listed offer online access. Information is based
             on publicly available sources and may change over time.
           </p>
         </div>
 
-        {/* Stats strip */}
-        <div className="grid grid-cols-2 gap-4 mb-10 sm:mb-12 rounded-2xl bg-white border border-[#e3dfd6] p-5 sm:p-6 shadow-sm">
-          <div className="text-center">
-            <p className="font-[family-name:var(--font-playfair)] text-xl sm:text-2xl font-semibold text-[#2a6e47] tabular-nums">
-              From ${lowestPrice}
-            </p>
-            <p className="text-xs text-[#b5b0a8] mt-1.5">Starting from / mo</p>
+        {/* Trust strip — every value comes from the published dataset */}
+        <TrustStrip
+          className="mt-6"
+          items={[
+            { label: config.entityLabel, value: String(brands.length) },
+            {
+              label: "Published price range",
+              value: `$${lowestPrice}–$${highestPrice}/mo`,
+            },
+            ...(reviewedOn
+              ? [
+                  {
+                    label: "Listings last reviewed",
+                    value: formatReviewedDate(reviewedOn),
+                  },
+                ]
+              : []),
+          ]}
+        />
+
+        <AffiliateDisclosure className="mt-3" />
+
+        <QuickCostEstimator rows={estimatorRows} className="mt-6" />
+
+        <VerdictTiles brands={brands} className="mt-8" />
+
+        {/* Quick comparison */}
+        <section className="mt-8" aria-labelledby="quick-comparison">
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <h2
+              id="quick-comparison"
+              className="tc-display text-xl font-bold sm:text-2xl"
+            >
+              Quick comparison
+            </h2>
+            <span className="text-xs text-[#5f757f]">
+              Sorted by starting price, low to high
+            </span>
           </div>
-          <div className="text-center border-l border-[#e3dfd6]">
-            <p className="font-[family-name:var(--font-playfair)] text-xl sm:text-2xl font-semibold text-[#1c1917] tabular-nums">
-              {brands.length}
-            </p>
-            <p className="text-xs text-[#b5b0a8] mt-1.5">{config.entityLabel}</p>
-          </div>
-        </div>
+          <QuickCompareTable
+            brands={brands}
+            lowestSlug={brands[0]!.slug}
+            caption="Billing, lab costs and prescriber details as each provider publishes them, checked September 2026. Green means covered or favourable, amber means an extra cost or commitment to factor in."
+          />
+        </section>
 
         {/* Cost calculator callout */}
         <Link
           href="/tools/enclomiphene-cost-calculator"
-          className="group mb-10 sm:mb-12 flex items-center justify-between gap-4 rounded-2xl border border-[#c6e0d0] bg-[#f3f8f4] px-5 py-4 sm:px-6 transition-colors hover:border-[#2a6e47]/40"
+          className="group mt-8 flex items-center justify-between gap-4 rounded-xl border border-[#bcd9e4] bg-[#eef6f9] px-4 py-3.5 transition-colors hover:border-[#176b87] sm:px-5"
         >
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#2a6e47]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#176b87]">
               Free tool
             </p>
-            <p className="mt-1 text-sm font-medium text-[#1c1917] sm:text-base">
-              Estimate your real 90-day &amp; annual cost — medication, labs &amp; shipping
+            <p className="mt-0.5 text-sm font-semibold text-[#142b3a]">
+              See every provider&apos;s real 12-month cost — medication, membership &amp; labs
             </p>
           </div>
-          <span className="shrink-0 text-lg text-[#2a6e47] transition-transform group-hover:translate-x-0.5" aria-hidden>
+          <span
+            className="shrink-0 text-lg text-[#176b87] transition-transform group-hover:translate-x-0.5"
+            aria-hidden
+          >
             →
           </span>
         </Link>
 
+        <ClinicalContext className="mt-8" />
+
+        <EvidenceNotes
+          ids={["enclomiphene-sperm", "enclomiphene-lh-fsh", "t-trials-sexual-function"]}
+          className="mt-8"
+        />
+
         {/* List header */}
-        <div className="mb-4 sm:mb-5 flex items-center justify-between">
-          <h2 className="font-[family-name:var(--font-playfair)] text-xl font-semibold text-[#1c1917]">
+        <div className="mb-4 mt-10 flex flex-wrap items-baseline justify-between gap-2">
+          <h2 className="tc-display text-xl font-bold sm:text-2xl">
             {config.listTitle}
           </h2>
-          <span className="text-xs text-[#b5b0a8]">Price low → high</span>
+          <span className="text-xs text-[#5f757f]">Price low → high</span>
         </div>
 
         {/* Provider cards (sorted low → high; first row = lowest published anchor in our dataset) */}
         <div className="flex flex-col gap-3">
           {brands.map((brand, i) => (
-            <div key={brand.slug} id={i === 0 ? "lowest-price-provider" : undefined} className="scroll-mt-28">
+            <div key={brand.slug} id={i === 0 ? "lowest-price-provider" : undefined} className="scroll-mt-24">
               <BrandCard brand={brand} highlight={i === 0} />
             </div>
           ))}
         </div>
 
-        <p className="mt-5 text-xs text-[#b5b0a8] leading-relaxed">
+        <p className="mt-5 text-xs leading-relaxed text-[#5f757f]">
           Pricing is indicative and may vary based on consultation, dosage, and
           location. Verify current pricing directly with each provider.
         </p>
+
+        <FaqSection
+          items={buildEnclomipheneFaq(estimatorRows)}
+          title="Enclomiphene FAQ"
+          className="mt-12"
+        />
       </div>
     </>
   );

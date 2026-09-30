@@ -31,7 +31,7 @@ export default async function Image({
     (
       <div
         style={{
-          background: "#f5f3ee",
+          background: "#f4f8fa",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -44,11 +44,11 @@ export default async function Image({
         <p
           style={{
             fontSize: "22px",
-            color: "#a8a29e",
+            color: "#5f757f",
             letterSpacing: "0.2em",
             textTransform: "uppercase",
             margin: 0,
-            fontFamily: "serif",
+            fontFamily: "sans-serif",
           }}
         >
           T-Compare · Enclomiphene Guide
@@ -58,10 +58,10 @@ export default async function Image({
           style={{
             fontSize: `${titleFontSize(title)}px`,
             fontWeight: 700,
-            color: "#1c1917",
+            color: "#142b3a",
             margin: 0,
             lineHeight: 1.1,
-            fontFamily: "serif",
+            fontFamily: "sans-serif",
             display: "flex",
           }}
         >
@@ -79,7 +79,7 @@ export default async function Image({
           <p
             style={{
               fontSize: "22px",
-              color: "#78716c",
+              color: "#53666e",
               margin: 0,
               fontFamily: "sans-serif",
             }}
