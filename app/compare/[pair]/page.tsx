@@ -21,6 +21,8 @@ import {
 } from "../../lib/brands";
 import { getPairComparisonExtras } from "../../lib/pair-comparison-extras";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
+import { canonicalAlternates } from "../../lib/seo";
+import { compareSeoDescription } from "../../lib/seo-provider";
 import { OG_BASE, SITE_URL } from "../../lib/site";
 
 type Params = { pair: string };
@@ -71,22 +73,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : `${canonical.left} vs ${canonical.right}`;
   const isSupplement =
     leftBrand?.category === "supplement" && rightBrand?.category === "supplement";
+  const pageTitle = isSupplement
+    ? `${title}: Which T-Booster Is Better? (2026)`
+    : `${title}: Price, Labs & 12-Mo Cost (2026)`;
+  const canonicalPath = `/compare/${canonical.left}-vs-${canonical.right}`;
+  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
   const description =
     leftBrand && rightBrand
       ? isSupplement
         ? `Compare ${leftBrand.name} vs ${rightBrand.name} on entry price, bulk bundles, guarantees, and ingredients. See which testosterone booster fits your budget before checkout.`
-        : `Compare ${leftBrand.name} vs ${rightBrand.name} across pricing, labs, onboarding flow, and plan structure. See key differences before you choose.`
+        : compareSeoDescription(leftBrand, rightBrand)
       : isSupplement
         ? `Compare ${canonical.left} vs ${canonical.right} on testosterone supplement pricing, bulk savings, and guarantee terms.`
         : `Compare ${canonical.left} vs ${canonical.right} across pricing, labs, onboarding flow, and plan structure.`;
-  const pageTitle = isSupplement
-    ? `${title}: Which T-Booster Is Better?`
-    : `${title} Comparison: Price, Labs & Plan Terms`;
-  const canonicalUrl = `${SITE_URL}/compare/${canonical.left}-vs-${canonical.right}`;
 
   return {
     title: pageTitle,
     description,
+    alternates: canonicalAlternates(canonicalPath),
     openGraph: {
       ...OG_BASE,
       title: `${pageTitle} | T-Compare`,

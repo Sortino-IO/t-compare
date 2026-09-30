@@ -14,19 +14,26 @@ import ClinicalContext from "../../components/ClinicalContext";
 import QuickCompareTable from "../../components/QuickCompareTable";
 import TrustStrip from "../../components/TrustStrip";
 import VerdictTiles from "../../components/VerdictTiles";
+import AuthoritySources from "../../components/AuthoritySources";
+import HubQuickAnswer from "../../components/HubQuickAnswer";
+import { canonicalAlternates, metaDescription } from "../../lib/seo";
 import { OG_BASE, SITE_URL } from "../../lib/site";
 
-const PAGE_URL = `${SITE_URL}/testosterone/enclomiphene`;
+const PAGE_PATH = "/testosterone/enclomiphene";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
-  title: "Top Enclomiphene Providers Compared (2026)",
-  description:
-    "Compare enclomiphene providers by starting price, onboarding flow, labs, and plan structure. Shortlist the best fit, then verify details on official sites.",
+  title: "Best Enclomiphene Providers Compared (2026): Prices & Labs",
+  description: metaDescription(
+    "Compare 8 enclomiphene telehealth providers side by side — monthly price, labs, commitment, prescriber type, and estimated 12-month total. Free cost calculator and head-to-head pages.",
+  ),
+  alternates: canonicalAlternates(PAGE_PATH),
   openGraph: {
     ...OG_BASE,
-    title: "Top Enclomiphene Providers Compared (2026) | T-Compare",
-    description:
-      "Compare enclomiphene providers by starting price, onboarding flow, labs, and plan structure. Shortlist the best fit, then verify details on official sites.",
+    title: "Best Enclomiphene Providers Compared (2026) | T-Compare",
+    description: metaDescription(
+      "Compare 8 enclomiphene telehealth providers — monthly price, labs, commitment, and 12-month cost. Free calculator and head-to-head pages.",
+    ),
     url: PAGE_URL,
   },
   twitter: {
@@ -132,6 +139,23 @@ export default function EnclomiphenePage() {
 
         <AffiliateDisclosure className="mt-3" />
 
+        <HubQuickAnswer className="mt-6">
+          <p>
+            <strong>Enclomiphene</strong> is a selective estrogen receptor modulator (SERM) used
+            off-label through compounding pharmacies to stimulate your own testosterone production
+            while preserving fertility in many men. Telehealth programs differ most on{" "}
+            <strong>all-in cost</strong> (medication, membership, labs), prescriber access, and
+            state availability — not just the advertised monthly price.
+          </p>
+          <p className="mt-3">
+            Use the comparison table and{" "}
+            <Link href="/tools/enclomiphene-cost-calculator" className="text-[#176b87] underline">
+              12-month cost calculator
+            </Link>{" "}
+            here, then confirm live pricing on each provider&apos;s official site before checkout.
+          </p>
+        </HubQuickAnswer>
+
         <QuickCostEstimator rows={estimatorRows} className="mt-6" />
 
         <VerdictTiles brands={brands} className="mt-8" />
@@ -178,6 +202,8 @@ export default function EnclomiphenePage() {
         </Link>
 
         <ClinicalContext className="mt-8" />
+
+        <AuthoritySources className="mt-8" />
 
         <EvidenceNotes
           ids={["enclomiphene-sperm", "enclomiphene-lh-fsh", "t-trials-sexual-function"]}

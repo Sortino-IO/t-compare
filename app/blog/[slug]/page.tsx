@@ -7,7 +7,7 @@ import BlogArticleTrust from "../../components/BlogArticleTrust";
 import BlogContent from "../../components/BlogContent";
 import BlogPostRelated from "../../components/BlogPostRelated";
 import type { BlogBlock } from "../../lib/blog";
-import { getAllSlugs, getPostBySlug, getRelatedPosts } from "../../lib/blog";
+import { getAllSlugs, getPostBySlug, getRelatedPosts, type BlogPost } from "../../lib/blog";
 import { extractTopLevelHeadings } from "../../lib/blog-headings";
 import { resolvePrimaryTopic } from "../../lib/blog-topics";
 import { OG_BASE, SITE_URL } from "../../lib/site";
@@ -87,6 +87,12 @@ function extractFaq(blocks: BlogBlock[]): { question: string; answer: string }[]
   return faqs;
 }
 
+function postMetaDescription(post: BlogPost): string {
+  if (post.seoDescription?.trim()) return post.seoDescription.trim();
+  if (post.excerpt.length > 155) return `${post.excerpt.slice(0, 152).trimEnd()}...`;
+  return post.excerpt;
+}
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -108,12 +114,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     post.seoTitle && post.seoTitle.trim().length > 0
       ? post.seoTitle
       : `${post.title} | T-Compare`;
-  const metadataDescription =
-    post.seoDescription && post.seoDescription.trim().length > 0
-      ? post.seoDescription
-      : post.excerpt.length > 155
-        ? `${post.excerpt.slice(0, 152).trimEnd()}...`
-        : post.excerpt;
+  const metadataDescription = postMetaDescription(post);
 
   return {
     title: {
@@ -163,13 +164,14 @@ export default async function BlogPostPage({ params }: Props) {
   const tocEntries = extractTopLevelHeadings(post.content);
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
+  const postingDescription = postMetaDescription(post);
 
   const jsonLd: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       headline: post.title,
-      description: post.seoDescription,
+      description: postingDescription,
       datePublished: post.publishedAt,
       dateModified: post.updatedAt ?? post.publishedAt,
       url: pageUrl,

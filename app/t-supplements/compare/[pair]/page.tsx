@@ -18,6 +18,7 @@ import {
 } from "../../../lib/brands";
 import { getPairComparisonExtras } from "../../../lib/pair-comparison-extras";
 import { withTtimeAffiliateParams } from "../../../lib/affiliate-links";
+import { canonicalAlternates } from "../../../lib/seo";
 import { OG_BASE, SITE_URL } from "../../../lib/site";
 
 const COMPARISONS_INDEX = getComparisonsIndexPath("supplement");
@@ -70,12 +71,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     leftBrand && rightBrand
       ? `Compare ${leftBrand.name} vs ${rightBrand.name} on entry price, bulk bundles, guarantees, and ingredients. See which testosterone booster fits your budget before checkout.`
       : `Compare ${canonical.left} vs ${canonical.right} on testosterone supplement pricing, bulk savings, and guarantee terms.`;
-  const pageTitle = `${title}: Which T-Booster Is Better?`;
-  const canonicalUrl = `${SITE_URL}${getComparePairPath("supplement", canonical.left, canonical.right)}`;
+  const pageTitle = `${title}: Which T-Booster Is Better? (2026)`;
+  const canonicalPath = getComparePairPath("supplement", canonical.left, canonical.right);
+  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 
   return {
     title: pageTitle,
     description,
+    alternates: canonicalAlternates(canonicalPath),
     openGraph: {
       ...OG_BASE,
       title: `${pageTitle} | T-Compare`,

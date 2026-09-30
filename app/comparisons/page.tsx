@@ -5,12 +5,18 @@ import EvidenceNotes from "../components/EvidenceNotes";
 import QuickCostEstimator from "../components/QuickCostEstimator";
 import { buildEstimatorRows } from "../lib/cost-estimator";
 import ComparisonPairsGrid from "../components/ComparisonPairsGrid";
+import { canonicalAlternates, itemListSchema, metaDescription } from "../lib/seo";
 import { OG_BASE, SITE_URL } from "../lib/site";
 
+const PAGE_PATH = "/comparisons";
+const ENCLO_PAIR_COUNT = getBrandPairs("enclomiphene").length;
+
 export const metadata: Metadata = {
-  title: "TRT Provider Comparisons: Cost, Labs & Plans",
-  description:
-    "Explore side-by-side TRT and enclomiphene provider comparisons. Check 90-day total cost, lab cadence, commitment terms, and what each plan includes.",
+  title: "Enclomiphene Provider Comparisons (2026): Every Head-to-Head",
+  description: metaDescription(
+    `${ENCLO_PAIR_COUNT} side-by-side enclomiphene comparisons — Hims vs TTime, Maximus vs Hone, and more. Monthly price, labs, commitment, and 12-month cost estimates.`,
+  ),
+  alternates: canonicalAlternates(PAGE_PATH),
   openGraph: {
     ...OG_BASE,
     title: "TRT Provider Comparisons: Cost, Labs & Plans | T-Compare",
@@ -79,6 +85,12 @@ export default function ComparisonsIndexPage() {
     ],
   };
 
+  const pairListSchema = itemListSchema(
+    "Enclomiphene provider comparisons",
+    PAGE_PATH,
+    pairs.map((p) => ({ name: p.title, path: p.href })),
+  );
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -98,6 +110,10 @@ export default function ComparisonsIndexPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pairListSchema) }}
       />
       <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
         <nav

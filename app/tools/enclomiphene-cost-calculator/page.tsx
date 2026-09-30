@@ -90,6 +90,19 @@ export default function EnclomipheneCostCalculatorPage() {
     ],
   };
 
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Enclomiphene & TRT Cost Calculator",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    url: PAGE_URL,
+    description:
+      "Estimate enclomiphene and TRT program cost over 3, 6, or 12 months including medication, membership, and labs.",
+    publisher: { "@type": "Organization", name: "T-Compare", url: SITE_URL },
+  };
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -109,6 +122,10 @@ export default function EnclomipheneCostCalculatorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
 
       <div className="mx-auto max-w-5xl px-6 py-10 sm:py-14">

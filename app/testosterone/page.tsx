@@ -4,12 +4,16 @@ import { getBrandsByCategory } from "../lib/brands";
 import QuickCostEstimator from "../components/QuickCostEstimator";
 import EvidenceNotes from "../components/EvidenceNotes";
 import { buildEstimatorRows } from "../lib/cost-estimator";
+import { breadcrumbListSchema, canonicalAlternates } from "../lib/seo";
 import { OG_BASE, SITE_URL } from "../lib/site";
 
+const PAGE_PATH = "/testosterone";
+
 export const metadata: Metadata = {
-  title: "Enclomiphene Providers: Compare by Category",
+  title: "Testosterone & Enclomiphene Comparison Hub (2026)",
   description:
-    "Compare enclomiphene telehealth providers by pricing, onboarding, labs, and plan structure before you choose.",
+    "Start here to compare prescription enclomiphene telehealth programs — pricing, labs, 12-month cost calculator, and head-to-head provider pages.",
+  alternates: canonicalAlternates(PAGE_PATH),
   openGraph: {
     ...OG_BASE,
     title: "Enclomiphene Providers: Compare by Category | T-Compare",
@@ -39,10 +43,19 @@ export default function TestosteronePage() {
     },
   ];
 
+  const breadcrumbSchema = breadcrumbListSchema([
+    { name: "Home", path: "/" },
+    { name: "Testosterone", path: PAGE_PATH },
+  ]);
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-[#5f757f] mb-12">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-[#5f757f] mb-12">
         <Link href="/" className="hover:text-[#176b87] hover:underline">
           Home
         </Link>

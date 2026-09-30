@@ -11,6 +11,8 @@ import { buildEstimatorRows } from "../../../lib/cost-estimator";
 import ExternalCta from "../../../components/ui/ExternalCta";
 import { formatReviewedDate, merchantCtaLabel } from "../../../lib/brand-display";
 import { withTtimeAffiliateParams } from "../../../lib/affiliate-links";
+import { canonicalAlternates } from "../../../lib/seo";
+import { providerSeoDescription, providerSeoTitle } from "../../../lib/seo-provider";
 import { hasPublishedPrice } from "../../../lib/provider-facts";
 import {
   getBrandBySlug,
@@ -34,18 +36,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!brand) return { title: "Provider not found" };
 
-  const pageUrl = `${SITE_URL}/testosterone/enclomiphene/${brand.slug}`;
-  // Concise, intent-matched title (cost/review) + per-brand description with the
-  // price anchor so each provider page has unique, click-worthy SERP copy.
-  const seoTitle = `${brand.name} Enclomiphene Cost & Review (2026)`;
-  const priceAnchor = hasPublishedPrice(brand)
-    ? brand.priceLabel.replace(/^From\s+/i, "from ")
-    : "pricing and terms";
-  const seoDescription = `${brand.name} enclomiphene ${priceAnchor} — compare the real 90-day cost, lab requirements, onboarding speed, and plan details before you choose a provider.`;
+  const pagePath = `/testosterone/enclomiphene/${brand.slug}`;
+  const pageUrl = `${SITE_URL}${pagePath}`;
+  const seoTitle = providerSeoTitle(brand);
+  const seoDescription = providerSeoDescription(brand);
 
   return {
     title: seoTitle,
     description: seoDescription,
+    alternates: canonicalAlternates(pagePath),
     openGraph: {
       ...OG_BASE,
       title: seoTitle,

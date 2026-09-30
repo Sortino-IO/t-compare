@@ -6,14 +6,17 @@ import QuickCompareTable from "../components/QuickCompareTable";
 import TrustStrip from "../components/TrustStrip";
 import { formatReviewedDate, latestReviewedDate } from "../lib/brand-display";
 import { getBrandDetailPath, getBrandsByCategory } from "../lib/brands";
+import { canonicalAlternates } from "../lib/seo";
 import { OG_BASE, SITE_URL } from "../lib/site";
 
-const PAGE_URL = `${SITE_URL}/t-supplements`;
+const PAGE_PATH = "/t-supplements";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
   title: "Best Testosterone Supplements Compared: Prices & Value (2026)",
   description:
     "Compare top testosterone boosters side by side from $55/mo. See entry prices, bulk savings, guarantees, and ingredients so you pick the right bottle-not the loudest ad.",
+  alternates: canonicalAlternates(PAGE_PATH),
   openGraph: {
     ...OG_BASE,
     title: "Best Testosterone Supplements Compared: Prices & Value (2026) | T-Compare",

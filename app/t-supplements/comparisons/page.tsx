@@ -2,26 +2,27 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ComparisonPairsGrid from "../../components/ComparisonPairsGrid";
 import { getBrandPairs, getComparePairPath } from "../../lib/brands";
+import { breadcrumbListSchema, canonicalAlternates, itemListSchema } from "../../lib/seo";
 import { OG_BASE, SITE_URL } from "../../lib/site";
 
-const PAGE_URL = `${SITE_URL}/t-supplements/comparisons`;
+const PAGE_PATH = "/t-supplements/comparisons";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
+const SUPP_PAIR_COUNT = getBrandPairs("supplement").length;
 
 export const metadata: Metadata = {
-  title: "Testosterone Supplement Comparisons: Price, Bulk & Guarantees",
-  description:
-    "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
+  title: "Testosterone Supplement Comparisons (2026): Every Head-to-Head",
+  description: `${SUPP_PAIR_COUNT} booster comparisons — entry price, bulk per-bottle cost, guarantee length, and formula focus before checkout.`,
+  alternates: canonicalAlternates(PAGE_PATH),
   openGraph: {
     ...OG_BASE,
-    title: "Testosterone Supplement Comparisons: Price, Bulk & Guarantees | T-Compare",
-    description:
-      "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
+    title: "Testosterone Supplement Comparisons (2026) | T-Compare",
+    description: `${SUPP_PAIR_COUNT} head-to-head testosterone booster comparisons with price, bulk savings, and guarantees.`,
     url: PAGE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Testosterone Supplement Comparisons: Price, Bulk & Guarantees | T-Compare",
-    description:
-      "Head-to-head testosterone booster comparisons only. Check entry price, multi-bottle savings, guarantee length, and formula focus before checkout.",
+    title: "Testosterone Supplement Comparisons (2026) | T-Compare",
+    description: `${SUPP_PAIR_COUNT} head-to-head testosterone booster comparisons with price, bulk savings, and guarantees.`,
   },
 };
 
@@ -32,8 +33,27 @@ export default function TSupplementsComparisonsPage() {
     description: `Compare ${a.name} and ${b.name} on price, bulk bundles, and guarantees.`,
   }));
 
+  const breadcrumbSchema = breadcrumbListSchema([
+    { name: "Home", path: "/" },
+    { name: "Testosterone Supplements", path: "/t-supplements" },
+    { name: "Comparisons", path: PAGE_PATH },
+  ]);
+  const pairListSchema = itemListSchema(
+    "Testosterone supplement comparisons",
+    PAGE_PATH,
+    pairs.map((p) => ({ name: p.title, path: p.href })),
+  );
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pairListSchema) }}
+      />
       <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
         <nav
           aria-label="Breadcrumb"

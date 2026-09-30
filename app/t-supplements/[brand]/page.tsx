@@ -18,6 +18,7 @@ import {
   getComparePairPath,
   getComparisonsIndexPath,
 } from "../../lib/brands";
+import { canonicalAlternates } from "../../lib/seo";
 import { OG_BASE, SITE_URL } from "../../lib/site";
 
 type Props = {
@@ -34,13 +35,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!brand || brand.category !== "supplement") return { title: "Supplement not found" };
 
-  const pageUrl = `${SITE_URL}/t-supplements/${brand.slug}`;
+  const pagePath = `/t-supplements/${brand.slug}`;
+  const pageUrl = `${SITE_URL}${pagePath}`;
   const seoTitle = brand.seoTitle.replace(/\s*\|\s*T-Compare\s*$/, "");
   const seoDescription = brand.seoDescription;
 
   return {
     title: seoTitle,
     description: seoDescription,
+    alternates: canonicalAlternates(pagePath),
     openGraph: {
       ...OG_BASE,
       title: seoTitle,
