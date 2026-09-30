@@ -20,6 +20,7 @@ import {
   type Brand,
 } from "../../lib/brands";
 import { getPairComparisonExtras } from "../../lib/pair-comparison-extras";
+import { buildPairVerdict } from "../../lib/pair-verdict";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 import { canonicalAlternates } from "../../lib/seo";
 import { compareSeoDescription } from "../../lib/seo-provider";
@@ -139,12 +140,10 @@ export default async function ComparePairPage({ params }: PageProps) {
 
   const canonicalUrl = `${SITE_URL}/compare/${canonicalPairSlug}`;
 
+  const verdict = buildPairVerdict(a, b);
+
   const faqs = [
-    {
-      question: `Does this page pick a "winner" between ${a.name} and ${b.name}?`,
-      answer:
-        "No. It summarizes publicly framed pricing and onboarding language so you can ask sharper questions. Outcomes depend on diagnosis, monitoring, and adherence—not logos.",
-    },
+    ...(verdict?.faqs ?? []),
     {
       question: "What is the biggest mistake when comparing monthly prices?",
       answer:
@@ -160,11 +159,6 @@ export default async function ComparePairPage({ params }: PageProps) {
         "Common misconception: if two brands list testosterone, are they the same therapy?",
       answer:
         "Not necessarily. Enclomiphene-first programs and injectable TRT carry different monitoring expectations and risks. Your clinician helps match therapy class to labs and goals.",
-    },
-    {
-      question: "What should I ask before paying?",
-      answer:
-        "Ask what is included if your dose changes, what labs repeat and when, and how urgent symptoms are triaged after hours.",
     },
   ];
 
@@ -305,6 +299,37 @@ export default async function ComparePairPage({ params }: PageProps) {
             ← All comparisons
           </Link>
         </div>
+
+        {verdict ? (
+          <section className="mt-5 rounded-xl border border-[#cfe4ec] bg-[#eef6f9] p-5 sm:p-6" aria-labelledby="short-answer">
+            <h2 id="short-answer" className="tc-display text-lg font-bold sm:text-xl">
+              {a.name} vs {b.name}: the short answer
+            </h2>
+            <p className="mt-2 text-[15px] leading-relaxed text-[#3c535e]">{verdict.summary}</p>
+            {verdict.chooseIf.length > 0 ? (
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {verdict.chooseIf.map((c) => (
+                  <div key={c.brand.slug} className="rounded-lg border border-[#e3e3e3] bg-white p-4">
+                    <h3 className="text-sm font-semibold text-[#142b3a]">Choose {c.brand.name} if</h3>
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[#53666e]">
+                      {c.reasons.map((r) => (
+                        <li key={r}>{r}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+            <h3 className="mt-4 text-sm font-semibold text-[#142b3a]">Watch out for</h3>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[#53666e]">
+              {verdict.watchOut.map((w) => (
+                <li key={w.brand.slug}>
+                  <span className="font-medium text-[#3c535e]">{w.brand.name}:</span> {w.text}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <AffiliateDisclosure className="mt-4" />
 
