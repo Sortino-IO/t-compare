@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AUTHORITY_SOURCES } from "../lib/authority-sources";
 import ExternalTextLink from "./ui/ExternalTextLink";
 
@@ -21,8 +22,11 @@ export default function AuthoritySources({
         ))}
       </ul>
       <p className="mt-3 text-xs leading-relaxed text-[#5f757f]">
-        Provider pricing and plan terms are checked against each company&apos;s public pages; use
-        official checkout for live totals.
+        Provider pricing and plan terms are checked against each company&apos;s public pages (
+        <Link href="/methodology" className="text-[#176b87] underline">
+          how we compare
+        </Link>
+        ); use official checkout for live totals.
       </p>
     </section>
   );

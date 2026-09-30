@@ -393,6 +393,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
                 <FooterLink href="/terms">Terms</FooterLink>
                 <FooterLinkDivider />
                 <FooterLink href="/about">About</FooterLink>
+                <FooterLink href="/methodology">How we compare</FooterLink>
               </nav>
             </FooterSection>
           </div>
