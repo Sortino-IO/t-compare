@@ -21,18 +21,19 @@ import { OG_BASE, SITE_URL } from "../../lib/site";
 
 const PAGE_PATH = "/testosterone/enclomiphene";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
+const ENCLO_COUNT = getBrandsByCategory("enclomiphene").length;
 
 export const metadata: Metadata = {
   title: "Best Enclomiphene Providers Compared (2026): Prices & Labs",
   description: metaDescription(
-    "Compare 8 enclomiphene telehealth providers side by side — monthly price, labs, commitment, prescriber type, and estimated 12-month total. Free cost calculator and head-to-head pages.",
+    `Compare ${ENCLO_COUNT} enclomiphene telehealth providers side by side — monthly price, labs, commitment, prescriber type, and estimated 12-month total. Free cost calculator and head-to-head pages.`,
   ),
   alternates: canonicalAlternates(PAGE_PATH),
   openGraph: {
     ...OG_BASE,
     title: "Best Enclomiphene Providers Compared (2026) | T-Compare",
     description: metaDescription(
-      "Compare 8 enclomiphene telehealth providers — monthly price, labs, commitment, and 12-month cost. Free calculator and head-to-head pages.",
+      `Compare ${ENCLO_COUNT} enclomiphene telehealth providers — monthly price, labs, commitment, and 12-month cost. Free calculator and head-to-head pages.`,
     ),
     url: PAGE_URL,
   },

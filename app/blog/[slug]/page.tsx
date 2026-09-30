@@ -6,6 +6,7 @@ import ArticleToc from "../../components/ArticleToc";
 import BlogArticleTrust from "../../components/BlogArticleTrust";
 import BlogContent from "../../components/BlogContent";
 import BlogPostRelated from "../../components/BlogPostRelated";
+import BlogProviderLinks from "../../components/BlogProviderLinks";
 import type { BlogBlock } from "../../lib/blog";
 import { getAllSlugs, getPostBySlug, getRelatedPosts, type BlogPost } from "../../lib/blog";
 import { extractTopLevelHeadings } from "../../lib/blog-headings";
@@ -317,6 +318,7 @@ export default async function BlogPostPage({ params }: Props) {
               ids={["enclomiphene-sperm", "enclomiphene-not-approved"]}
               className="mt-6"
             />
+            <BlogProviderLinks text={`${post.title} ${post.slug}`} className="mt-6" />
           </div>
         ) : null}
 
