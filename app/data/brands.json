@@ -177,6 +177,12 @@
         "text": "The $99/mo price means paying $990 upfront plus a $94 lab kit, and partially used periods are not refunded.",
         "source": "https://www.hims.com/terms-and-conditions"
       }
+    },
+    "trustpilot": {
+      "score": 2.9,
+      "reviews": 9230,
+      "url": "https://www.trustpilot.com/review/hims.com",
+      "checkedOn": "2026-10-01"
     }
   },
   {
@@ -267,6 +273,12 @@
         "text": "The headline price locks you into 12 months you cannot exit early. Maximus itself recommends starting month-to-month at $199.99.",
         "source": "https://www.maximustribe.com/subscription-terms"
       }
+    },
+    "trustpilot": {
+      "score": 4.3,
+      "reviews": 859,
+      "url": "https://www.trustpilot.com/review/maximustribe.com",
+      "checkedOn": "2026-10-01"
     }
   },
   {
@@ -358,6 +370,12 @@
         "text": "The $42 headline is medication only. The $135/mo membership bills separately, even in months no medication ships.",
         "source": "https://help.honehealth.com/hc/en-us/articles/40162104966423-Understanding-Your-Hone-Membership-Fee-Medication-Billing"
       }
+    },
+    "trustpilot": {
+      "score": 4.8,
+      "reviews": 12377,
+      "url": "https://www.trustpilot.com/review/honehealth.com",
+      "checkedOn": "2026-10-01"
     }
   },
   {
@@ -537,7 +555,8 @@
         "text": "Strict no-refund policy once medication arrives, and cancellations are by email only, at least 48 hours before each renewal.",
         "source": "https://getpetermd.com/refund-autobill-policy"
       }
-    }
+    },
+    "searchTitle": "PeterMD Enclomiphene: ~$139/mo, Read This Before You Join"
   },
   {
     "slug": "defy-medical",
@@ -625,6 +644,12 @@
         "text": "Slow to ship: orders go through partner pharmacies, and standard shipping takes 13-16 business days.",
         "source": "https://www.defymedical.com/faq/what-are-defy-medicals-shipping-times/"
       }
+    },
+    "trustpilot": {
+      "score": 4.9,
+      "reviews": 4173,
+      "url": "https://www.trustpilot.com/review/defymedical.com",
+      "checkedOn": "2026-10-01"
     }
   },
   {
@@ -713,7 +738,8 @@
         "text": "Subscriptions carry a 3-4 month minimum, and there are no returns or guaranteed refunds once medication leaves the pharmacy.",
         "source": "https://conciergemdla.com/terms-of-service/"
       }
-    }
+    },
+    "searchTitle": "ConciergeMD Enclomiphene: $199/mo, Worth the Premium? [2026]"
   },
   {
     "slug": "critical-t",
@@ -736,8 +762,8 @@
       "https://www.criticaltboost.com/offer"
     ],
     "lastReviewed": "2026-05-21",
-    "seoTitle": "Critical T Price & Review 2026: From $55/mo, Where to Buy",
-    "seoDescription": "Critical T costs about $55/mo on Subscribe & Save vs ~$69 for one bottle. See bundle math, the Tongkat Ali + DIM formula, and the 60-day guarantee.",
+    "seoTitle": "Critical T Price: $55/mo Deal, 60-Day Refund & Where to Buy",
+    "seoDescription": "✓ $55/mo on Subscribe & Save vs ~$69 for one bottle ✓ 60-day money-back guarantee ✓ Tongkat Ali + DIM. See bundle math and the official store.",
     "why": {
       "onboarding": "60-day money-back guarantee (even empty bottles per vendor terms)",
       "pricing": "Subscribe ~$55/mo; 3-bottle ~$59/bottle; aggressive bulk promos on official site",
@@ -795,8 +821,8 @@
       "https://testoprime.com/"
     ],
     "lastReviewed": "2026-05-21",
-    "seoTitle": "TestoPrime Review 2026: Price, Where to Buy & Bulk Deals",
-    "seoDescription": "TestoPrime costs $64.99 per bottle, or about $32.50 each on the 6-bottle bundle. Compare ingredients, guarantee terms, and TestoPrime vs TestoGen.",
+    "seoTitle": "TestoPrime Review: Lifetime Guarantee, But 3.0★ Trustpilot",
+    "seoDescription": "✓ $64.99/bottle or ~$32.50 on the 6-bottle bundle ✓ Lifetime guarantee claim ✓ 3.0★ from 913 Trustpilot reviews. See how it stacks up before you buy.",
     "why": {
       "onboarding": "Lifetime money-back guarantee (per TestoPrime marketing)",
       "pricing": "Best bulk value here: ~$32.50/bottle on 6-bottle package ($194.99 total)",
@@ -827,7 +853,13 @@
         "question": "Where can I buy TestoPrime?",
         "answer": "The price and guarantee terms on this page come from the official TestoPrime store (testoprime.com), which is where our links go. Marketplace listings can come from third-party resellers, and money-back guarantees usually depend on where you ordered. Check the official site before buying elsewhere."
       }
-    ]
+    ],
+    "trustpilot": {
+      "score": 3,
+      "reviews": 913,
+      "url": "https://www.trustpilot.com/review/testoprime.com",
+      "checkedOn": "2026-10-01"
+    }
   },
   {
     "slug": "endopeak",
@@ -952,8 +984,8 @@
       "https://testogen.com/"
     ],
     "lastReviewed": "2026-05-21",
-    "seoTitle": "TestoGen Review 2026: Price, Where to Buy & Bundle Cost",
-    "seoDescription": "TestoGen costs $69.99 per bottle, or about $35/bottle on the 6-pack. See the D-aspartic acid formula, 100-day guarantee, and TestoGen vs TestoPrime.",
+    "seoTitle": "TestoGen Review: ~$35/Bottle on 6-Pack, 100-Day Refund [2026]",
+    "seoDescription": "✓ $69.99/bottle or ~$35 each on the 6-pack ✓ 100-day money-back guarantee ✓ D-aspartic acid formula. Compare with TestoPrime and see where to buy.",
     "why": {
       "onboarding": "100-day money-back guarantee",
       "pricing": "Six-bottle package ~$34.99/bottle ($209.97 total)",
@@ -1008,8 +1040,8 @@
       "https://www.primemale.com/en-us/primemale-1-month"
     ],
     "lastReviewed": "2026-05-21",
-    "seoTitle": "Prime Male Review 2026: Price, Formula for 40+ & Worth It?",
-    "seoDescription": "Prime Male targets men 40+ at $75/bottle. Compare boron, DAA, and BioPerine stack, bundle discounts, and whether the premium beats cheaper boosters.",
+    "seoTitle": "Prime Male Review: Built for Men 40+, Worth $75? [2026]",
+    "seoDescription": "✓ $75/bottle ✓ Boron, D-aspartic acid and BioPerine stack ✓ Aimed at men 40+. See bundle discounts and whether the premium beats cheaper boosters.",
     "why": {
       "onboarding": "Money-back guarantee per official store terms",
       "pricing": "Single bottle $75; multi-month kits reduce effective monthly cost on site",
@@ -1063,8 +1095,8 @@
       "https://heroichustle.com/c/order-now.php"
     ],
     "lastReviewed": "2026-05-21",
-    "seoTitle": "Alpha Surge Reviews 2026: Price, Gummy Formula & Bundles",
-    "seoDescription": "Alpha Surge starts at $79/bottle-is the gummy format worth it? Compare bulk tiers, L-arginine + herb stack, and 90-day guarantee vs cheaper options.",
+    "seoTitle": "Alpha Surge Review: Gummy T-Booster, Is $79 Worth It? [2026]",
+    "seoDescription": "✓ From $79/bottle ✓ 90-day money-back guarantee ✓ Gummy format with L-arginine and herbs. Compare bulk tiers and cheaper options before you buy.",
     "why": {
       "onboarding": "90-day money-back guarantee on official checkout",
       "pricing": "Highest intro per-bottle price here ($79); bulk drops to ~$49/bottle on 6-bottle tier",
