@@ -1,0 +1,25 @@
+---
+description: Page titles, meta descriptions, Open Graph / Twitter preview tags, canonicals, and preview images
+alwaysApply: true
+---
+
+# SEO metadata and share previews
+
+## Never truncate with an ellipsis
+
+- No title, meta description, `og:title`, `og:description`, `twitter:title`, `twitter:description`, `seoTitle`, or `seoDescription` may end with `...` or `…`. Search engines and share cards show these as broken snippets.
+- Write copy that fits instead of cutting it: titles **≤ 60 chars** (before the `| T-Compare` suffix), descriptions **120-160 chars**, ending in a complete sentence.
+- When text is generated from data, pass it through `metaDescription()` / `metaTitle()` in `app/lib/seo.ts`. They drop whole trailing sentences or cut at a word boundary and close with a period. Never hand-roll `slice(...) + "..."` for metadata.
+
+## Every indexable page must have
+
+- Unique `title` and `description`.
+- `alternates: canonicalAlternates(path)` (absolute `https://www.t-compare.com` URL).
+- `openGraph: { ...OG_BASE, title, description, url }` (page `openGraph` replaces the parent's, so always spread `OG_BASE`) and `twitter: { card: "summary_large_image", title, description }`.
+- A preview image: an `opengraph-image.tsx` in the route segment using `renderOgCard` from `app/lib/og-card.tsx` (1200×630 with `alt`), or inherit one from a parent segment. Do not set `openGraph.images` by hand unless the file is in `public/og/`.
+- One `<h1>` and relevant JSON-LD (at least `BreadcrumbList` via `breadcrumbListSchema`).
+- New public routes must appear in `app/sitemap.ts`. Non-indexable utility pages get `robots: { index: false, follow: true }`.
+
+## Enforcement
+
+`npm run build` runs `npm run check:seo-meta` (`scripts/audit-seo-meta.mjs`) after the build. It reads every prerendered page and **fails the build** on an ellipsis ending or a missing title, description, canonical, OG, or Twitter tag, or a missing preview image. Fix the page; do not weaken the check.

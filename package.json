@@ -6,7 +6,7 @@
     "dev": "next dev",
     "prebuild": "npm run check:blog-images:all && npm run check:lp-images",
     "build": "next build",
-    "postbuild": "tsx scripts/export-static-og-home.ts",
+    "postbuild": "tsx scripts/export-static-og-home.ts && npm run check:seo-meta",
     "start": "next start",
     "lint": "eslint",
     "check:blog-images": "node scripts/validate-blog-images.mjs",
@@ -21,7 +21,8 @@
     "sync:blog14": "node scripts/sync-blog14-to-posts.mjs",
     "export:blog14": "node scripts/export-blog14-from-posts.mjs",
     "apply:blog-standards": "node scripts/apply-blog-content-standards.mjs",
-    "fix:blog-faq-split": "node scripts/fix-faq-misconception-split.mjs"
+    "fix:blog-faq-split": "node scripts/fix-faq-misconception-split.mjs",
+    "check:seo-meta": "node scripts/audit-seo-meta.mjs"
   },
   "dependencies": {
     "next": "16.2.0",

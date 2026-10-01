@@ -46,11 +46,27 @@ export function itemListSchema(
   };
 }
 
-/** Trim to ~155 chars for meta descriptions without mid-word cuts when possible. */
+/**
+ * Fit a meta description to `max` chars. Never ends in "..." or "…": search
+ * engines and share cards show those as broken snippets. Prefers dropping whole
+ * trailing sentences; otherwise cuts at a word boundary and closes with a period.
+ */
 export function metaDescription(text: string, max = 158): string {
-  const t = text.replace(/\s+/g, " ").trim();
+  const t = text.replace(/\s+/g, " ").trim().replace(/(\.\.\.|…)$/, ".");
   if (t.length <= max) return t;
-  const cut = t.slice(0, max - 1);
+  const cut = t.slice(0, max);
+  const sentenceEnd = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("? "), cut.lastIndexOf("! "));
+  if (sentenceEnd >= 80) return cut.slice(0, sentenceEnd + 1);
+  const lastSpace = cut.lastIndexOf(" ", max - 1);
+  const words = (lastSpace > 80 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:—–-]+$/, "");
+  return `${words}.`;
+}
+
+/** Same rule as metaDescription for titles: no ellipsis, cut at a word boundary. */
+export function metaTitle(text: string, max = 60): string {
+  const t = text.replace(/\s+/g, " ").trim().replace(/\s*(\.\.\.|…)$/, "");
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
   const lastSpace = cut.lastIndexOf(" ");
-  return `${(lastSpace > 80 ? cut.slice(0, lastSpace) : cut).trimEnd()}…`;
+  return (lastSpace > 30 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:&|—–-]+$/, "");
 }
