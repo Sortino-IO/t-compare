@@ -3,7 +3,11 @@ import { hasPublishedPrice, publishedAnnualCost } from "./provider-facts";
 import { metaDescription } from "./seo";
 
 export function providerSeoTitle(brand: Brand): string {
-  return `${brand.name} Enclomiphene: Price, Labs & Review (2026)`;
+  if (!hasPublishedPrice(brand)) {
+    return `${brand.name} Enclomiphene Price, Labs & Review (2026)`;
+  }
+  const from = brand.priceLabel.replace(/^From\s+/i, "");
+  return `${brand.name} Enclomiphene Price: ${from} + Labs, Review (2026)`;
 }
 
 export function providerSeoDescription(brand: Brand): string {
