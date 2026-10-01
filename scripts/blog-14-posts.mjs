@@ -10,8 +10,8 @@ export const blogBatch14 = [
     "featuredImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=630&fit=crop&auto=format&q=85",
     "featuredImageAlt": "Prepared meal on a table - dietary pattern context for men’s metabolic and hormone discussions",
     "publishedAt": "2026-04-30",
-    "seoTitle": "Diet for Low Testosterone: What Research Supports | T-Co...",
-    "seoDescription": "Diet for low testosterone: evidence on weight loss, Mediterranean-style patterns, alcohol, and ultra-processed foods-plus what diet cannot replace....",
+    "seoTitle": "Diet for Low Testosterone: Foods to Eat and Avoid",
+    "seoDescription": "Diet for low testosterone: what research says about weight loss, Mediterranean-style eating, alcohol, and ultra-processed food, and what diet can't fix.",
     "content": [
       {
         "type": "paragraph",
@@ -221,7 +221,8 @@ export const blogBatch14 = [
           "Discuss supplements and major diet changes with a qualified clinician, especially if you have chronic disease or take medications."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-10"
   },
   {
     "title": "Vitamin D and Testosterone: The Sunshine Vitamin Connection",
@@ -230,8 +231,8 @@ export const blogBatch14 = [
     "featuredImage": "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&h=630&fit=crop&auto=format&q=85",
     "featuredImageAlt": "Outdoor light on trees - vitamin D from sun exposure discussed alongside supplementation trials",
     "publishedAt": "2026-04-29",
-    "seoTitle": "Vitamin D & Testosterone: What Meta-Analyses Show | T-Co...",
-    "seoDescription": "Vitamin D testosterone evidence: systematic reviews disagree; 2024 RCT meta-analysis vs 2018 analysis. Dose, duration, and baseline status matter....",
+    "seoTitle": "Vitamin D and Testosterone: What the Research Shows",
+    "seoDescription": "Does vitamin D raise testosterone? Meta-analyses disagree. See what a 2024 RCT analysis and a 2018 review found, and why dose and baseline levels matter.",
     "content": [
       {
         "type": "paragraph",
@@ -448,7 +449,8 @@ export const blogBatch14 = [
           "Supplement dosing should follow clinician guidance and local lab reference ranges."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-09"
   },
   {
     "title": "Hims Enclomiphene: Program Details, Pricing, and Review",
@@ -457,8 +459,8 @@ export const blogBatch14 = [
     "featuredImage": "https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=1200&h=630&fit=crop&auto=format&q=85",
     "featuredImageAlt": "Minimal desk workspace - planning telehealth intake and follow-up for hormone programs",
     "publishedAt": "2026-04-28",
-    "seoTitle": "Hims Enclomiphene: Program Details, Pricing & Review (20...",
-    "seoDescription": "Hims enclomiphene program explained: Testosterone Rx flow, compounded drug disclosure, plan lengths, $99/mo starting context, pros/cons review, and what to...",
+    "seoTitle": "Hims Enclomiphene Price & Program Review (2026): From $99/mo",
+    "seoDescription": "How much is enclomiphene through Hims? Plans start at $99/mo. See plan lengths, the Testosterone Rx steps, compounded-drug disclosure, labs, and pros and cons.",
     "content": [
       {
         "type": "paragraph",
@@ -651,7 +653,8 @@ export const blogBatch14 = [
           "Pricing, plan lengths, product availability, and regulatory disclosures change-verify the current offer on Hims before purchase."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-08"
   },
   {
     "title": "Maximus Tribe Testosterone: What to Know Before Signing Up",
@@ -660,8 +663,8 @@ export const blogBatch14 = [
     "featuredImage": "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=1200&h=630&fit=crop&auto=format&q=85",
     "featuredImageAlt": "Notebook and planning - reviewing program terms before enrolling in telehealth",
     "publishedAt": "2026-04-27",
-    "seoTitle": "Maximus Tribe Testosterone Program: What to Check | T-Co...",
-    "seoDescription": "Maximus Tribe testosterone protocols: enclomiphene-only vs bundles, public ~$49.99 intro / ~$99.99/mo annual framing, labs, and signup checklist....",
+    "seoTitle": "Maximus Tribe Testosterone: Price, Labs & What to Check",
+    "seoDescription": "Maximus Tribe testosterone plans: enclomiphene-only vs bundles, ~$49.99 intro and ~$99.99/mo annual pricing, required labs, and a checklist before signup.",
     "content": [
       {
         "type": "paragraph",
@@ -888,7 +891,8 @@ export const blogBatch14 = [
           "Pricing tiers and promotions change; verify on the official site."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-07"
   },
   {
     "title": "TTime Enclomiphene: Program Overview and Review",
@@ -898,7 +902,7 @@ export const blogBatch14 = [
     "featuredImageAlt": "Fresh ingredients on a cutting board - practical routines alongside medication discussions",
     "publishedAt": "2026-04-26",
     "seoTitle": "TTime Enclomiphene: Overview & Listing Notes | T-Compare",
-    "seoDescription": "TTime enclomiphene: ~$69/mo listing anchor, faster-start onboarding, what to verify at ttime.men, and links to provider page plus T·TIME interview....",
+    "seoDescription": "TTime enclomiphene review: the ~$69/mo price, the fast-start onboarding, what to verify at ttime.men, and links to the provider page and founder interview.",
     "content": [
       {
         "type": "paragraph",
@@ -1130,7 +1134,8 @@ export const blogBatch14 = [
           "Compounded medications involve prescribing and pharmacy rules that vary by state."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-06"
   },
   {
     "title": "Hims vs. Hone Health for Testosterone: Which Is Better?",
@@ -1139,8 +1144,8 @@ export const blogBatch14 = [
     "featuredImage": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=630&fit=crop&auto=format&q=85",
     "featuredImageAlt": "Two coffee cups - comparing two provider options side by side",
     "publishedAt": "2026-04-25",
-    "seoTitle": "Hims vs Hone Health for Testosterone: Compare Framework...",
-    "seoDescription": "Hims vs Hone Health: enclomiphene plans (~$99-$199/mo by term per Hims pages) vs Hone membership + meds (~$149+ list). Fair comparison checklist and links....",
+    "seoTitle": "Hims vs Hone Health 2026: Enclomiphene Price & Plans",
+    "seoDescription": "Hims vs Hone for testosterone: Hims enclomiphene runs ~$99-$199/mo by plan length, while Hone charges a membership plus meds. Compare labs, terms, and fit.",
     "content": [
       {
         "type": "paragraph",
@@ -1373,7 +1378,8 @@ export const blogBatch14 = [
           "Third-party price tables age quickly; confirm on official sites."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-05"
   },
   {
     "title": "Online Testosterone Clinics Compared: 2026 Guide",
@@ -1383,7 +1389,7 @@ export const blogBatch14 = [
     "featuredImageAlt": "Laptop in soft light - researching telehealth clinics with primary sources",
     "publishedAt": "2026-04-24",
     "seoTitle": "Online Testosterone Clinics Compared (2026) | T-Compare",
-    "seoDescription": "Online testosterone clinics 2026: SERM vs TRT, compounded disclosure, lab cadence, and price anchors (~$69-$149/mo list snapshot). Checklist + T-Compare...",
+    "seoDescription": "Online testosterone clinics compared for 2026: SERM vs TRT, compounded-drug disclosure, lab schedules, and price anchors (~$69-$149/mo), plus a checklist.",
     "content": [
       {
         "type": "paragraph",
@@ -1604,7 +1610,8 @@ export const blogBatch14 = [
           "Not medical advice or a clinic endorsement list ranked by quality."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-04"
   },
   {
     "title": "Does Hims Testosterone Booster Work? Real User Experiences",
@@ -1614,7 +1621,7 @@ export const blogBatch14 = [
     "featuredImageAlt": "Supplement-style bottles in soft focus - distinguishing Rx programs from generic booster marketing",
     "publishedAt": "2026-04-23",
     "seoTitle": "Does Hims Testosterone Booster Work? Rx Context | T-Compare",
-    "seoDescription": "Does hims testosterone booster work: clarify enclomiphene Rx vs OTC products, cite published trial context, and avoid fake user stories. Educational only;...",
+    "seoDescription": "Does the Hims testosterone booster work? The difference between prescription enclomiphene and OTC supplements, what trials show, and what to expect.",
     "content": [
       {
         "type": "paragraph",
@@ -1837,7 +1844,8 @@ export const blogBatch14 = [
           "Third-party sites selling similarly named “vitality” pills may not be affiliated with Hims-check domains carefully."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-03"
   },
   {
     "title": "Choosing Between TTime, Hims, and Hone Health: A Comparison",
@@ -1846,7 +1854,7 @@ export const blogBatch14 = [
     "featuredImage": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&h=630&fit=crop&auto=format&q=85",
     "featuredImageAlt": "Shared meal plates - multiple options compared with the same criteria",
     "publishedAt": "2026-04-22",
-    "seoTitle": "TTime vs Hims vs Hone Health: Comparison Framework | T-C...",
+    "seoTitle": "TTime vs Hims vs Hone Health: Enclomiphene Compared (2026)",
     "seoDescription": "TTime vs Hims vs Hone: price anchors, Hims multi-month plan ladder, onboarding notes, and verification checklist before subscribing. Informational only.",
     "content": [
       {
@@ -2080,7 +2088,8 @@ export const blogBatch14 = [
           "Verify all medical and financial details with the provider."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-02"
   },
   {
     "title": "How Long Does Clomid Take to Increase Testosterone?",
@@ -2090,7 +2099,7 @@ export const blogBatch14 = [
     "featuredImageAlt": "Fresh salad bowl - nutrition and timing metaphors alongside medication monitoring",
     "publishedAt": "2026-04-21",
     "seoTitle": "How Long Does Clomid Take to Raise Testosterone? | T-Compare",
-    "seoDescription": "How long does clomid take to increase testosterone: RCT and cohort timelines (weeks to months), plateau patterns, and why symptom relief can lag labs....",
+    "seoDescription": "How long does Clomid take to raise testosterone? Trial timelines run from weeks to months; see plateau patterns and why symptoms can lag behind lab results.",
     "content": [
       {
         "type": "paragraph",
@@ -2303,7 +2312,8 @@ export const blogBatch14 = [
           "This is not dosing guidance."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-06-01"
   },
   {
     "title": "Clomid vs. Enclomiphene for Low T: What's the Difference?",
@@ -2312,12 +2322,12 @@ export const blogBatch14 = [
     "featuredImage": "https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=1200&h=630&fit=crop&auto=format&q=85",
     "featuredImageAlt": "Pills in blister packaging - prescription context for comparing SERMs",
     "publishedAt": "2026-04-20",
-    "seoTitle": "Clomid vs Enclomiphene for Low T: Key Differences | T-Co...",
-    "seoDescription": "Clomid vs enclomiphene: isomer chemistry, trial context for enclomiphene, and why compounding vs generic clomiphene matters clinically. Educational only;...",
+    "seoTitle": "Clomid vs Enclomiphene for Low T: Key Differences",
+    "seoDescription": "Is clomiphene the same as enclomiphene? How the two isomers differ, what enclomiphene trials show, and why compounded vs generic clomiphene matters for men.",
     "content": [
       {
         "type": "paragraph",
-        "text": "The comparison “clomid vs enclomiphene” is really about whether you are discussing generic clomiphene citrate (a racemic mixture) versus purified enclomiphene citrate-the trans isomer that has been evaluated in male secondary hypogonadism development programs."
+        "text": "The comparison “clomiphene vs enclomiphene” (often searched as “clomid vs enclomiphene”) is really about whether you are discussing generic clomiphene citrate (a racemic mixture) versus purified enclomiphene citrate-the trans isomer that has been evaluated in male secondary hypogonadism development programs. Clomid is simply a common brand name for clomiphene citrate, so the two spellings point to the same underlying question."
       },
       {
         "type": "heading",
@@ -2548,7 +2558,8 @@ export const blogBatch14 = [
           "Compounded enclomiphene is not FDA-approved as a finished product in the same way as many legacy drugs."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-05-31"
   },
   {
     "title": "HCG Injections for Low Testosterone: A Complete Guide",
@@ -2557,8 +2568,8 @@ export const blogBatch14 = [
     "featuredImage": "https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=1200&h=630&fit=crop&auto=format&q=85",
     "featuredImageAlt": "Medical supplies in neutral arrangement - injection therapy discussed only as clinician-directed care",
     "publishedAt": "2026-04-19",
-    "seoTitle": "HCG Injections for Low Testosterone: Clinical Context |...",
-    "seoDescription": "HCG injections for low testosterone: mechanism, fertility-sparing use cases, and evidence on combination therapy with clomiphene in specialist cohorts....",
+    "seoTitle": "HCG Injections for Low Testosterone: A Complete Guide",
+    "seoDescription": "HCG injections for low testosterone: how they work, when they're used to protect fertility, and what studies show about combining HCG with clomiphene.",
     "content": [
       {
         "type": "paragraph",
@@ -2779,7 +2790,8 @@ export const blogBatch14 = [
           "Do not import or dose peptides from non-pharmacy sources."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-05-30"
   },
   {
     "title": "Can Clomid Fix Low Testosterone Permanently?",
@@ -2789,7 +2801,7 @@ export const blogBatch14 = [
     "featuredImageAlt": "Clock on wood surface - long-term therapy timelines vs unrealistic cure promises",
     "publishedAt": "2026-04-18",
     "seoTitle": "Can Clomid Fix Low Testosterone Permanently? | T-Compare",
-    "seoDescription": "Can clomid fix low testosterone permanently: what relapse means after stopping therapy, long-term cohort data, and realistic expectations. Educational only;...",
+    "seoDescription": "Can Clomid fix low testosterone permanently? What happens after you stop, what long-term studies show about relapse, and realistic expectations.",
     "content": [
       {
         "type": "paragraph",
@@ -3005,7 +3017,8 @@ export const blogBatch14 = [
           "Seek qualified care for medication changes."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-05-29"
   },
   {
     "title": "Does Low Testosterone Cause Penile Shrinkage? The Facts",
@@ -3015,7 +3028,7 @@ export const blogBatch14 = [
     "featuredImageAlt": "Abstract neutral texture - discreet editorial framing for men’s urology education",
     "publishedAt": "2026-04-17",
     "seoTitle": "Low Testosterone & Penile Size: What Studies Say | T-Compare",
-    "seoDescription": "Does low testosterone cause penile shrinkage: adult correlation data, developmental context, and why TRT is not a length enlargement plan. Educational...",
+    "seoDescription": "Does low testosterone cause penile shrinkage? What adult data shows, why puberty is different, and why TRT is not a way to increase length.",
     "content": [
       {
         "type": "paragraph",
@@ -3232,6 +3245,7 @@ export const blogBatch14 = [
           "Seek in-person evaluation for concerning exam findings."
         ]
       }
-    ]
+    ],
+    "updatedAt": "2026-05-28"
   }
 ];
