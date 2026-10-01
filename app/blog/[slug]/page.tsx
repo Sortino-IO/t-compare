@@ -6,6 +6,7 @@ import ArticleToc from "../../components/ArticleToc";
 import BlogArticleTrust from "../../components/BlogArticleTrust";
 import BlogContent from "../../components/BlogContent";
 import BlogPostRelated from "../../components/BlogPostRelated";
+import BlogPriceCheck from "../../components/BlogPriceCheck";
 import BlogProviderLinks from "../../components/BlogProviderLinks";
 import type { BlogBlock } from "../../lib/blog";
 import { getAllSlugs, getPostBySlug, getRelatedPosts, type BlogPost } from "../../lib/blog";
@@ -299,6 +300,10 @@ export default async function BlogPostPage({ params }: Props) {
               {post.excerpt}
             </p>
           </div>
+
+          {PROVIDER_COST_POST.test(post.slug) ? (
+            <BlogPriceCheck text={`${post.title} ${post.slug}`} className="-mt-4 mb-8" />
+          ) : null}
 
           <ArticleToc entries={tocEntries} />
         </div>

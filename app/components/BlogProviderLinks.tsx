@@ -12,7 +12,7 @@ type Props = {
   className?: string;
 };
 
-function mentioned(text: string): Brand[] {
+export function mentionedProviders(text: string): Brand[] {
   const hay = text.toLowerCase();
   const word = (w: string) => new RegExp(`(^|[^a-z0-9])${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^a-z0-9]|$)`).test(hay);
   return getBrandsByCategory("enclomiphene").filter((b) => {
@@ -23,7 +23,7 @@ function mentioned(text: string): Brand[] {
 
 /** Contextual links from enclomiphene articles into the comparison pages. */
 export default function BlogProviderLinks({ text, className = "" }: Props) {
-  const brands = mentioned(text).slice(0, 3);
+  const brands = mentionedProviders(text).slice(0, 3);
   const links: { href: string; label: string }[] = [];
 
   if (brands.length >= 2) {
