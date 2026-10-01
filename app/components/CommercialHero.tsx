@@ -11,6 +11,7 @@ import {
 } from "../lib/brand-display";
 import { hasPublishedPrice } from "../lib/provider-facts";
 import AffiliateDisclosure from "./AffiliateDisclosure";
+import TrustpilotRating from "./TrustpilotRating";
 import ExternalCta from "./ui/ExternalCta";
 
 type Props = {
@@ -106,6 +107,9 @@ export default function CommercialHero({
               <p className="mt-1 text-xs text-[#5f757f]">
                 Last reviewed {formatReviewedDate(brand.lastReviewed)}
               </p>
+              {brand.trustpilot ? (
+                <TrustpilotRating rating={brand.trustpilot} className="mt-1.5" />
+              ) : null}
             </div>
           </div>
 

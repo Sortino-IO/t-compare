@@ -74,7 +74,18 @@ export interface Brand {
   ctaBelowParagraphs: string[];
   faqItems: BrandFaqItem[];
   facts?: ProviderFacts;
+  /** Public Trustpilot snapshot; only set when verified on trustpilot.com. */
+  trustpilot?: TrustpilotSnapshot;
+  /** Search-result title (no "| T-Compare" suffix); overrides the generated one. */
+  searchTitle?: string;
 }
+
+export type TrustpilotSnapshot = {
+  score: number;
+  reviews: number;
+  url: string;
+  checkedOn: string;
+};
 
 export const BRAND_CATEGORY_CONFIG: Record<
   BrandCategory,
