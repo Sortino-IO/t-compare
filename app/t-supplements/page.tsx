@@ -15,20 +15,20 @@ const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 export const metadata: Metadata = {
   title: "Best Testosterone Supplements Compared: Prices & Value (2026)",
   description:
-    "Compare top testosterone boosters side by side from $55/mo. See entry prices, bulk savings, guarantees, and ingredients so you pick the right bottle-not the loudest ad.",
+    "Compare top testosterone boosters side by side from $55/mo: entry prices, bulk savings, guarantees, and ingredients, so you pick on value, not the loudest ad.",
   alternates: canonicalAlternates(PAGE_PATH),
   openGraph: {
     ...OG_BASE,
     title: "Best Testosterone Supplements Compared: Prices & Value (2026) | T-Compare",
     description:
-      "Compare top testosterone boosters side by side from $55/mo. See entry prices, bulk savings, guarantees, and ingredients so you pick the right bottle-not the loudest ad.",
+      "Compare top testosterone boosters side by side from $55/mo: entry prices, bulk savings, guarantees, and ingredients, so you pick on value, not the loudest ad.",
     url: PAGE_URL,
   },
   twitter: {
     card: "summary_large_image",
     title: "Best Testosterone Supplements Compared: Prices & Value (2026) | T-Compare",
     description:
-      "Compare top testosterone boosters side by side from $55/mo. See entry prices, bulk savings, guarantees, and ingredients so you pick the right bottle-not the loudest ad.",
+      "Compare top testosterone boosters side by side from $55/mo: entry prices, bulk savings, guarantees, and ingredients, so you pick on value, not the loudest ad.",
   },
 };
 

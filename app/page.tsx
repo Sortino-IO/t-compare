@@ -15,7 +15,7 @@ const homeOgImage = {
 export const metadata: Metadata = {
   title: "Compare Enclomiphene Providers & T Supplements (2026)",
   description:
-    "Independent tables, 12-month cost calculator, and head-to-head compares for enclomiphene telehealth and testosterone supplements — prices, labs, and plan terms checked against official sites.",
+    "Compare enclomiphene providers and testosterone supplements: prices, labs, and plan terms checked against official sites, plus a free 12-month cost calculator.",
   alternates: canonicalAlternates("/"),
   openGraph: {
     images: [homeOgImage],

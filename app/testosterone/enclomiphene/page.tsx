@@ -26,7 +26,7 @@ const ENCLO_COUNT = getBrandsByCategory("enclomiphene").length;
 export const metadata: Metadata = {
   title: "Best Enclomiphene Providers Compared (2026): Prices & Labs",
   description: metaDescription(
-    `Compare ${ENCLO_COUNT} enclomiphene telehealth providers side by side — monthly price, labs, commitment, prescriber type, and estimated 12-month total. Free cost calculator and head-to-head pages.`,
+    `Compare ${ENCLO_COUNT} enclomiphene providers side by side: monthly price, labs, commitment, prescriber, and 12-month total cost. Free calculator included.`,
   ),
   alternates: canonicalAlternates(PAGE_PATH),
   openGraph: {

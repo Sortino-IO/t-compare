@@ -12,7 +12,7 @@ const PAGE_URL = `${SITE_URL}/tools/enclomiphene-cost-calculator`;
 export const metadata: Metadata = {
   title: "Enclomiphene & TRT Cost Calculator (2026)",
   description:
-    "Estimate the real cost of enclomiphene or TRT over 3, 6, or 12 months — medication, labs, and shipping combined. Compare providers by true total, not just the monthly headline.",
+    "Estimate the real cost of enclomiphene or TRT over 3, 6, or 12 months, with medication, labs, and shipping combined. Compare providers by true total cost.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     ...OG_BASE,

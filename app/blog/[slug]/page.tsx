@@ -11,6 +11,7 @@ import type { BlogBlock } from "../../lib/blog";
 import { getAllSlugs, getPostBySlug, getRelatedPosts, type BlogPost } from "../../lib/blog";
 import { extractTopLevelHeadings } from "../../lib/blog-headings";
 import { resolvePrimaryTopic } from "../../lib/blog-topics";
+import { metaDescription } from "../../lib/seo";
 import { OG_BASE, SITE_URL } from "../../lib/site";
 import QuickCostEstimator from "../../components/QuickCostEstimator";
 import EvidenceNotes from "../../components/EvidenceNotes";
@@ -90,8 +91,7 @@ function extractFaq(blocks: BlogBlock[]): { question: string; answer: string }[]
 
 function postMetaDescription(post: BlogPost): string {
   if (post.seoDescription?.trim()) return post.seoDescription.trim();
-  if (post.excerpt.length > 155) return `${post.excerpt.slice(0, 152).trimEnd()}...`;
-  return post.excerpt;
+  return metaDescription(post.excerpt);
 }
 
 type Props = {

@@ -15,11 +15,9 @@ export function providerSeoDescription(brand: Brand): string {
     ? brand.priceLabel.replace(/^From\s+/i, "from ")
     : "pricing not published on the official site";
   const annual = brand.facts ? publishedAnnualCost(brand.facts) : null;
-  const annualLine = annual
-    ? ` Estimated 12-month total about $${annual.toLocaleString("en-US")} including labs.`
-    : "";
+  const annualLine = annual ? `, about $${annual.toLocaleString("en-US")} for 12 months with labs` : "";
   return metaDescription(
-    `${brand.name} enclomiphene ${priceAnchor}.${annualLine} Compare labs, commitment, onboarding, and head-to-head matches before you enroll.`,
+    `${brand.name} enclomiphene ${priceAnchor}${annualLine}. Compare labs, commitment, and onboarding before you enroll.`,
   );
 }
 
@@ -29,9 +27,11 @@ export function compareSeoDescription(left: Brand, right: Brand): string {
   const aR = annual(right);
   const costHint =
     aL != null && aR != null
-      ? ` 12-mo estimates: ${left.name} ~$${aL.toLocaleString("en-US")}, ${right.name} ~$${aR.toLocaleString("en-US")}.`
+      ? ` 12-month cost with labs: ~$${aL.toLocaleString("en-US")} vs ~$${aR.toLocaleString("en-US")}.`
       : "";
-  return metaDescription(
-    `${left.name} (${left.priceLabel}) vs ${right.name} (${right.priceLabel}).${costHint} Side-by-side labs, commitment, onboarding, and our free cost calculator.`,
-  );
+  const price = (b: Brand) =>
+    hasPublishedPrice(b) ? b.priceLabel.replace(/^From\s+/i, "from ") : "price not published";
+  const head = `${left.name} (${price(left)}) vs ${right.name} (${price(right)}).${costHint}`;
+  const full = `${head} Compare labs, commitment, and onboarding side by side.`;
+  return metaDescription(full.length <= 158 ? full : `${head} Compare labs and terms side by side.`);
 }
