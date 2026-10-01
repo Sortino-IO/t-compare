@@ -26,6 +26,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     title,
     description: BLOG_DESCRIPTION,
     alternates: { canonical },
+    ...(page > 1 ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       ...OG_BASE,
       title,
