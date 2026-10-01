@@ -18,7 +18,8 @@ import {
 } from "../../../lib/brands";
 import { getPairComparisonExtras } from "../../../lib/pair-comparison-extras";
 import { withTtimeAffiliateParams } from "../../../lib/affiliate-links";
-import { canonicalAlternates } from "../../../lib/seo";
+import { canonicalAlternates, metaDescription } from "../../../lib/seo";
+import { supplementCompareSeoTitle } from "../../../lib/seo-provider";
 import { OG_BASE, SITE_URL } from "../../../lib/site";
 
 const COMPARISONS_INDEX = getComparisonsIndexPath("supplement");
@@ -69,9 +70,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : `${canonical.left} vs ${canonical.right}`;
   const description =
     leftBrand && rightBrand
-      ? `Compare ${leftBrand.name} vs ${rightBrand.name} on entry price, bulk bundles, guarantees, and ingredients. See which testosterone booster fits your budget before checkout.`
+      ? metaDescription(
+          `✓ ${leftBrand.name} ${leftBrand.priceLabel.replace(/^From\s+/i, "from ")} vs ${rightBrand.name} ${rightBrand.priceLabel.replace(/^From\s+/i, "from ")} ✓ Bulk deals, guarantees, and ingredients side by side. See which is better value.`,
+        )
       : `Compare ${canonical.left} vs ${canonical.right} on testosterone supplement pricing, bulk savings, and guarantee terms.`;
-  const pageTitle = `${title}: Which T-Booster Is Better? (2026)`;
+  const pageTitle =
+    leftBrand && rightBrand
+      ? supplementCompareSeoTitle(leftBrand, rightBrand)
+      : `${title}: Which T-Booster Is Better? (2026)`;
   const canonicalPath = getComparePairPath("supplement", canonical.left, canonical.right);
   const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 

@@ -23,7 +23,7 @@ import { getPairComparisonExtras } from "../../lib/pair-comparison-extras";
 import { buildPairVerdict } from "../../lib/pair-verdict";
 import { withTtimeAffiliateParams } from "../../lib/affiliate-links";
 import { canonicalAlternates } from "../../lib/seo";
-import { compareSeoDescription } from "../../lib/seo-provider";
+import { compareSeoDescription, compareSeoTitle } from "../../lib/seo-provider";
 import { OG_BASE, SITE_URL } from "../../lib/site";
 
 type Params = { pair: string };
@@ -76,7 +76,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     leftBrand?.category === "supplement" && rightBrand?.category === "supplement";
   const pageTitle = isSupplement
     ? `${title}: Which T-Booster Is Better? (2026)`
-    : `${title}: Price, Labs & 12-Mo Cost (2026)`;
+    : leftBrand && rightBrand
+      ? compareSeoTitle(leftBrand, rightBrand)
+      : `${title}: Price, Labs & 12-Mo Cost (2026)`;
   const canonicalPath = `/compare/${canonical.left}-vs-${canonical.right}`;
   const canonicalUrl = `${SITE_URL}${canonicalPath}`;
   const description =
