@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { breadcrumbListSchema, canonicalAlternates } from "../lib/seo";
 import { OG_BASE, SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Medical Disclaimer",
   description:
     "Read T-Compare's medical disclaimer, content limitations, and why all provider details should be verified directly before making health decisions.",
+  alternates: canonicalAlternates("/disclaimer"),
   openGraph: {
     ...OG_BASE,
     title: "Medical Disclaimer | T-Compare",
@@ -53,6 +55,17 @@ const sections = [
 export default function DisclaimerPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbListSchema([
+              { name: "Home", path: "/" },
+              { name: "Medical Disclaimer", path: "/disclaimer" },
+            ]),
+          ),
+        }}
+      />
       <nav className="flex items-center gap-2 text-sm text-[#5f757f] mb-10">
         <Link href="/" className="hover:text-[#176b87] hover:underline">Home</Link>
         <span>/</span>

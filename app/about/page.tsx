@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { breadcrumbListSchema, canonicalAlternates } from "../lib/seo";
 import { OG_BASE, SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "About T-Compare: How We Compare Providers",
   description:
     "Learn how T-Compare researches testosterone and enclomiphene providers, how listings are built, and how to use our comparisons to make smarter decisions.",
+  alternates: canonicalAlternates("/about"),
   openGraph: {
     ...OG_BASE,
     title: "About T-Compare: How We Compare Providers",
@@ -24,6 +26,17 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbListSchema([
+              { name: "Home", path: "/" },
+              { name: "About", path: "/about" },
+            ]),
+          ),
+        }}
+      />
       <nav className="flex items-center gap-2 text-sm text-[#5f757f] mb-10">
         <Link href="/" className="hover:text-[#176b87] hover:underline">Home</Link>
         <span>/</span>

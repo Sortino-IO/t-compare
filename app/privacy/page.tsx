@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { breadcrumbListSchema, canonicalAlternates } from "../lib/seo";
 import { OG_BASE, SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Review how T-Compare handles analytics, cookies, and external links, and what data is or is not collected when you use the site.",
+  alternates: canonicalAlternates("/privacy"),
   openGraph: {
     ...OG_BASE,
     title: "Privacy Policy | T-Compare",
@@ -24,6 +26,17 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbListSchema([
+              { name: "Home", path: "/" },
+              { name: "Privacy Policy", path: "/privacy" },
+            ]),
+          ),
+        }}
+      />
       <nav className="flex items-center gap-2 text-sm text-[#5f757f] mb-10">
         <Link href="/" className="hover:text-[#176b87] hover:underline">
           Home

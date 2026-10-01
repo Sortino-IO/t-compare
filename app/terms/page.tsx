@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { breadcrumbListSchema, canonicalAlternates } from "../lib/seo";
 import { OG_BASE, SITE_URL } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
   description:
     "Read the terms for using T-Compare, including informational-use limits, liability notes, and rules for relying on provider comparison content.",
+  alternates: canonicalAlternates("/terms"),
   openGraph: {
     ...OG_BASE,
     title: "Terms of Use | T-Compare",
@@ -24,6 +26,17 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbListSchema([
+              { name: "Home", path: "/" },
+              { name: "Terms of Use", path: "/terms" },
+            ]),
+          ),
+        }}
+      />
       <nav className="flex items-center gap-2 text-sm text-[#5f757f] mb-10">
         <Link href="/" className="hover:text-[#176b87] hover:underline">
           Home
