@@ -103,7 +103,7 @@ export default function QuickCompareTable({ brands, lowestSlug, caption }: Props
           {caption}
         </caption>
 
-        <thead className="hidden md:table-header-group">
+        <thead className="hidden lg:table-header-group">
           <tr className="border-b border-[#e3e3e3] bg-white">
             {headers.map((c) => (
               <th
@@ -124,11 +124,11 @@ export default function QuickCompareTable({ brands, lowestSlug, caption }: Props
             return (
               <tr
                 key={brand.slug}
-                className="block border-b border-[#e3e3e3] p-4 last:border-b-0 md:table-row md:border-b-0 md:p-0 md:align-top md:hover:bg-[#f7f7f7]"
+                className="block border-b border-[#e3e3e3] p-4 last:border-b-0 lg:table-row lg:border-b-0 lg:p-0 lg:align-top lg:hover:bg-[#f7f7f7]"
               >
                 <th
                   scope="row"
-                  className="block text-left font-normal md:table-cell md:px-4 md:py-3.5"
+                  className="block text-left font-normal lg:table-cell lg:px-4 lg:py-3.5"
                 >
                   <span className="flex items-center gap-2.5">
                     <span
@@ -146,8 +146,8 @@ export default function QuickCompareTable({ brands, lowestSlug, caption }: Props
                   </span>
                 </th>
 
-                <td className="mt-3 block md:table-cell md:px-4 md:py-3.5">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#5f757f] md:hidden">
+                <td className="mt-3 block lg:table-cell lg:px-4 lg:py-3.5">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#5f757f] lg:hidden">
                     Starting price
                   </span>
                   <span className="block text-sm font-semibold text-[#142b3a]">
@@ -161,15 +161,15 @@ export default function QuickCompareTable({ brands, lowestSlug, caption }: Props
                 </td>
 
                 {dataColumns.map((col) => (
-                  <td key={col.label} className="mt-3 block md:table-cell md:px-4 md:py-3.5">
-                    <span className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-[#5f757f] md:hidden">
+                  <td key={col.label} className="mt-3 block lg:table-cell lg:px-4 lg:py-3.5">
+                    <span className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-[#5f757f] lg:hidden">
                       {col.label}
                     </span>
                     {col.render(brand)}
                   </td>
                 ))}
 
-                <td className="mt-3.5 block md:table-cell md:w-px md:px-4 md:py-3.5">
+                <td className="mt-3.5 block lg:table-cell lg:w-px lg:px-4 lg:py-3.5">
                   <span className="flex flex-col gap-2 [&_a]:whitespace-nowrap">
                     <ExternalCta
                       href={withTtimeAffiliateParams(brand.affiliateUrl)}
